@@ -1,0 +1,11 @@
+1. Install angular cli
+npm install -g @angular/cli
+
+
+2. create new app. Luu y, khong phai dat ten gi cung duoc nhe. nay thu dat la ng new learning_java no ko cho
+
+ng new my-app
+
+3. run angular app
+
+ng serve --open

@@ -1,0 +1,61 @@
+Viết cái này trong thời gian rảnh rỗi.
+
+Từ các bài học java có sẵn, biên soạn và viết thành app cho vui và để tranh thủ đọc lúc ngồi trong toilet.
+
+Ứng dụng này khá đơn giản, vì chỉ là chia sẻ tài liệu mà thôi. Việc viết cái này chủ yếu để là ôn lại các kiến thức,
+học thêm về lập trình app và giết thời gian.
+
+Vì làm cho vui nên tài nguyên sẽ chủ yếu là lấy online để tránh dính bản quyền.
+
+
+Về cơ bản, app chỉ có 1 vài chức năng đơn giản.
+
+Có 1 cái library tổng hợp các series bài học, như Java Basic, Java Advance, Design Pattern, Angular, Front-end và các
+kinh nghiệm lập trình.
+
+
+Các chức năng
+
+- Library -- > Program Series -- > Unit --> Lesson
+
+Tô chức data
+
+ProgramSeries (
+    programSeriesId: number,
+    code: string,
+    name : string
+    displayOrder: number
+
+}
+
+
+UnitLesson {
+    unitLessonId: number,
+    code: string,
+    name: string,
+    displayOrder: number,
+    programSeries: ProgramSeries
+}
+
+Content {
+    contentId: number,
+    header: string,
+    introduce: string,
+    content: string,
+    note: string,
+    linkToResource: string --> link to github resource.
+}
+
+Lesson{
+    lessonId,
+    title,
+    name,
+    displayOrder,
+    content,
+    unitLesson: UnitLesson,
+}
+
+Đấy, chỉ đơn giản vậy thôi
+
+
+Maybe saving data duoi dang xml để xử lý cho dễ.

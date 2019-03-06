@@ -1,0 +1,120 @@
+1. Create angular component.
+
+
+Angular component phải được khai báo trong "src/app/app.component.ts"
+
+Việc tạo component thông qua command line
+
+
+ng g c /components/navigation --skip import   ==  ng generate component /components/navigation --skip import
+
+
+
+Nếu khai báo đúng nó sẽ tự động add vào file app.component.ts. Nếu ko thì vào trong phần declare, add nó vào thủ công thôi.
+
+/* ----------------------------- CODE SAMPLE -----------------------*/
+
+import { NavigationComponent } from './components/navigation/navigation.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NavigationComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+/* ----------------------------- CODE SAMPLE -----------------------*/
+
+2. Create angular service
+
+Angular Service cũng như angular component, đều phải được khai báo trong app.components
+
+
+ng g s /services/library --skip import  ==  ng generate service /services/library  --skip import
+
+
+Khác với component, service phải được khai báo trong providers. Xem ví dụ
+
+
+/* ----------------------------- CODE SAMPLE -----------------------*/
+
+import {LibraryService  } from './services/library.service';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NavigationComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [
+    LibraryService
+  ],
+  bootstrap: [AppComponent]
+})
+
+/* ----------------------------- CODE SAMPLE -----------------------*/
+
+
+
+
+
+EXERCISE
+
+Trong bài học này ta thử tạo 1 list các hero và edit hero như trong example của angular để hiểu thêm.
+
+1. generate components
+ng g c /components/ListHero --skip import
+ng g c /components/Hero --skip import
+
+
+2.  Tạo data modal và data sample
+xem file src/app/data-model/hero.ts (data model)
+Xem file src/app/sample-data/sample.data.ts  (data sample)
+
+3. Đổi app.component.html để nó load cái list-hero. (chèn <app-list-hero></app-list-hero> vào bên trong content).
+
+/* ----------------------------- CODE SAMPLE src/app/app.component.html -----------------------*/
+
+<app-list-hero></app-list-hero>
+
+<router-outlet></router-outlet>
+
+
+/* ----------------------------- CODE SAMPLE src/app/app.component.html -----------------------*/
+
+
+4. Sửa lại list hero xíu để import data vào
+
+
+5. Sau đó tiếp tục edit lại Hero để khi click vào list hero bên kia thì show thằng này lên.
+
+Vì thuộc tình hero trong này là data từ bên ngoài truyền vào, nên ta cần khai báo một annotation input
+
+ @Input() hero: Hero;
+
+ Input này sẽ cho phép bên ngoài truyền vào 1 giá trị. Xem cách sử dụng dưới đây.
+
+ <app-hero [hero]="selectedHero"></app-hero>
+
+Dấu [] là binding 2 chiều, tức là trong đổi thì ngoài cũng đổi
+
+Dấu () là binding 1 chiều, tức là từ ngoài truyền vào trong thôi.
+
+ Thêm cái dòng này dưới file list-hero nhé.
+
+6. Kiểm tra
+
+Khi ta thêm cái form vào trong file app-list-hero, thì lúc đó cần phải import module form vào cho angular. Cái này nó sẽ
+báo lỗi nên nếu gặp cứ google là xong.
+
+Giờ tận hưởng thàn quả thôi.
+

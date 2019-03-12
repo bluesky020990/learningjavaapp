@@ -7,15 +7,22 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
 import {LibraryService  } from './services/library.service';
+import {HeroService} from './services/hero.service';
+
+
+
 import { ListHeroComponent } from './components/list-hero/list-hero.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     ListHeroComponent,
-    HeroComponent
+    HeroComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +30,7 @@ import { HeroComponent } from './components/hero/hero.component';
     FormsModule
   ],
   providers: [
-    LibraryService
+    LibraryService, HeroService
   ],
   bootstrap: [AppComponent]
 })

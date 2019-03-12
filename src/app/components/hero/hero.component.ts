@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Hero} from "../../data-model/hero";
+import {Hero} from '../../data-model/hero';
 
 @Component({
   selector: 'app-hero',
@@ -13,6 +13,8 @@ export class HeroComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
+
 
 }

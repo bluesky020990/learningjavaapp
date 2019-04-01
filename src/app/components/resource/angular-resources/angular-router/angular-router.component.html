@@ -1,0 +1,102 @@
+<h1>Router</h1>
+
+<section class="article">
+  <h3>Overview</h3>
+
+  <p>Trong bài học này ta cùng tìm hiểu về một thứ khá quan trọng trong Angular - Router.</p>
+
+  <p>Về mặt bản chất, router đó là một cái mapping giữa URL và component xử lý. Nó tương tự như controller ở trong MVC vậy,
+    mục đích của nó là căn cứ vào cái path để tìm tới component nào render ra dữ liệu cho đúng.</p>
+
+  <p>Vậy, nó hoạt động như thế nào?</p>
+
+</section>
+
+
+<section class="article">
+  <h3>Các thứ cần quan tâm</h3>
+
+  <p>Khi đề cập tới khái niệm Router trong Angular, ta cần quan tâm tới những điểm sau:</p>
+
+
+  <ol>
+    <li>Khai báo mapping và component handle với file app-routing-module.ts</li>
+    <li>Điều hướng dữ liệu bằng routerLink</li>
+    <li>Show data của thằng con bằng tag outlet</li>
+  </ol>
+
+</section>
+
+
+
+<section class="article">
+  <h3>Cách khai báo router và cách mà router hoạt động.</h3>
+
+  <p>Cùng nhìn vào file <b>src/app/app-routing.module.ts</b> ta sẽ thấy được sự liên quan giữa nó: </p>
+
+  <p>Một variable <b>Routes</b> được khai báo để giữ cái map này. Nó là một array, với mỗi phần tử quy định các thông tin của router đó. Cụ thể như sau: </p>
+
+  <blockquote >
+    <img src="assets/angular-resources/router/router.PNG">
+  </blockquote>
+
+  <p>Giải thích thêm về các thuộc tính trong này</p>
+
+  <dl>
+    <dt>path - component</dt>
+    <dd>Path khai báo đường dẫn, component khai báo Component nào sẽ được dùng để xử lý khi match với cái url này.</dd>
+
+    <dt>redirectTo</dt>
+    <dd>từ khóa này thông báo cho angular biết, nếu match với cái này thì sẽ chuyển cái request đó tới cho Component ABC xử lý</dd>
+
+
+    <dt>children</dt>
+    <dd>Children quy định các router con của router đó. Nó có prefix là thằng cha và tất nhiên là do thằng cha xử lý.</dd>
+
+    <dt>:id</dt>
+    <dd>Khai báo một parameter với giá trị nào đó trên url.</dd>
+  </dl>
+
+  <p>Đến đây thì ta có thể hiểu một phần nào cơ bản của router rồi đúng ko. Khi bạn visit vào 1 url /abc/def/ghi/:id_param chẳng hạn, thì
+  cái URL này lần lượt đi qua Component ABC, sau đó đến component bên trong DEF và tới component GHI tiếp theo. Trong compent GHI nó có thể lấy cái param đó ra để
+  xử lý. Việc này sẽ được đề cập chi tiết hơn trong phần tiếp theo.</p>
+
+  <p>Để có thể sử dụng module này, ta cần 1 đoạn import nữa là xong </p>
+
+  <blockquote>
+    imports: [RouterModule.forRoot(routes)],
+  </blockquote>
+</section>
+
+<section class="article">
+  <h3>routerLink và router-outlet</h3>
+
+  <p>Có sự khác biệt nho nhỏ giữa routerLink và tag a. Cùng xem nhé. </p>
+
+  <p>Ta thay đổi 1 chút trong file menu-bar.component.html. </p>
+
+  <blockquote >
+    <img src="/assets/angular-resources/router/Router_Link_and_tag_A.PNG">
+  </blockquote>
+
+  <p>Khi ta click vào cái tag A static, một request khác được mở lên, và ta được redirect sang ngay trực tiếp cái URL đó. Browser thông báo đang loading với
+  việc cái icon xoay vòng vòng.</p>
+
+  <p>Khi ta click vào cái outerLink, thì chỉ có vài component được render, page ko reload, và đó là sự khác biệt giữa single page app và các multiple page app. </p>
+
+  <p>Đối với angular, ta sẽ sử dụng routerLink để redirect các url. Nói thì hơi khó hiểu, nhưng bạn chỉ cần hiểu rằng, khi click vào cái routerLink, ta sẽ move cái router theo
+  1 hướng khác, và các component liên quan sẽ được loaded phục vụ cho mục đích đó. </p>
+
+
+  <p>Đối tượng thứ 2 đó là router-outlet. Cùng xem lại ví dụ này.</p>
+
+  <blockquote >
+    <img src="/assets/angular-resources/router/Router_Outlet.PNG">
+  </blockquote>
+
+  <p>Router outlet đánh dấu vị trí mà các component con sẽ được render. Điều này khá là hữu ích khi ta muốn giữ lại content của thằng cha và chỉ thay dổi thằng con mà thôi. </p>
+
+
+
+</section>
+

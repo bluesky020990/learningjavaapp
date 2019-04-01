@@ -24,6 +24,9 @@ import {Lesson02Component} from './components/lesson/lesson02/lesson02.component
 import {Lesson03Component} from './components/lesson/lesson03/lesson03.component';
 import {Lesson04Component} from './components/lesson/lesson04/lesson04.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AngularResourcesComponent } from './components/resource/angular-resources/angular-resources.component';
+import { AngularRouterComponent } from './components/resource/angular-resources/angular-router/angular-router.component';
+import { AngularRouterAdvanceComponent } from './components/resource/angular-resources/angular-router-advance/angular-router-advance.component';
 
 
 @NgModule({
@@ -43,6 +46,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     Lesson02Component,
     Lesson03Component,
     Lesson04Component,
+
+
+
+    AngularResourcesComponent,
+    AngularRouterComponent,
+    AngularRouterAdvanceComponent,
   ],
   imports: [
     BrowserModule,

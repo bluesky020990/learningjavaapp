@@ -27,6 +27,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularResourcesComponent } from './components/resource/angular-resources/angular-resources.component';
 import { AngularRouterComponent } from './components/resource/angular-resources/angular-router/angular-router.component';
 import { AngularRouterAdvanceComponent } from './components/resource/angular-resources/angular-router-advance/angular-router-advance.component';
+import { AngularBoostrapComponent } from './components/resource/angular-resources/angular-boostrap/angular-boostrap.component';
 
 
 @NgModule({
@@ -50,8 +51,12 @@ import { AngularRouterAdvanceComponent } from './components/resource/angular-res
 
 
     AngularResourcesComponent,
+    AngularBoostrapComponent,
+
+
     AngularRouterComponent,
     AngularRouterAdvanceComponent,
+
   ],
   imports: [
     BrowserModule,

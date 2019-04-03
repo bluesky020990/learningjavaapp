@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./angular-resources.component.scss']
 })
 export class AngularResourcesComponent implements OnInit {
+  private lessonTitle: string = 'Current';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,0 +1,103 @@
+<h1>Ng-Bootstrap Components</h1>
+
+<section class="article">
+  <h3>Ng-Bootstrap Components</h3>
+
+  <p>Bài học hôm nay ta sẽ cùng tìm hiểu về các component của Bootstrap và Ng-Bootstrap.</p>
+
+  <p>Ng-Bootstrap ra đời sau bootstrap nên có những thứ mà Bootstrap có, nhưng Ng-Bootstrap không có. Hôm nay ta sẽ cùng
+  tỉm hiểu về các component bên trong, làm một vài ví dụ mẫu để xem cách sử dụng các component đó cũng như luyện tập về
+    các template của bootstrap.</p>
+
+</section>
+
+
+<section class="article">
+  <h3>Type of Bootstrap Components</h3>
+
+  <p>Đối với Bootstrap, ta thường có 2 loại, 1 loại là layout và 1 loại là interactive. Cái này là khái niệm và cách
+    phân loại của bản thân mình thôi, có thể không phù hợp với những người khác.</p>
+
+  <p>Đối với loại layout, loại này quy định template để đạt được một số mục đích hiển thị, ví dụ như grid, các class dành
+  cho padding, margin này nọ.</p>
+
+  <p>Đa số còn lại là loại interactive. Loại này nó có liên quan tới thao tác của người dùng, click cái này thì show cái nọ
+  chẳng hạn. Nó có thể là navigation, tab, carousel ... . Đối với loại này, nếu mà ng-bootstrap có support thì tốt, ko thì
+  ta đành phải custom lại để đạt được mục đích mà mình muốn.</p>
+
+  <p>Điều tuyệt vời là Angular cũng support JQUERY nữa, nhưng mà mình ko thích sử dụng nó như vậy, kiểu như lấy râu ông nọ
+  chắp cằm bà kia vậy. Đã xài Angular phải xài TS, chứ xài mà lai tạp thế thì không nên.</p>
+
+  <p>Và đó cũng là 1 điều tuyệt vời khác, khi đối với Bootstrap, Bootstrap handle mọi thứ thông qua các class của mình. Vì vậy,
+  ta có thể thêm các class trong template để đạt được điều mà ta muốn. Tuy nhiên, nó ko phải thực sự là giải pháp tốt, vì
+  như thế bạn sẽ gặp những vấn đề khá là phiền phức. Giả sử bạn cần tạo 1 drop down để click vào đó thì show cái này, nhưng click
+  và các phần xung quanh thì hide nó đi. Điều này là khá khó khi mà trong Angular không có các event có thể bind từ component con
+  ra 1 Component nào khác trong App. Để propagate cái event này ra bạn phải thông qua các @output của component cha, và thật phiền phức
+  phải không nào?</p>
+
+  <p>Có thể có những giải pháp khác cho việc trên, như sử dụng direction, thứ mà mình chưa tìm hiểu. Thôi khi nào đọc đến đó
+  thì tính tiếp vậy. Nếu có một giải pháp hay hơn thì sẽ quay lại update cái này sau, còn ko thì thôi, xem thêm về Material và Bootstrap để
+  tìm ra giải pháp nhé. Ví dụ cái navigation bar trên kia, ngày xưa làm nó cũng là 1 vấn đề đấy.</p>
+
+  <p>Rồi cùng qua phần thực hành thôi.</p>
+
+</section>
+
+
+<section class="article">
+  <h3>Practices</h3>
+
+  <p>Phần này mình sẽ làm các layout của Bootsrap cho nhớ thôi.</p>
+
+  <h4>Navigations Bar.</h4>
+
+  <div class="content">
+    đầu tiên ta xem qua cái template của cái này đã nhé.
+  </div>
+
+  <div class="example">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" >Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" >Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" >Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" >Action</a>
+              <a class="dropdown-item" >Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" >Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" >Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+
+    <div class="content">
+      <p>Cái này không được support bên Ng-Bootstrap, nhưng vẫn có thể search để tìm các component tương ứng.</p>
+
+      <p>Tuy nhiên, ta vẫn có thể đạt được nó nhờ cái math-menu-item của Material.</p>
+    </div>
+  </div>
+</section>

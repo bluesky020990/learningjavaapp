@@ -28,6 +28,7 @@ import { AngularResourcesComponent } from './components/resource/angular-resourc
 import { AngularRouterComponent } from './components/resource/angular-resources/angular-router/angular-router.component';
 import { AngularRouterAdvanceComponent } from './components/resource/angular-resources/angular-router-advance/angular-router-advance.component';
 import { AngularBoostrapComponent } from './components/resource/angular-resources/angular-boostrap/angular-boostrap.component';
+import { NgBootstrapComponentComponent } from './components/resource/angular-resources/ng-bootstrap-component/ng-bootstrap-component.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { AngularBoostrapComponent } from './components/resource/angular-resource
 
     AngularRouterComponent,
     AngularRouterAdvanceComponent,
+    NgBootstrapComponentComponent,
 
   ],
   imports: [

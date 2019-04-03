@@ -87,6 +87,64 @@
   <p>Đối với angular, ta sẽ sử dụng routerLink để redirect các url. Nói thì hơi khó hiểu, nhưng bạn chỉ cần hiểu rằng, khi click vào cái routerLink, ta sẽ move cái router theo
   1 hướng khác, và các component liên quan sẽ được loaded phục vụ cho mục đích đó. </p>
 
+  <p>Giá trị của router gồm 3 loại. Cùng xem cách khai báo nhé. </p>
+
+  <blockquote>
+    <p>
+      Routes can be prepended with /, or ../; this tells Angular where in the route tree to link to.
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Prefix</th>
+        <th>Looks in</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><code>/</code></td>
+        <td>Root of the application</td>
+      </tr>
+      <tr>
+        <td>none</td>
+        <td>Current component children routes</td>
+      </tr>
+      <tr>
+        <td><code>../</code></td>
+        <td>Current component parent routes</td>
+      </tr>
+      </tbody>
+    </table>
+  </blockquote>
+
+  <p>Giả sử ta đang ở component Angular với prefix là /angular và không có thằng cha trước nó.</p>
+
+  <blockquote>
+    <table>
+      <thead>
+      <tr>
+        <th>Prefix</th>
+        <th>Looks in</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><code>/angular/router-advance</code></td>
+        <td>--> tới địa chỉ "/angular/router-advance" </td>
+      </tr>
+      <tr>
+        <td>router-advance</td>
+        <td>--> tới địa chỉ "/angular/router-advance"</td>
+      </tr>
+      <tr>
+        <td><code>../angular/router-advance</code></td>
+        <td>--> tới địa chỉ "/angular/router-advance"</td>
+      </tr>
+      </tbody>
+    </table>
+  </blockquote>
+
 
   <p>Đối tượng thứ 2 đó là router-outlet. Cùng xem lại ví dụ này.</p>
 

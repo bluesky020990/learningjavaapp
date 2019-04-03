@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'angular', component: AngularResourcesComponent,
     children: [
       {path: '', redirectTo: 'angular', pathMatch: 'full'},
-      {path: 'install-boostrap', component: AngularBoostrapComponent},
+      {path: 'bootstrap', component: AngularBoostrapComponent},
       {path: 'router', component: AngularRouterComponent},
       {path: 'router-advance', component: AngularRouterAdvanceComponent},
     ]

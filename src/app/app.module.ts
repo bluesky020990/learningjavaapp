@@ -29,6 +29,10 @@ import { AngularRouterComponent } from './components/resource/angular-resources/
 import { AngularRouterAdvanceComponent } from './components/resource/angular-resources/angular-router-advance/angular-router-advance.component';
 import { AngularBoostrapComponent } from './components/resource/angular-resources/angular-boostrap/angular-boostrap.component';
 import { NgBootstrapComponentComponent } from './components/resource/angular-resources/ng-bootstrap-component/ng-bootstrap-component.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+
+
+import {BreadcrumbService} from './services/breadcrumb.service';
 
 
 @NgModule({
@@ -41,6 +45,10 @@ import { NgBootstrapComponentComponent } from './components/resource/angular-res
 
 
     NavigationComponent,
+    BreadcrumbComponent,
+
+
+
     ListHeroComponent,
     HeroComponent,
     DashboardComponent,
@@ -59,6 +67,7 @@ import { NgBootstrapComponentComponent } from './components/resource/angular-res
     AngularRouterAdvanceComponent,
     NgBootstrapComponentComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -70,7 +79,7 @@ import { NgBootstrapComponentComponent } from './components/resource/angular-res
     BrowserAnimationsModule
   ],
   providers: [
-    LibraryService, HeroService
+    LibraryService, HeroService, BreadcrumbService
   ],
   bootstrap: [AppComponent]
 })

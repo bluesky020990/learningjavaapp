@@ -7,3 +7,13 @@ body{
   padding-top: 80px + 15px;
   padding-bottom: 25px;
 }
+
+
+blockquote,
+.example{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #840bcc;
+  border-radius: 5px;
+  padding: 10px;
+}

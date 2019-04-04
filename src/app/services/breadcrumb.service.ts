@@ -21,9 +21,7 @@ export class BreadcrumbService {
     const indexItem = this.listBreadcrumbItems.findIndex((item) => {
       return item.name === breadcrumbItem.name && item.routerLink === breadcrumbItem.routerLink;
     });
-
-    this.listBreadcrumbItems.slice(indexItem, 1);
-    console.log(this.listBreadcrumbItems);
+    this.listBreadcrumbItems.splice(indexItem, 1);
   }
 
   getListBreadcrumbItem(): BreadcrumbItem[] {

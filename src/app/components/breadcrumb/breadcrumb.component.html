@@ -4,7 +4,7 @@
 
     <ng-container *ngFor="let item of breadcrumbService.getListBreadcrumbItem(); let i = index">
       <li class="breadcrumb-item"*ngIf="i < breadcrumbService.getListBreadcrumbItem().length - 1">
-        <a [routerLink]="[item.routerLink]">{{item.name}}</a>
+        <a [routerLink]="item.routerLink">{{item.name}}</a>
       </li>
 
       <li *ngIf="i == breadcrumbService.getListBreadcrumbItem().length - 1" class="breadcrumb-item active" aria-current="page">

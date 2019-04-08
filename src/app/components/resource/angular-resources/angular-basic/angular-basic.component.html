@@ -1,0 +1,224 @@
+<h3 class="mb-3">Angular Basic</h3>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Basic
+      </div>
+
+      <div class="card-body">
+        <p>Ở bài học này ta cùng đi vào Angular cơ bản.</p>
+
+        <p>Phần này bao gồm install Angular CLI, các components, service, directive trong Angular. </p>
+
+        <p>Nào cùng đi vào phần đầu tiên của bài học thôi.</p>
+
+
+        <h5>Angular CLI</h5>
+
+        <blockquote>
+          npm install -g @angular/cli
+        </blockquote>
+
+        <p>
+          Nào, giờ ta cùng nhìn vào cấu trúc các file được generate ra nhé.
+        </p>
+
+
+        <img class="img-fluid" src="assets/angular-resources/basic/angular_structure.PNG" width="700">
+
+        <br />
+
+        <img class="img-fluid" src="assets/angular-resources/basic/angular_structure_2.PNG" width="500">
+
+        <p>Mỗi file đã có những mô tả nên mình sẽ không đề cập lại nữa. Tuy nhiên trong số các bài học sau thì ta sẽ đi vào
+        từng cái một. Tới lúc hiểu nó hơn thì ta có thể quay lại để update cho dễ hiểu. </p>
+
+
+        <h5>app.,module.ts</h5>
+
+        <p>Cùng tìm hiểu file này để xem cách thành phần của Angular nhé.</p>
+
+        <img class="img-fluid" src="assets/angular-resources/basic/angular_structure_3.PNG" width="100%">
+
+        <p>Trong file này gồm có 4 phần chính, phần <b>declarations</b> khai báo các component. Phần <b>imports</b> khai báo
+        các module, phần <b>providers</b> cung cấp các service.</p>
+
+        <p>Như vậy, ta nhận thấy có 3 thành phần chính. Component, Module, và Service. Nào, giờ cùng đi vào chi tiết từng
+        phần để tìm hiểu vai trò và trách nhiệm của nó nhé.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Component
+      </div>
+
+      <div class="card-body">
+        <p>Về mặt bản chất, Angular được cấu tạo từ các component. Mỗi component có nhiệm vụ render một vùng nào đó dựa trên
+        data của nó (do init sẵn, do truyền vào, do sử dụng các service để get data).</p>
+
+        <p>Khi có sự thay đổi dữ liệu, thì nó sẽ tự động cập nhật lại cái cây DOM của nó.</p>
+
+
+        <p>Để tạo component ta sử dụng command line sau: (Lưu ý ta sẽ sử dụng các command line thay vì copy rồi sửa code nhé,
+        vì nó vừa nhanh và đúng chuẩn của Angular. Chỉ thế thôi)</p>
+
+        <blockquote>
+          ng g c components/resource/angular-resources/AngularBasic<br />
+          <br />
+          or<br />
+          <br />
+          ng generate component _path_of_component/ComponentName
+        </blockquote>
+
+        <p>Sau khi chạy xong cái command trên ta có 4 file, Cùng xem file angular-basic.component.ts để hiểu rõ hơn nhé.</p>
+
+        <img class="img-fluid" src="assets/angular-resources/basic/component_structure.PNG" width="100%">
+
+        <p><b>selector</b> là tag name của component. Ta có thể mang nó đặt ở bất cứ đâu, chỉ cần bỏ vào
+          <b>&lt;app-angular-basic>&lt;/app-angular-basic></b> như thế này thì nó sẽ hiện.
+        </p>
+
+        <p><b>templateUrl</b> là nơi ta dùng chứa cái content HTML mà nó sinh ra. Các data sẽ được truyền vào ở đây. Về bản chất
+        thì ta có thể xem nó là 1 view vậy.</p>
+
+        <p><b>styleURL</b> là nơi chứa file css config. Lưu ý, ở chế độ mặc định, khi thêm class ở đây thì chắc chắn 1 điều nó chỉ tác động trong
+        component này. Nếu mà muốn sử dụng global thì phải thêm các config khác. ví dụ ở đây ta thêm cái <b>encapsulation</b>
+
+          và xem nó có cái gì nhé.
+        </p>
+
+        <blockquote>
+          @Component({{'{' }} <br />
+          &nbsp; &nbsp; selector: 'app-angular-basic',<br />
+          &nbsp; &nbsp; templateUrl: './angular-basic.component.html',<br />
+          &nbsp; &nbsp; styleUrls: ['./angular-basic.component.scss'],<br />
+          &nbsp; &nbsp; <b>encapsulation: ViewEncapsulation.None</b><br />
+          })
+        </blockquote>
+
+
+        <p><b>encapsulation: ViewEncapsulation.None</b> biến style trong file styleURL thành style global.</p>
+
+        <h5>Vậy, ta nên sử dụng component khi nào.</h5>
+
+        <p>Sử dụng khi nào hay còn gọi là mục đích sử dụng của component này là render dữ liệu. Nên nhớ mục đích của nó chỉ
+        là render dữ liệu thôi nhé. Việc sử lý dữ liệu nên dành cho các service hoặc các class.</p>
+
+        <p>Vì sao lại vậy??</p>
+
+        <p>Bản chất của component đó là biến data thành view. Mục đích của nó là hiển thị view và nếu ta đưa function
+        để process vào trong component này thì nó sẽ không thể reuse được ở các component khác. Vì vậy, Angular cung cấp cho
+        ta 2 thứ, component để render view và Service để process dữ liệu. Khi làm thì nên lưu ý cái này nhé.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Module
+      </div>
+
+      <div class="card-body">
+        <p>Module là các thư viện ngoài được embed vào trong app để có thể sử dụng. Nó tương tự như các pluggin. Khi sử dụng
+          một cái Module thì cần tuân thủ các documentation của nó.</p>
+
+        <p>Trong Angular, có 2 cái Module là nổi tiếng nhất, đó là Material và Ng-Bootstrap.</p>
+
+        <p>Material thì bạn có thể tìm hiểu thêm ở đây.</p>
+
+        <p>Tương tự, ng-bootstrap thì có thể tìm hiểu thêm ở đây hoặc là xem qua các feature của nó ở các lesson sau.</p>
+
+        <h5>Một số lưu ý khi sử dụng các Module</h5>
+
+        <p>Trước khi sử dụng, thì các module phải được khai báo trong phần <b>imports</b> của app.module.ts.</p>
+
+        <p>Có thể tách riêng các Module ra để hạn chế dòng code import vào trong file app.module.ts cho nó khỏi rối mắt.
+          Bạn có thể xem file <b>src/app/material/bootstrap.module.ts</b>  hoặc <b>src/app/material/material.module.ts</b> để hiểu thêm
+          về cách tách các module ra khỏi file import chính và import toàn bộ thông qua một module khác.</p>
+
+        <p>Khi sử dụng các Module từ bên ngoài, thì phải follow document của nó. Nên cẩn thận trong việc này vì có thể chỉ cần
+          sai 1 chỗ nhỏ thôi thì cũng đủ để tìm ói máu.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Service
+      </div>
+
+      <div class="card-body">
+        <p>Service đúng như tên gọi của nó, nó là nơi lưu trữ các business logic, data để sử dụng cho các component.</p>
+
+        <p>Các tạo một service cũng tương tự như Component, ta sử dụng đoạn code sau:</p>
+
+        <blockquote>
+          ng g s services/BreadCrumb
+        </blockquote>
+
+        <p>Tại sao ta lại sử dụng service?</p>
+
+        <p>Như đã đề cập từ trước, service là nơi xử lý các business logic, get set các data cho các component.</p>
+
+        <p>Giả sử ta có component A và component B cùng tương tác với data C. Khi Component A đổi data C, nó chỉ đổi data của riêng
+        bản thân nó và data mà B hiển thị vẫn như cũ. Khi một component get 1 data thông qua service, thì việc data của service bị thay đổi,
+        cũng kéo theo sự thay đổi của các component sử dụng chúng. Xem file breadcrumb để biết thêm chi tiết. </p>
+
+        <p>Khi tạo 1 service, mặc định nó sẽ được set là injectable. Trong Angular, các service đều tuân thủ theo DI Pattern.
+
+        <b>providedIn: root</b> cho ta biết service này sẽ được inject global.</p>
+
+        <p>Để sử dụng các service, ta đưa nó thông qua các component hoặc các service khác thông qua constructor.</p>
+
+        <p>Tương tự như Component, nó cũng cần được khai báo trong <b>providers</b> của app.module.ts.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Hiểu thêm về các thành phần của Angular giúp ta có thể sử dụng nó đúng vị trí ngay từ đầu, tránh được những
+        rắc rối về sau.</p>
+
+        <p>Khuyến cáo nên sử dụng command để generate các Service và Component và ta sẽ chỉ cần tập trung vào phần implement
+        nó mà thôi.</p>
+
+        <p>Luôn khai báo trước khi sủ dụng.</p>
+
+        <p>Nên tách các module thành những file riêng cho dễ quản lý.</p>
+
+        <p>Next Lesson: Học về khai báo biến, sử dụng, các function trong Angular.</p>
+      </div>
+    </div>
+  </div>
+</div>
+

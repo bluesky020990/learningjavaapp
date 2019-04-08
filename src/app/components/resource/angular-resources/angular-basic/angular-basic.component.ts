@@ -10,6 +10,7 @@ import {BreadcrumbService} from '../../../../services/breadcrumb.service';
 })
 export class AngularBasicComponent implements OnInit, OnDestroy {
   breadCrumbItem: BreadcrumbItem = null;
+  templateMessage: string = 'Đây là cái message vớ vẩn thôi.!!!';
 
   constructor(private breadcrumbService: BreadcrumbService) {
   }

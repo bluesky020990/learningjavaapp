@@ -10,6 +10,22 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 
+import {BreadcrumbService} from './services/breadcrumb.service';
+import {LibraryService} from './services/library.service';
+import {HeroService} from './services/hero.service';
+
+
+
+
+
+
+
+
+
+
+
+
+
 import {MenuBarComponent} from './components/decorate/menu-bar/menu-bar.component';
 import {FooterBarComponent} from './components/decorate/footer-bar/footer-bar.component';
 
@@ -26,9 +42,8 @@ import {AngularRouterComponent} from './components/resource/angular-resources/an
 import {AngularRouterAdvanceComponent} from './components/resource/angular-resources/angular-router-advance/angular-router-advance.component';
 import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component';
 
-import {BreadcrumbService} from './services/breadcrumb.service';
-import {LibraryService} from './services/library.service';
-import {HeroService} from './services/hero.service';
+
+import { AngularCompComponent } from './components/resource/angular-resources/angular-comp/angular-comp.component';
 
 
 @NgModule({
@@ -47,10 +62,10 @@ import {HeroService} from './services/hero.service';
 
 
     AngularBasicComponent,
+    AngularCompComponent,
+    NgBootstrapComponentComponent,
     AngularRouterComponent,
     AngularRouterAdvanceComponent,
-    NgBootstrapComponentComponent,
-    AngularBasicComponent,
   ],
   imports: [
     BrowserModule,

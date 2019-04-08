@@ -7,6 +7,7 @@ import {AngularRouterAdvanceComponent} from './components/resource/angular-resou
 import {AngularBoostrapComponent} from './components/resource/angular-resources/angular-boostrap/angular-boostrap.component';
 import {NgBootstrapComponentComponent} from './components/resource/angular-resources/ng-bootstrap-component/ng-bootstrap-component.component';
 import {AngularBasicComponent} from './components/resource/angular-resources/angular-basic/angular-basic.component';
+import {AngularCompComponent} from './components/resource/angular-resources/angular-comp/angular-comp.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -16,8 +17,9 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'basic', pathMatch: 'full'},
       {path: 'basic', component: AngularBasicComponent},
+      {path: 'ng-component', component: AngularCompComponent},
       {path: 'bootstrap', component: AngularBoostrapComponent},
-      {path: 'ng-bootstrap-component', component: NgBootstrapComponentComponent},
+      {path: 'ng-bootstrap', component: NgBootstrapComponentComponent},
       {path: 'router', component: AngularRouterComponent},
       {path: 'router-advance', component: AngularRouterAdvanceComponent},
     ]

@@ -17,7 +17,7 @@ export class NgBootstrapComponentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Ng-Bootstrap', 'ng-bootstrap-component');
+    this.breadCrumbItem = new BreadcrumbItem('Ng-Bootstrap', 'ng-bootstrap');
     this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
   }
 

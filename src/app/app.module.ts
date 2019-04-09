@@ -44,6 +44,7 @@ import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component'
 
 
 import { AngularCompComponent } from './components/resource/angular-resources/angular-comp/angular-comp.component';
+import { AngularInputComponent } from './components/resource/angular-resources/angular-input/angular-input.component';
 
 
 @NgModule({
@@ -63,6 +64,8 @@ import { AngularCompComponent } from './components/resource/angular-resources/an
 
     AngularBasicComponent,
     AngularCompComponent,
+    AngularInputComponent,
+
     NgBootstrapComponentComponent,
     AngularRouterComponent,
     AngularRouterAdvanceComponent,

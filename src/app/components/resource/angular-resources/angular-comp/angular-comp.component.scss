@@ -1,0 +1,28 @@
+.ng-if-sample-container{
+  background: lightblue;
+}
+
+[box="red"]{
+  border: 2px solid red;
+}
+
+[box="blue"]{
+  border: 2px solid red;
+}
+
+[box="green"]{
+  border: 2px solid red;
+}
+
+
+.ng-class-example{
+  background: wheat;
+
+  &.red-box{
+    background: red;
+  }
+
+  &.box-border{
+    border-style: dashed;
+  }
+}

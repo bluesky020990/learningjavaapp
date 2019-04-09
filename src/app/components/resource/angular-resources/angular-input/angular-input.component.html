@@ -1,0 +1,8 @@
+<div class="person-information" *ngIf="person != null">
+  <div class="person-name" (click)="selectThePerson($event)">{{person.name}} <-- CLICK ME</div>
+  <div class="person-age">{{person.age}}</div>
+</div>
+
+<div *ngIf="personId != null && personId > 0">
+  You are looking the person whom has id {{personId}}.
+</div>

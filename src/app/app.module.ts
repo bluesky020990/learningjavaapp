@@ -45,6 +45,7 @@ import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component'
 
 import { AngularCompComponent } from './components/resource/angular-resources/angular-comp/angular-comp.component';
 import { AngularInputComponent } from './components/resource/angular-resources/angular-input/angular-input.component';
+import { IncrementalDomInAngularComponent } from './components/resource/angular-resources/incremental-dom-in-angular/incremental-dom-in-angular.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { AngularInputComponent } from './components/resource/angular-resources/a
     NgBootstrapComponentComponent,
     AngularRouterComponent,
     AngularRouterAdvanceComponent,
+    IncrementalDomInAngularComponent,
   ],
   imports: [
     BrowserModule,

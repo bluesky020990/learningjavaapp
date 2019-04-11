@@ -9,6 +9,7 @@ import {NgBootstrapComponentComponent} from './components/resource/angular-resou
 import {AngularBasicComponent} from './components/resource/angular-resources/angular-basic/angular-basic.component';
 import {AngularCompComponent} from './components/resource/angular-resources/angular-comp/angular-comp.component';
 import {AngularInputComponent} from './components/resource/angular-resources/angular-input/angular-input.component';
+import {IncrementalDomInAngularComponent} from './components/resource/angular-resources/incremental-dom-in-angular/incremental-dom-in-angular.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -18,12 +19,18 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'basic', pathMatch: 'full'},
       {path: 'basic', component: AngularBasicComponent},
-      {path: 'ng-component', component: AngularCompComponent},
-      {path: 'ng-component/view-person/:id', component: AngularInputComponent},
+      {
+        path: 'ng-component',
+        children: [
+          {path: '', component: AngularCompComponent},
+          {path: 'view-person/:id', component: AngularInputComponent}
+        ]
+      },
       {path: 'bootstrap', component: AngularBoostrapComponent},
       {path: 'ng-bootstrap', component: NgBootstrapComponentComponent},
       {path: 'router', component: AngularRouterComponent},
       {path: 'router-advance', component: AngularRouterAdvanceComponent},
+      {path: 'ng-dom', component: IncrementalDomInAngularComponent}
     ]
   },
 ];

@@ -1,0 +1,169 @@
+<h3 class="mb-3">Angular DOM</h3>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular DOM
+      </div>
+
+      <div class="card-body">
+        <p>Hôm nay nhân tiện có nói chuyện với anh Trọng về sự khác biệt giữa Angular và React, nên tìm hiểu về cái bản chất của nó,
+        thì phát hiện ra 3 cái khái niệm rất thú vị</p>
+
+        <p>Trước khi đi vào bài học thì ta sẽ ôn lại một chút về kiến thức của DOM</p>
+
+        <p>DOM (aka Document Object Mode) được hiểu là mô hình các đối tượng trong tài liệu HTML. HTML là một loại tài liệu
+        () chứ ko phải là ngôn ngữ nhé. Nên nhớ cái này.</p>
+
+        <p>Các tag HTML thường sẽ được tổ chức dưới dạng cây, mỗi node lại có thêm các thuộc tính bổ sung. </p>
+
+        <p>Để tương tác với các tag HTML này, ta phải thông qua cây DOM của nó, tìm đến đúng node và tiến hành thao tác trên đó.
+        Trong JS hỗ trợ ta các function để có thể tương tác với các node đó. Như getElementsByClass, getElementByID, .....</p>
+
+        <p>Những SPA nó cũng phải dựa trên cây DOM để làm việc. Tuy nhiên, với các platform khác nhau thì nó lại sử dụng một
+        cách thức tương tác khác nhau. Và từ đó, ta có danh sách các cây DOM phổ biến như sau: </p>
+
+        <ul>
+          <li>Shadow DOM</li>
+          <li>Incremental DOM (Angular)</li>
+          <li>và Vitual DOM  (React)</li>
+        </ul>
+
+        <p>Ở lesson này ta sẽ đi sâu vào từng thằng một, để xem cách mà nó thực hiện là như thế nào.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        SHADOW DOM (Isolated DOM)
+      </div>
+
+      <div class="card-body">
+        <p>Một ví dụ của SHADOW DOM đó là video HTML5</p>
+
+        <p>Rõ ràng khi ta select 1 cái video, mặc dù nó có những button show ra này nọ, nhưng về mặt người dùng thì mọi thứ đều bị ẩn đi.</p>
+
+        <p>Họ không thể inspect hay thay đổi bất cứ thứ gì.</p>
+
+        <p>Điều này là vì các các element đó đã được set là shadow.</p>
+
+        <blockquote>
+          Xem thêm về shadow ở đây: <a href="https://techtalk.vn/blog/posts/shadow-dom-la-gi" target="_blank">SHADOW DOM</a>
+
+          hoặc ở đây <a href="https://www.stackchief.com/blog/The%20Shadow%20DOM%3A%20A%20Quick%20Explanation" target="_blank">SHADOW DOM</a>
+
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Incremental DOM and Virtual DOM
+      </div>
+
+      <div class="card-body">
+        <p>Vì sao ta tìm hiểu 2 cái này cùng 1 lượt? Vì nó có liên quan đến 2 framework đang rất nổi tiếng hiện tại đó là react và angular</p>
+
+        <p>Anh Trọng bảo ngta sử dụng cây DOM là Virtual DOM nhưng mà trước giờ ko hiểu khái niệm đó. Nên giờ ta cùng tìm
+        hiểu sâu hơn để biết.</p>
+
+
+        <h4>Virtual DOM</h4>
+
+        <p>Về bản chất, virtual dom (React) là một object (tổng hợp các object) để xây dựng nên 1 cây dom thật. Mục đích của nó là tốc
+        độ. Nhờ object mapping giữa data và cây dom thật mà react sẽ biết các node nào bi dirty (có thay đổi) và tiến hành
+        update lại các node đó mà thôi. Chính điều này khiến cho Virtual DOM nó hoạt động nhanh hơn cái Incremetal DOM</p>
+
+
+        <blockquote>
+          Tài liệu tham khảo <a href="https://techblog.vn/tim-hieu-ve-virtual-dom" target="_blank">Virtual DOM</a>
+        </blockquote>
+
+
+        <h4>Incremental DOM</h4>
+
+        <p>Khác với Virtual DOM, Incremental DOM (Angular) lại thực hiện theo 1 cơ chế khác, khi 1 component có thay đổi, nó
+        không cần quan tâm thay đổi cái gì mà nó sẽ clear và cập nhật lại toàn bộ luôn.</p>
+
+        <h4>Sự khác biệt</h4>
+
+        <p>Giả sử ta có component A, trong đó chứa các data B, C, D, E, F.</p>
+
+        <p>Đối với react, khi component A có sự thay dổi data (giả sử là add G, remove E, update F), thì nó chỉ cập nhật lại cây dom
+        của mình, thêm G, remove E và update F</p>
+
+        <p>Đối với Angular, nó render lại toàn bộ cây dom cho khỏe.</p>
+
+        <blockquote>
+          Để tìm hiểu rõ hơn thì bạn có thể đọc ở đây <a target="_blank"
+         href="https://blog.nrwl.io/understanding-angular-ivy-incremental-dom-and-virtual-dom-243be844bf36">Incremental
+          DOM and Virtual DOM</a>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h3>Ví dụ class next class sau class parent 1 cái element (câu 5)</h3>
+
+<div class="container-main">
+  <div class="parent-class" totalChild="5">
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+  </div>
+
+
+  <div class="next-class">
+    <div class="next-child-class"> next-child-class </div>
+  </div>
+
+  <!--    ELEMENT NÀY CÓ THỂ CÓ HOẶC KHÔNG -->
+  <div class="class-between">
+    <div class="between-class"> between-class</div>
+  </div>
+  <!--    ELEMENT NÀY CÓ THỂ CÓ HOẶC KHÔNG -->
+</div>
+
+
+<h3>Ví dụ class next class cách parent 1 cái element (câu 6)</h3>
+
+<div class="container-main">
+  <div class="parent-class" totalChild="5">
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+    <div class="child-class"> CHILD 1 </div>
+  </div>
+
+
+  <!--    ELEMENT NÀY CÓ THỂ CÓ HOẶC KHÔNG -->
+  <div class="class-between">
+    <div class="between-class"> between-class</div>
+  </div>
+  <!--    ELEMENT NÀY CÓ THỂ CÓ HOẶC KHÔNG -->
+
+
+  <div class="next-class">
+    <div class="next-child-class"> next-child-class </div>
+  </div>
+</div>

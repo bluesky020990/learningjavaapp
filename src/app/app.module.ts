@@ -49,6 +49,7 @@ import { IncrementalDomInAngularComponent } from './components/resource/angular-
 import { AngularServiceComponent } from './components/resource/angular-resources/angular-service/angular-service.component';
 import { AngularDataArchitectureComponent } from './components/resource/angular-resources/angular-data-architecture/angular-data-architecture.component';
 import { AngularFormComponent } from './components/resource/angular-resources/angular-form/angular-form.component';
+import { AngularBookComponent } from './components/resource/angular-resources/angular-book/angular-book.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { AngularFormComponent } from './components/resource/angular-resources/an
     AngularServiceComponent,
     AngularDataArchitectureComponent,
     AngularFormComponent,
+    AngularBookComponent,
   ],
   imports: [
     BrowserModule,

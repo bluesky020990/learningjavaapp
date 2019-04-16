@@ -1,3 +1,174 @@
-<p>
-  angular-form works!
-</p>
+<h3 class="mb-3">Angular Form</h3>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Overview
+      </div>
+
+      <div class="card-body">
+        <p>Thông thường, khi muốn post 1 object lên server, ta thường sẽ sử dụng 1 form, với action là URL và các method
+          của nó như GET, POST, DELETE.....</p>
+
+        <p>Trong Angular cũng vậy. Angular support two ways binding, tức là ta vừa có thể set object ở view, vừa có thể hiển
+        thị nó ở trong component.</p>
+
+        <p>Trong bài học này ta sẽ cùng tìm hiểu về two way binding của Angular, cũng như cách mà nó sử dụng form
+        để submit dữ liêu.</p>
+
+
+        <p>Trước khi đi vào bài học, ta cần làm rõ lí do tại sao lại cần form? Đơn giản là vì việc validate dữ liệu trước
+        khi gửi lên, data gửi lên thấy rõ ràng hơn, n and n + 1 lí do khác này nọ. Nhưng tóm lại chỉ là cho tiện thôi.</p>
+
+        <p>Tài liệu tham khảo
+          <a href="https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html" target="_blank">two-way-data-binding-in-angular-2</a>
+          <br />
+          <br />
+          <a href="https://blog.thoughtram.io/angular/2016/06/22/model-driven-forms-in-angular-2.html" target="_blank">model-driven-forms-in-angular-2</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular - Two ways binding with ngModel
+      </div>
+
+      <div class="card-body">
+        <p>Thực ra thì Angular chỉ support cái Two ways binding ở các Angular 2.x mà thôi còn trước đó thì không.</p>
+
+        <p>Cùng xem cách Angular support cái này và giải thích thêm nhé.</p>
+
+        <p>Example 1</p>
+        <blockquote>
+          <input [(ngModel)]="username"><br />
+          <br />
+          <p>Hello {{username}}!</p>
+        </blockquote>
+
+        <blockquote>
+          &lt;input [(ngModel)]="username">
+          <br />
+          <br />
+          &lt;p>Hello {{'{{'}}username}}!&lt;/p>
+        </blockquote>
+
+        <p>Rất đơn giản, khi bạn thay đổi giá trị của input thì cái giá trị username trong component cũng được thay đổi theo.</p>
+
+        <p>Việc bind data 2 chiều như vậy, vừa là output, vừa là input được gọi là two way binding.</p>
+
+        <p>Trong những bài học trước, ta nhớ rằng khi ta khai báo dấu ( ) tức là ta đang sử dụng @output, và [] đó chính là input. Ví dụ như
+        các @output và các [ngStyle], [ngClass], đó là kết quả của nó.</p>
+
+        <p>Thật dễ hiểu phải không nào.</p>
+
+
+        <p>Nếu như ta không sử dụng cái trên kia thì giờ ta cũng có thể sử dụng 1 cách khác như sau :</p>
+
+        <p>Example 2</p>
+        <blockquote>
+          <input [value]="username" (input)="username = $event.target.value">
+          <br />
+          <br />
+          <p>Hello {{username}}!</p>
+        </blockquote>
+
+
+        <p>Example 3</p>
+        <blockquote>
+          <input [ngModel]="username" (ngModelChange)="updateUserName($event)">
+
+          <p>Hello {{username}}!</p>
+        </blockquote>
+
+        <p>Trong ví dụ này, thay vì viết bằng kiểu two way binding, ta sử dụng 1 output (input) và 1 input [value]. Tuy nhiên
+        cách này khá rườm ra và trông rất bẩn.</p>
+
+        <ul>
+          <li><strong>[value]=”username”</strong> - Binds the expression <code>username</code> to the input element’s <code>value</code> property</li>
+          <li><strong>(input)=”expression”</strong> - Is a declarative way of binding an expression to the input element’s <code>input</code> event (yes there’s such event)</li>
+          <li><strong>username = $event.target.value</strong> - The expression that gets executed when the <code>input</code> event is fired</li>
+          <li><strong>$event</strong> - Is an expression exposed in event bindings by Angular, which has the value of the event’s payload</li>
+        </ul>
+
+
+        <p>Trong cái link trên kia đã có ví dụ rất rõ ràng về điều này. Tóm tắt lại là như sau:</p>
+
+        <p>Đầu tiên Angular tiến hành bind cái expression (variable) userName cho cái thuộc tính value của input. Thế là khi đó,
+        cái input đó có value = với giá trị UserName</p>
+
+        <p>Tiếp đến, nó bind tiếp 1 cái (input) bằng 1 function, funtion đó có nhiệm vụ update lại value của userName bằng với
+        giá trị nhập vào input</p>
+
+        <p>Trong ví dụ 3, ta có thể thấy rõ điều đó thông qua cái (ngModalChange), một interface của ngModel. Khi này $event trả về chính là
+        giá trị của input.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Custom Angular Two way binding.
+      </div>
+
+      <div class="card-body">
+
+        <p>Ta dễ dàng custom được cái này. Thật vậy, chỉ cần sử dụng 1 input và 1 output là ta đã có thể support được vấn
+        đề này rồi đúng ko.</p>
+
+        <p>Còn nhớ bài trước không, ko thì ta ôn lại vậy.</p>
+
+        <p>Các bước thực hiện như sau:</p>
+
+        <ol>
+          <li>Tạo 1 component con, với input là 1 object và output là hàm getObject đó.</li>
+
+          <li>Tạo 1 component cha, set cái giá trị output kia để trigger là được.</li>
+        </ol>
+
+        <p>Xem ví dụ</p>
+
+        <ul *ngIf="listBook != null && listBook.length > 0">
+          <li *ngFor="let book of listBook" (click)="viewDetailBook(book)">
+            {{book.title}} of {{book.author}}
+          </li>
+        </ul>
+
+        <app-angular-book [(book)]="selectedBook"></app-angular-book>
+
+        <blockquote>
+          <div class="book-info" *ngIf="selectedBook != null && selectedBook !== undefined">
+            <div>
+              <span class="book-id" >{{selectedBook.id}}</span>
+            </div>
+
+            <div>
+              <span class="title">{{selectedBook.title}}</span>
+            </div>
+
+            <div>
+              <span class="author">{{selectedBook.author}}</span>
+            </div>
+          </div>
+
+        </blockquote>
+
+        <p>Khi add vào ví dụ, ta thấy được sự khác biệt rõ ràng và cũng là ưu điểm của ngModel, đó là
+        khi component cont có thay đổi, thì component cha cũng đổi theo.</p>
+      </div>
+    </div>
+  </div>
+</div>

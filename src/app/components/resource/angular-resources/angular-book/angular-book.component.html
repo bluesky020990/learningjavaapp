@@ -1,0 +1,17 @@
+<div class="book-info" *ngIf="_book != null && _book !== undefined">
+  <div>
+    <input class="book-id" [value]="_book.id" (input)="_book.id = $event.target.value; triggerChange()"/>
+  </div>
+
+  <div>
+    <input class="title" [ngModel]="_book.title" (ngModelChange)="updateTitle($event)">
+  </div>
+
+  <!--<div>-->
+    <!--<input class="author" [(ngModel)]="_book.author"/> ** ngModel-->
+  <!--</div>-->
+
+  <div>
+    <input class="author" [ngModel]="_book.author" (ngModelChange)="updateAuthor($event)"/> ** default
+  </div>
+</div>

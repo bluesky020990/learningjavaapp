@@ -25,7 +25,6 @@ export class BreadcrumbService {
   }
 
   getListBreadcrumbItem(): BreadcrumbItem[] {
-    console.log(this.listBreadcrumbItems);
     return this.listBreadcrumbItems;
   }
 }

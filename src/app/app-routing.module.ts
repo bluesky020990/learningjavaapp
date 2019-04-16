@@ -10,6 +10,9 @@ import {AngularBasicComponent} from './components/resource/angular-resources/ang
 import {AngularCompComponent} from './components/resource/angular-resources/angular-comp/angular-comp.component';
 import {AngularInputComponent} from './components/resource/angular-resources/angular-input/angular-input.component';
 import {IncrementalDomInAngularComponent} from './components/resource/angular-resources/incremental-dom-in-angular/incremental-dom-in-angular.component';
+import {AngularServiceComponent} from './components/resource/angular-resources/angular-service/angular-service.component';
+import {AngularDataArchitectureComponent} from './components/resource/angular-resources/angular-data-architecture/angular-data-architecture.component';
+import {AngularFormComponent} from './components/resource/angular-resources/angular-form/angular-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -26,11 +29,14 @@ const routes: Routes = [
           {path: 'view-person/:id', component: AngularInputComponent}
         ]
       },
+      {path: 'ng-form', component: AngularFormComponent},
+      {path: 'ng-service', component: AngularServiceComponent},
       {path: 'bootstrap', component: AngularBoostrapComponent},
       {path: 'ng-bootstrap', component: NgBootstrapComponentComponent},
       {path: 'router', component: AngularRouterComponent},
       {path: 'router-advance', component: AngularRouterAdvanceComponent},
-      {path: 'ng-dom', component: IncrementalDomInAngularComponent}
+      {path: 'ng-dom', component: IncrementalDomInAngularComponent},
+      {path: 'ng-data-architecture', component: AngularDataArchitectureComponent}
     ]
   },
 ];

@@ -16,7 +16,7 @@ export class AngularBasicComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Angular Basic', 'basic');
+    this.breadCrumbItem = new BreadcrumbItem('Angular Basic', 'ng-basic');
     this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
   }
 

@@ -1,70 +1,124 @@
 <h3 class="mb-3">Angular Component</h3>
 
-
-
-<!--<div class="row mb-3">-->
-  <!--<div class="col-12">-->
-    <!--<div class="card">-->
-      <!--<div class="card-header">-->
-        <!--Angular Component-->
-      <!--</div>-->
-
-      <!--<div class="card-body">-->
-        <!--<p>Ở bài học này ta sẽ đi sâu vào các phần sau:</p>-->
-
-        <!--<ul>-->
-          <!--<li>Khai báo biến</li>-->
-          <!--<li>Hiển thị biến lên màn hình</li>-->
-          <!--<li>Condition với ngIf, ngSwitch</li>-->
-          <!--<li>Vòng lặp với ngFor</li>-->
-          <!--<li>Input, outPut và các lấy các param từ router.</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
-
-
-
 <div class="row mb-3">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Variable and Operations
+        Component
       </div>
 
       <div class="card-body">
-        <p>Variable trong component đều là private.</p>
+        <p>Trong bài học trước, ta đã tìm hiểu sơ qua về Component. Ở đây ta chỉ nhắc lại những điểm chính của component rồi
+        cùng đi chi tiết về những điều đó mà thôi.</p>
 
-        <p>Đó là điều hiển nhiên vì mục đích của Component là render view chứ ko phải process data. Vì vậy data trong nó
-        khi khai báo mặc định luôn là private.</p>
+        <ul>
+          <li>Input and Output Properties</li>
+          <li>Lifecycle</li>
+          <li>Providers</li>
+          <li>Host Element</li>
+          <li>Directives</li>
+        </ul>
 
-        <p>Việc khai báo 1 biến cũng khá dễ dàng. Bỏ nó trong class container, và lấy ra sử dụng thôi. Ví dụ:</p>
-
-        <blockquote>
-          {{sampleVariable}}
-        </blockquote>
-
+        <p>Nhưng trước hết, ta cần tìm hiểu, làm sao để tạo 1 component trong Angular</p>
       </div>
     </div>
   </div>
 </div>
 
+
 <div class="row mb-3">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        @Input and @output
+        How to Generate Component?
       </div>
 
       <div class="card-body">
-        <p>Input và output là 1 phần vô cùng quan trọng của component. Giả sử bạn có 1 list các Person và bạn tạo 1 component để render ra cái container đó.</p>
+        <p>Để tạo component ta sử dụng command line sau: (Lưu ý ta sẽ sử dụng các command line thay vì copy rồi sửa code nhé,
+          vì nó vừa nhanh và đúng chuẩn của Angular. Chỉ thế thôi)</p>
+
+        <blockquote>
+          ng g c components/resource/angular-resources/AngularBasic<br />
+          <br />
+          or<br />
+          <br />
+          ng generate component _path_of_component/ComponentName
+        </blockquote>
+
+        <p>Sau khi chạy xong cái command trên ta có 4 file, Cùng xem file angular-basic.component.ts để hiểu rõ hơn nhé.</p>
+
+        <img class="img-fluid" src="assets/angular-resources/basic/component_structure.PNG" width="100%">
+
+        <p>
+          <b>selector</b> là tag name của component. Ta có thể mang nó đặt ở bất cứ đâu, chỉ cần bỏ vào
+          <b>&lt;app-angular-basic>&lt;/app-angular-basic></b> như thế này thì nó sẽ hiện.
+        </p>
+
+        <p><b>templateUrl</b> là nơi ta dùng chứa cái content HTML mà nó sinh ra. Các data sẽ được truyền vào ở đây. Về bản chất
+          thì ta có thể xem nó là 1 view vậy.</p>
+
+        <p><b>styleURL</b> là nơi chứa file css config. Lưu ý, ở chế độ mặc định, khi thêm class ở đây thì chắc chắn 1 điều nó chỉ tác động trong
+          component này. Nếu mà muốn sử dụng global thì phải thêm các config khác. ví dụ ở đây ta thêm cái <b>encapsulation</b>
+
+          và xem nó có cái gì nhé.
+        </p>
+
+        <blockquote>
+          @Component({{'{' }} <br />
+          &nbsp; &nbsp; selector: 'app-angular-basic',<br />
+          &nbsp; &nbsp; templateUrl: './angular-basic.component.html',<br />
+          &nbsp; &nbsp; styleUrls: ['./angular-basic.component.scss'],<br />
+          &nbsp; &nbsp; <b>encapsulation: ViewEncapsulation.None</b><br />
+          })
+        </blockquote>
 
 
-        <p>Cùng tìm hiểu chi tiết nhé:</p>
+        <p><b>encapsulation: ViewEncapsulation.None</b> biến style trong file styleURL thành style global.</p>
 
-        <h5>@input và param</h5>
+        <h5>Vậy, ta nên sử dụng component khi nào.</h5>
+
+        <p>Sử dụng khi nào hay còn gọi là mục đích sử dụng của component này là render dữ liệu. Nên nhớ mục đích của nó chỉ
+          là render dữ liệu thôi nhé. Việc sử lý dữ liệu nên dành cho các service hoặc các class.</p>
+
+        <p>Vì sao lại vậy??</p>
+
+        <p>Bản chất của component đó là biến data thành view. Mục đích của nó là hiển thị view và nếu ta đưa function
+          để process vào trong component này thì nó sẽ không thể reuse được ở các component khác. Vì vậy, Angular cung cấp cho
+          ta 2 thứ, component để render view và Service để process dữ liệu. Khi làm thì nên lưu ý cái này nhé.</p>
+
+
+        <!--<h5>Tạo các variable trong Component như thế nào.</h5>-->
+
+        <!--<p>Thì tạo đơn giản thôi. Ví dụ: tạo 1 biến templateMessage và show ra màn hình.</p>-->
+
+        <!--<blockquote>-->
+          <!--{{templateMessage}}-->
+        <!--</blockquote>-->
+
+        <!--<p>Trong bài học này ta chỉ đi qua các tổng quan của nó. Riêng phần Angular View Function thì ta sẽ tìm hiểu trong bài tiếp theo.</p>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Input @Input() and @Output() Properties
+      </div>
+
+      <div class="card-body">
+        <p>Ở bài học đầu tiên, ta đã biết rằng, input và ouput là các public API của Component để tương tác với bên ngoài và cho phép
+        từ bên ngoài gửi các data vào bên trong. Ta cùng xem chi tiết phần này nhé.</p>
+
+        <h5>@Input và param</h5>
+
+        <p>Trong Angular, 1 @Input có thể được truyền vào từ Angular theo 2 cách, thông qua các dấu [] hoặc thông qua param.</p>
+
+        <p>Giả sử bạn có 1 list các Person và bạn tạo 1 component để render ra cái container đó.</p>
 
         <p>Khi đó, để reuse lại thì bạn sẽ đưa các input vào để có thể từ bên ngoài truyền dữ liệu vào cho component này. Xem ví dụ.</p>
 
@@ -73,7 +127,6 @@
             <app-angular-input [person]="_person" (selectPerson)="listenEmitEventFromChild($event)"></app-angular-input>
           </div>
         </blockquote>
-
 
         <p>Trong ví dụ này, ta đã tách cái component render person thành 1 component riêng để có thể reuse ở nhiều vị trí khác nhau.</p>
 
@@ -85,16 +138,17 @@
         </blockquote>
 
         <p>Thông qua 2 ví dụ trên, ta có thể hiểu các cách để truyền dữ liệu vào component rồi chứ. Nó có thể thông qua các input, hoặc cũng có thể
-        thông qua các parameter từ router.</p>
+          thông qua các parameter từ router.</p>
 
         <p>Lưu ý, khi sử dụng parameter thì cần phải import cái RouterActive vào (bằng cách thêm vào trong constructor) nhé.</p>
 
-        <h5>@Output </h5>
+
+        <h5>@Output</h5>
 
         <p>Output là nơi mà ta public các method của component ra ngoài để các component khác có thể can thiệp vào.</p>
 
         <p>Khi ta xem qua các component, ta sẽ thấy bản chất của component chỉ là render dữ liệu, bind các event đơn giản như click, onchange cho input này nọ.
-        vậy, nếu muốn từ cái thằng con mà gọi lên 1 method của thằng cha thì ta làm như thế nào?</p>
+          vậy, nếu muốn từ cái thằng con mà gọi lên 1 method của thằng cha thì ta làm như thế nào?</p>
 
         <p>Đó là lí do mà Angular cung cấp cái Ouput. Output là cái method mà ta sẽ sử dụng cho thằng con để có thể  emit các event ra cho các thằng cha đang listen nó.</p>
 
@@ -117,13 +171,283 @@
         <p>Ở ngoài component cha, có 2 loại đầu vào, 1 loại @input, và 1 loại @output. Ở đây ta sử dụng <b>(selectPerson)="listenEmitEventFromChild($event)"</b> để listen event này.</p>
 
         <p>Khai báo này có nghĩa, khi mà event selectPerson của component con được trigger, thì có 1 function listenEmitEventFromChild  của thằng cha sẽ listen cái event đó, và cái param $event này
-        chính là param mà thằng con emit ra lúc trước.</p>
+          chính là param mà thằng con emit ra lúc trước.</p>
 
 
         <p>Vậy là ta đã đi qua các thông tin cơ bản của component. Bài tiếp theo ta sẽ tìm hiểu về các service.</p>
 
         <p>Nếu mà có vấn đề gì về các direction này, thì click và <b>ngIf</b> nó sẽ dẫn ta qua file ts chứa thông tin của angular. Vào đó đọc là biết nó support những
-        cái nào và sử dụng ra làm sao.</p>
+          cái nào và sử dụng ra làm sao.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Data Model and Operation
+      </div>
+
+      <div class="card-body">
+        <p>Data trong Component có thể được truyền vào bằng 3 cách.</p>
+
+        <p>Cách 1, thông qua các @Input đã nói ở trên</p>
+
+        <p>Cách 2, sử dụng các DI service để get data</p>
+
+        <p>Cách 3, tự khai báo dữ liệu cho riêng nó.</p>
+
+        <p>Giả sử bạn cần gán dữ liệu từ 3 cái đó, khi này, bạn cần tạo ra 1 variable.</p>
+
+        <p>Variable trong component đều là private. Nó chỉ được truy xuất từ bên trong Component và hoàn toàn bị che dấu
+          từ bên ngoài. Đó là điều hiển nhiên vì mục đích của Component là render view chứ ko phải process data.</p>
+
+        <p>Việc khai báo 1 biến cũng khá dễ dàng. Bỏ nó trong class container, và lấy ra sử dụng thôi. Ví dụ:</p>
+
+        <blockquote>
+          {{sampleVariable}}
+        </blockquote>
+
+        <p>Ở phần này, ta cùng đi sâu vào các directives để tương tác với template nhé/</p>
+
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                *ngIf  *ngSwitch
+              </div>
+
+              <div class="card-body">
+                <h5>*ngIF</h5>
+
+                <p>Ta khai báo 1 biến là ngIfValue với giá trị default là 'red' và show ra cái container nếu ngIf Là red</p>
+
+                <blockquote>
+                  <div *ngIf="ngIfValue == 'red'" class="ng-if-sample-container" box="red">
+                    <span>The ngIfValue is RED </span>
+                  </div>
+
+                  <div *ngIf="ngIfValue == 'blue'" class="ng-if-sample-container" box="blue">
+                    <span>The ngIfValue is BLUE </span>
+                  </div>
+
+                  <div *ngIf="ngIfValue == 'yellow'" class="ng-if-sample-container" box="yellow">
+                    <span>The ngIfValue is YELLOW </span>
+                  </div>
+                </blockquote>
+
+                <p>Điều kiện ngIf được đưa vào 1 element, và element đó sẽ đc insert nếu như cái condition trong ngIf là true.</p>
+
+                <p>Một ví dụ khác, ở đây ta ko có khai báo 1 thẻ div ở ngoài nữa, mà chỉ show content theo mặc định mà thôi.
+                  Khi này, thay vì thẻ div, ta sẽ sử dụng 1 elemnt khác của angular, đó là ng-container</p>
+
+                <blockquote>
+                  <ng-container *ngIf="ngIfValue == 'red'" class="ng-if-sample" box="red">
+                    <span>The ngIfValue is RED </span>
+                  </ng-container>
+
+                  <ng-container *ngIf="ngIfValue == 'blue'" class="ng-if-sample"  box="blue">
+                    <span>The ngIfValue is BLUE </span>
+                  </ng-container>
+
+                  <ng-container *ngIf="ngIfValue == 'yellow'" class="ng-if-sample"  box="yellow">
+                    <span>The ngIfValue is YELLOW </span>
+                  </ng-container>
+                </blockquote>
+
+                <p>Sự khác biệt giữa cái thẻ div trên kia và cái ng-container ở dưới này, đó là ng-container chỉ show content ở trong. Vì vậy
+                  các class, attribute của nó đều ko đc render ra, vì cái thằng cha (ng-container) có đc render đâu mà có.</p>
+
+
+                <h5>*ngSwitch</h5>
+
+                <p>ngSwich tương tự như switch case trong Java vậy, thay vì viết 1 đống *ngIf thì ta sử dụng nó thay thế. Xem ví dụ</p>
+
+                <blockquote>
+                  <ul [ngSwitch]="ngIfValue">
+                    <li *ngSwitchCase="'red'" class="text-success">The ngIfValue is RED</li>
+                    <li *ngSwitchCase="'blue'" class="text-primary">The ngIfValue is BLUE</li>
+                    <li *ngSwitchCase="'yellow'" class="text-danger">The ngIfValue is YELLOW</li>
+                    <li *ngSwitchDefault class="text-warning">DONT HAVE ANYTHING TO DISPLAY</li>
+                  </ul>
+                </blockquote>
+
+                <p>Chú ý cái condition so sánh đc xài ở đây nhé. ngSwitchCase="'red'". Red được bọc trong dấu '' vì nó là string.</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                *ngFor
+              </div>
+
+              <div class="card-body">
+                <p>NgFor được sử dụng để duyệt qua danh sách của mảng. Xem ví dụ</p>
+
+                <blockquote>
+                  <div class="person-info" *ngFor="let person of personArray; let idx = index" >
+                    <ng-container *ngIf="person.age > 5">
+                      <span>{{idx + 1}}</span> : <span>{{person.name}}</span> is <span>{{person.age}}</span> ages.<br />
+                    </ng-container>
+                  </div>
+                </blockquote>
+
+                <p>Điều kiện ngIf được đưa vào 1 element, và element đó sẽ đc insert nếu như cái condition trong ngIf là true.</p>
+
+                <p>Một ví dụ khác, ở đây ta ko có khai báo 1 thẻ div ở ngoài nữa, mà chỉ show content theo mặc định mà thôi.
+                  Khi này, thay vì thẻ div, ta sẽ sử dụng 1 elemnt khác của angular, đó là ng-container</p>
+
+                <blockquote>
+                  <ng-container *ngIf="ngIfValue == 'red'" class="ng-if-sample" box="red">
+                    <span>The ngIfValue is RED </span>
+                  </ng-container>
+
+                  <ng-container *ngIf="ngIfValue == 'blue'" class="ng-if-sample"  box="blue">
+                    <span>The ngIfValue is BLUE </span>
+                  </ng-container>
+
+                  <ng-container *ngIf="ngIfValue == 'yellow'" class="ng-if-sample"  box="yellow">
+                    <span>The ngIfValue is YELLOW </span>
+                  </ng-container>
+                </blockquote>
+
+                <p>Cùng nhìn vào component, ta thấy đc 1 Interface IPerson. Interface là 1 đối tượng của ES6, khác với Java, nó có thể
+                  quy định rằng object đó phải có các properties, hoặc các method. Bản chất method của js cũng là properties.</p>
+
+                <p>Đối với các kiểu dữ liệu như vậy, cần khai báo Interface hoặc Class để ràng buộc kiểu dữ liệu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                [ngStyle] và [ngClass]
+              </div>
+
+              <div class="card-body">
+                <h5>[ngStyle]</h5>
+                <p>Trong Angular, có 3 cách để set style cho 1 element, add css cho class của nó trong và ngoài component,
+                  add style inline và sử dụng ngStyle.</p>
+
+                <p>ngStyle không ghi đè style mà nó chỉ bổ sung cho cái Style hiện tại mà thôi. Xem ví dụ</p>
+
+                <blockquote>
+                  <div style="background: lightblue; font-size: 120%; font-weight: bold" [ngStyle]="{color: ngIfValue}">TEXT SAMPLE DISPLAY HERE.</div>
+                </blockquote>
+
+                <p>Vì sao cần ngStyle? Chả nhẽ ta muốn set 1 cái color màu đỏ cho cái thẻ div trên kia mà phải sử dụng tới ngSwitch hay ngIf à??</p>
+
+
+                <p>Ngoài ra ta cũng có thể dùng tag [style] với mục đích tương tự. Nhưng cái này thì ko có điều kiện nhé</p>
+                <blockquote>
+                  <div [style.background-color]="'yellow'">TEXT SAMPLE FOR [style] tag DISPLAY HERE.</div>
+
+                  <div [style.background-color]="ngIfValue">TEXT SAMPLE FOR [style] tag DISPLAY HERE.</div>
+                </blockquote>
+
+                <h5>[ngClass]</h5>
+
+                <p>Tương tự với ngStyle, ngClass được dùng để add thêm class vào trong container.</p>
+
+                <p>Lưu ý, Angular không giống với jsp, jsp có cái &lt;c:if có thể chèn cái condition này vào bất cứ nơi nào mà nó muốn, còn angular thì ko phải vậy.</p>
+
+                <p>Vì vậy ta không thể viết</p>
+
+                <blockquote>
+                  &lt;div *ngIf="ngIfValue == 'red'" style="color: blue"> Được.&lt;/div>
+                </blockquote>
+
+
+                <p>Giờ thì xem một ví dụ của ngClass nào</p>
+
+                <blockquote>
+                  <div class="ng-class-example" [ngClass]="ngIfValue == 'red' ? 'red-box' : 'empty-box'" >
+                    RESULT OF ng-class-example
+                  </div>
+                </blockquote>
+
+                <p>Xem thêm 1 ví dụ về ngClass</p>
+
+                <blockquote>
+                  <div class="ng-class-example" [ngClass]="{'box-border': true}" >
+                    RESULT OF ngClass with object and key
+                  </div>
+
+                  <br />
+
+                  <div class="ng-class-example" [ngClass]="['box-border', 'red-box']" >
+                    RESULT OF ngClass with array
+                  </div>
+                </blockquote>
+
+
+                <!--<h5>ngNonBindable</h5>-->
+
+                <!--<p>Tiện thể thì tìm hiểu luôn thằng này. Thằng này nó có ý nghĩa là sẽ skip mọi variable trong đó, show ra 1 đoạn text mặc định.</p>-->
+
+                <!--<blockquote>-->
+                <!--<span class="pre" ngNonBindable>-->
+                <!--{{ ngIfValue }} is ngIfValue-->
+                <!--</span>-->
+                <!--</blockquote>-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Lifecycle
+      </div>
+
+      <div class="card-body">
+        <p>Kiếm được cái ảnh trên mạng, bỏ vô luôn</p>
+
+        <img class="img-fluid" src="assets/angular-resources/Angular-Lifecycle-Hook.png."/>
+
+        <p>Hình trên minh họa thứ tự của LifeCycle của Component. Tùy vào từng hoàn cảnh mà ta sử dụng các các method cho phù hợp.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Providers
+      </div>
+
+      <div class="card-body">
+        <p>Đây là nơi là các service và các directive, các sub-component được inject vào trong Component này.</p>
+
+        <p>Toàn bộ service sẽ được truyền thông qua các constructor. Lưu ý điều này. Điều này đảm bảo khi 1 component được khởi tạo, thì
+        nó đã có sẵn các service cần thiết để sử dụng. Vì vậy, nếu nó cần render data lúc onInit, thì cũng đã có sẵn các service để get, set rồi.</p>
+
+
       </div>
     </div>
   </div>

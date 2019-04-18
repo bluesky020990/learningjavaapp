@@ -8,10 +8,19 @@ body{
   padding-bottom: 25px;
 }
 
-.card-header {
-  font-weight: bold;
-  font-size: 20px;
+.card{
+  .card-header {
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .card{
+    > .card-header{
+      font-size: 18px;
+    }
+  }
 }
+
 
 blockquote,
 .example{

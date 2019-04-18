@@ -1,0 +1,217 @@
+<h3 class="mb-3">Angular Directives</h3>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Directives
+      </div>
+
+      <div class="card-body">
+        <p>Ở bài học này ta cùng tìm hiểu về các directives được sử dụng trong Angular</p>
+
+        <p>Directives trong Angular cũng tương tự như các tag trong JSP vậy. Nó được dùng trong template,
+        handle để render ra view.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        *ngIf  *ngSwitch
+      </div>
+
+      <div class="card-body">
+        <h5>*ngIF</h5>
+
+        <p>Ta khai báo 1 biến là ngIfValue với giá trị default là 'red' và show ra cái container nếu ngIf Là red</p>
+
+        <blockquote>
+          <div *ngIf="ngIfValue == 'red'" class="ng-if-sample-container" box="red">
+            <span>The ngIfValue is RED </span>
+          </div>
+
+          <div *ngIf="ngIfValue == 'blue'" class="ng-if-sample-container" box="blue">
+            <span>The ngIfValue is BLUE </span>
+          </div>
+
+          <div *ngIf="ngIfValue == 'yellow'" class="ng-if-sample-container" box="yellow">
+            <span>The ngIfValue is YELLOW </span>
+          </div>
+        </blockquote>
+
+        <p>Điều kiện ngIf được đưa vào 1 element, và element đó sẽ đc insert nếu như cái condition trong ngIf là true.</p>
+
+        <p>Một ví dụ khác, ở đây ta ko có khai báo 1 thẻ div ở ngoài nữa, mà chỉ show content theo mặc định mà thôi.
+          Khi này, thay vì thẻ div, ta sẽ sử dụng 1 elemnt khác của angular, đó là ng-container</p>
+
+        <blockquote>
+          <ng-container *ngIf="ngIfValue == 'red'" class="ng-if-sample" box="red">
+            <span>The ngIfValue is RED </span>
+          </ng-container>
+
+          <ng-container *ngIf="ngIfValue == 'blue'" class="ng-if-sample"  box="blue">
+            <span>The ngIfValue is BLUE </span>
+          </ng-container>
+
+          <ng-container *ngIf="ngIfValue == 'yellow'" class="ng-if-sample"  box="yellow">
+            <span>The ngIfValue is YELLOW </span>
+          </ng-container>
+        </blockquote>
+
+        <p>Sự khác biệt giữa cái thẻ div trên kia và cái ng-container ở dưới này, đó là ng-container chỉ show content ở trong. Vì vậy
+          các class, attribute của nó đều ko đc render ra, vì cái thằng cha (ng-container) có đc render đâu mà có.</p>
+
+
+        <h5>*ngSwitch</h5>
+
+        <p>ngSwich tương tự như switch case trong Java vậy, thay vì viết 1 đống *ngIf thì ta sử dụng nó thay thế. Xem ví dụ</p>
+
+        <blockquote>
+          <ul [ngSwitch]="ngIfValue">
+            <li *ngSwitchCase="'red'" class="text-success">The ngIfValue is RED</li>
+            <li *ngSwitchCase="'blue'" class="text-primary">The ngIfValue is BLUE</li>
+            <li *ngSwitchCase="'yellow'" class="text-danger">The ngIfValue is YELLOW</li>
+            <li *ngSwitchDefault class="text-warning">DONT HAVE ANYTHING TO DISPLAY</li>
+          </ul>
+        </blockquote>
+
+        <p>Chú ý cái condition so sánh đc xài ở đây nhé. ngSwitchCase="'red'". Red được bọc trong dấu '' vì nó là string.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        *ngFor
+      </div>
+
+      <div class="card-body">
+        <p>NgFor được sử dụng để duyệt qua danh sách của mảng. Xem ví dụ</p>
+
+        <blockquote>
+          <div class="person-info" *ngFor="let person of personArray; let idx = index" >
+            <ng-container *ngIf="person.age > 5">
+              <span>{{idx + 1}}</span> : <span>{{person.name}}</span> is <span>{{person.age}}</span> ages.<br />
+            </ng-container>
+          </div>
+        </blockquote>
+
+        <p>Điều kiện ngIf được đưa vào 1 element, và element đó sẽ đc insert nếu như cái condition trong ngIf là true.</p>
+
+        <p>Một ví dụ khác, ở đây ta ko có khai báo 1 thẻ div ở ngoài nữa, mà chỉ show content theo mặc định mà thôi.
+          Khi này, thay vì thẻ div, ta sẽ sử dụng 1 elemnt khác của angular, đó là ng-container</p>
+
+        <blockquote>
+          <ng-container *ngIf="ngIfValue == 'red'" class="ng-if-sample" box="red">
+            <span>The ngIfValue is RED </span>
+          </ng-container>
+
+          <ng-container *ngIf="ngIfValue == 'blue'" class="ng-if-sample"  box="blue">
+            <span>The ngIfValue is BLUE </span>
+          </ng-container>
+
+          <ng-container *ngIf="ngIfValue == 'yellow'" class="ng-if-sample"  box="yellow">
+            <span>The ngIfValue is YELLOW </span>
+          </ng-container>
+        </blockquote>
+
+        <p>Cùng nhìn vào component, ta thấy đc 1 Interface IPerson. Interface là 1 đối tượng của ES6, khác với Java, nó có thể
+          quy định rằng object đó phải có các properties, hoặc các method. Bản chất method của js cũng là properties.</p>
+
+        <p>Đối với các kiểu dữ liệu như vậy, cần khai báo Interface hoặc Class để ràng buộc kiểu dữ liệu.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        [ngStyle] và [ngClass]
+      </div>
+
+      <div class="card-body">
+        <h5>[ngStyle]</h5>
+        <p>Trong Angular, có 3 cách để set style cho 1 element, add css cho class của nó trong và ngoài component,
+          add style inline và sử dụng ngStyle.</p>
+
+        <p>ngStyle không ghi đè style mà nó chỉ bổ sung cho cái Style hiện tại mà thôi. Xem ví dụ</p>
+
+        <blockquote>
+          <div style="background: lightblue; font-size: 120%; font-weight: bold" [ngStyle]="{color: ngIfValue}">TEXT SAMPLE DISPLAY HERE.</div>
+        </blockquote>
+
+        <p>Vì sao cần ngStyle? Chả nhẽ ta muốn set 1 cái color màu đỏ cho cái thẻ div trên kia mà phải sử dụng tới ngSwitch hay ngIf à??</p>
+
+
+        <p>Ngoài ra ta cũng có thể dùng tag [style] với mục đích tương tự. Nhưng cái này thì ko có điều kiện nhé</p>
+        <blockquote>
+          <div [style.background-color]="'yellow'">TEXT SAMPLE FOR [style] tag DISPLAY HERE.</div>
+
+          <div [style.background-color]="ngIfValue">TEXT SAMPLE FOR [style] tag DISPLAY HERE.</div>
+        </blockquote>
+
+        <h5>[ngClass]</h5>
+
+        <p>Tương tự với ngStyle, ngClass được dùng để add thêm class vào trong container.</p>
+
+        <p>Lưu ý, Angular không giống với jsp, jsp có cái &lt;c:if có thể chèn cái condition này vào bất cứ nơi nào mà nó muốn, còn angular thì ko phải vậy.</p>
+
+        <p>Vì vậy ta không thể viết</p>
+
+        <blockquote>
+          &lt;div *ngIf="ngIfValue == 'red'" style="color: blue"> Được.&lt;/div>
+        </blockquote>
+
+
+        <p>Giờ thì xem một ví dụ của ngClass nào</p>
+
+        <blockquote>
+          <div class="ng-class-example" [ngClass]="ngIfValue == 'red' ? 'red-box' : 'empty-box'" >
+            RESULT OF ng-class-example
+          </div>
+        </blockquote>
+
+        <p>Xem thêm 1 ví dụ về ngClass</p>
+
+        <blockquote>
+          <div class="ng-class-example" [ngClass]="{'box-border': true}" >
+            RESULT OF ngClass with object and key
+          </div>
+
+          <br />
+
+          <div class="ng-class-example" [ngClass]="['box-border', 'red-box']" >
+            RESULT OF ngClass with array
+          </div>
+        </blockquote>
+
+
+        <!--<h5>ngNonBindable</h5>-->
+
+        <!--<p>Tiện thể thì tìm hiểu luôn thằng này. Thằng này nó có ý nghĩa là sẽ skip mọi variable trong đó, show ra 1 đoạn text mặc định.</p>-->
+
+        <!--<blockquote>-->
+        <!--<span class="pre" ngNonBindable>-->
+        <!--{{ ngIfValue }} is ngIfValue-->
+        <!--</span>-->
+        <!--</blockquote>-->
+
+      </div>
+    </div>
+  </div>
+</div>

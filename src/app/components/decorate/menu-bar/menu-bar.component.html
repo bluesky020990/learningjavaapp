@@ -14,16 +14,20 @@
           <button class="nav-link" mat-button [matMenuTriggerFor]="angular">Angular</button>
 
           <mat-menu #angular="matMenu">
+            <button mat-menu-item [routerLink]="['/angular/ng-core']">Angular Core</button>
             <button mat-menu-item [routerLink]="['/angular/basic']">Angular Basic</button>
             <button mat-menu-item [routerLink]="['/angular/ng-component']">Angular Component</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-form']">Angular Form</button>
+            <button mat-menu-item [routerLink]="['/angular/ng-directives']">Angular Directive</button>
             <button mat-menu-item [routerLink]="['/angular/ng-service']">Angular Service</button>
             <button mat-menu-item [routerLink]="['/angular/bootstrap']">Bootstrap</button>
             <button mat-menu-item [routerLink]="['/angular/ng-bootstrap']">Ng-Bootstrap</button>
+            <button mat-menu-item [routerLink]="['/angular/ng-form']">Angular Form</button>
             <button mat-menu-item [routerLink]="['/angular/router']">Router</button>
             <button mat-menu-item [routerLink]="['/angular/router-advance']">Router Advance</button>
             <button mat-menu-item [routerLink]="['/angular/ng-dom']">Angular DOM</button>
             <button mat-menu-item [routerLink]="['/angular/ng-data-architecture']">Angular Data Architecture</button>
+            <button mat-menu-item [routerLink]="['/angular/ng-testing']">Angular Testing</button>
+
           </mat-menu>
         </li>
 

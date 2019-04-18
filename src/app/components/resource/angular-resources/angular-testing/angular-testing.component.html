@@ -1,0 +1,33 @@
+<h3 class="mb-3">Angular Testing</h3>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Testing in Angular
+      </div>
+
+      <div class="card-body">
+        <p>Đối với Angular, ta có 2 thứ cần quan tâm. 1. Component, 2 Service.</p>
+
+        <p>Với Service thì rất đơn giản, ta chỉ cần kiểm tra các implement của nó xem có chạy đúng hay ko, input đầu vào
+        với đầu ra có giống nhau hay không.</p>
+
+        <p>Với Component, ta cần kiểm tra những vấn đề sau:</p>
+
+        <ul>
+          <li>Đầu tiên, đó là interactive. Cũng may, Angular đã hỗ trợ cho ta các directive. Vì vậy ta có thể test thông
+          qua code mà ko cần dùng giao diện. Miễn sao binding cho đúng.</li>
+          <li>Điều thứ 2 đó là kiểm tra việc render dữ liệu. Cần xem nó có render đúng hay ko này nọ.</li>
+
+          <li>Thứ 3 là check các input output của nó, tức là tương tác của nó với 1 component khác. Kiểm tra xem đầu vào
+          với data đó có render ra layout đúng hay ko, hay là khi có 1 thay đổi trong component, event emit có phát ra với
+          data đúng hay ko.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<a href="https://blog.angular.io/angular-schematics-unit-testing-3a0a9aaab186">Xem tham khảo</a>

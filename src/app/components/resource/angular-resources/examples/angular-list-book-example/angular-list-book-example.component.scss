@@ -1,0 +1,46 @@
+.book-information{
+  display: flex;
+  flex-wrap: wrap;
+
+  .book-header{
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .book-detail{
+    display: flex;
+    flex-direction: row;
+    margin-left: - 1rem;
+    margin-right: 0 - 1rem;
+
+    .book-container{
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #ccc;
+      margin: 1rem;
+      padding: .5rem;
+      width: calc(100% - 10px);
+
+      .book-title{
+        cursor: pointer;
+        &:hover{
+          color: darkblue;
+        }
+      }
+
+      .book-author{
+        border-top: 1px solid #ccc;
+        font-style: italic;
+        margin-top: .5rem;
+        padding-top: .5rem;
+      }
+
+      .book-price{
+        text-transform: uppercase;
+        font-variant: small-caps;
+      }
+    }
+  }
+
+
+}

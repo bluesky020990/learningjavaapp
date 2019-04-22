@@ -2,12 +2,13 @@ export class AngularBook {
   private _id: number;
   private _title: string;
   private _author: string;
+  private _price: number;
 
-
-  constructor(id: number, title: string, author: string) {
+  constructor(id: number, title: string, author: string, prize?: number) {
     this._id = id;
     this._title = title;
     this._author = author;
+    this._price = prize;
   }
 
   get id(): number {
@@ -32,5 +33,13 @@ export class AngularBook {
 
   set author(value: string) {
     this._author = value;
+  }
+
+  get price(): number {
+    return this._price;
+  }
+
+  set price(value: number) {
+    this._price = value;
   }
 }

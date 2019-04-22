@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BreadcrumbItem} from '../../../../data-model/breadcrumb';
 import {BreadcrumbService} from '../../../../services/breadcrumb.service';
+import {BookService} from '../../../../services/angular-services/book.service';
+import {AngularBook} from '../../../../data-model/angular-book';
 
 @Component({
   selector: 'app-angular-service',
@@ -8,10 +10,10 @@ import {BreadcrumbService} from '../../../../services/breadcrumb.service';
   styleUrls: ['./angular-service.component.scss']
 })
 export class AngularServiceComponent implements OnInit, OnDestroy {
-
+  selectedBook: AngularBook = null;
   breadCrumbItem: BreadcrumbItem = null;
 
-  constructor(private breadcrumbService: BreadcrumbService) {
+  constructor(private breadcrumbService: BreadcrumbService, private bookService: BookService) {
   }
 
   ngOnInit() {

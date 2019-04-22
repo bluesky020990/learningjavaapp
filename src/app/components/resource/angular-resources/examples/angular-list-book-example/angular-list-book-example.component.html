@@ -1,0 +1,16 @@
+<div class="book-information">
+  <div class="book-header">There are {{listBook.length}} books in the library.</div>
+
+  <div class="book-detail">
+    <div class="book-container" *ngFor="let book of listBook">
+      <div class="book-title" (click)="viewThisBook(book)">{{book.title}}</div>
+      <div class="book-author">{{book.author}}</div>
+      <div class="book-price">{{book.price}} VNĐ</div>
+    </div>
+  </div>
+</div>
+
+<!--<ng-container *ngIf="selectedBook != null">-->
+  <!--<app-angular-book-example [book]="selectedBook"></app-angular-book-example>-->
+<!--</ng-container>-->
+

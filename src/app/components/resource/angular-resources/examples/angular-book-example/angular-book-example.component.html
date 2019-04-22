@@ -1,0 +1,32 @@
+<div class="book-view-detail" *ngIf="book != null">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label>Book Id</label>
+
+      <div class="controls">
+        <input  class="form-control" [(ngModel)]="book.id" type="number" name="id">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Book Author</label>
+      <div class="controls">
+        <input  class="form-control" [(ngModel)]="book.author" type="text"  name="author">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Book Title</label>
+      <div class="controls">
+        <textarea class="form-control" [(ngModel)]="book.title" type="text" name="title"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Book Title</label>
+      <div class="controls">
+        <textarea class="form-control" [(ngModel)]="book.price" type="number" name="price"></textarea>
+      </div>
+    </div>
+  </form>
+</div>

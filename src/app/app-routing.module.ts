@@ -13,7 +13,6 @@ import {IncrementalDomInAngularComponent} from './components/resource/angular-re
 import {AngularServiceComponent} from './components/resource/angular-resources/angular-service/angular-service.component';
 import {AngularDataArchitectureComponent} from './components/resource/angular-resources/angular-data-architecture/angular-data-architecture.component';
 import {AngularFormComponent} from './components/resource/angular-resources/angular-form/angular-form.component';
-import {AngularDirectivesComponent} from './components/resource/angular-resources/angular-directives/angular-directives.component';
 import {AngularTestingComponent} from './components/resource/angular-resources/angular-testing/angular-testing.component';
 
 
@@ -38,7 +37,6 @@ const routes: Routes = [
           {path: 'view-person/:id', component: AngularInputComponent}
         ]
       },
-      {path: 'ng-directives', component: AngularDirectivesComponent},
       {path: 'ng-service', component: AngularServiceComponent},
       {path: 'ng-form', component: AngularFormComponent},
       {path: 'bootstrap', component: AngularBoostrapComponent},

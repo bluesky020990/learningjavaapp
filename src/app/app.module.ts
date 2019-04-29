@@ -48,7 +48,9 @@ import {AngularBookExampleComponent} from './components/resource/angular-resourc
 import {AngularListBookExampleComponent} from './components/resource/angular-resources/examples/angular-list-book-example/angular-list-book-example.component';
 import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
 import {EngResourceComponent} from './components/resource/english-resource/eng-resource/eng-resource.component';
-import { EngOverviewComponent } from './components/resource/english-resource/eng-overview/eng-overview.component';
+import {EngOverviewComponent} from './components/resource/english-resource/eng-overview/eng-overview.component';
+import {EngParagraphComponent} from './components/common/eng-paragraph/eng-paragraph.component';
+import {EngWordComponent} from './components/common/eng-word/eng-word.component';
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { EngOverviewComponent } from './components/resource/english-resource/eng
     DashboardComponent,
 
     //  ---------------- ENGLISH COMPONENT ---------------- //
-
+    EngParagraphComponent,
+    EngWordComponent,
     EngResourceComponent,
     EngPronunciationComponent,
     EngOverviewComponent,
@@ -89,7 +92,7 @@ import { EngOverviewComponent } from './components/resource/english-resource/eng
     AngularTestingComponent,
     AngularCoreComponent,
     AngularBookExampleComponent,
-    AngularListBookExampleComponent
+    AngularListBookExampleComponent,
 
 
   ],

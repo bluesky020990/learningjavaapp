@@ -1,0 +1,3 @@
+<ng-container *ngIf="listWord != null && listWord.length > 0">
+  <app-eng-word *ngFor="let word of listWord" [word]="word"></app-eng-word>
+</ng-container>

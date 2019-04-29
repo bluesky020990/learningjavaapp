@@ -4,7 +4,7 @@ export class DictionaryWord {
   private _description: string;
   private _pronunciation: string;
 
-  constructor(term: string, type: string, description: string, pronunciation: string) {
+  constructor(term: string, pronunciation: string, type: string, description: string) {
     this._term = term;
     this._type = type;
     this._description = description;

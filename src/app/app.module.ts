@@ -16,17 +16,6 @@ import {HeroService} from './services/hero.service';
 import {BookService} from './services/angular-services/book.service';
 
 
-
-
-
-
-
-
-
-
-
-
-
 import {MenuBarComponent} from './components/decorate/menu-bar/menu-bar.component';
 import {FooterBarComponent} from './components/decorate/footer-bar/footer-bar.component';
 
@@ -44,17 +33,22 @@ import {AngularRouterAdvanceComponent} from './components/resource/angular-resou
 import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component';
 
 
-import { AngularCompComponent } from './components/resource/angular-resources/angular-comp/angular-comp.component';
-import { AngularInputComponent } from './components/resource/angular-resources/angular-input/angular-input.component';
-import { IncrementalDomInAngularComponent } from './components/resource/angular-resources/incremental-dom-in-angular/incremental-dom-in-angular.component';
-import { AngularServiceComponent } from './components/resource/angular-resources/angular-service/angular-service.component';
-import { AngularDataArchitectureComponent } from './components/resource/angular-resources/angular-data-architecture/angular-data-architecture.component';
-import { AngularFormComponent } from './components/resource/angular-resources/angular-form/angular-form.component';
-import { AngularBookComponent } from './components/resource/angular-resources/angular-book/angular-book.component';
-import { AngularTestingComponent } from './components/resource/angular-resources/angular-testing/angular-testing.component';
-import { AngularCoreComponent } from './components/resource/angular-resources/angular-core/angular-core.component';
-import { AngularBookExampleComponent } from './components/resource/angular-resources/examples/angular-book-example/angular-book-example.component';
-import { AngularListBookExampleComponent } from './components/resource/angular-resources/examples/angular-list-book-example/angular-list-book-example.component';
+import {AngularCompComponent} from './components/resource/angular-resources/angular-comp/angular-comp.component';
+import {AngularInputComponent} from './components/resource/angular-resources/angular-input/angular-input.component';
+import {IncrementalDomInAngularComponent} from './components/resource/angular-resources/incremental-dom-in-angular/incremental-dom-in-angular.component';
+import {AngularServiceComponent} from './components/resource/angular-resources/angular-service/angular-service.component';
+import {AngularDataArchitectureComponent} from './components/resource/angular-resources/angular-data-architecture/angular-data-architecture.component';
+import {AngularFormComponent} from './components/resource/angular-resources/angular-form/angular-form.component';
+import {AngularBookComponent} from './components/resource/angular-resources/angular-book/angular-book.component';
+import {AngularTestingComponent} from './components/resource/angular-resources/angular-testing/angular-testing.component';
+import {AngularCoreComponent} from './components/resource/angular-resources/angular-core/angular-core.component';
+import {AngularBookExampleComponent} from './components/resource/angular-resources/examples/angular-book-example/angular-book-example.component';
+
+
+import {AngularListBookExampleComponent} from './components/resource/angular-resources/examples/angular-list-book-example/angular-list-book-example.component';
+import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
+import {EngResourceComponent} from './components/resource/english-resource/eng-resource/eng-resource.component';
+import { EngOverviewComponent } from './components/resource/english-resource/eng-overview/eng-overview.component';
 
 
 @NgModule({
@@ -68,6 +62,14 @@ import { AngularListBookExampleComponent } from './components/resource/angular-r
 
     DashboardComponent,
 
+    //  ---------------- ENGLISH COMPONENT ---------------- //
+
+    EngResourceComponent,
+    EngPronunciationComponent,
+    EngOverviewComponent,
+
+
+    //  ---------------- ENGLISH COMPONENT ---------------- //
     AngularResourcesComponent,
     AngularBoostrapComponent,
 
@@ -87,7 +89,9 @@ import { AngularListBookExampleComponent } from './components/resource/angular-r
     AngularTestingComponent,
     AngularCoreComponent,
     AngularBookExampleComponent,
-    AngularListBookExampleComponent,
+    AngularListBookExampleComponent
+
+
   ],
   imports: [
     BrowserModule,

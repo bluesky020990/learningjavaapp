@@ -21,9 +21,22 @@ import {AngularCoreComponent} from './components/resource/angular-resources/angu
 import {AngularBasicComponent} from './components/resource/angular-resources/angular-basic/angular-basic.component';
 
 
+import {EngResourceComponent} from './components/resource/english-resource/eng-resource/eng-resource.component';
+import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
+import {EngOverviewComponent} from './components/resource/english-resource/eng-overview/eng-overview.component';
+
+
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
+  {
+    path: 'english', component: EngResourceComponent,
+    children: [
+      {path: '', redirectTo: 'overview', pathMatch: 'full'},
+      {path: 'overview', component: EngOverviewComponent},
+      {path: 'pronunciation', component: EngPronunciationComponent},
+    ]
+  },
   {
     path: 'angular', component: AngularResourcesComponent,
     children: [

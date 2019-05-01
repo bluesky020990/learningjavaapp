@@ -51,6 +51,7 @@ import {EngResourceComponent} from './components/resource/english-resource/eng-r
 import {EngOverviewComponent} from './components/resource/english-resource/eng-overview/eng-overview.component';
 import {EngParagraphComponent} from './components/common/eng-paragraph/eng-paragraph.component';
 import {EngWordComponent} from './components/common/eng-word/eng-word.component';
+import { EngVocabularyWorkshopComponent } from './components/resource/english-resource/eng-vocabulary-workshop/eng-vocabulary-workshop.component';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import {EngWordComponent} from './components/common/eng-word/eng-word.component'
     AngularCoreComponent,
     AngularBookExampleComponent,
     AngularListBookExampleComponent,
+    EngVocabularyWorkshopComponent,
 
 
   ],

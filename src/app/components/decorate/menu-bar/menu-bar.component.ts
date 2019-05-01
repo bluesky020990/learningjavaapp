@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-bar.component.scss']
 })
 export class MenuBarComponent implements OnInit {
+  toggleMenu: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+
+  toggleMenuBar() {
+    this.toggleMenu = ! this.toggleMenu;
+  }
 }

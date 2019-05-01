@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse" [ngClass]="{'show': toggleMenu}"  id="navbarText" (click)="toggleMenuBar()">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <button class="nav-link" mat-button>Home <span class="sr-only">(current)</span></button>
@@ -15,7 +15,7 @@
 
           <mat-menu #english="matMenu">
             <button mat-menu-item [routerLink]="['/english/pronunciation']">Pronunciation</button>
-            <button mat-menu-item [routerLink]="['/english/lesson-01']">Lesson 01</button>
+            <button mat-menu-item [routerLink]="['/english/vocabulary-workshop']">Vocabulary Workshop</button>
             <button mat-menu-item [routerLink]="['/english/lesson-01']">Lesson 01</button>
             <button mat-menu-item [routerLink]="['/english/lesson-01']">Lesson 01</button>
             <button mat-menu-item [routerLink]="['/english/lesson-01']">Lesson 01</button>

@@ -26,31 +26,27 @@ export class EngParagraphComponent implements OnInit {
 
     function processPhrase(phrase: string): string[] {
       if (phrase.indexOf(',') > -1) {
-        const wordArr = processPhrase(phrase.substr(0, phrase.indexOf(',')));
-        return wordArr.concat([',']);
+        return processTheArray(phrase, ',');
 
       } else if (phrase.indexOf('.') > -1) {
-        const wordArr = processPhrase(phrase.substr(0, phrase.indexOf('.')));
-        return wordArr.concat([',']);
+        return processTheArray(phrase, '.');
 
       } else if (phrase.indexOf('!') > -1) {
-        const wordArr = processPhrase(phrase.substr(0, phrase.indexOf('!')));
-        return wordArr.concat(['!']);
+        return processTheArray(phrase, '!');
 
       } else if (phrase.indexOf(':') > -1) {
-        const wordArr = processPhrase(phrase.substr(0, phrase.indexOf(':')));
-        return wordArr.concat([':']);
+        return processTheArray(phrase, ':');
 
-      } else if (phrase.indexOf('\'') > -1) {
-        const wordArr = processPhrase(phrase.substr(0, phrase.indexOf('\'')));
-        return wordArr.concat(['\'']);
-
-      } else if (phrase.indexOf('"') > -1) {
-        const wordArr = processPhrase(phrase.substr(0, phrase.indexOf('"')));
-        return wordArr.concat(['"']);
+      } else if (phrase.indexOf(';') > -1) {
+        return processTheArray(phrase, ';');
       }
 
       return [phrase];
+    }
+
+    function processTheArray(phrase, character): string[] {
+      const wordArr = processPhrase(phrase.substr(0, phrase.indexOf(character)));
+      return phrase.indexOf(character) === 0 ? [character].concat(wordArr) : wordArr.concat([character]);
     }
   }
 }

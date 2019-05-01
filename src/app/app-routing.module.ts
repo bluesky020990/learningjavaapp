@@ -24,6 +24,7 @@ import {AngularBasicComponent} from './components/resource/angular-resources/ang
 import {EngResourceComponent} from './components/resource/english-resource/eng-resource/eng-resource.component';
 import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
 import {EngOverviewComponent} from './components/resource/english-resource/eng-overview/eng-overview.component';
+import {EngVocabularyWorkshopComponent} from './components/resource/english-resource/eng-vocabulary-workshop/eng-vocabulary-workshop.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'overview', pathMatch: 'full'},
       {path: 'overview', component: EngOverviewComponent},
       {path: 'pronunciation', component: EngPronunciationComponent},
+      {path: 'vocabulary-workshop', component: EngVocabularyWorkshopComponent},
     ]
   },
   {

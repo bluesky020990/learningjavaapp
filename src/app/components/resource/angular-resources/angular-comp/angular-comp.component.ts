@@ -29,6 +29,7 @@ export class AngularCompComponent implements OnInit, OnDestroy {
     name: 'Cà Na', age: 3,
   }];
 
+  listBarGraphColor = [{color: 'red', value : 10}, {color: 'blue', value : 5}, {color: 'orange', value : 7}];
   selectName: string = null;
 
   constructor(private breadcrumbService: BreadcrumbService) {

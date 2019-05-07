@@ -52,6 +52,7 @@ import {EngOverviewComponent} from './components/resource/english-resource/eng-o
 import {EngParagraphComponent} from './components/common/eng-paragraph/eng-paragraph.component';
 import {EngWordComponent} from './components/common/eng-word/eng-word.component';
 import { EngVocabularyWorkshopComponent } from './components/resource/english-resource/eng-vocabulary-workshop/eng-vocabulary-workshop.component';
+import { RaphaelDirective } from './directives/raphael.directive';
 
 
 @NgModule({
@@ -95,6 +96,7 @@ import { EngVocabularyWorkshopComponent } from './components/resource/english-re
     AngularBookExampleComponent,
     AngularListBookExampleComponent,
     EngVocabularyWorkshopComponent,
+    RaphaelDirective,
 
 
   ],

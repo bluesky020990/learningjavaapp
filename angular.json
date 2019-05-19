@@ -31,7 +31,10 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "./src/assets/js_library/raphael.library_v2.1.5.2.js",
+              "./src/assets/js_library/raphael.module.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

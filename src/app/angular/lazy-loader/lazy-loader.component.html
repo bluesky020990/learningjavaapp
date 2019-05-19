@@ -1,3 +1,134 @@
-<p>
-  lazy-loader works!
-</p>
+<h3 class="mb-3">Angular Lazy Loader</h3>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Lazy Loader
+      </div>
+
+      <div class="card-body">
+        <p>Trong lesson này ta cùng tìm hiểu về Lazy Loader trong Angular, một điều rất thú vị và cần phải biết khi làm về Angular</p>
+
+        <p>Trước tiên, nói về mục đích của Lazy Loader đã.</p>
+
+        <p>Thông thường, khi ta build 1 Angular App, nó sẽ combine toàn bộ code thành 1 file js. File này thường sẽ rất nặng và
+        khiến cho hệ thống chậm chạp khi ta load toàn bộ các component cùng 1 lượt.</p>
+
+        <p>Trong khi đó, thường người sử dụng ko cần dùng hết toàn bộ các component. Họ chỉ sử dụng các component mà họ thấy cần thiết thôi.
+        Vì vậy việc ta load toàn bộ là 1 việc làm kém hiệu quả về cả hiệu năng lẫn trải nghiệm người dùng.</p>
+
+        <p>Lazy Loader ra đời để giải quyết điều đó.</p>
+
+        <p>Lazy Loader có nhiệm vụ chia nhỏ các router thành các Module độc lập. Và ứng với mỗi lazy loader, nó sẽ có 1 file js đi kèm.
+        Tất nhiên dung lượng của file này sẽ nhỏ hơn rất nhiều so với file index trước kia.</p>
+
+        <p>Lazy Loader chia nhỏ router thành các module độc lập vì vậy việc tổ chức sẽ trở nên rõ ràng và dễ hiểu hơn. Đó mới là cái hay
+        thật sử của cái này</p>
+
+        <p>Từ đó, ta đi vào tìm hiểu 2 vấn đề chính của Lazy Loader trong Angular.</p>
+
+        <ol>
+          <li>Xây dựng Lazy Loader</li>
+          <li>Tối ưu hóa Lazy Loader bằng Preload feature.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implement Lazy Loader
+      </div>
+
+      <div class="card-body">
+        <p>Để tạo Lazy Loader ta thực hiện theo các bước sau:</p>
+
+        <h4>1. Tạo module với module routing.</h4>
+
+
+        <blockquote>
+          ng g m java --routing
+        </blockquote>
+
+        <p>ng g m java để tạo ra module Java, và --routing để tạo 1 Routing Module cho nó. Kết quả ta có 2 file java.module.ts và java-routing.module.ts</p>
+
+        <p>Nếu mà quên tạo routing thì ta có thể copy 1 file routing khác rồi import vào file java.module.ts thôi.</p>
+
+        <h4>2. Custom lại router trong file java-routing.module.ts</h4>
+
+        <blockquote>
+          const routes: Routes = [{{'{'}}<br />
+            path: '',<br />
+            component: JavaComponent,<br />
+            children: [<br />
+            {{'{'}} path: '', component: JavaComponent},<br />
+            {{'{'}} path: 'jvm-architecture', component: JVMArchitectureComponent},<br />
+            {{'{'}}<br />
+              path: 'java-core', children: [<br />
+                {{'{'}}path: '', component: JavaCoreComponent},<br />
+                {{'{'}}path: 'object', component: JavaObjectComponent},<br />
+                {{'{'}}path: 'class', component: JavaClassComponent}<br />
+              ],<br />
+            },<br />
+            {{'{'}}<br />
+              path: 'java-advance', component: JavaComponent<br />
+              }, {{'{'}}<br />
+              path: 'concurrency',<br />
+              children: [<br />
+              {{'{'}}path: '', component: JavaComponent},<br />
+              ]<br />
+            }]<br />
+          }];
+        </blockquote>
+
+        <p>Thấy nó quen ko, thực ra nó ko khác gì cái routing cũ kia cả.</p>
+
+
+        <h4>Update lại lazy Loader cho App-routing.module.ts</h4>
+
+        <blockquote>
+          const routes: Routes = [<br />
+          {{'{'}} path: '', redirectTo: '/angular', pathMatch: 'full'},<br />
+          {{'{'}} path: 'dashboard', component: DashboardComponent},<br />
+          <b>{{'{'}} path: 'angular', loadChildren: './angular/angular.module#AngularModule' },</b><br />
+          <b>{{'{'}} path: 'java', loadChildren: './java/java.module#JavaModule'},</b><br />
+          ];<br />
+        </blockquote>
+
+        <p>Ta cũng có thể tách java-core thành 1 Lazy Loader Module. Cách thực hiện cũng tương tự như trên.</p>
+
+
+        <p>Vậy là xong.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Những lưu ý
+      </div>
+
+      <div class="card-body">
+        <p>Trong một app, việc set lazy loader nên được thực hiện từ ban đầu cho rõ ràng và dễ hiểu.</p>
+        <p>1 Lazy Loader có thể được sử dụng trong 1 Lazy Loader khác.</p>
+        <p>Một Module là độc lập. Các component khai báo bên trong nó chỉ cần khai báo ở Module chính, ko cần khai báo ở module
+        App.module.</p>
+        <p>Sử dụng preload hay ko là một chiến lược, đòi hỏi phải cần xem xét. Thường chỉ preload cho các module mà được sử dụng nhiều mà thôi.</p>
+        <p>Nhưng nếu module con ít quá thì thôi khỏi cần preload cũng được.</p>
+      </div>
+    </div>
+  </div>
+</div>

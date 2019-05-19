@@ -25,16 +25,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component';
 
 
-import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
-import {EngResourceComponent} from './components/resource/english-resource/eng-resource/eng-resource.component';
-import {EngOverviewComponent} from './components/resource/english-resource/eng-overview/eng-overview.component';
-import {EngParagraphComponent} from './components/common/eng-paragraph/eng-paragraph.component';
-import {EngWordComponent} from './components/common/eng-word/eng-word.component';
-import { EngVocabularyWorkshopComponent } from './components/resource/english-resource/eng-vocabulary-workshop/eng-vocabulary-workshop.component';
-import { DesignPatternComponent } from './design-pattern/design-pattern.component';
-import { SpringFrameworkComponent } from './spring-framework/spring-framework.component';
-import { HibernateComponent } from './hibernate/hibernate.component';
-import { JavaComponent } from './java/java.component';
+// import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
+// import {EngResourceComponent} from './components/resource/english-resource/eng-resource/eng-resource.component';
+// import {EngOverviewComponent} from './components/resource/english-resource/eng-overview/eng-overview.component';
+// import {EngParagraphComponent} from './components/common/eng-paragraph/eng-paragraph.component';
+// import {EngWordComponent} from './components/common/eng-word/eng-word.component';
+// import { EngVocabularyWorkshopComponent } from './components/resource/english-resource/eng-vocabulary-workshop/eng-vocabulary-workshop.component';
+
+// import { DesignPatternComponent } from './design-pattern/design-pattern.component';
+// import { SpringFrameworkComponent } from './spring-framework/spring-framework.component';
+// import { HibernateComponent } from './hibernate/hibernate.component';
 import {RouterModule} from '@angular/router';
 
 
@@ -51,18 +51,17 @@ import {RouterModule} from '@angular/router';
     DashboardComponent,
 
     //  ---------------- ENGLISH COMPONENT ---------------- //
-    EngParagraphComponent,
-    EngWordComponent,
-    EngResourceComponent,
-    EngVocabularyWorkshopComponent,
-    EngPronunciationComponent,
-    EngOverviewComponent,
+    // EngParagraphComponent,
+    // EngWordComponent,
+    // EngResourceComponent,
+    // EngVocabularyWorkshopComponent,
+    // EngPronunciationComponent,
+    // EngOverviewComponent,
 
     //  ---------------- ENGLISH COMPONENT ---------------- //
-    DesignPatternComponent,
-    SpringFrameworkComponent,
-    HibernateComponent,
-    JavaComponent,
+    // DesignPatternComponent,
+    // SpringFrameworkComponent,
+    // HibernateComponent,
 
 
   ],

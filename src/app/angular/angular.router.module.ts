@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 
 import { LazyLoaderComponent } from './lazy-loader/lazy-loader.component';
@@ -22,7 +22,6 @@ const routes: Routes = [{
   path: '',
   component: AngularComponent,
   children: [
-    { path: '', component: AngularComponent},
     {path: 'ng-core', component: AngularCoreComponent},
     {path: 'ng-basic', component: AngularBasicComponent},
     {
@@ -41,7 +40,6 @@ const routes: Routes = [{
     {path: 'ng-dom', component: IncrementalDomInAngularComponent},
     {path: 'ng-data-architecture', component: AngularDataArchitectureComponent},
     {path: 'ng-testing', component: AngularTestingComponent},
-
     { path: '**', redirectTo: 'basic' }
   ]
 }];

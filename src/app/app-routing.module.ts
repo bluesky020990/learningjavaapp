@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {CustomPreloadStrategyService} from './custom-preload-strategy.service';
 
 // import {EngResourceComponent} from './components/resource/english-resource/eng-resource/eng-resource.component';
 // import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
@@ -10,11 +11,17 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
 // import {HibernateComponent} from './hibernate/hibernate.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/angular', pathMatch: 'full'},
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'angular', loadChildren: './angular/angular.module#AngularModule' },
-  { path: 'java', loadChildren: './java/java.module#JavaModule'},
-];
+  {path: '', redirectTo: '/angular', pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent},
+  {
+    path: 'angular',
+    loadChildren: './angular/angular.module#AngularModule',
+    data: {preload: true, delay: true}
+  }, {
+    path: 'java',
+    loadChildren: './java/java.module#JavaModule',
+    data: {preload: false, delay: false}
+  }];
 
 // {
 //   path: 'english', component: EngResourceComponent,
@@ -31,7 +38,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadStrategyService })],
   exports: [RouterModule]
 })
 

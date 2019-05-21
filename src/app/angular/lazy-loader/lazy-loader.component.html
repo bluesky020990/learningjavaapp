@@ -106,6 +106,41 @@
 
 
         <p>Vậy là xong.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Preload Strategy
+      </div>
+
+      <div class="card-body">
+        <p>hạn chế của preload đó là, sau khi App được load, cần phải mất 1 thời gian để load cái module có liên quan kia lên thông
+        qua file js của chúng.</p>
+
+        <p>Điều này khiến cho ứng dụng bị "đơ" vài giây, và đôi khi, sẽ là vài chục giây nếu nó quá lớn. Người dùng sẽ ko thích điều này.</p>
+
+        <p>Vì vậy, Angular đưa ra 1 giải pháp được gọi là preload.</p>
+
+        <p>Khi ta khai báo 1 preload, lúc được init lên, thì cái module kia sẽ được load mặc định ở background. Khi khách hàng còn chưa kịp tương
+        tác thì có thể nó đã load ngầm xong ở dưới background và thế là ứng dụng vẫn mượt mà và người dùng thậm chí còn không kịp
+          nhận ra điều này..</p>
+
+        <p>Để config preload, ta cần thêm như sau:</p>
+
+        <blockquote>
+
+          @NgModule({{'{'}}
+            imports: [RouterModule.forRoot(routes, {{'{'}} preloadingStrategy: PreloadAllModules })],
+            exports: [RouterModule]
+          })
+        </blockquote>
+
+        <p>Mở network lên, ta thấy ngay, sau khi load xong, nó sẽ load tiếp 2 module vào hệ thống.</p>
 
 
       </div>
@@ -113,6 +148,55 @@
   </div>
 </div>
 
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Custom Preload
+      </div>
+
+      <div class="card-body">
+        <p>Cái Preload ở trên kia thấy có vẻ ok, nhưng mà nó vẫn có 1 vấn đề, đó là nó sẽ load hết các module mà ta đánh dấu.</p>
+
+        <p>Đôi lúc ta chỉ cần nó load 1 cái module nào đó thôi, thay vì load toàn bộ. Lúc này ta sẽ cần tự xây dựng 1 preload
+        module cho riêng mình.</p>
+
+        <p>Cách làm như sau:</p>
+
+        <h4>Custom lại router bằng cách thêm các data vào.</h4>
+
+        <blockquote>
+          const routes: Routes = [
+          {{'{'}}path: '', redirectTo: '/angular', pathMatch: 'full'},
+          {{'{'}}path: 'dashboard', component: DashboardComponent},
+          {{'{'}}
+            path: 'angular',
+            loadChildren: './angular/angular.module#AngularModule',
+            data: {{'{'}}preload: true, delay: true}
+            }, {{'{'}}
+          path: 'java',
+          loadChildren: './java/java.module#JavaModule',
+          data: {{'{'}}preload: true, delay: false}
+          }];
+        </blockquote>
+
+        <h4>Bước 2, create 1 Service implement PreloadingStrategy và overwrite lại preload method</h4>
+
+        <blockquote>
+
+        </blockquote>
+
+        <h4>Bước 3, vào trong file app-routing.module, cập nhật lại cái preloadStrategy từ PreloadAllModules sang
+          CustomPreloadStrategyService</h4>
+
+        <h4>Bước 4, thêm nó vào provide trong app.module</h4>
+
+        <h5>Bước 5, refresb lại page để kiểm tra.</h5>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="row mb-3">
   <div class="col-12">

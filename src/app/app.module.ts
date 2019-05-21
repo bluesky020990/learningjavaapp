@@ -36,6 +36,7 @@ import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component'
 // import { SpringFrameworkComponent } from './spring-framework/spring-framework.component';
 // import { HibernateComponent } from './hibernate/hibernate.component';
 import {RouterModule} from '@angular/router';
+import {CustomPreloadStrategyService} from './custom-preload-strategy.service';
 
 
 
@@ -79,7 +80,8 @@ import {RouterModule} from '@angular/router';
     LibraryService,
     HeroService,
     BreadcrumbService,
-    BookService
+    BookService,
+    CustomPreloadStrategyService
   ],
   bootstrap: [AppComponent]
 })

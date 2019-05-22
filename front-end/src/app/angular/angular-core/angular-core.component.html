@@ -1,0 +1,361 @@
+<h3 class="mb-3">Angular Core</h3>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        The Core Concepts of Angular
+      </div>
+
+      <div class="card-body">
+        <p>Khi đi sâu vào component ta sẽ hiểu về core của Angular. </p>
+
+        <p>Angular gồm 3 phần chính, Components, Dependence và Bindings.</p>
+
+        <p>Bài viết được tổng hợp lại theo hiểu biết của cá nhân từ
+          <a href="https://vsavkin.com/the-core-concepts-of-angular-2-c3d6cbe04d04">đây</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Component
+      </div>
+
+      <div class="card-body">
+        <h5>Input and Output Properties</h5>
+
+        <p>Để build 1 Angular App, ta sẽ xây dựng 1 list các components cho UI elements, Screen và Router. Angular App luôn
+          có 1 app root, app.component, nơi mà chứa toàn bộ các component khác được sử dụng trong Angular App.</p>
+
+        <p>Nói 1 cách khác, Angular Application, là 1 Components Tree, với App Component là root, và các component khác là các node của nó.</p>
+
+        <p>Mỗi component trong Angular, cũng như các mô hình tree khác, đều hỗ trợ 2 cách tương tác, từ parent đến child thông
+          qua các @Input (properties Binding) bằng các square bracket <b>[...]</b>), và từ child đến parent thông qua các @Output (event bindings thông qua
+          parenthesis ( <b>(...)</b>.</p>
+
+
+        <p>Mỗi component có 1 template, nó mô tả component đó được render ra như thế nào. Hiểu nôm na nó là View như trong MVC.
+        Angular cần 2 thông tin để render template, list các directive được sử dụng bên trong nó và template của bản thân nó.</p>
+
+        <p>Ta sẽ tìm hiểu sâu hơn về cái này trong bài sau.</p>
+
+        <h5>Lifecycle</h5>
+
+        <p>Mỗi component đều implement 1 hoặc nhiều lifecycle. Lifecycle là các ngInit, ngDestroy .... </p>
+
+        <p>ngOnInit là function được gọi khi component này được sinh ra, tương tự ta có ngOnDestroy là function được gọi trước
+          khi component này bị remove ra khỏi Application.</p>
+
+        <p>Cái này ta sẽ đi sâu hơn ở những bài sau.</p>
+
+
+        <h5>Providers</h5>
+
+        <p>Đây là danh sách các directives được sử dụng bên trong component đó hoặc các children có thể được inject vào, hoặc các
+        service từ bên ngoài.</p>
+
+        <p>Cái này cugnx đi vào bài sau tiếp.</p>
+
+        <h5>Host Element</h5>
+
+        <p>Để <b>turn</b> một component với các element nào đó trên DOM, ta phải associate nó với một DOM Element.
+          Và ta gọi Element này là Host Elements.</p>
+
+        <p>Component có thể tương tác với host DOM element theo những cách sau:</p>
+
+        <ul>
+          <li>Listen to its events</li>
+          <li>Update Properties</li>
+          <li>Invoke method cho cái DOM Element đó.</li>
+        </ul>
+
+        <p>
+          The component, for instance, listens to the input event using hostListeners, trims the value, and then stores it in a field. Angular will sync up the stored value with the DOM.
+        </p>
+
+        <blockquote>
+          <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+            <tbody>
+            <tr>
+              <td id="file-trimmedinput-ts-L1" class="blob-num js-line-number" data-line-number="1"></td>
+              <td id="file-trimmedinput-ts-LC1" class="blob-code blob-code-inner js-file-line">@<span class="pl-en">Component</span>({{'{'}}
+              </td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L2" class="blob-num js-line-number" data-line-number="2"></td>
+              <td id="file-trimmedinput-ts-LC2" class="blob-code blob-code-inner js-file-line"> selector: <span
+                class="pl-s"><span class="pl-pds">'</span>trimmed-input<span class="pl-pds">'</span></span></td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L3" class="blob-num js-line-number" data-line-number="3"></td>
+              <td id="file-trimmedinput-ts-LC3" class="blob-code blob-code-inner js-file-line">})</td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L4" class="blob-num js-line-number" data-line-number="4"></td>
+              <td id="file-trimmedinput-ts-LC4" class="blob-code blob-code-inner js-file-line"><span
+                class="pl-k">class</span> <span class="pl-en">TrimmedInput</span> ({{'{'}} </td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L5" class="blob-num js-line-number" data-line-number="5"></td>
+              <td id="file-trimmedinput-ts-LC5" class="blob-code blob-code-inner js-file-line"> @<span class="pl-en">HostBinding</span>()
+                value<span class="pl-k">:</span> <span class="pl-c1">string</span>;
+              </td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L6" class="blob-num js-line-number" data-line-number="6"></td>
+              <td id="file-trimmedinput-ts-LC6" class="blob-code blob-code-inner js-file-line"> @<span class="pl-en">HostListener</span>(<span
+                class="pl-s"><span class="pl-pds">"</span>input<span class="pl-pds">"</span></span>, <span class="pl-s"><span
+                class="pl-pds">"</span>$event.target.value<span class="pl-pds">"</span></span>)
+              </td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L7" class="blob-num js-line-number" data-line-number="7"></td>
+              <td id="file-trimmedinput-ts-LC7" class="blob-code blob-code-inner js-file-line"> onChange(<span
+                class="pl-v">updatedValue</span><span class="pl-k">:</span> <span class="pl-c1">string</span>) ({{'{'}}
+              </td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L8" class="blob-num js-line-number" data-line-number="8"></td>
+              <td id="file-trimmedinput-ts-LC8" class="blob-code blob-code-inner js-file-line"><span
+                class="pl-c1">this</span>.<span class="pl-c1">value</span> <span class="pl-k">=</span> <span
+                class="pl-smi">updatedValue</span>.<span class="pl-en">trim</span>();
+              </td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L9" class="blob-num js-line-number" data-line-number="9"></td>
+              <td id="file-trimmedinput-ts-LC9" class="blob-code blob-code-inner js-file-line"> }</td>
+            </tr>
+            <tr>
+              <td id="file-trimmedinput-ts-L10" class="blob-num js-line-number" data-line-number="10"></td>
+              <td id="file-trimmedinput-ts-LC10" class="blob-code blob-code-inner js-file-line">}</td>
+            </tr>
+            </tbody>
+          </table>
+        </blockquote>
+
+        <p>Ta sẽ tìm hiểu cái này trong 1 bài khác nhé./</p>
+
+
+        <h5>Components are Self-Describing</h5>
+
+        <p>Thật vậy, cùng nhìn vào component, ta dễ dàng nhận thấy những điếm sau:</p>
+
+        <ul>
+          <li>Component biết làm cách nào để tương tác với host element.</li>
+          <li>Component biết làm sao để render nó</li>
+          <li>Component có thể cấu hình các dependency injection</li>
+          <li>Component có thể khai báo các public API như @Input và @Output</li>
+        </ul>
+
+        <p>Đây chính là điều đặc biệt quan trọng trong Concepts của Angular. Toàn bộ các component này đều có thể được
+          nạp vào như 1 Application. Và không có bất cứ 1 ngoại lệ - tức là không hề có 1 component nào mà không như thế.
+          Ngoài ra, ta có thể load bất cứ component nào thông qua router outlet. Kết quả là ta có thể có viết thành 1 component
+          có thể khởi dộng như 1 application, load như 1 router, hoặc sử dụng trực tiếp trong 1 component khác. Chính điều này
+          làm giảm số lượng API cần học, cũng như làm các component có thể tái sử dụng nhiều hơn.
+        </p>
+
+        <h5>
+          What About Directives?
+        </h5>
+
+        <p>Nói 1 cách khác, 1 Component là 1 directives có template (hoặc cũng có thể ko :)). Về directives này thì ta
+          sẽ tìm hiểu thêm ở các bài sau nhé.</p>
+
+        <p>Tóm lại, Component là fundamental building bliock trong Angular App với những đặc điểm sau:</p>
+
+        <ul>
+          <li>Input + Output</li>
+          <li>LifeCycle</li>
+          <li>Self Describing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Dependence Injection
+      </div>
+
+      <div class="card-body">
+        <h5>Dependence Injection</h5>
+
+        <p>Ý tưởng của DI trong Angular rất đơn giản. Nếu bạn có 1 compoentn mà phục thuộc vào 1 Service, bạn không cần
+          create service đó cho chính bạn, thay vào đó bạn sẽ request tới framework, và frameworks sẽ tự cung cấp service đó cho bạn.</p>
+
+        <p>Ý tưởng này cũng tương tự như trong pattern DI vậy. Nhờ đó mà chúng ta phụ thuộc vào các interface hơn là phụ thuộc vào các
+          Implement của nó.</p>
+
+        <h5>Single API - Singleton</h5>
+
+        <p>Một component sẽ được khai báo các di service ngay trong constructor của nó. Khi 1 component được tạo, căn cứ
+          vào các khai báo mà Framework sẽ provide chính xác service đó đến component đó.</p>
+
+        <p>Một điều quan trọng ở đây đó là Angular sử dụng Singleton Pattern cho các service của mình. Điều này giúp cho
+          các dữ liệu được chia sẻ đồng bộ và tiết kiệm tài nguyên cho hệ thống.</p>
+
+        <p>Sau đây là các tóm tắt lại của cái DI này.</p>
+
+        <ul>
+          <li>Ưu điểm của DI, phụ thuộc vào interface hơn là implement</li>
+          <li>Code lỏng lẻo hơn</li>
+          <li>Quan trọng cho testing. Chỉ test các implement mà ko cần quan tâm tới các vị trí sử dụng nó.</li>
+          <li>Angular sử dụng Singleton cho DI của mình. Hoặc cũng có thể sử dụng multiple service tùy trường hợp.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Property Bindings
+      </div>
+
+      <div class="card-body">
+        <h5>Property Bindings</h5>
+
+        <p>Angular sử dụng Properties Binding để tự động sync component tree với modal, và DOM với Component tree.</p>
+
+        <p>Chúng ta đều biết rằng, Angular Application luôn sẽ có 1 component tree. Với mỗi tree, ta có 1 object model.</p>
+
+        <p>Quay lại bài học trước, ta luôn ghi nhớ rằng, trong Angular, nhiệm vụ của Component đó là render dữ liệu. Và cái
+          dữ liệu mà component nắm giữ, ta gọi đó là các Object Model ở trên.</p>
+
+        <p>Component dùng để render data. Việc render dữ liệu đó được thực hiện thông qua các ng-directives sẽ được tìm hiểu trong
+          bài sau. Ở phần này ta chỉ tập trung vào vấn đề chính, tương tác thông qua các Component thông qua @input và @output.</p>
+
+        <p>Khi có 1 sự thay đổi trên Component, cụ thể đó là object data, ta không cần thiết phải tìm ra các thay đổi và cập nhật nó
+          thủ công. Thay vào đó, ta muốn Application tự reflect và cập nhật nó 1 cách tự động. Đó chính là mục đích của Properties
+          Binding.</p>
+
+        <p>Khi có 1 thông báo thay đổi, ANgular sẽ check tất cả các component có trong component tree. Cụ thể hơn, nó sẽ kiểm tra mọi
+          properties binding, every square [....], every curly braces ( {{'{{'}}...{{'}'}}{{'}'}} ). và cập nhật lại các components này.
+          Nó cũng cập nhật lại cây DOM để phù hợp với trạng thái của Component Tree.</p>
+
+        <p>Lưu ý rằng, chỉ duy nhất các input properties của component có thể được update bằng properties binding.</p>
+
+        <h5>Zones</h5>
+
+        <p>Nếu trong Angular 1, ta cần sử dụng scope $.apply để thông báo cho Angular cập nhật lại cây DOM, thì ở Angular 2,
+          ta không cần quan tâm tới điều đó. Angular 2 sử dụng Zones  để biết khi nào cần kiểm tra sự thay đổi này.</p>
+
+        <p>Vì ta ko làm việc với Angular 1 nên ta cũng chả cần đi sâu vào điều này làm gì. Chỉ cần biết là đối với Angular 2
+          Framework tự detect sự thay đổi và ta không cần làm bất cứ điều gì để thông báo cho Angular cập nhật lại cây DOM đó hết.</p>
+
+
+        <p>Tóm lại:</p>
+
+        <ul>
+          <li>Angular sử dụng Properties Bindings để syns component tree và model, và DOM với component tree.</li>
+          <li>Angular sử dụng Zones để bieetts khi nào nên làm điều đó.</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Deploy Angular
+      </div>
+      <div class="card-body">
+        <p>Sau khi build xong Angular, giờ ta tiến tới build một Java Web để load nó lên theo đúng chuẩn nào.</p>
+
+        <p>Giả sử ta có cấu trúc thư mục như sau:</p>
+
+        <blockquote>
+          <img class="img-fluid" src="assets/angular-resources/structure_project.PNG" width="100%">
+        </blockquote>
+
+        <p>Nguyên tắc của Spring Boot đó là toàn bộ các file trong folder <b>/src/main/resources/static</b> thì sẽ được public.</p>
+
+        <p>Do đó, ta quyết định sẽ copy toàn bộ các file dist ở trên kia về đây.</p>
+
+        <p>Vì ta copy toàn bộ vào đây và ko có subfolder, nên cái baseHref là ./. Nếu như ta sử dụng 1 subfolder để chứa, ví dụ như
+        front-end chẳng hạn, thì khi đó baseRef của ta phải là ./front-end/. Lưu ý điều này.</p>
+
+        <blockquote>
+          ng build --prod --output-path ../src/main/resources/static --base-href ./
+        </blockquote>
+
+        <p>Để dễ dàng run nó mà ko phải chạy lại đoạn command trên nhiều lần, ta sử dụng cái package json để lưu lại.
+        Do đó, ta vào file package.json và sửa lại như sau.</p>
+
+        <blockquote>
+          "scripts": {{'{'}}
+            "ng": "ng",
+            "start": "ng serve",
+            "build": "ng build --prod --output-path ../src/main/resources/static --base-href ./",
+            "test": "ng test",
+            "lint": "ng lint",
+            "e2e": "ng e2e"
+          },
+        </blockquote>
+
+        <p>Chạy <b>npm run build</b> để xem kết quả.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Tóm lại, trong lesson này ta cần ghi nhớ các điểm sau:</p>
+
+        <p>Directives, đặc biệt là Component, là thành phần quan trong nhất của Angular. Chúng là các khối cơ bản nhất của Angular/</p>
+
+        <p>Component có những dặc tính như self desribing, describle public API thông qua các @Input @output.
+          describe private API thông qua các lifecycle và tương tác với host element như thế nào.</p>
+
+        <p>Một vài component phụ thuộc vào component khác, và các service. Các DI Module sẽ cung cấp các thành phần này,
+          và xây dựng lên component tree, là phần quan trọng trong Angular.</p>
+
+        <p>Cuối cùng, properties binding và zone tạo nên interactive trong Angular 2.</p>
+
+        <p>Trên đây là các core của Angular 2. Hiểu rõ về nó sẽ giúp ta xây dựng nên những ứng dụng Angular đúng cách. Tuy nhiên, từng đó thôi\
+          là chưa đủ. Ta cần phải tìm hiểu thêm về 1 danh sách các module tích hợp cùng để phát triển Angular bao gồm:</p>
+
+
+        <ul>
+          <li>A form-handling or input-handling module</li>
+          <li>An http client</li>
+          <li>
+            A powerful router
+          </li>
+          <li>
+            Support for animations
+          </li>
+          <li>
+            A suite of UI components, called material components
+          </li>
+          <li>
+            Tools for writing unit, e2e, and performance tests
+          </li>
+        </ul>
+
+        <p>Đó cũng là phần tiếp theo của chương trình này.</p>
+      </div>
+    </div>
+  </div>
+</div>

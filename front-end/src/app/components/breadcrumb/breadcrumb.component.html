@@ -1,0 +1,16 @@
+<nav aria-label="breadcrumb" *ngIf="listItem.length > 0">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+
+    <ng-container *ngFor="let item of listItem; let i = index">
+      <li class="breadcrumb-item"*ngIf="i < listItem.length - 1">
+        <a [routerLink]="item.routerLink">{{item.name}}</a>
+      </li>
+
+      <li *ngIf="i == listItem.length - 1" class="breadcrumb-item active" aria-current="page">
+        {{item.name}}
+      </li>
+    </ng-container>
+  </ol>
+</nav>
+

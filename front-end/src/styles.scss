@@ -11,14 +11,25 @@ body{
 .card{
   .card-header {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 1.375rem;
   }
 
   .card{
     > .card-header{
-      font-size: 18px;
+      font-size: 1.125rem;
     }
   }
+}
+
+.overview-container {
+  font-size: 1.1rem;
+  background: #343a40;
+  color: #FFF;
+  padding: 1em;
+}
+
+.rounded.box-shadow{
+  border: 1px solid #343a40;
 }
 
 

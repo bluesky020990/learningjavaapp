@@ -182,47 +182,58 @@
           <button class="nav-link" mat-button [matMenuTriggerFor]="design_pattern">Design Pattern</button>
 
           <mat-menu #design_pattern="matMenu">
+            <button mat-menu-item [routerLink]="['/design-pattern/overview']">Overview</button>
+
             <button mat-menu-item [matMenuTriggerFor]="creational_pattern">Creational Pattern</button>
             <button mat-menu-item [matMenuTriggerFor]="structural_pattern">Structural Pattern</button>
             <button mat-menu-item [matMenuTriggerFor]="behavoral_pattern">Behavioral Pattern</button>
+
+            <button mat-menu-item [matMenuTriggerFor]="implement_pattern">Advance</button>
+
             <button mat-menu-item [matMenuTriggerFor]="micro_service">Micro Service</button>
           </mat-menu>
 
           <mat-menu #creational_pattern="matMenu">
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Factory Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Abstract Factory Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Singleton Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Builder Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Prototype Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/factory']">Factory Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/abstract-factory']">Abstract Factory Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/singleton']">Singleton Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/builder']">Builder Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/prototype']">Prototype Pattern</button>
           </mat-menu>
 
           <mat-menu #structural_pattern="matMenu">
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Adapter Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Bridge Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Composite Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Decorate Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/adapter']">Adapter Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/bridge']">Bridge Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/composite']">Composite Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/decorate']">Decorate Pattern</button>
 
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Facade Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Flyweight Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Proxy Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/facade']">Facade Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/flyweight']">Flyweight Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/proxy']">Proxy Pattern</button>
           </mat-menu>
 
           <mat-menu #behavoral_pattern="matMenu">
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Chain of Responsibility Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Command Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/chain-of-responsibility']">Chain of Responsibility Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/command']">Command Pattern</button>
 
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Interpreter Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Iterator Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Mediator Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Memento Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/interpreter']">Interpreter Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/iterator']">Iterator Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/mediator']">Mediator Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/memento']">Memento Pattern</button>
 
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Observer Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">State Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Template Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Strategies Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">Visitor Pattern</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-core']">DI Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/observer']">Observer Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/state']">State Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/template']">Template Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/strategies']">Strategies Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/visitor']">Visitor Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/dependence-injection']">DI Pattern</button>
           </mat-menu>
+
+          <mat-menu #implement_pattern="matMenu">
+            <button mat-menu-item [routerLink]="['/design-pattern/dependence-injection']">DI Pattern</button>
+            <button mat-menu-item [routerLink]="['/design-pattern/mcv']">MCV Pattern</button>
+          </mat-menu>
+
 
           <mat-menu #micro_service="matMenu">
             <button mat-menu-item [routerLink]="['/micro-service/overview']">Overview</button>

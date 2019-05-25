@@ -1,0 +1,522 @@
+<h3 class="mb-3">Micro Service</h3>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Monilithis
+      </div>
+
+      <div class="card-body">
+        <p>Trước khi tìm hiểu về Micro Service, ta cùng xem lại khái niệm của Monolithic Application</p>
+
+        <p>Về bản chất, Monolithic là một Enterprise, nó gom toàn bộ source code lại 1 chỗ và build thành 1 cục chà bá.</p>
+
+        <p>Nói gom lại 1 cục cũng ko hẳn, nó có thể được xây dựng theo các module, load balance theo kiểu distributed chẳng hạn.</p>
+
+        <p>Về cái này thì ta chỉ cần hiểu như vậy là đủ.</p>
+
+        <p>Những ưu điểm, nhược điểm của nó là gì?</p>
+
+        <p>Về ưu điểm, vì nó viết ở 1 cục nên nó rất dễ kiểm soát. Đảm bảo tính đồng nhất trong ứng dụng. Đồng thời, việc deploy
+          của nó cũng khá nhanh và tiết kiệm</p>
+
+        <p>Về nhược điểm, vì quá gắn kết với các modular khác, nên nó trở nên cồng kềnh khó kiểm soát. Vì vậy monolithic chỉ
+          thích hợp với các ứng dụng nhỏ, lượng record ít và cũng không quá phức tạp</p>
+
+        <p>Khi ta muốn update một feature, một modular, ta phải deploy lại cả hệ thống.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Service Oriented Architecture
+      </div>
+
+      <div class="card-body">
+        <p>______</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Micro Service
+      </div>
+
+      <div class="card-body">
+        <p>Monilithic có một hạn chế kinh khủng, đó là khi ứng dụng nhỏ thì ko sao, nhưng khi ứng dụng trở nên lớn thì nó trở
+          nên khó kiểm soát, khó để thêm/ sửa đổi 1 feature vì nó ảnh hưởng tới rất nhiều bộ phận, đồng thời trở nên rắc rối, và gây
+          đau khổ cho những người đến sau.</p>
+
+        <p>Micro service ra đời để giải quyết vấn đề đó. MicroService tiếp cận theo hướng chia ứng dụng thành các service nhỏ.
+          Mỗi service là độc lập, nó có data riêng của mình, có server riêng cho mình và tự quản lý mọi thứ của mình. Nó giao tiếp
+          với các ứng dụng khác thông qua các API.</p>
+
+        <p>Nhược điểm của nó là mỗi service cần có 1 môi trường độc lập cho riêng nó. Vì vậy mà chi phí cho server sẽ nhiều hơn.
+          Tuy nhiên, với Cloud thì cái hạn chế đó đã không còn nữa.</p>
+
+        <p>Việc xây dựng ứng dụng theo hướng service, khác với theo hướng modular ở chỗ nào?</p>
+
+        <p>Về mặt bản chất, cả 2 đều xây dựng dựa trên functional. Tuy nhiên, đối với service, nó là 1 ứng dụng độc lập và của riêng nó.
+          Trong khi đó, đối với modular, nó là 1 phần của hệ thống, nó bị ràng buộc với các modular khác, và khó có thể tự đứng 1 mình. </p>
+
+        <p>Service là dộc lập, nên nó dễ dàng build, dễ dàng deploy, thậm chí tới người dùng còn ko nhận thấy quá trình đó. Trong khi đó
+          đối với Modular, vì nó có lien quan tới mấy cái kia, nên nó phải được redeploy cùng với nhau, gây bất tiện cho người dùng.</p>
+
+        <p>Sử khác biệt lớn, đó là 1 module này có thẻ can thiệp vào cac object bên trong 1 hệ thống khác, nếu nó khai báo là public.
+          Nhìn lại các Modifier trong Java, có 4 kiểu, private cho riêng nó, protected cho thằng con, default cho package và public cho toàn bộ.
+          Chính điểm này làm cho Monolithic ko an toàn và dễ bị vô tình can thiệp từ bên ngoài.</p>
+
+        <p>Ngoài ra, trong một enterprice, ta khó có thể sử dụng da ngôn ngữ, đa database được vì lí do giao tiếp giữa chúng. Tất nhiên
+          cũng có cách để làm, nhưng cách đó là ko hiệu quả và không phải là 1 giải pháp đúng đắn.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Scalable của Application
+      </div>
+
+      <div class="card-body">
+        <p>Một Application có thể tiếp cận điều này thông qua mô hình, mà ta gọi là Scalable Cube. Scalable cube thể hiện
+          qua 3 trục Ox, Oy và Oz.</p>
+
+        <p>Ox đại diện cho Horizontal Duplication. Khi một ứng dụng cần mở rộng đẻ đáp ứng yêu cầu của người dùng, đơn giản
+          ta chỉ cần buidl thêm 1 cái load balancer server nữa và cho tụi nó distributed lại với nhau là xong. Người ta còn gọi nó là
+          Load balances requests across multiple instances. (availability)</p>
+
+        <p>Oz đại diện cho Data Partitioning. Nó đạt được điều trên nhờ chia nhỏ data thành từng phàn, sử dụng từng Server để lưu
+          trữ từng bộ phận data, sau đó dùng 1 proxy/ router để chuyển request tới server tương ứng. Người ta còn gọi nó là router
+          request based on an attribute of request. (capacity)</p>
+
+        <p>Oy đại diện cho Functional decomposition. Mặc dù hai cái trên kia giải quyết rất tốt cho 2 vấn đề đó là availability và
+          capacity nhưng khi một ứng dụng trở nên complex, và larger, thì bài toán mở rộng của chúng ta vẫn không giải quyết được.
+          Đó cũng là mục tiêu của Ox, Ý tưởng của cái này là chia nhỏ các chức năng của ứng dụng thành từng phần,
+          mà ta gọi nó là từng service. Bằng cách này, Oy chia nhỏ Monolithic application thành từng set của service, và tại ddoss, ta có thể
+          sử dụng độc lập Ox hoặc Oy để đạt được hiệu quả tối đa.
+        </p>
+
+        <p>Vậy Service là gì. Service là một Mini Application mà được sử dụng để focus vào một chức năng nào đó trong 1 list các feature.
+          Nói cách khác, định nghĩa MicroService Architecture là 1 kiểu kiến trúc có chức năng phân ra 1 application thành 1 set của các service.
+          Khái niệm này chưa hoàn toàn rõ ràng nên ta cùng đi vào tìm hiểu ở phần tiếp theo. Bản chất của MicroService.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bản chất của MicroService.
+      </div>
+
+      <div class="card-body">
+        <p>Một micro service mang trong mình 2 tính chất sau:</p>
+
+        <ul>
+          <li>Microservices as a form of modularity</li>
+          <li>Each service has its own database</li>
+        </ul>
+
+
+        <h4>Microservices as a form of modularity</h4>
+
+        <p>Về mặt bản chất, microservice được xây dựng như 1 modular, chỉ dùng để thực hiện 1 chức năng duy nhất. Nó là 1 modular độc lập,
+          tách biệt với các modular khác, để đảm bảo rằng nó ko bị ảnh hưởng từ một thằng nào đó.</p>
+
+        <p>Microservice architecture sử dụng service như những unit của modular. Mỗi service có 1 APIs của riêng nó, và các service khác
+          có thể tương tác thông qua các API này. Nó khác với java package bởi ở chỗ nó chặn hoàn toàn việc truy cập vào các inner class từ bên ngoài,
+          do đó, boundary của nó cũng chặt chẽ hơn và các quy tắc bảo mật và tính độc lập của nó khó bị phá vỡ hơn.</p>
+
+        <p>Một trong những lợi ích của modular đó là ta có thể sử dụng các Service như các building block, cho phép ta có thể deploy hoặc mở rộng nó
+          mà không bị phụ thuộc vào các serrvice khác.</p>
+
+        <p>Sadlier cũng sử dụng khái niệm services, nhưng rõ ràng tình services của Sadlier nó không đúng, và không chính xác.
+          Nó đúng ra nên gọi là các Business Logic thì đúng hơn. Cách tiếp cận của Sadlier đó là Monolithic, theo hướng
+          data layer chứ ko chính xác là các Service.</p>
+
+        <p>Tóm lại, việc chia thành các Service nhằm hạn chế sự phụ thuộc giữa các modular, khiến business rõ ràng hơn
+          và các nguyên tắc bảo mật đảm bảo hơn.</p>
+
+
+        <h4>Each service has its own database</h4>
+
+        <p>Một điểm khác biệt nữa giữa service đó là nó có 1 database cho riêng nó. Điều này hoàn toàn khác biệt với cách tiếp cận theo
+          hướng Service Oriented Architecture mà ta sẽ nói ở bài sau.</p>
+
+        <p>Mục đích xây dựng các Service đó là để giảm sự  phụ thuộc giữa các Service, và tương tác thông qua các API. Nếu chúng
+          sử dụng cùng 1 database, điều gì sẽ xảy ra? Vô tình một API nào đó của service B update 1 record liên quan đến Data của
+          service A, và vô tình làm cho A bị xâm phạm. Vì vậy, tốt hơn hết là ta nên tách chúng ra các database độc lập để dễ quản lý, và
+          cho dù ta có shutdown 1 máy tính chứa 1 service, thì thằng còn lại cũng ko bị ảnh hưởng.</p>
+
+
+        <p>Vì vậy, mỗi service phải có 1 database độc lập, hoặc 1 schema độc lập, nhằm đảm bảo nó ko bị ảnh hưởng bởi các deadlock của
+          các transaction từ những service khác.</p>
+
+        <p>Trên đây là 2 tính chất quan trọng của Microservice mà lúc áp dụng hệ thống này ta cần quan tâm tới. Phần sau ta sẽ cùng đi v</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bản chất của MicroService.
+      </div>
+
+      <div class="card-body">
+
+        <p>Nếu ta chỉ xem sơ qua microservice, ta sẽ thấy nó khá giống với SOA. Tuy nhiên khi ta đi sâu vào phân tích, ta sẽ thấy
+          nó có những điểm khác biệt.</p>
+
+        <table border="1" width="100%" cellpadding="5" cellspacing="0">
+          <tr>
+            <th style="width: 22%;"></th>
+            <th style="width: 39%;">SOA</th>
+            <th style="width: 39%;">Microservices</th>
+          </tr>
+
+          <tr>
+            <td>Inter-service
+              communication</td>
+            <td>
+              Sử dụng các smart pipe như Enterprise Serivce bus, các heavyweight protocol như
+              <a href="https://viblo.asia/p/khai-niem-co-ban-ve-soap-rest-va-cach-phan-biet-chung-oOVlYyoVl8W" target="_blank">SOAP</a> hay các tiêu chuẩn WS khác.
+            </td>
+            <td>
+              Dump pipes, như message broker, direct service to service comunication, sử dụng các lightweight protocol như là REST hoặc
+              <a href="https://viblo.asia/p/grpc-va-ung-dung-no-trong-microservices-ORNZqo8N50n" target="_blank">gRPC</a>.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Data</td>
+            <td>
+              Global data và shared databases.
+            </td>
+            <td>
+              Data model và database cho mỗi service
+            </td>
+          </tr>
+
+          <tr>
+            <td>Typical service</td>
+            <td>Larger monolithic application</td>
+            <td>Smaller service</td>
+          </tr>
+        </table>
+
+        <p>
+          SOA và MicroService Architecture thường sử dụng các technology stack khác nhau. SOA thường sử dụng các heavyweight
+          technology như SOAP và WS standdard. Nó thường sử dụng ESB, một smart pipe có chức các business và message processing logic
+          để tích hợp các service lại với nhau.</p>
+
+        <p>Trong khi đó MicroService sử dụng các lightweight, open source technology. Các service giao tiếp với nhau thông qua các
+          dumb piper, như các message broker, hoặc các lighweight protocol n hư REST hoặc gRPC.</p>
+
+        <p>
+          SOA và MicroService cũng khác nhau về cách mà nó xử lý dữ liệu. SOA thường sử dụng các global data modal và shared database.
+        </p>
+
+        <p>Ngược lại, đối với MicroService, mỗi service có database của riêng nó. Đồng thời cái data modal cũng của riêng nó chứ ko dùng lại như cái kia.</p>
+
+        <p>Điều này mang tới những ưu điểm gì? Rõ ràng như trong Sadlier, có 1 user, và user đó có 1 list các thông tin cần dùng, thì lúc này vô tình các field thừa thãi
+          kia nó ko cần thiết. Việc trimming tối đa những data ko cần thiết sẽ làm code gọn hơn và clear hơn nhiều.</p>
+
+
+        <p>Điều cuối cùng phân biệt giữa 2 cái kia đó là kích thước của các service. SOA thường đợc sử dụng đẻ tích hợp các ứng
+          dụng lớn, phức tạp, monolithic application. Mặc dù các service trong Microservice không phải lúc nào cũng nhỏ, nhưng chúng lại nhỏ hơn rất nhiều.
+          Kết quả, AOP thường có vài large services, trong khi đó microservices lại thường gồm hàng trăm ứng dụng nhỏ.
+        </p>
+
+        <span class="small">
+            ** global data modal tức là các object của nó được sử dụng trong toàn bộ các service. Ví dụ như cái UserDTO trong hệ thống ở
+            Service A cũng giống với nó khi ở trong Service B vì cả 2 thằng này cùng sử dụng chung 1 POJO/ class để lưu dữ liệu.<br />
+            <br />
+            ** shared database tức là các SOA service sẽ cùng sử dụng chung 1 database và chia sẻ các thông tin của mình với nhau.<br />
+            <br />
+          </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Ưu điểm của MicroService.
+      </div>
+
+      <div class="card-body">
+        <p>Ở trên ta đã nói sơ qua về Microservice. Nhưng ở đây ta sẽ nói chi tiết hơn.</p>
+
+        <ul>
+          <li>It enables the continuous delivery and deployment of large, complex applications.</li>
+          <li>Services are small and easily maintained.</li>
+          <li>Services are independently deployable.</li>
+          <li>Services are independently scalable.</li>
+          <li>The microservice architecture enables teams to be autonomous.</li>
+          <li>It allows easy experimenting and adoption of new technologies.</li>
+          <li>It has better fault isolation.</li>
+        </ul>
+
+        <p>Cùng đi sâu vào chi tiết.</p>
+
+        <h4>ENABLES THE CONTINUOUS DELIVERY AND DEPLOYMENT OF LARGE, COMPLEX APPLICATIONS</h4>
+
+        <p>Một trong những ưu điểm quan trọng nhất của MicroService đó là nó cho phép ta continuous delivery and deployment một
+          Application lớn và phức tạp. </p>
+
+        <p>Đây là 3 cách mà MicroService enable CD/CD:</p>
+
+        <dl>
+          <dt>It has the testability required by continuous delivery/deployment</dt>
+          <dd>Automatic Testing là chìa khóa của CD/CD. Các serrvice trong MicroService chỉ là các small relative, vì vậy việc
+            automation test sẽ có thể được viết dễ dàng và thực thi nhanh chóng. Do đó ta sẽ hạn chế đc khá nhiều lỗi của cái này.
+            Điều này khác với trong một ứng dụng của Monolithic, giả sử ta cần thay đổi 1 class, ta phải test lại toàn bộ các
+            class có liên quan, và các class này lại được sử dụng ở trong các Service khác nữa. Do đó, sẽ khó để kiểm soát tính an toàn của nó.
+          </dd>
+
+          <dt>It has the deployability required by continuous delivery/deployment</dt>
+          <dd>Mỗi Service có thể deploy độc lập mà ko phụ thuộc vào các service khác. Giả sử ta có 1 service cần deploy lại,
+            ta chỉ cần quan tâm tới cái service của mình mà ko cần quan tâm tới các service khác. Điều này khiến cho việc deploy dễ dàng
+            và thường xuyên cho bản Production mà ko ảnh hưởng đến dịch vụ cung cấp.</dd>
+
+          <dt>It enables development teams to be autonomous and loosely coupled</dt>
+
+          <dd>Thật vậy, Vì bản chất của MicroService là chia thành những small service. DO đó ta có thể tổ chức nhân sự thành tổ
+            chức nhỏ. MỖi team chịu trách nhiệm phát triển và triển khai cho một hoặc vài dịch vụ liên quan. Điều này đẩy nhanh hiệu suất làm việc. \
+            mà vẫn đảm bảo được chất lượng sản phẩm. Thử nghĩ xem, nếu bỏ 1 member mới vào 1 hệ thống phức tạp, 1 dòng code bậy của nó cũng có thể
+            làm cho mọi thứ trở nên tồi tệ, và chính bản thân của Devloper cũng ko dám/ lường hết được ảnh hưởng của sự thay đổi/bổ sung của mình
+            vì ko thể hiểu hết toàn bộ hệ thống.</dd>
+        </dl>
+
+        <p>Còn dưới đây là những ưu điểm mà CD/CD mang lại</p>
+
+        <ul>
+          <li>Nó giảm thời gian tiếp thị. Thời gian tiếp thị ở đây là thời gian mà sản phẩm sẵn sằng để giới thiệu với khách hàng.
+            Điều này cho phép company có thể nhận được những feedback nhanh chóng từ phía khách hàng, và điều này có thể giúp công
+            ti định hướng kinh doanh và nâng cao chất lượng sản phẩm.</li>
+
+          <li>Nó cho phép company cung cấp các loại dịch vụ mà khách hàng mong đợi 1 cách nhanh chóng. Ưu điểm của Micro Service đó là việc start 1 Service
+            lên rất nhanh</li>
+
+          <li>Sự hài lòng của nhân viên sẽ tăng cao khi mà họ dành nhiều thời gian trong việc phát triển các feature giá trị
+            hơn là fighting fire (chữa cháy, fix bug này nọ).</li>
+        </ul>
+
+        <p>Chinh những điều này đã giúp cho MicroService Architecture trở thành bảng định hướng cho bất kì doanh nghiệp nào phụ thuộc
+          vào công nghệ mà như BV nói, Change Business to Technology (But cannot reach it :))</p>
+
+        <h4>EACH SERVICE IS SMALL AND EASILY MAINTAINED</h4>
+
+        <p>Một trong số những lợi ích của MicroService Architecture đó là mỗi service chỉ là có quan hệ nhỏ. Chính điều này giúp cho
+          các Developer dễ đọc code hơn, và làm việc hiệu quả hơn. MỖi Service thường được start nhanh hơn so với các Monolithic lớn, và
+          điều này giúp các developer làm việc hiệu quả hơn và tăng nhanh tốc độ triển khai.</p>
+
+
+        <h4>SERVICES ARE INDEPENDENTLY SCALABLE</h4>
+
+        <p>Việc tách các service thành từng unit độc lập cho phép ta sử dụng X-Axis Clonning và Z-Axis Partition một cách dễ dàng. Ngoài ra
+          các Service này có thể triển khai trên các phần cứng độc lập với những yêu cầu tài nguyên của riêng nó. Cứ nghĩ đến việc
+          bạn có thể thoải mái build 1 ứng dụng nodejs, làm việc với 1 ứng dụng java, hay ruby on rails mà ko cần bận tâm về việc coordinate
+          giữa chúng, là đã thấy tuyệt rồi. Chính điều này giúp ta tận dụng được sức mạnh ngôn ngữ cho việc triển khai.</p>
+
+        <h4>BETTER FAULT ISOLATION</h4>
+
+        <p>Việc một service bị lỗi sẽ ko ảnh hưởng tới các service khác, do đó, hệ thống vẫn hoạt động bình thường. Mà thực ra cũng ko
+          hẳn là bình thường khi có 1 cái đã die rồi, nhưng ít ra chỉ là die cục bộ chứ ko phải die cả hệ thống như cái Monolithic. Tuy nhiên,
+          điều này cũng không ảnh hưởng nhiều lắm nếu ta có những backup phù hợp như clonning chẳng hạn.</p>
+
+        <h4>EASILY EXPERIMENT WITH AND ADOPT NEW TECHNOLOGIES</h4>
+
+        <p>Một ưu điểm nữa của MicroService đó là nó loại bỏ long tẻm commiment với các technology stack. Về nguyên tắc, khi deploy một service,
+          developer có thể thoải lựa chọn bất cứ ngôn ngữ nào, bất cứ system nào cho service của mình. Nó khác với Monolithic, ta cần phải
+          lựa chọn 1 ngôn ngữ phù hợp nhất, 1 framework phù hợp nhất cho toàn bộ ứng dụng và tiến hành triển khai dựa trên đó. Điều này khiến hệ
+          thống trở nên cứng nhắc, vì những ưu điểm của ngôn ngữ đó trong Service này có thể trở thành nhược điểm trong những service khác.</p>
+
+        <p>Thêm vào đó, vì các service là nhỏ, nên khi ta gặp thất bại trong việc developer cái này, ta có thể thoải mái bỏ nó và sử dụng
+          1 platform khác mà ta cảm thấy phù hợp hơn. Điều này là không thể đối với các Monolithic service.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Drawbacks of the microservice architecture
+      </div>
+
+      <div class="card-body">
+        <p>Không có cái gì là hoàn hảo. Nếu nhược điểm của Monolithic đó là sự cồng kềnh và phức tạp, thì MicroService cũng có những nhược điểm sâu bên
+          trong nó. Cùng tìm hiểu kĩ.</p>
+
+        <ul>
+          <li>Finding the right set of services is challenging.</li>
+          <li>Distributed systems are complex, which makes development, testing, and deployment difficult.</li>
+          <li>Deploying features that span multiple services requires careful coordination.</li>
+          <li>Deciding when to adopt the microservice architecture is difficult.</li>
+        </ul>
+
+        <h4>FINDING THE RIGHT SERVICES IS CHALLENGING</h4>
+
+        <p>Nếu nhìn từ khía cạnh của Service thì việc implement nó cũng như implement một ứng dụng độc lập nên sẽ ko có gì là khó khăn cả.
+          Cái khó khăn khi sử dụng MicroService đó là việc phân chia ra các Service như thế nào để nó ko phù thuộc với nhau, hay nói
+          cách khác đó là "Find the right set of services".</p>
+
+        <p>Việc decomposing system thành các service không có một thuật toán tuyệt vời nào cả, nó thường là cảm quan và do việc phân tích, nhận
+          định của các Architector mà thôi. Nhưng nếu như ta không phân tích đúng và không phân chia đúng, thì thứ ta nhận được không phải
+          là một MicroService, mà là một hệ thống distributed với các service phải được triển khai cùng nhau, được gọi là Distributed monolith
+          vừa có nhược điểm của cả Monolithic và của cả MicroSerrvice.
+        </p>
+
+        <h4>DISTRIBUTED SYSTEMS ARE COMPLEX</h4>
+
+        <p>Distributed là một phần của MicroService. Vì vậy, khi xây dựng một hệ thống MicroService, ngoài xây dựng các service, ta cũng cần
+          xây dựng cho đúng chuẩn của một hệ thống distributed phức tạp. Service phải sử dụng một cơ chế truyền thông liên tiến trình
+          (interprocess communication mechanism).</p>
+
+
+        <p>Ý nghĩa của cái khái niệm này đó là việc truyền 1 request theo hình thức message giữa các service.
+          Nghe là thấy phức tạp rồi phải ko nào. Trong khi đối với cái Monolithic thì các giao tiếp bên trong nó được gọi
+          trực tiếp và thông qua các object nên đảm bảo về mặt tốc độ cũng như tính dễ dàng (vì được chuẩn hóa từ đầu).
+          Thêm vào đó, Service phải được handle để xử lý 1 phần lỗi hoặc thỏa thuận với các remote service hoặc khi có 1
+          service nào đó unavailable hoặc có đợ trễ cao. Chính những điều này đòi hỏi phải thay đổi cách thức lập trình,
+          còn đường đi phải xa hơn và phức tạp hơn, đồng thời phải hiểu và nắm  vững các khái niệm của concurrence.</p>
+
+        <p>Một điểm nữa, đó là việc implement user-case trong MicroService khác biệt hoàn toàn so với trong Monolithic. Mỗi service
+          có một data riêng, điều này khiến cho việc implement transaction và query trở thành 1 thách thức không nhỏ. Và ta cần 1 công cụ
+          SAGA để giải quyết bài toán consistency data across services.</p>
+
+
+        <p>Các IDE và các development tool đều chủ yếu forcus vào các Monolithic service và không cung cấp các công cụ rõ ràng để support
+          cho việc phát triển ứng dụng phân tán. Chính điều này khiến cho việc viết các automation test cho toàn bộ hệ thống trở nên khó khăn hơn.
+          Do đó, điều này đòi hỏi tổ chức nhân sự phải có năng lực nhất định trong việc phân tích thì mới có thể xây dựng một MicroService
+          thành công được.</p>
+
+        <p>Vì tính phức tạp của nó, nên ta cần phải xây dựng các công cụ tự động để kiểm tra phân tích các operation của hệ thống như sau:</p>
+
+        <ul>
+          <li>Automated deployment tooling, like Netflix Spinnaker</li>
+          <li>An off-the-shelf PaaS, like Pivotal Cloud Foundry or Red Hat OpenShift</li>
+          <li>A Docker orchestration platform, like Docker Swarm or Kubernetes</li>
+        </ul>
+
+        <h4>DEPLOYING FEATURES SPANNING MULTIPLE SERVICES NEEDS CAREFUL COORDINATION</h4>
+
+        <p>Các MicroService là độc lập với nhau, nhưng chúng không hoàn toàn là không có liên quan tới nhau. Có những vấn đề khiến cho giữa
+          chúng có 1 sự phụ thuộc nhất định. Sự phụ thuộc này khiến ta phải có sự phối hợp cẩn thận giữa các team trong việc phát triển
+          từng service. Và đồng thời phải tạo một kế hoạch triển khai để deploy service dựa trên sự phụ thuộc giữa chúng. Trong Monolithic thì
+          ko cần, vì nó sẽ build 1 cục.</p>
+
+        <p>DECIDING WHEN TO ADOPT IS DIFFICULT</p>
+
+        <p>Một vấn đề khác của Microservice đó là quyết định lúc nào hệ thống của ta cần sử dụng Architecture này. Khi bắt đầu xây dựng 1 application,
+          ban đầu ta sẽ không gặp những vấn đề này. Do đó, việc áp dụng một microService là hoàn toàn không phù hợp. Nó không những không giải quyết
+          tốt hơn các business hiện tại, mà nó còn khiến cho việc deploy ứng dụng trở nên chậm chạp khi phải phát triển quá nhiều Service 1 cách độc lập,
+          tốn nhiều thời gian. Đó chính là vấn đề của hầu hết cách doanh nghiệp vừa xây dựng và phát triển, khi thời gian là chìa khóa quan trọng
+          nhất cho sự thành công. Sử dụng microService cho những ứng dụng ban đầu với Business không quá phức tạp sẽ đánh mất lợi thế này. Do đó,
+          gần như toàn bộ các Company sẽ lựa chọn một Monolihic architecture cho ứng dụng của mình lúc ban đầu.</p>
+
+        <p>Tuy nhiên, sau này, khi các nghiệp vụ dần trở nên phức tạp, thì lúc này MicroService lại đáng được xem xét để áp dụng vào. Và lúc này,
+          ta cần tìm hiểu về việc tái cấu trúc một ứng dụng Monolithic thành MicroService.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        The Microservice architecture pattern language
+      </div>
+
+      <div class="card-body">
+        <p></p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Tóm lại, ta cần nắm các diều sau:</p>
+
+        <p>Mỗi một architecture đều có chỗ đứng của nó trong việc xây dựng một ứng dụng. Monolithic thích hợp với các ứng dụng nhỏ,
+          AOP thích hợp cho các ứng dụng lớn, và là sự mở rộng/ tập hợp lại của nhiều Monolithic ở trên, còn MicroService thích
+          hợp cho các ứng dụng lớn và phức tạp, trong đó có sự thay đổi hoặc cập nhật thường xuyên.</p>
+
+        <p>Mỗi Architecture đều có các ưu điểm, khuyết điểm của riêng nó. Điều đó khiến ta cần cẩn thận lựa chọn Architecture nào cho phù hợp
+          và tiện cho việc sửa đổi sau này.</p>
+
+        <p>MircoService cho phép doanh nghiệp cung cấp cách dịch vụ 1 cách nhanh chóng, điều mà các Monolothic hay AOP gặp rắc rối, bởi vì nó
+          quá lớn đến mức cần nhiều thời gian đề hoàn thành trước khi provide cho khách hàng. Đây cũng là xu hướng
+          <a href="https://www.forbes.com/sites/sunniegiles/2018/04/30/how-to-fail-faster-and-why-you-should/#78b42618c177" target="_blank">>Fail Faster</a> hiện này của
+          Business.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+
+      </div>
+
+      <div class="card-body">
+        <h4>RESTful HTTP Method</h4>
+
+        <ul>
+          <li><code>GET /tickets</code> - Nhận một list các tickets</li>
+          <li><code>GET /tickets/12</code> - Nhận một ticket cụ thể</li>
+          <li><code>POST /tickets</code> - Tạo một ticket mới</li>
+          <li><code>PUT /tickets/12</code> - Update ticket #12</li>
+          <li><code>PATCH /tickets/12</code> - Update 1 phần ticket #12</li>
+          <li><code>DELETE /tickets/12</code> - Xoá ticket #12</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

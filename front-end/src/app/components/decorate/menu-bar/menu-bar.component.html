@@ -38,7 +38,6 @@
             <button mat-menu-item [routerLink]="['/angular/ng-core']">Angular Core</button>
             <button mat-menu-item [routerLink]="['/angular/ng-basic']">Angular Basic</button>
             <button mat-menu-item [routerLink]="['/angular/ng-component']">Angular Component</button>
-            <button mat-menu-item [routerLink]="['/angular/ng-directives']">Angular Directive</button>
             <button mat-menu-item [routerLink]="['/angular/ng-service']">Angular Service</button>
             <button mat-menu-item [routerLink]="['/angular/bootstrap']">Bootstrap</button>
             <button mat-menu-item [routerLink]="['/angular/ng-bootstrap']">Ng-Bootstrap</button>
@@ -48,7 +47,7 @@
             <button mat-menu-item [routerLink]="['/angular/ng-dom']">Angular DOM</button>
             <button mat-menu-item [routerLink]="['/angular/ng-data-architecture']">Angular Data Architecture</button>
             <button mat-menu-item [routerLink]="['/angular/ng-testing']">Angular Testing</button>
-
+            <button mat-menu-item [routerLink]="['/angular/ng-help']">Angular Help</button>
           </mat-menu>
         </li>
 
@@ -186,6 +185,7 @@
             <button mat-menu-item [matMenuTriggerFor]="creational_pattern">Creational Pattern</button>
             <button mat-menu-item [matMenuTriggerFor]="structural_pattern">Structural Pattern</button>
             <button mat-menu-item [matMenuTriggerFor]="behavoral_pattern">Behavioral Pattern</button>
+            <button mat-menu-item [matMenuTriggerFor]="micro_service">Micro Service</button>
           </mat-menu>
 
           <mat-menu #creational_pattern="matMenu">
@@ -222,6 +222,11 @@
             <button mat-menu-item [routerLink]="['/angular/ng-core']">Strategies Pattern</button>
             <button mat-menu-item [routerLink]="['/angular/ng-core']">Visitor Pattern</button>
             <button mat-menu-item [routerLink]="['/angular/ng-core']">DI Pattern</button>
+          </mat-menu>
+
+          <mat-menu #micro_service="matMenu">
+            <button mat-menu-item [routerLink]="['/micro-service/overview']">Overview</button>
+            <button mat-menu-item [routerLink]="['/micro-service/decompose-service']">Decompose Service</button>
           </mat-menu>
         </li>
 

@@ -12,6 +12,11 @@ public class HelloController {
         return "index";
     }
 
+    @RequestMapping({ "/english/**", "/angular/**", "/java/**", "/spring-fw/**" })
+    public String forwardAngular() {
+        return "index";
+    }
+
     @RequestMapping("/hello")
     public ModelAndView hello() {
         return new ModelAndView("home");

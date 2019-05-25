@@ -300,12 +300,15 @@
           "scripts": {{'{'}}
             "ng": "ng",
             "start": "ng serve",
-            "build": "ng build --prod --output-path ../src/main/resources/static --base-href ./",
+            "build": "ng build --prod --output-path ../src/main/resources/static --base-href /",
             "test": "ng test",
             "lint": "ng lint",
             "e2e": "ng e2e"
           },
         </blockquote>
+
+        <p>Lưu ý ở đây, ta phải chọn là base-href / cho cả file index lẫn file package.json. Nếu ko khi build ra nó sẽ có cái
+        lỗi gì đó rất khó chịu nhé.</p>
 
         <p>Chạy <b>npm run build</b> để xem kết quả.</p>
       </div>

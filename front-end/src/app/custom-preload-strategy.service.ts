@@ -14,13 +14,13 @@ export class CustomPreloadStrategyService implements PreloadingStrategy {
   preload(route: Route, load: () => Observable<any>): Observable<any> {
     if (route.data && route.data['preload']) {
       if (route.data['delay']) {
-        return load(); // ????
+        return load();
       } else {
         return load();
       }
 
     } else {
-      return from(null);
+      return new Observable(null);
     }
   }
 }

@@ -11,28 +11,22 @@ import {SpringFrameworkComponent} from './spring-framework/spring-framework.comp
 import {HibernateComponent} from './hibernate/hibernate.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/angular', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
-  {
-    path: 'angular',
-    loadChildren: './angular/angular.module#AngularModule',
-    data: {preload: true, delay: true}
-  }, {
-    path: 'java',
-    loadChildren: './java/java.module#JavaModule',
-    data: {preload: false, delay: false}
-  }, {
-    path: 'english', component: EngResourceComponent,
-    children: [
+  { path: '', redirectTo: '/angular', pathMatch: 'full'},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'angular',         loadChildren: './angular/angular.module#AngularModule',                        data: {preload: true,  delay: true} },
+  { path: 'java',            loadChildren: './java/java.module#JavaModule',                                 data: {preload: false, delay: false} },
+  { path: 'design-pattern',  loadChildren: './design-pattern/design-pattern.module#DesignPatternModule',    data: {preload: false, delay: true}},
+  { path: 'micro-service',   loadChildren: './micro-service/micro-service.module#MicroServiceModule',       data: {preload: true,  delay: true}},
+  { path: 'spring-framework', component: SpringFrameworkComponent},
+  { path: 'hibernate', component: HibernateComponent},
+
+  { path: 'english', component: EngResourceComponent, children: [
       {path: '', redirectTo: 'overview', pathMatch: 'full'},
       {path: 'overview', component: EngOverviewComponent},
       {path: 'pronunciation', component: EngPronunciationComponent},
       {path: 'vocabulary-workshop', component: EngVocabularyWorkshopComponent},
     ]
   },
-  { path: 'design-pattern', loadChildren: './design-pattern/design-pattern.module#DesignPatternModule' },
-  { path: 'spring-framework', component: SpringFrameworkComponent},
-  { path: 'hibernate', component: HibernateComponent}
 ];
 
 @NgModule({

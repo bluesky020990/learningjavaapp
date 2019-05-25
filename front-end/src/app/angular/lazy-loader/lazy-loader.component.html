@@ -163,35 +163,42 @@
 
         <p>Cách làm như sau:</p>
 
-        <h4>Custom lại router bằng cách thêm các data vào.</h4>
+        <h5>Custom lại router bằng cách thêm các data vào.</h5>
 
         <blockquote>
-          const routes: Routes = [
-          {{'{'}}path: '', redirectTo: '/angular', pathMatch: 'full'},
-          {{'{'}}path: 'dashboard', component: DashboardComponent},
-          {{'{'}}
-            path: 'angular',
-            loadChildren: './angular/angular.module#AngularModule',
-            data: {{'{'}}preload: true, delay: true}
-            }, {{'{'}}
-          path: 'java',
-          loadChildren: './java/java.module#JavaModule',
-          data: {{'{'}}preload: true, delay: false}
+          const routes: Routes = [<br />
+          {{'{'}}path: '', redirectTo: '/angular', pathMatch: 'full'},<br />
+          {{'{'}}path: 'dashboard', component: DashboardComponent},<br />
+          {{'{'}}<br />
+            path: 'angular',<br />
+            loadChildren: './angular/angular.module#AngularModule',<br />
+            data: {{'{'}}preload: true, delay: true}<br />
+            }, {{'{'}}<br />
+          path: 'java',<br />
+          loadChildren: './java/java.module#JavaModule',<br />
+          data: {{'{'}}preload: true, delay: false}<br />
           }];
         </blockquote>
 
-        <h4>Bước 2, create 1 Service implement PreloadingStrategy và overwrite lại preload method</h4>
+        <h5>Bước 2, create 1 Service implement PreloadingStrategy và overwrite lại preload method</h5>
 
         <blockquote>
+          Xem file front-end/src/app/custom-preload-strategy.service.ts.
+        </blockquote>
+
+        <h5>Bước 3, vào trong file app-routing.module, cập nhật lại cái preloadStrategy từ PreloadAllModules sang
+          CustomPreloadStrategyService</h5>
+
+        <blockquote>
+          @NgModule({{'{'}}<br />
+            imports: [RouterModule.forRoot(routes, {{'{'}} preloadingStrategy: CustomPreloadStrategyService })],<br />
+            exports: [RouterModule]<br />
+          })
 
         </blockquote>
 
-        <h4>Bước 3, vào trong file app-routing.module, cập nhật lại cái preloadStrategy từ PreloadAllModules sang
-          CustomPreloadStrategyService</h4>
+        <h5>Bước 4, thêm nó vào provide trong app.module.ts vaf refresb lại page để kiểm tra.</h5>
 
-        <h4>Bước 4, thêm nó vào provide trong app.module</h4>
-
-        <h5>Bước 5, refresb lại page để kiểm tra.</h5>
 
       </div>
     </div>

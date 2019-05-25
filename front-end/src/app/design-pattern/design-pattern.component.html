@@ -1,3 +1,38 @@
-<p>
-  design-pattern works!
-</p>
+<div class="row">
+  <div class="col-12 col-md-9">
+    ?????
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="col-12 col-md-3">
+    <h3 class="mb-3">About</h3>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <ul class="list-group">
+          <li class="list-group-item">Author: Khanh Tran</li>
+          <li class="list-group-item">Email: quockhanhqb011@gmail.com</li>
+          <li class="list-group-item">Phone: 0989 890 960</li>
+          <li class="list-group-item">Company: BanVien</li>
+          <li class="list-group-item">Position: Developer</li>
+          <li class="list-group-item">Skill: Front-end, Java, OOP, DB</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="mb-3">List Lessons</h3>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <ul class="list-group">
+          <li class="list-group-item"><button mat-menu-item [routerLink]="['lesson-01']">Create Project</button></li>
+          <li class="list-group-item"><button mat-menu-item [routerLink]="['lesson-03']">Create Project</button></li>
+          <li class="list-group-item"><button mat-menu-item [routerLink]="['bootstrap']">Bootstrap</button></li>
+          <li class="list-group-item"><button mat-menu-item [routerLink]="['ng-bootstrap-component']">Ng-Bootstrap Components</button></li>
+          <li class="list-group-item"><button mat-menu-item [routerLink]="['router']">Router</button></li>
+          <li class="list-group-item"><button mat-menu-item [routerLink]="['../angular/router-advance']">Router Advance</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

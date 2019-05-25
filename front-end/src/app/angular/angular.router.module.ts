@@ -33,15 +33,17 @@ const routes: Routes = [{
       ]
     },
     {path: 'ng-service', component: AngularServiceComponent},
-    {path: 'ng-form', component: AngularFormComponent},
     {path: 'bootstrap', component: AngularBoostrapComponent},
     {path: 'ng-bootstrap', component: NgBootstrapComponentComponent},
+    {path: 'ng-form', component: AngularFormComponent},
     {path: 'router', component: AngularRouterComponent},
     {path: 'ng-lazy-loader', component: LazyLoaderComponent},
+
     {path: 'ng-dom', component: IncrementalDomInAngularComponent},
     {path: 'ng-data-architecture', component: AngularDataArchitectureComponent},
     {path: 'ng-testing', component: AngularTestingComponent},
     {path: 'ng-help', component: AngularHelpComponent},
+
     { path: '**', redirectTo: 'basic' }
   ]
 }];

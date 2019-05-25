@@ -14,7 +14,7 @@ import {JavaComponent} from './java.component';
     JVMArchitectureComponent,
     JavaCoreComponent,
     JavaObjectComponent,
-    JavaClassComponent
+    JavaClassComponent,
   ], imports: [
     CommonModule,
     JavaRoutingModule

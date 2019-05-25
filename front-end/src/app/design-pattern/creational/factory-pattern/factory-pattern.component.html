@@ -57,8 +57,7 @@
         <p>Anh trợ lý / phụ bếp này chính là Factory.</p>
 
         <p>Trong lập trình cũng vậy, có đôi khi ta có quá nhiều object, và ta muốn quản lý việc khai báo
-          chúng, khi đó ta sử dụng Factory như một anh trợ lý, để cung
-          cấp các object theo yêu cầu.</p>
+          chúng, khi đó ta sử dụng Factory như một anh trợ lý, để cung cấp các object theo yêu cầu.</p>
 
         <p>Nếu như cửa hàng mở rộng thêm, và ông chủ tuyển thêm một anh đầu bếp khác nữa, thì anh ta
           cũng
@@ -124,46 +123,47 @@
 
 
         <p>Ta thường sử dụng Factory khi mà chúng ta có 1 super class và multiple sub-classes. Và tùy
-          theo
-          input truyền vào, ta cần phải trả lại 1 trong số các subclass ở trên kia.</p>
+          theo input truyền vào, ta cần phải trả lại 1 trong số các subclass ở trên kia.</p>
 
         <p>Factory pattern mang nhiệm vụ instance của class từ client đến Factory. Và việc của bạn còn
-          lại
-          rất đơn giản, getFactoryObjectByType, và nó sẽ trả ra object mà bạn cần.</p>
+          lại  rất đơn giản, getFactoryObjectByType, và nó sẽ trả ra object mà bạn cần.</p>
 
         <p>Dưới đây là mô tả về việc implement của nó</p>
 
         <ul>
           <li>Super class - Có thể là interface / abstract</li>
-
-          <li>Subclass -- Các class implements interface trên kia / extend từ abstract class trên
-            kia.
-          </li>
-
-          <li>Factory Class với một static method handle việc initialize và return lại subclass từ
-            tham số client truyền vào
-          </li>
+          <li>Subclass -- Các class implements interface trên kia / extend từ abstract class trên  kia. </li>
+          <li>Factory Class với một static method handle việc initialize và return lại subclass từ tham số client truyền vào </li>
         </ul>
+
+        <img src="assets/design_pattern/uml_diagram/factory_pattern_uml_diagram.jpg" class="img-fluid">
 
         <p>Những lưu ý thêm về việc implement pattern này:</p>
 
-        <blockquote>
-          <ul>
-            <li>Bản chất của Factory pattern là quản lý việc khởi tạo các object. Vì vậy ta nên khai báo
-              private cho constructor của subclass để ngăn cho nó không được khởi tạo từ bên ngoài của
-              Factory.</li>
+        <ul>
+          <li>Bản chất của Factory pattern là quản lý việc khởi tạo các object. Vì vậy ta nên khai báo
+            private cho constructor của subclass để ngăn cho nó không được khởi tạo từ bên ngoài của
+            Factory.</li>
 
-            <li>Factory class được sử dụng như một Utils Class (utils - sử dụng). Vì vậy ta nên biến cái
-              Factory
-              Class thành một Singleton Class / hoặc khai báo static cho cái method getFactoryObjectByType
-              của nó
-              để có thể sử dụng ở bất cứ đâu.</li>
-          </ul>
-        </blockquote>
+          <li>Factory class được sử dụng như một Utils Class (utils - sử dụng). Vì vậy ta nên biến cái
+            Factory
+            Class thành một Singleton Class / hoặc khai báo static cho cái method getFactoryObjectByType
+            của nó
+            để có thể sử dụng ở bất cứ đâu.</li>
+        </ul>
 
-        <p>Xem ví dụ trong FactoryPatternExample</p>
+        <p>Nói thêm về việc che dấu constructor của Class.</p>
 
-        <img src="assets/design_pattern/uml_diagram/factory_pattern_uml_diagram.jpg" class="img-fluid">
+        <ul>
+          <li>Cách che dấu constructor của Class chỉ có thể thực hiện bằng cách khai báo private cho Constructor.
+            Lúc này sẽ ko có bất cứ 1 Class nào có thể khởi tạo Class này bằng từ khóa new được cả.</li>
+
+          <li>Vậy làm sao để get được Object đó. Trong Object ta khai báo 1 method static, mà method này sẽ gọi tới cái private constructor kia.
+            Khi này ta đã vô tình khiến cho việc create Object chỉ được thực hiện thông qua cái method static của ta.</li>
+
+          <li>Tiếp theo nữa ta tạo 1 Factory với cái tham số cần thiết, rồi dùng cái static method đó để khởi tạo Object dựa trên
+          tham số đầu vào.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -173,26 +173,19 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Advantages
+        Advantages & Disadvantages
       </div>
 
       <div class="card-body">
-        ________________________________
-      </div>
-    </div>
-  </div>
-</div>
+        <p>Ưu điểm của Factory là dễ dàng thấy được. Nó che dấu đi logic khởi tạo của 1 đối tượng. Người dùng chỉ cần
+        gọi thông qua 1 interface của Factory cung cấp mà thôi.</p>
 
+        <p>Mục đích của Factory là che dấu việc khởi tạo của các đối tượng và chỉ cung cấp 1 cách thức duy nhất thông qua Factory.
+        Tuy nhiên nếu ta ko che dấu đi các constructor, hoặc bằng 1 cách nào đó mà có thể create Instance mà không thông
+        qua Factory thì nguyên tắc này sẽ bị phá vỡ.</p>
 
-<div class="row mb-3">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        Disadvantages
-      </div>
-
-      <div class="card-body">
-        ________________________________
+        <p>Việc khởi tạo các Object thông qua điều kiện của Tham số truyền vào trong factory nhiều khi không đủ. Với các
+        object có việc khởi tạo phức tạp, ta cần thông qua Builder Pattern để đạt được điều này.</p>
       </div>
     </div>
   </div>
@@ -207,7 +200,12 @@
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Factory che dấu việc khởi tạo các Object và cung cấp 1 interface để cung cấp các Object này như 1 biện pháp thay thế.</p>
+
+        <p>Cần implement đúng để tránh trường hợp có thể khởi tạo 1 Object mà ko thông qua các Factory. Điều này sẽ khiến cho mục đích
+        của Pattern bị phá vỡ.</p>
+
+        <p>Factory không giải quyết được bài toán cần khởi tạo 1 Object phức tạp, có nhiều tham số truyền vào. Thay vào đó, ta phải sử dụng Builder để thay thế.</p>
       </div>
     </div>
   </div>

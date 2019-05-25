@@ -1,3 +1,227 @@
-<p>
-  singleton-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Singleton Pattern</h2>
+
+      <p>Singleton được sử dụng khi ta muốn đảm bảo chỉ có duy nhất 1 Object tồn tại trong hệ thống.</p>
+
+      <p>Do đó, nó thường được sử dụng khi ta có 1 Object nào đó đảm nhận 1 công việc nào đó và ta muốn hạn chế tài nguyên để khởi tạo nó
+      đến mức có thể.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Trong một công ti nọ, có rất nhiều nhân viên kế toán. Mỗi nhân viên kế toán này lo việc làm dịch vụ cho những công ti khác nhau.</p>
+
+        <p>Công việc thì nhiều, nhân viên thì ít, thế là mỗi ngày chúng phải thường xuyên đi lấy hồ sơ khách hàng. </p>
+
+        <p>Cả công ti chỉ có 1 các xe dịch vụ, mà lũ kế toán thì nhiều. Thế là suốt ngày chúng nó cãi nhau chí chóe đòi xe này nọ.
+          Đã thế, cách xa 5km mà nó đi tới 1h chưa về. </p>
+
+        <p>Những điều này làm bà trưởng phòng thấy khó chịu lắm lắm.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Giải pháp
+      </div>
+
+      <div class="card-body">
+        <p>Một ngày đẹp trời, có 1 con bé dở hơi xin vào làm. Nó vừa đen còn lắm lông, đã thế lại ko biết gì, nhưng lại là
+          cháu của đứa bạn chí cốt.</p>
+
+        <p>Bà này thấy vậy trầm tư suy nghĩ mãi, nhận nó thì ko được, mà ko nhận nó thì lại mất lòng. Thôi thì cứ nhắm mắt
+          đưa tay, cho nó vào làm chân sai vặt</p>
+
+        <p>Thế là từ đó về sau, bà cho nó đi thay lũ nhân viên đi lấy hồ sơ, và từ đó, công việc của tụi kia nhanh hơn hẳn,
+          có muốn trốn đi chơi cũng ko còn cơ hội nữa.</p>
+
+        <p>Cái con sai vặt kia chính là Singleton - Một đối tượng duy nhất trong phòng, mà mọi người có quyền sử dụng nó để
+          đi lấy hồ sơ cho mình. Ví dụ thì thấy ko sát nghĩa lắm
+          nhưng thực chất là thế còn gì.</p>
+
+        <p>Trong lập trình, ở một vài trường hợp, ta chỉ muốn sử dụng một object để đảm nhận một nhiệm vụ nào đó duy nhất
+          ở trong hệ thống, khi đó ta sử dụng mẫu thiết kế Singleto  Ví dụ như các connect tới db, các Utils Object, các
+          Object quản lý đọc file, ....
+        </p>
+
+        <p>Quay lại những bài trước, anh phục vụ ở đây cũng là một singleton. Anh ấy đảm nhận việc cung cấp nguyên liệu
+          cho các thực đơn cho những đầu bếp, và chỉ có duy nhất 1 anh như thế trong cửa hàng. Nhưng nếu ông chủ thương
+          mà thuê thêm 1 anh khác nữa, thì khi đó anh này ko còn là Singleton nữa đâu nhé.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        <p>Singleton là một mẫu design khá phổ biến, được sử dụng rất rất nhiều trong hệ thống.</p>
+
+        <p>Mục đích của nó chính là đảm bảo chỉ có duy nhất 1 đối tượng thuộc class đó tồn tại trong hệ thống.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <p>Để tạo ra một Singleton, ta cần làm các bước sau:</p>
+
+        <ul>
+          <li>private constructor của Class đó để tránh nó được khởi tạo từ bên ngoài.</li>
+
+          <li>Khai báo 1 instance và xây dựng method để có thể lưu trữ và trả về instance duy nhất này.</li>
+
+          <li>Quản lý việc truy cập và khởi tạo của các method liên quan đến instance này.</li>
+        </ul>
+
+
+        <img src="../assests/design_pattern/uml_diagram/singleton_pattern_uml_diagram.jpg" class="img-fluid">
+
+        <p>Để thực hiện điều 1, chỉ cần khai báo private cho constructor để ko thể gọi nó từ bên ngoài,
+          khai báo final để nó không thể được kế thừa.</p>
+
+        <p>Để thực hiện điều 2, khai báo 1 method static là instance để lưu trữ cái instance duy nhất đó, và
+          method getInstance sẽ kiểm tra, nếu instance chưa được khởi tạo, thì khởi tạo nó, còn nếu ko
+          thì trả về instance hiện tại. Vậy là ta chỉ có 1 instance đại diện cho 1 Class duy nhất trong cả hệ thống</p>
+
+
+        <p>Để thực hiện điều 3, hơi phức tạp, xem các cách tiếp cận dưới đây.</p>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Static binding.</h5>
+          <div class="text-dark pt-3">
+            <p>Cách đơn giản nhất để đảm bảo 1 object là duy nhất, đó là chúng ta sẽ khai báo static final
+              và khởi tạo nó ngay từ thời điểm load class.</p>
+
+            <p>Nhược điểm của cái này đó là đôi lúc không sử dụng object đó nhưng nó vẫn được khởi tạo,
+              vì vậy nó gây lãng phí và ảnh hưởng đến hiệu năng của hệ thống.</p>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Lazy Loader</h5>
+          <div class="text-dark pt-3">
+            <p>Lazy holder tức là trì hoãn việc khởi tạo object. Khác với trường hợp static binding, cái này lúc đầu
+              nó chưa init Instance vội, mà đợi khi có method getInstance - tức là khi nó được sử dụng - thì lúc này
+              nó mới init lên.</p>
+
+            <p>Nhược điểm của cái này đó chính là trong môi trường multiple thread, có thể xảy ra trường hợp 2 thread
+              cùng gọi method getInstance này khi nó chưa được khởi tạo, và vô tình cả 2 cùng create lên 2 object. Điều này
+              làm vi phạm tính chất của singleton. Do đó, trong kĩ thuật này người ta sẽ phải khai báo synchronized để
+              đồng bộ hóa 2 thread này, và đảm bảo là chỉ có 1 method được gọi - được khởi tạo - instance này tại 1 thời điểm.</p>
+
+            <p>Chính vì cái synchronized mà hiệu năng của hệ thống sẽ chậm.</p>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Double Check Singleton</h5>
+          <div class="text-dark pt-3">
+            <p>Double check Singleton là một kĩ thuật ra đời nhằm khác phục nhược điểm của cái Lazy Loader trên kia.
+              Bản chất nó cũng là 1 lazy holder, và nó cũng tiếp cận theo cách - Chỉ khởi tạo object khi nó được sử dụng.</p>
+
+            <p>Tuy nhiên, thay vì synchronized cái method getInstance thì nó lại synchronized cái block code lúc khởi tạo object
+              và sử dụng từ khóa volatile để cập nhật lại trạng thái của các thread khác khi thread này kết thúc.</p>
+
+            <p>Với kĩ thuật này, nó kiểm tra 2 lần, 1 lần check khi bắt đầu chuẩn bị new instance, một lần check trước khi khởi tạo object
+              trong đoạn synchronized code và đó là lý do mà nó được gọi là Double Check.</p>
+
+            <p>Double Check giải quyết được vấn đề của Lazy Loader nhưng nó chưa phải là cách hay nhất.</p>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Lazy Holder</h5>
+          <div class="text-dark pt-3">
+            <p>Kĩ thuật này được đánh giá là hay nhất trong việc khai báo một singleton</p>
+
+            <p>Như ta đã biết, Trong java, khi một class được sử dụng, thì nó mới được load vào bởi Class Loader.
+              Và trong quá trình này, Class Loader sẽ làm các bước bao gồm loading, linking, initialization.
+              Chính tại bước Initialization này các giá trị static của nó sẽ được init và khởi tạo</p>
+
+            <p>Chính nhờ yếu tố này, ta sẽ trì hoãn việc khởi tạo các instance bằng cách khai báo các inner class.</p>
+
+            <p>Chỉ khi inner class được gọi, nó mới được load vào thông quan Class Loader, khi nó đang load thì ko có thread nào
+              có thể sử dụng, khi nó load xong rồi thì cũng đã init rồi. Vì vậy, cái này vừa ko phải lo vấn đề multiple thread, vừa không
+              cần phải khai báo synchronized và vừa là lazy loaded. Do đó nó là tối ưu nhất.</p>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Enum</h5>
+          <div class="text-dark pt-3">
+            <p>Tương tự Lazy holder, Class chỉ được load khi mà nó được gọi lần đầu tiên. Và tính chất của nó
+              thì tương tự trên kia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <p>Sử dụng 1 instance trong toàn hệ thống giúp ta tiết kiệm tài nguyên và chi phí, đặc biệt là với các Object mà cần nhiều tài nguyên.</p>
+
+        <p>Giới hạn số lượng Instance của class giúp ta kiểm soát nó dễ hơn.</p>
+
+        <p>Nhược điểm của nó là cần cẩn thận thực hiện theo 3 điều trên để tránh làm phá vỡ Pattern.</p>
+
+        <p>Cách triển khai hơi phức tạp và cần cẩn thận trong môi trường đa nhiệm.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Singleton được sử dụng khi ta muốn chỉ có 1 Instance đảm nhận 1 nhiệm vụ nào đó trong hệ thống.</p>
+
+        <p>Việc triển khai nó cần cẩn thận và tuân thủ đúng 3 điều ở trên nếu như ko muốn phá vỡ quy tắc.</p>
+      </div>
+    </div>
+  </div>
+</div>

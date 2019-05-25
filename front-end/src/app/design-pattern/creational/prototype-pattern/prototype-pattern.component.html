@@ -1,3 +1,155 @@
-<p>
-  prototype-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Prototype Pattern - Creational Pattern</h2>
+
+      <p>Bản chất của Prototype đó là clone/ khởi tạo một Object từ một Object đã có sẵn.</p>
+
+      <p>Nó thường được sử dụng trong việc Cache dữ liệu, hoặc khi mà việc khởi tạo/ copy 1 Object mới tốn quá nhiều chi phí
+        trong khi ta đã có một Object tương tự.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Giờ nhà hàng góc phố đã trở nên quá nổi tiếng và đông khách. Tuy nhiên điều đó vẫn chưa đủ để
+          thỏa mãn ông chủ. Ông ấy quyết định phải trở nên nổi tiếng hơn nữa.</p>
+
+        <p>Tìm hiểu trên mạng, ông biết một vài website về dịch vụ ăn uống. Nó sẽ thay ông cung cấp dịch
+          vụ để khách hàng có thể đặt bàn, chọn thực đơn, và mọi thứ sẽ sẵn sàng khi họ đến nơi, chỉ
+          ngồi mà chén thôi.</p>
+
+        <p>Vậy là, cứ vào 9h sáng, những người quản lý những website đó liên hệ với cửa hàng để xin thực
+          đơn cho buổi trưa ngày hôm nay. Và giờ đây, anh phục vụ lại có thêm một công việc khác. Trả lời điện thoại.</p>
+
+        <p>Tuy nhiên, riết rồi anh cũng chán khi phải trả lời đi trả lời lại một bảng thông tin mà cách
+          dây mấy phút thôi anh vừa mới thông báo cho một người khác.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Giải pháp
+      </div>
+
+      <div class="card-body">
+        <p>Chán nản về công việc của mình, anh quyết định, cứ sáng vào anh soạn một tin nhắn tự động,
+          trả lời các cuộc gọi đến. Và từ đó, anh thảnh thơi tán tỉnh cô phục vụ mới vào.</p>
+
+        <p>Cái tin nhắn trả lời tự động kia là một ví dụ cụ thể của Prototype.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        <p>Prototype được sử dụng khi việc tạo đối tượng đòi hỏi quá nhiều chi phí, thời gian và
+          tài nguyên trong khi ta đã có một đối tượng tương tự tồn tại</p>
+
+        <p>Nó cung cấp một cơ chế để sao chép original object thành một new object, và có thể sửa đổi nó - nếu cần.</p>
+
+        <p>Prototype sử dụng java cloning để copy object.</p>
+
+        <img src="assets/design_pattern/uml_diagram/prototype_pattern_uml_diagram.jpg" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <p>Prototype được sử dụng khi việc tạo đối tượng đòi hỏi quá nhiều chi phí, thời gian và tài nguyên trong khi ta
+          đã có một đối tượng tương tự tồn tại</p>
+
+        <p>Nó cung cấp một cơ chế để sao chép original object thành một new object, và có thể sửa đổi nó - nếu cần.</p>
+
+        <p>Prototype sử dụng java cloning để copy object.</p>
+
+        <img src="assets/design_pattern/uml_diagram/prototype_pattern_uml_diagram.jpg" class="img-fluid">
+
+        <p>Về Cloning trong Java ta có 2 cơ chế, Shadow Clone và Deep Clone. Mỗi cái này có 1 mục đích sử dụng riêng. Cần xem
+        để quyết định lựa chọn cái nào cho đúng.</p>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h3 class="border-bottom border-gray pb-2 mb-0">Shadow Clone and Deep Clone</h3>
+          <div class="text-dark pt-3">
+            <p>Nói nôm na thì shadow clone nó chỉ sao chép địa chỉ của các thuộc tính bên trong đối tượng. Khi có 1 update thực hiện, thì state của cái nguyên bản cũng bị thay đổi theo.</p>
+
+            <p>Deep Clone dùng cơ chế khác, nó sẽ new ra từng địa chỉ, và khi đó các Clone object nó độc lập với nhau, khi thay đổi cái này ko ảnh hưởng đến cái kia</p>
+
+            <p>Java Clone là deep Copy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <p>Prototy Pattern làm hạn chế chi phí khi muốn Clone 1 Object từ 1 Object đã có từ trước.</p>
+
+        <p>Không chỉ dừng lại ở Clone, nó cũng có thể tạo ra 1 object mới, với những đặc điểm khác với Object cũ mà tốn ít chi phí
+        nhất có thể.</p>
+
+        <p>Nhược điểm của nó đó là cần lựa chọn đúng phương án Clone vì nếu làm không cẩn thận, thì sự thay đổi status của Object
+        này cũng kéo theo sự thay đổi của Clonning của nó.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Prototype thường được dùng cho mục đích Caching.</p>
+
+        <p>Nói Prototype là clone object cũng ko phải lắm, nhiệm vụ của nó đó là sao chép một object đã có, theo một cơ chế nào đó.
+          Object mới được tạo ra, có thể khác với object cha ban đầu. Vì vậy, nó không hẳn là clone được.</p>
+
+        <p>Mỗi prototype bắt buộc phải override lại method clone của class Object (Class lớn nhất của Java). Và chính việc implement method
+          Clone này nên mỗi Object nó sẽ có 1 cơ chế clone khác nhau. Vì vậy, shadow clone hay deep clone là do ta định nghĩa.</p>
+      </div>
+    </div>
+  </div>
+</div>

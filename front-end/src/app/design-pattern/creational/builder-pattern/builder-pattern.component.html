@@ -1,3 +1,202 @@
-<p>
-  builder-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Builder Pattern - Creational Pattern</h2>
+
+      <p>Bản chất của Builder Pattern đó là xây dựng Object từng phần.</p>
+
+      <p>Nó được sử dụng khi ta muốn Build một Object quá phức tạp, mà việc init nó phải thực hiện theo từng bước, nhưng ta không biết/ không quan
+        tâm tới thứ tự của từng bước đó.</p>
+
+      <p>Ngoài ra nó còn được sử dụng để xây dựng 1 Object mới bằng cách mở rộng một Object đã có sẵn</p>
+      
+      <p>Builder Pattern dùng trong việc quản lý những đối tượng một cách phức tạp. Nếu như Abstract Factory tiếp cận theo kiểu
+        có thực đơn trước, rồi tạo ra luôn sản phẩm, thì Builder Pattern tiếp cận theo hướng sử dụng step by step để đạt được mục đích cuối cùng.
+      </p>
+
+      <p>Cùng trở lại cửa hàng góc phố thôi nào.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Cửa hàng đã nhộn nhịp hơn xưa. Bây giờ cửa hàng ko tập trung vào tầng lớp bình dân nữa, mà giờ đây cửa hàng
+          lại tập trung vào tâng lớp trung lưu và quý xờ tộc, những người có tiền.</p>
+
+        <p>Tất nhiên có tiền thì sẽ có quyền, và yêu cầu của họ sẽ phức tạp hơn, anh đầu bếp cũng mệt mỏi hơn khi chế biến, 
+          và anh phục vụ cũng phải học cách để chiều lòng khách hàng.</p>
+
+        <p>Một ngày nọ đẹp trời, một cô gái xinh xắn đi cùng một anh già dê vào nhà hàng. Anh già dê thì  khá dễ tính,
+          nhưng cô bồ thì khá chảnh chọe.</p>
+
+        <p>Cô nhìn vào thực đơn và gọi: "một dĩa bò xào khoai tây nha em."</p>
+
+        <p>Anh phục vụ hí hoái ghi vào.</p>
+
+        <p>À, mà dặn anh đầu bếp cho thêm ít nấm hương nữa nhé.</p>
+
+        <p>À quên, nhớ bỏ thêm ít tiêu cho cay đấy.</p>
+
+        <p>Lấy chị bánh mì sandwich thay vì bánh mì ổ nhé.</p>
+
+        <p>Nhớ là ít rau nhiều thịt nhé.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Giải pháp
+      </div>
+
+      <div class="card-body">
+        <p>Tất nhiên thứ mà chị yêu cầu trên kia, chả nằm trong cái thực đơn của nhà hàng rồi. Anh phục
+          vụ sau khi nghe xong, cất vội thực đơn, và bắt đầu lấy giấy ra ghi chép:</p>
+
+        <blockquote>
+          Bò xào khoai tây <br />
+          <br />
+          thêm nấm <br />
+          thêm tiêu, <br />
+          <br />
+          thay bánh mì sandwich,<br />
+          it rau nhiều bò    <br />
+        </blockquote>
+
+        <p>Và đưa mảnh giấy đó cho anh đầu bếp để anh đầu bếp căn </p>
+
+        <p>Trong trường hợp này, cái khai nguyên liệu - sản phẩm của anh phụ bếp - Abstract Factory kia
+          tỏ ra vô dụng rồi. Tuy nhiên, anh đầu bếp vẫn có thể chế biến món ăn mà chị kia yêu cầu,
+          nhờ vào cái miếng giấy anh phục vụ đưa.</p>
+
+        <p>Miếng giấy ấy là một ví dụ của Builder Pattern.</p>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        <p>Builder Pattern sử dụng trong trường hợp object phức tạp và không theo một khuôn khổ nào. Việc truyền parameter 
+          vào constructor của Object không thực sự khả thi ở đây, khi mà các properties của nó thay đổi xoành xạch. Thay vì thế, 
+          nó hướng tới cách tiếp cận từng phần. Nó sử dụng các Inner class để thực hiện điều này.</p>
+        
+        <p>Builder Pattern cũng được sử dụng khi ta muốn mở rộng 1 class đã có từ trước. Lúc này ta sẽ thêm các thuộc tính mới 
+        vào thông qua một Builder.</p>
+        
+        <p>Builder giải quyết vấn đề mà Factory gặp phải, đó là khi Object có quá nhiều tham số, thì Factory sẽ trở nên vô dụng. 
+          Builder không sử dụng toàn bộ tham số để khởi tạo Object liền, thay  vào đó nó truyền các tham số vào 1 cách từ từ, 
+          tiếp cận theo hướng xây dựng từng phần trước khi quyết định kết quả trả về là gì.</p>
+
+        <p>Xem ví dụ về cái ở trên kia, rõ ràng ta thấy việc sử dụng thực đơn là vô nghĩa trong trường hợp này, mà ta cần phải 
+          xây dựng từng phần - bằng danh sách liệt kê trong tờ giấy đấy. Kết quả trả về cuối cùng là món ăn của cô gái.</p>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <p>Trong Java, để tạo ra một Builder ta cần làm như sau:</p>
+
+        <ol>
+          <li>First of all you need to create a <a href="https://www.journaldev.com/996/java-inner-class">static nested class</a>
+            and then copy all the arguments from the outer class to the Builder class. We should follow
+            the naming convention and if the class name is <code>Computer</code> then builder class
+            should be named as <code>ComputerBuilder</code>.</li>
+
+          <li>Java Builder class should have a public constructor with all the required attributes as
+            parameters.</li>
+
+          <li>Java Builder class should have methods to set the optional parameters and it should return
+            the same Builder object after setting the optional attribute.</li>
+
+          <li>The final step is to provide a <code>build()</code> method in the builder class that will
+            return the Object needed by client program. For this we need to have a private constructor
+            in the Class with Builder class as argument.</li>
+        </ol>
+
+        <img src="assets/design_pattern/uml_diagram/builder_pattern_uml_diagram.jpg" class="img-fluid">
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <p>Đầu tiên, nó giúp cho việc khởi tạo Object trở nên dễ dàng hơn. Thay vì ta phải truyền vào 1 method 20 tham số,
+        với thứ tự không thể nào nhớ nổi, thì giờ đây ta quyết định chia nhỏ cái constructor kia ra thành từng group, và xây
+        dựng object từng phần dựa trên các group đó.</p>
+
+        <p>Việc tiếp cận từng phần khiến việc Build một Object trở nên đơn giản hơn. Nếu có 1 phát sinh nào đó về param truyền
+        vào ta chỉ cần xây dựng thêm 1 group để handle điều đó là được.</p>
+
+        <p>Ngoài ra, nếu hệ thống đã có sẵn một Object nào đó rồi, ta muốn mở rộng nó mà ko thích dùng Extend, hoặc do
+          behavior của nó khác biệt với cái kia nhiều quá, ( tức là vi phạm nguyên lý thay thế (L) của SOLID) thì Builder là
+        giải pháp tốt nhất.</p>
+
+        <p>Ví dụ ở nhà hàng kia đã có món cá mú hấp xì dầu thơm ngon rồi. Giờ đây ông chủ muốn đổi thành
+          cá mú hấp xì dầu tự chọn (thêm tôm, hay thêm bò, hoặc là tùy chọn rau củ quả gì đó chẳng hạn), thì việc sử dụng
+          Builder trong trường hợp này là hiệu quả hơn cả.</p>
+      </div>
+
+        <p>Nhược điểm của nó đó là phát sinh thêm 1 cái Builder với thông tin đầy đủ như cái Object chính. Do đó, khi có thay đổi ở
+        Object chính, cần cập nhật lại Builder liên quan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Builder Pattern là một Pattern rất hữu dụng. Nó có tác dụng build một object step by step.</p>
+
+        <p>Mục đích sử dụng chính của nó đó là tạo nên những object phức tạp, theo từng bước, dựa vào tham số truyền vào.</p>
+
+        <p>Ngoài ra nó còn được sử dụng rất nhiều trong việc mở rộng dựa vào các object hiện tại.</p>
+      </div>
+    </div>
+  </div>
+</div>

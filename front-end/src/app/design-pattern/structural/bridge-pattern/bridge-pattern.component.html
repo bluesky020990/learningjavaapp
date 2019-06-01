@@ -1,3 +1,197 @@
-<p>
-  bridge-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Bridge Pattern - Structural Pattern</h2>
+
+      <p>Bản chất của Bridge đó là tách riêng tính trừu tượng ra khỏi Object, để nó có thể làm việc một cách độc lập,
+        biến nó thành các Abstract Class, hoặc các Interface, và đẻ quá trình Run-time quyết định chính xác thì Object nào sẽ được sử dụng.</p>
+
+      <p>Nó được sử dụng trong trường hợp Object có những thuộc tính mà mang tính tổng quát/ trừu tượng.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Sau một thời gian kinh doanh, ông chủ quyết định chuyển sang một lĩnh vực khác : Làm bánh.</p>
+
+        <p>Việc làm bánh vừa có thể cung cấp thêm món tráng miệng cho khách hàng, hay phục vụ các em nhỏ, và cũng có thể
+          bán ra trong các dịp đặc biệt. Thế là ông quyết định mở luôn một nhà hàng bên cạnh góc phố.</p>
+
+        <p>Sau đó, ông bắt đầu thu thập các khảo sát về nhu cầu của khách hàng. Ông thấy rằng đa số khách
+          hàng thích cái bánh hình tròn, và chỉ mua tặng trong dịp sinh nhật.</p>
+
+        <p>Vậy là ông thuê một ông thợ lành nghề, làm luôn cái khuôn hình tròn, và khắc sẵn các họa tiết trên đó. Chỉ cần đổ bột vào,
+          cho vào lò và chờ 10 đến 15 phút, là ta đã có ngay một cái bánh sinh nhật xinh xắn mà ko cần phải làm thêm bất cứ thứ gì khác.</p>
+
+        <p>Tiện thể, ông làm luôn cái khuôn hình vuông dể sản xuất những chiếc bánh tráng miệng ăn điểm tâm hoặc nhâm nhi bên ly trà nóng.</p>
+
+        <p>Ông thấy nó cũng khá hợp lý, vì chả tốn quá nhiều thời gian, mà vẫn có được những sản phẩm tuyệt vời đến tay người dùng.</p>
+
+        <p>Tháng đầu tiên khai trường, cửa hàng đông ngùn ngụt. Khách hàng được phục vụ tận tình chu đáo mà ko phải chờ đợi lâu. Thợ làm bánh
+          chỉ việc đổ nguyên liệu đã trộn sẵn vào, chờ 10p rồi mang ra cho khách hàng. Rất nhanh mà ko phức tạp.</p>
+
+        <p>Tuy nhiên, sau đó một tháng, ông lại gặp vấn đề. Lượng khách giảm rõ rệt vì cái khuôn cũ không còn phù hợp với thị hiếu.
+          Giờ người ta chuộng cái bánh hình tam giác
+          hoặc nhìn ngũ giác, lục giác mang cảm giác mới lạ hơn, và việc trang trí hoa lá hẹ ban đầu cũng ko còn phù hợp nữa.</p>
+
+        <p>Ông quyết định bổ sung thêm các khuôn bánh để phục vụ cho khách hàng. Ông mua thêm khuôn hình tròn, khuôn hình vuông, khuôn hình chữ nhật,
+          ... được khắc sẵn những họa tiết trang trí khác nhau, đẹp hơn, sinh động hơn, và mọi thứ được giải quyết sau đó.</p>
+
+        <p>Tuy nhiên, một ngày đẹp trời, có một ông khách tới hỏi mua một cái bánh hình vuông, nhưng mà lại có họa tiết trang trí
+          giống cái bánh hình tròn mà cửa hàng đã làm ra
+          trước đó. Cô đầu bếp tìm mãi mà lại ko thấy có cái nào như vậy đành say sorry và để ông khách ra đi trong tiếc nuối.</p>
+
+        <p>Cô thưa lại với ông chủ, ông chủ ngồi suy nghĩ, và nhận ra rằng, hóa ra việc mình sử dụng các khuôn làm bánh đó,
+          tuy nhanh nhưng mà lại ko thể chiều lòng được những thị hiếu của khách hàng. Vậy giờ phải làm sao để tách riêng
+          hình dạng của những cái bánh (vuông, tròn, méo mó) ra, vừa có thể trang trí cho
+          nó bằng những họa tiết hoa lá hẹ tùy chọn.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Giải pháp
+      </div>
+
+      <div class="card-body">
+        <p>Rõ ràng trong trường hợp này, cái trang trí và hình dáng cái bánh, là 2 thứ độc lập và không phụ thuộc vào nhau. Sai lầm của ông chủ
+          là đã cố gắng gắn kết nó lại với nhau một cách cứng nhắc. Vì vậy khi khách hàng đòi một cái bánh hình vuông với họa tiết trang trí của cái khuôn hình
+          tròn, thì cửa hàng không đáp ứng được.</p>
+
+        <p>Chưa kể giờ đây, yêu cầu của ông chủ đưa ra ảnh hưởng đến toàn bộ cái khuôn cũ. Chúng ko thể sử dụng lại vì bất cứ một mục đích nào.</p>
+
+        <p>Sau bài học rút ra đó, ông chủ quyết định sẽ mua những cái khuôn bánh độc lập, và những họa tiết trang trí độc lập. Khi khách hàng cần một cái bánh hình
+          tròn và với họa tiết trang trí A, thì ông sẽ kêu cô đầu bếp dùng cái khuôn hình tròn để đúc bánh, rồi sau đó lại đưa sang một cái khuôn nữa, để nó ép cái họa tiết kia vào
+          theo yêu cầu của khách hàng.</p>
+
+        <p>Việc tách cái họa tiết trang trí - thuộc tính trừu tượng, ra khỏi cái bánh - thực thể - để chúng có thể hoạt động một cách độc lập, được gọi là Bridge Pattern.</p>
+
+        <p>Ý nghĩa của Bridge ở đây, đó là cầu nối - nối những thuộc tính trừu tượng với những thực thể. Từ đó, việc implements các thuộc tính trừu tượng đó, không làm ảnh hưởng
+          đến cái thực thể ban đầu. Sau này, nếu như khách hàng muốn một cái bánh có hình con ong con bướm đang thịnh hành, thì ông chủ chỉ cần mua cái khuôn họa tiết đó về,
+          chứ không cần phải mua luôn trọn bộ như trước kia.</p>
+
+        <p>Trong lập trình cũng vậy, vì thời gian gấp rút, muốn nhanh mà ta cứ gộp chung mọi thứ lại thành một. Điều này giống như cái Conversion của Product CRCT mà mình đã từng làm,
+          chạy thì OK, nhưng để mở rộng thì ôi thôi : sửa rất nhiều, sửa xong ko biết cái cũ có còn chạy được ko nữa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        <blockquote>A Bridge Pattern says that just "decouple the functional abstraction from the implementation so that the two can vary independently".</blockquote>
+
+        <blockquote>The Bridge Pattern is also known as Handle or Body.</blockquote>
+
+        <p>Trong bài toán trên, sai lầm của ông chủ đó là ghép nối mọi thứ thành 1 khối cứng nhắc. Chính điều này làm cho việc thay đổi behavior
+        của Object trở nên khó khăn và đôi khi là không thể.</p>
+
+        <p>Bridge tách các behavior đó thành các đối tượng độc lập, sử dụng nó như các composition để "nhúng" vào Object,
+          giúp nó thay đổi behavior/state tại thời điểm runtime.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <p>Trong Design, ta cũng sẽ sử dụng các properties, để quyết định các tính trừu tượng của nó.</p>
+
+        <p>Bản chất của Pattern này đó là sẽ tách những thuộc tính trừu tượng, biến nó thành các Interface, và sử dụng nhiều Class để implememts cho các Interface đó.</p>
+
+        <p>Khi đó, Object được tạo sẽ độc lập với các thuộc tính trừu tượng.</p>
+
+        <img src="../assets/design_pattern/uml_diagram/bridge_pattern_uml_diagram.jpg" class="img-fluid">
+
+
+        <p>Việc implement diễn ra cũng đơn giản. Đầu tiên ta xác định các abstract method của Object.</p>
+
+        <p>Tách rời các Abstract đó ra, xây dựng Interface và 1 list các Concrete Object implement các Abstract method đó.</p>
+
+        <p>Thay thế method đó trong Object bằng chính Abstract Class đó. Và truyền nó vào trong quá trình run-time.</p>
+
+        <p>Thế là xong.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <p>Ưu điểm của Bridge Pattern đó là tách implementations ra khỏi interface.</p>
+
+        <p>Chính điều này giúp tăng khả năng mở rộng của Object. Mỗi lần có cái gì đó mới, thì chỉ việc tạo 1 class mới, implements cái
+        interface đó mà thôi.</p>
+
+        <p>Nó cũng góp phần che dấu đi việc implement từ phía Client.</p>
+
+        <p>Nhược điểm của nó đó là việc phân tích để decouple cho chính xác.</p>
+
+        <p>Việc giấu đi chi tiết của implementation làm ta phải cẩn thận khi xác định sẽ truyền đối tượng nào vào.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Bridge Pattern đặc biệt hữu ích trong các trường hợp sau:</p>
+
+        <p>muốn tách vĩnh việc functional Abstraction và Implementation</p>
+
+        <p>khi Functional Abstraction và Implementation cần được mở rộng thường xuyên.</p>
+
+        <p>Đặc biệt, trong những trường hợp có quá nhiều thay đổi và không muốn sự thay đổi đó làm ảnh hưởng đến Client.</p>
+
+        <p>Việc phân tích trước khi thiết kế là khâu quan trọng nhất. Trong trường hợp này ông chủ chỉ quan tâm tới khuôn mẫu và
+          thời gian sản xuất mà quên mất đi rằng hình dáng và họa tiết là những thuộc tính luôn luôn thay đổi tùy theo sở
+          thích của khách hàng.</p>
+
+        <p>Khi đã xác định những thuộc tính mà có thể thường xuyên bị thay đổi, thì ta có thể sử dụng Pattern này để tha
+          hồ mở rộng mà ko cần thay đổi lại những thứ sẵn có.</p>
+
+        <p>Nói chung, thứ hay nhất của nó, đó là khâu phân tích để nhận ra vấn đề.</p>
+      </div>
+    </div>
+  </div>
+</div>

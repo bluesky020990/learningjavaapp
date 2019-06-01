@@ -5,8 +5,7 @@
 
       <p>Bản chất của Abstract Factory đó là cung cấp một tập hợp các Factory có phụ thuộc hoặc liên quan với nhau.</p>
 
-      <p>Bản chất của Abstract Factory chính là : <b>Cung cấp một interface cho việc tạo ra những object liên quan,
-        hoặc phụ thuộc mà không chỉ rõ các class cụ thể của nó.</b></p>
+      <p>Chia nhỏ các Factory thành từng cụm có liên quan, và sử dụng các interface để get các cụm đó.</p>
     </div>
   </div>
 </div>
@@ -73,6 +72,15 @@
       </div>
 
       <div class="card-body">
+
+        <blockquote>
+          Abstract Factory Pattern says that just define an interface or abstract class for creating families of related
+          (or dependent) objects but without specifying their concrete sub-classes.
+        </blockquote>
+
+        <blockquote>
+          An Abstract Factory Pattern is also known as Kit.
+        </blockquote>
         
         <p>Abstract Factory là 1 dạng mở rộng của Factory. Nó ra đời khi ta cần gom các Factory lại với nhau để cho gọn 
           và code đồng nhất hơn trong hệ thống.</p>
@@ -85,9 +93,25 @@
         <p>Ví dụ ta có object A được tạo thành từ đống B1, C2, D5, E4, Object B được tạo thành từ B2, C3, D1, E2, thì lúc này thay vì
         việc ta phải gọi 4 cái Factory cho mỗi lần tạo cái Object A, thì ta dùng luôn 1 Abstract Factory mà có thể gọi tới 4 Factory để
         tạo ra 4 Object đó. </p>
-        
-              
-        
+
+        <p>Nếu ví dụ trên kia chưa đủ rõ ràng, ta sẽ sang 1 ví dụ khác có tính thực tiễn hơn.</p>
+
+        <p>
+          Giả sử ta có 1 nhà máy sản xuất xe của Yamha, với các nhà máy con của nó như sản xuất vỏ, sản xuất động cơ, sản xuất khung xe,
+          sản xuất bánh xe chẳng hạn. Mỗi nhà máy lại có các nhà máy con, nhà máy sản xuất vỏ xe Sirius, vỏ xe NVX, ...., chẳng hạn.
+        </p>
+
+        <p>Giả sử ta cần build 1 cái xe Sirius, ta gọi các Factory sản xuất vỏ xe Sirius từ Factory Sản xuất vỏ xe, Factory sản xuất động cơ Sirius
+          từ factory Sản xuất động cơ, ....</p>
+
+        <p>Điều này mang lại những phiền hà không cần thiết. Việc sử dụng các Factory như vậy làm code của ta không những không sạch hơn mà còn khó hiểu
+          hơn rất là nhiều.</p>
+
+        <p>Thay vì như vậy, ta xây dựng 1 nhà máy sản xuất xe Sirius chẳng hạn, nhiệm vụ của nó là tự động đi vào trong các nhà máy kia, thu gom các Vật
+          liệu cần thiết theo nhu cầu.</p>
+
+        <p>Và từ đây công việc của bạn sẽ đơn giản hơn rất nhiều, vì ta chỉ cần gọi nhà máy sản xuất xe Sirius, và nó sẽ mang lại
+          cho ta các linh kiện theo yêu cầu. Đó là mục đích chính của Abstract Factory</p>
       </div>
     </div>
   </div>
@@ -147,13 +171,44 @@
       </div>
 
       <div class="card-body">
-        <p>Lợi ích của Abstract Factory là gom các Factory lại với nhau theo 1 bản contract nào đó.</p>
+        <h5>Advantages</h5>
 
-        <p>Điều này hạn chế DRY (Don't Repeat Yourself) và khiến cho code trở nên thống nhất hơn.</p>
+        <p>Abstract Factory cô lập client từ những concrete (implementation) classes</p>
 
-        <p>Đôi khi Abstract Factory lại là 1 điều tai hại. Giả sử ta sử dụng Abstract Factory để lấy 1 đống các Factory liên quan, nhưng vì 1 lý do nào đó, ta cần tạo ra 1 trường hợp đặc biệt khác.
-        Khi này, nếu dùng Abstract Factory thì ta sẽ có thể có n! trường hợp cần tạo. Và vì vậy cái Abstract Factory càng ngày càng trở nên cồng kềnh,
-        và ngay chính người tạo nó cũng ko hiểu là nó được dùng ở đâu.</p>
+        <p>Làm giảm bớt sự trao đổi của các familiar Objects (từ các Factory của nó) *</p>
+
+        <p>Thúc đẩy sự nhất quán giữa các đối tượng.</p>
+
+        <h5>Disadvantages</h5>
+
+        <p>Nhược điểm của Abtract Factory đó là phải xác định được các nhóm Object. Xác định sai thì đi tong luôn.</p>
+
+
+        <h5>Usage </h5>
+
+        <p>Khi muốn tách việc khởi tạo Object ra khỏi hệ thống **</p>
+
+        <p>Khi các đối tượng liên quan cần được sử dụng cùng với nhau </p>
+
+        <p>Khi ta muốn cung cấp 1 library các objects nhưng không muốn show các implementations mà chỉ thông qua các interface</p>
+
+        <p>Khi hệ thống cần được cấu hình với 1 trong nhiều family of objects.</p>
+
+
+        <p class="small-text">
+          * Vì sao ta bảo vậy. Giả sử ta có Factory A1 cung cấp các Object A1, Factory B1 cung cấp các object B1, A1, B1 là cùng
+          kiểu.<br />
+          Object A1 này được sử dụng dể tạo nên object và Object B1 dùng để tạo nên object B.
+
+          Nếu như ta không xài cái Abstract Factory để giới hạn lại, thì có thể xảy ra 1 trường hợp, đó là khi tạo Object B,
+          người ta vô tình dùng Factory A1. Do đó, việc sử dụng Abstract Factory để hạn chế sự trao đổi giữa các Family Class,
+          bằng cách giới hạn lại nó theo đầu vào.
+        </p>
+
+        <p class="small-text">
+          ** Tách việc khởi tạo ra khỏi hệ thống, tức là thay vì việc sử dụng toán tử new, ta sử dụng các Abstract Factory và các interface
+          của nó để lấy ra Object cần tạo.
+        </p>
       </div>
     </div>
   </div>
@@ -168,16 +223,12 @@
       </div>
 
       <div class="card-body">
-        <p>Abstract Factory dùng để gom các Factory có liên quan lại với nhau, cho việc sử dụng nó trở nên thuận tiện hơn.
-        Thay vì ta phải gọi 5 Factory khi tạo 1 Object nào đó, thì giờ ta chỉ cần dùng Abstract Factory để lấy 5 cái kia cho tiện mà thôi.</p>
+        <p>Abtract Factory được sử dụng trong trường hợp ta có nhiều Object cùng 1 nhóm, mỗi object lại có các properties
+          khác nhau và mỗi properties này lại được cung cấp bới các Factory khác nhau.</p>
 
-        <p>Abstract Factory loại bỏ điều kiện if/else của Factory, thay vào đó nó tạo từng method độc lập để trả về các Factory theo yêu cầu.</p>
+        <p>Abstract Factory sẽ gom các Factory này lại, theo điều kiện của từng Object, và vì vậy mà ta sẽ có 1 cái Utils của Factory luôn.</p>
 
-        <p>Abstract Factory được sử dụng khi ta có 1 đống các Factory và số lượng nó tăng dần đều.</p>
-
-        <p>Abstract Factory được sử dụng khi đống Factory của ta có 1 mối liên hệ nào đó.</p>
-
-        <p>Thằng này có vẻ ít gặp, nên xem qua cho biết cũng được.</p>
+        <p>Thay vì sử dụng điều kiện if else, mỗi Object có 1 method để lấy các Factories của riêng nó. Method này cung cấp các factory mà nó cần.</p>
       </div>
     </div>
   </div>

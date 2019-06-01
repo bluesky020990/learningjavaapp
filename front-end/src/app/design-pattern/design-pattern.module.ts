@@ -31,6 +31,7 @@ import { VisitorPatternComponent } from './behavioral/visitor-pattern/visitor-pa
 
 import { DependencyInjectionPatternComponent } from './advance/dependency-injection-pattern/dependency-injection-pattern.component';
 import { ModelAndViewPatternComponent } from './advance/model-and-view-pattern/model-and-view-pattern.component';
+import { ObjectPoolPatternComponent } from './creational/object-pool-pattern/object-pool-pattern.component';
 
 const routing: Routes = [{
   path: '',
@@ -43,6 +44,7 @@ const routing: Routes = [{
     { path: 'singleton', component: SingletonPatternComponent},
     { path: 'builder', component: BuilderPatternComponent},
     { path: 'prototype', component: PrototypePatternComponent},
+    { path: 'object-pool', component: ObjectPoolPatternComponent},
 
     { path: 'adapter', component: AdapterPatternComponent},
     { path: 'bridge', component: BridgePatternComponent},
@@ -99,7 +101,8 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
     StrategiesPatternComponent,
     VisitorPatternComponent,
     DependencyInjectionPatternComponent,
-    ModelAndViewPatternComponent
+    ModelAndViewPatternComponent,
+    ObjectPoolPatternComponent
   ],
   imports: [
     CommonModule,

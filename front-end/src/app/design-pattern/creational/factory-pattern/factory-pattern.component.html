@@ -78,25 +78,35 @@
       </div>
 
       <div class="card-body">
+        <blockquote>
+          A Factory Pattern or Factory Method Pattern says that just define an interface or abstract class for creating
+          an object but let the subclasses decide which class to instantiate.
+        </blockquote>
+
+        <blockquote>
+          The Factory Method Pattern is also known as Virtual Constructor.
+        </blockquote>
+
         <p>
-        Factory Pattern là một trong những pattern phổ biến nhất trong lập trình hướng đối tượng.
-      </p>
+          Factory Pattern là một trong những pattern phổ biến nhất trong lập trình hướng đối tượng.
+        </p>
 
-      <p>Nhiệm vụ của nó là quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đối
-        tượng
-        một cách linh hoạt hơn.</p>
+        <p>Nhiệm vụ của nó là quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đối
+          tượng
+          một cách linh hoạt hơn.</p>
 
-      <p>Bản chất của Factory là <b>Định nghĩa một giao diện (interface) cho việc tạo một đối tượng,
-        nhưng
-        để các lớp con quyết định lớp nào sẽ được tạo. <i>Factory method</i> giao việc khởi tạo đối
-        tượng cụ thể
-        cho lớp con.</b></p>
+        <p>Bản chất của Factory là <b>Định nghĩa một giao diện (interface) cho việc tạo một đối tượng,
+          nhưng
+          để các lớp con quyết định lớp nào sẽ được tạo. <i>Factory method</i> giao việc khởi tạo đối
+          tượng cụ thể
+          cho lớp con.</b></p>
 
-      <p>Nói giao việc khởi tạo cho lớp con, ko có nghĩa là có cái lớp con nào đó và override cái method đó,
-        mà lớp con sẽ sử dụng interface + danh sách các tham số mà Factory cung cấp, và quyết định xem nó muốn cái gì.</p>
+        <p>Nói giao việc khởi tạo cho lớp con, ko có nghĩa là có cái lớp con nào đó và override cái method đó,
+          mà lớp con sẽ sử dụng interface + danh sách các tham số mà Factory cung cấp, và quyết định xem nó muốn cái
+          gì.</p>
 
-      <p>Tức là nó kêu, tao muốn trứng gà, thì nó gọi interface + "trung-ga" chẳng hạn.</p>
-      
+        <p>Tức là nó kêu, tao muốn trứng gà, thì nó gọi interface + "trung-ga" chẳng hạn.</p>
+
       </div>
     </div>
   </div>
@@ -173,10 +183,19 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Advantages & Disadvantages
+        Advantages & Disadvantages && Usage
       </div>
 
       <div class="card-body">
+        <h5>Advantages</h5>
+
+        <p>Cho phép sub-class quyết định kiểu của Object cần được tạo</p>
+
+        <p>Tách constructor ra khỏi code, cho phép chỉ tương tác thông qua các Interface/ Abstract. Điều này cho phép reused
+        lại code ở bất cứ đâu với những class implements/extends từ các Object đó.</p>
+
+
+
         <p>Ưu điểm của Factory là dễ dàng thấy được. Nó che dấu đi logic khởi tạo của 1 đối tượng. Người dùng chỉ cần
         gọi thông qua 1 interface của Factory cung cấp mà thôi.</p>
 
@@ -184,8 +203,18 @@
         Tuy nhiên nếu ta ko che dấu đi các constructor, hoặc bằng 1 cách nào đó mà có thể create Instance mà không thông
         qua Factory thì nguyên tắc này sẽ bị phá vỡ.</p>
 
+        <h5>Disadvantages</h5>
+
         <p>Việc khởi tạo các Object thông qua điều kiện của Tham số truyền vào trong factory nhiều khi không đủ. Với các
         object có việc khởi tạo phức tạp, ta cần thông qua Builder Pattern để đạt được điều này.</p>
+
+        <h5>Usage</h5>
+
+        <p>Khi Class không biết những sub-class cần được khởi tạo</p>
+
+        <p>Khi ta muốn sub-class tự xác định/ chỉ định các đối tượng sẽ được tạo</p>
+
+        <p>Khi class parent quyết định nhường việc khởi tạo Object cho các Sub-Class của nó</p>
       </div>
     </div>
   </div>

@@ -82,8 +82,6 @@
           nhờ vào cái miếng giấy anh phục vụ đưa.</p>
 
         <p>Miếng giấy ấy là một ví dụ của Builder Pattern.</p>
-
-        
       </div>
     </div>
   </div>
@@ -97,9 +95,15 @@
       </div>
 
       <div class="card-body">
+        <p>
+          Builder Pattern says that "construct a complex object from simple objects using step-by-step approach"
+        </p>
+
         <p>Builder Pattern sử dụng trong trường hợp object phức tạp và không theo một khuôn khổ nào. Việc truyền parameter 
           vào constructor của Object không thực sự khả thi ở đây, khi mà các properties của nó thay đổi xoành xạch. Thay vì thế, 
           nó hướng tới cách tiếp cận từng phần. Nó sử dụng các Inner class để thực hiện điều này.</p>
+
+        <p>Nó đặc biệt hữu dụng khi không thể create object với chỉ 1 step, hoặc dùng constructor, hoặc dùng 1 method nào đó.</p>
         
         <p>Builder Pattern cũng được sử dụng khi ta muốn mở rộng 1 class đã có từ trước. Lúc này ta sẽ thêm các thuộc tính mới 
         vào thông qua một Builder.</p>
@@ -159,24 +163,23 @@
       </div>
 
       <div class="card-body">
-        <p>Đầu tiên, nó giúp cho việc khởi tạo Object trở nên dễ dàng hơn. Thay vì ta phải truyền vào 1 method 20 tham số,
-        với thứ tự không thể nào nhớ nổi, thì giờ đây ta quyết định chia nhỏ cái constructor kia ra thành từng group, và xây
-        dựng object từng phần dựa trên các group đó.</p>
+        <h5>Advantages</h5>
 
-        <p>Việc tiếp cận từng phần khiến việc Build một Object trở nên đơn giản hơn. Nếu có 1 phát sinh nào đó về param truyền
-        vào ta chỉ cần xây dựng thêm 1 group để handle điều đó là được.</p>
+        <p>Giúp ta phân chia rõ ràng giữa constructor và representation của Object</p>
 
-        <p>Ngoài ra, nếu hệ thống đã có sẵn một Object nào đó rồi, ta muốn mở rộng nó mà ko thích dùng Extend, hoặc do
-          behavior của nó khác biệt với cái kia nhiều quá, ( tức là vi phạm nguyên lý thay thế (L) của SOLID) thì Builder là
-        giải pháp tốt nhất.</p>
+        <p>Cung cấp cách tốt hơn để kiểm soát trong quá trình xây dựng 1 object</p>
 
-        <p>Ví dụ ở nhà hàng kia đã có món cá mú hấp xì dầu thơm ngon rồi. Giờ đây ông chủ muốn đổi thành
-          cá mú hấp xì dầu tự chọn (thêm tôm, hay thêm bò, hoặc là tùy chọn rau củ quả gì đó chẳng hạn), thì việc sử dụng
-          Builder trong trường hợp này là hiệu quả hơn cả.</p>
-      </div>
+        <p>Hỗ trợ thay đổi các representation bên trong của các đối tượng</p>
 
-        <p>Nhược điểm của nó đó là phát sinh thêm 1 cái Builder với thông tin đầy đủ như cái Object chính. Do đó, khi có thay đổi ở
-        Object chính, cần cập nhật lại Builder liên quan.</p>
+        <h5>Disadvantages</h5>
+
+        <p>Có chăng cũng chỉ là thêm vài dòng code mà thôi.</p>
+
+        <h5>Usage</h5>
+
+        <p>Builder thường được dùng khi mà việc khởi tạo các Object phức tạp.</p>
+
+        <p>Khi ta muốn bổ sung thêm các  builder method  mà không cần quan tâm tới các object hiện tại - tăng khả năng mở rộng</p>
       </div>
     </div>
   </div>

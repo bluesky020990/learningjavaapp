@@ -4,6 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 
 import {MicroServiceComponent} from "./micro-service.component";
 import {MicroServiceOverviewComponent} from "./micro-service-overview/micro-service-overview.component";
+import { DecomposeServiceComponent } from './decompose-service/decompose-service.component';
 
 const routing: Routes = [{
   path: '',
@@ -11,7 +12,7 @@ const routing: Routes = [{
   children: [
     {path: '', redirectTo: 'overview', pathMatch: 'full'},
     {path: 'overview', component: MicroServiceOverviewComponent},
-    {path: 'decompose-service', component: MicroServiceOverviewComponent},
+    {path: 'decompose-service', component: DecomposeServiceComponent},
   ]
 }];
 
@@ -20,7 +21,8 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
 @NgModule({
   declarations: [
     MicroServiceComponent,
-    MicroServiceOverviewComponent
+    MicroServiceOverviewComponent,
+    DecomposeServiceComponent
   ],
   imports: [
     CommonModule,

@@ -76,9 +76,17 @@
       </div>
 
       <div class="card-body">
+        <blockquote>
+          Singleton Pattern says that just"define a class that has only one instance and provides a global point of access to it".
+        </blockquote>
+
         <p>Singleton là một mẫu design khá phổ biến, được sử dụng rất rất nhiều trong hệ thống.</p>
 
         <p>Mục đích của nó chính là đảm bảo chỉ có duy nhất 1 đối tượng thuộc class đó tồn tại trong hệ thống.</p>
+
+        <p>Singleton được chia thành 2 loại, Early Instantiation được khởi tạo ngay lúc class được nạp (load time) và
+          Lazy Instantiation, khởi tạo khi instance được gọi (required).
+        </p>
       </div>
     </div>
   </div>
@@ -197,13 +205,24 @@
       </div>
 
       <div class="card-body">
+        <h5>Advantages</h5>
+
         <p>Sử dụng 1 instance trong toàn hệ thống giúp ta tiết kiệm tài nguyên và chi phí, đặc biệt là với các Object mà cần nhiều tài nguyên.</p>
 
         <p>Giới hạn số lượng Instance của class giúp ta kiểm soát nó dễ hơn.</p>
 
+        <h5>Disadvantages</h5>
+
         <p>Nhược điểm của nó là cần cẩn thận thực hiện theo 3 điều trên để tránh làm phá vỡ Pattern.</p>
 
+        <p>Trong môi trường multiple thread thì cần quan tâm tới việc data của nó có cần consistency giữa các thread hay ko?</p>
+
         <p>Cách triển khai hơi phức tạp và cần cẩn thận trong môi trường đa nhiệm.</p>
+
+        <h5>Usage </h5>
+
+        <p>Trong môi trường multiple thread, và database application. Đặc biệt là logging, catching, thead pools, configuration,
+        setting.</p>
       </div>
     </div>
   </div>
@@ -220,7 +239,8 @@
       <div class="card-body">
         <p>Singleton được sử dụng khi ta muốn chỉ có 1 Instance đảm nhận 1 nhiệm vụ nào đó trong hệ thống.</p>
 
-        <p>Việc triển khai nó cần cẩn thận và tuân thủ đúng 3 điều ở trên nếu như ko muốn phá vỡ quy tắc.</p>
+        <p>Có 2 loại Singleton, tùy bài toán mà sử dụng cho phù hợp. Đối với loại Lazy, việc triển khai nó cần tiến hành
+          cẩn thận và tuân thủ đúng 3 điều ở trên nếu như ko muốn phá vỡ quy tắc.</p>
       </div>
     </div>
   </div>

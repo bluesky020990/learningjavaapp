@@ -63,8 +63,13 @@
       </div>
 
       <div class="card-body">
-        <p>Prototype được sử dụng khi việc tạo đối tượng đòi hỏi quá nhiều chi phí, thời gian và
-          tài nguyên trong khi ta đã có một đối tượng tương tự tồn tại</p>
+        <blockquote>
+          Prototype Pattern says that cloning of an existing object instead of creating new one and can also be customized
+          as per the requirement.
+        </blockquote>
+
+        <p>Prototype được sử dụng khi việc tạo đối tượng đòi hỏi quá nhiều chi phí, thời gian và tài nguyên trong khi ta
+          đã có một đối tượng tương tự tồn tại</p>
 
         <p>Nó cung cấp một cơ chế để sao chép original object thành một new object, và có thể sửa đổi nó - nếu cần.</p>
 
@@ -121,13 +126,33 @@
       </div>
 
       <div class="card-body">
-        <p>Prototy Pattern làm hạn chế chi phí khi muốn Clone 1 Object từ 1 Object đã có từ trước.</p>
+        <h5>Advantages</h5>
 
-        <p>Không chỉ dừng lại ở Clone, nó cũng có thể tạo ra 1 object mới, với những đặc điểm khác với Object cũ mà tốn ít chi phí
-        nhất có thể.</p>
+        <p>Dễ thấy nhất, đó là giúp giảm nhu cầu phân lớp. Tại sao nói vậy, giả sử ta có 1 đối tượng, ta muốn tạo 1 đối tượng khác
+        nhưng có những đặc điểm khác biệt, thì ta cần phải tạo thêm 1 class khác. Nhưng với cái này thì điều đó là ko cần thiết.
+        Tiết kiệm class sẽ làm code dễ đọc hơn.</p>
+
+        <p>Che dấu sự phức tạp của việc khởi tạo object</p>
+
+        <p>Client có thể nhận được new Class mà không cần biết kiểu class cụ thể.</p>
+
+        <p>Tạo và remove class tại run-time. Kêu thế này nhưng thực ra cũng ko phải, cũng là class đó chỉ có điều thay đổi các properties
+        của nó khác với lúc đầu thôi.</p>
+
+        <h5>Disadvantages</h5>
 
         <p>Nhược điểm của nó đó là cần lựa chọn đúng phương án Clone vì nếu làm không cẩn thận, thì sự thay đổi status của Object
         này cũng kéo theo sự thay đổi của Clonning của nó.</p>
+
+        <h5>Usage </h5>
+
+        <p>Khi ta đã có 1 Class được khởi tạo từ trước</p>
+
+        <p>Khi chi phí để khởi tạo 1 đối tượng là quá cao và ta muốn reduce nó.</p>
+
+        <p>Khi ta muốn hạn chế số lượng Class trong Application.</p>
+
+        <p>Khi muốn che dấu việc khởi tạo đối với Client.</p>
       </div>
     </div>
   </div>

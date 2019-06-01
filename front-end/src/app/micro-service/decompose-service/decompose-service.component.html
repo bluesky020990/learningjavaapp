@@ -1,0 +1,333 @@
+<h3 class="mb-3">Decomposition strategies</h3>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        What is the Microservice Architecture exactly
+      </div>
+
+      <div class="card-body">
+        <p>Trong phần Overview, ta đã tìm hiểu sơ qua về MicroService, hiểu được khái niệm của nó, cách thức mà nó hoạt động cũng
+        như những lợi ích nhược điểm mà nó mang lại. Tuy nhiên, mối quan hệ giữa Microservice Architecture với Software Architecture
+        là thế nào? Thế nào là Service, và kích thước của Service quan trọng như thế nào?</p>
+
+        <p>Trước hết, ta cùng xem lại khái niệm của Software Architecture. Software Architecture là một cấu trúc bậc cao, nó bao
+          gồm các thành phần cấu thành và mối quan hệ giữa chúng. Một Software Architecture là đa chiều, do đó có nhiều cách để mô
+        tả nó. Kiến trúc rất quan trọng, nó xác định các thuộc tính của phần mềm hoặc khả năng của nó. </p>
+
+        <p>Trong mô hình truyền thống, mục tiếu của Architecture đó là khả năng mở rộng, độ tin cậy và bảo mật. Tuy nhiên, trong thời
+        buổi hiện nay, những tiêu chí đó đã thay đổi, những thứ trên dễ dàng đạt được, vì vậy người ta quyết định tập trung vào một
+        phần khác, đó là delivery một cách nhanh chóng và an toàn.</p>
+
+        <p>MicroService là một kiểu kiến trúc mang lại cho ứng dụng khả năng bảo trì maintainability, kiểm tra - testability,
+        và deployability cao.</p>
+
+        <h5>What is software architecture and why does it matter?</h5>
+
+        <blockquote>
+          he software architecture of a computing system is the set of structures needed to reason about the system, which comprise
+          software elements, relations among them, and properties of both.
+        </blockquote>
+
+        <p>Cái định nghĩa này khá trừu tượng. ta có thể hiểm nôm na đó là sự phân rã thành các thành phần và mô tả mối quan hệ giữa chúng,
+        Việc phân rã (decomposition) rất quan trọng vì những lý do sau:</p>
+
+        <ul>
+          <li>Nó cho phép sự phân công lao động và kiến thức, Nó cho phép nhiều người hoặc nhiều team có kiến thức chuyên môn làm
+          việc hiệu quả trên một ứng dụng.</li>
+
+          <li>Nó định nghĩa các phần tử tương tác với nhau như thế nào.</li>
+        </ul>
+
+        <p>Một kiến trúc ứng dụng có thể được nhìn từ nhiều góc độ. Ví dụ như 1 tòa nhà, có thể được nhìn bởi 1 công nhân xây dựng, mọt
+        nhà kiến trúc nội thất, hay 1 hệ thống điện nước và nhiều bối cảnh khác. Kiến trúc của phần mềm cũng vậy. Nó có thể
+        được xem xét dưới nhiều góc cạnh mà nổi bật là những mô hình sau:</p>
+
+        <h5>The 4+1 view model of software architecture</h5>
+
+        <p>Mô hình 4 + 1 xác định 4 khung nhìn khác nhau của kiến trúc phần mềm. </p>
+
+        <blockquote>
+          <img src="assets/micro-service/4_1_architecture.jpg" class="img-fluid"/>
+        </blockquote>
+
+        <dl>
+          <dt>Logical view</dt>
+          <dd>Ở mô hình này ta chỉ quan tâm tới các Class, package và mối quan hệ giữa chúng. </dd>
+
+          <dt>Implementation view</dt>
+          <dd>Ta quan tâm tới các Modules, các Jar file, các component như war file hoặc các executable và mối quan hệ giữa chúng</dd>
+
+          <dt>Process view</dt>
+          <dd>Process và Inter-Process communication.</dd>
+
+          <dt>Deployment view</dt>
+          <dd>Quan tâm tới Machine và các Process, và mối quan hệ giữa các machine với nhau thông qua các network.</dd>
+        </dl>
+
+
+        <h5>Why architecture matters</h5>
+
+        <p>Một ứng dụng gồm 2 loại requirments. Fist Category bao gồm functional requirment, xác định những gì mà ứng dụng cần phải làm. Nó thường
+        được mô tả qua các User Case, hoặc User Story. Architecture không có nhiều ý nghĩa với cái này, vì dùng bất cứ 1 architecture nào
+        ta cũng có thể thực hiện được yêu cầu trên.</p>
+
+        <p>Architecture có ý nghĩa quan trọng, vì nó cho phép một ứng dụng đáp ứng được như cầu thứ 2: Quality of Service requirement. Nó còn được biết
+        đến với cacsi tên Quantity Attributes và cũng có thể gọi là Quantity atrilities. Những yêu cầu của nó chủ yếu là khả năng mở rộng và độ
+        tin cậy cao. Nó cũng bao gồm về maintainability, testability, và deployability. Kiến trúc ta chọn cho Application xác định mức độ đáp ứng các yêu cầu về
+        chất lượng này.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        architectural styles
+      </div>
+
+      <div class="card-body">
+        <p>Từ những yêu cầu trên, ta có danh sách các Architecture Style như sau:</p>
+
+        <h5>The layered architectural style</h5>
+
+        <p>Một Layered Architecture tổ chức một Software Elements thành từng lớp. Mỗi lớp có 1 tập trách nhiệm được xác định rõ.
+        Một kiến trúc được xây dựng theo dạng Layered nhằm hạn chế sự phụ thuộc giữa các lớp. Mỗi lớp chỉ được phụ thuộc vào 1 lớp bên dưới nó.</p>
+
+        <p>Một Layered Architecture thường gồm 3 lớp sau:</p>
+
+        <ul>
+          <li>Presentation layer— Contains code that implements the user interface or external APIs</li>
+          <li>Business logic layer— Contains the business logic</li>
+          <li>Persistence layer— Implements the logic of interacting with the database</li>
+        </ul>
+
+        <p>Saddlier Connect là một ví dụ điển hình cho các lớp này. Presentation chình là lớp web, nơi nó tương tác với người dùng, gửi các
+        yêu cầu qua lớp Business để xử lý và lớp Business lại thực hiện update data thông qua lớp Persistence.</p>
+
+        <p>Nhược điểm của mô hình này như sau:</p>
+
+        <dl>
+          <dt>Single presentation layer</dt>
+          <dd>Nó không thể hiện được, thật sự thì một Appication có thể được gọi nhiều hờn chỉ là 1 hệ thống.
+          Tức là cái này nó sẽ bị cứng nhắc, nó chỉ phụ thuộc vào hệ thống này mà ko dùng được cho các hệ thống khác.
+          Sadlier là 1 ví dụ, khi implement cái CIU, ta vẫn phải rewrite lại từ cái Presentation có sẵn. Cứ như vậy, mỗi khi muốn xây dựng
+            cái gì đó, ta lại cần mở rộng cái này, và rồi ta có 1 đống hỗn độn mà ta khó quản lý được.
+          </dd>
+
+          <dt>Single persistence layer</dt>
+          <dd>Nó không thể sử dụng trong môi trường khi Application cần tương tác với nhiều hơn 1 DB.</dd>
+
+
+          <dt>Defines the business logic layer as depending on the persistence layer</dt>
+          <dd>Rõ ràng lớp Business được define dựa trên lớp Persistence, vô tình nó khiến cho 2 lớp này trở nên gắn chặt lẫn nhau. Vì vậy
+          nếu như có 1 sự thay đổi nào đó, có thể kéo theo ta cần thay dổi cả 2 layer. Ngoài ra quá trình testing trở nên khó khăn
+          hơn khi ta không thể kiểm tra logic nghiệp vụ mà không cần Database.</dd>
+        </dl>
+
+        <p>Ngoài ra Layer Architecture thể hiện sự sai lệch các phụ thuộc trong một ứng dụng được thiết kế tốt. Business logic
+          thường định nghĩa 1 interface hoặc một repository của các interfacemaf xác định các phương thức truy cập dữ liệu. Persistence tier
+        định nghĩa các DAO class implement các repository Interface. Do đó, nó vô tình trái ngược lại hoàn toàn với mục đích của kiến trúc Layer này.</p>
+
+        <span class="small">
+          Tại sao lại nói nó vi phạm. Về nguyên tắc thì trong Layer Architecture, một layer sẽ phụ thuộc vào layer bên dưới nó. Nhưng rõ ràng trong mô hình
+          trên layer bên dưới Persistence cần phải implement các interface của layer trên Business logic, nên sự phụ thuộc này đã bị đảo ngược lại.
+        </span>
+
+
+        <h5>About the hexagonal architecture style</h5>
+
+        <p>Hecxagonal Architecture là một sự thay thế cho Layer Architecture. Trong mô hình này, Business được đặt ở vị trí trung tâm.
+         Application lược bỏ lớp Presentation và thay thế nó bằng các Inbound adapter - dùng để handle các request từ outside bằng cách gọi các
+        business logic. Tương tự như vậy, lớp Persistence cũng được thay thế bởi các outbound adapater - được gọi bởi Business Logic và các Appication bên ngoài.</p>
+
+        <blockquote>
+          <img src="assets/micro-service/hexagon_architecture.jpg" class="img-fluid"/>
+        </blockquote>
+
+        <p>Ưu điểm của mô hình này đó là  Business logic không phụ thuộc vào các Adapter, thay vào đó, các Adapter phải phụ thuộc
+        vào nó.</p>
+
+        <p>Điều quan trọng nhất trong những lợi ích mà mô hình hexagon mang lại, đó là nó tách  Business Logic ra khỏi PresentStation
+          và Dât Access Login trong các Adapter. Business Logic không phù j thuộc vào Pressetation hay Data Access. Vì vậy, nóp có thể
+        được kiểm tra một cách dễ dàng hơn nhiều. Một lọi ích khác mà mô hình này mang lại, đó là nó phản ánh chính xác hơn kiến trúc
+        của một ứng dụng hiện đại. Logic nghiệm vụ có thể được gọi thông qua nhiều Adapter, mỗi Adapter lại implement mooitj API hoặc UI cụ thể,
+        </p>
+
+        <p>Hexagon là một kiến trục tuyệt vời để mô tả kiến trúc của từng Service bên trong mô hình MicroService.</p>
+
+
+        <h5>The microservice architecture is an architectural style</h5>
+
+        <p>Monolithic Architecture là một kiểu thiết kế. Nó cấu trúc khung nhìn dưới duạng một component duy nhật, một tệp thực thi hoặc một war file.  </p>
+
+        <p>MicroService Architecture cùng là 1 kiểu thiết kế. Nó cấu trúc khung nhìn triển khai dưới dạng một tập hợp gồm nhiều thành phần, tẹp thực
+        thi hoặc các War files. Các component chính là các Service và các connecter là các giao thức truyền thông cho phép các Service có thể hợp
+        tác với nhau. Mỗi Service có một logic view khác nhau, thường là Hexagon Architecture.</p>
+
+        <p>Một đặc điểm quan trọng khi nhắc tới MicroService đó là các Service được kết nối lỏng lẻo với nhau. Do đó, nó sẽ có những giới hạn về việc cộng tác/ hợp tác
+        giữa các Service. Đó là điều ta cần quan tâm.</p>
+
+
+        <h5>What is a service?</h5>
+
+        <p>Service là 1 thành phần phần mềm độc lập, có thể triển khai độc lập và thực hiện một số chức năng hữu ích. Một service thường sẽ có các API để cung
+        cấp cho khách hàng quyền truy cập vào các chức năng của chúng. API của nó thường được chia thành 3 loại, command, queries và event. Command dùng
+        để thực hiện các hành động và cập nhật dữ liệu. Query dùng để lấy dữ liệu. Service cũng published các event để sử dụng cho các Client của nó.</p>
+
+        <p>Hình dưới đây mà 1 mình họa cho Service </p>
+
+        <blockquote>
+          <img src="assets/micro-service/service.jpg" class="img-fluid"/>
+        </blockquote>
+
+
+        <h5>What is loose coupling?</h5>
+
+        <p>Điều quan trọng nhất trong kiến trúc MicroService đó là các dịch vụ phải được ghép với nhau 1 cách lỏng lẻo. Tất cả tương tác
+        của Service đều phải thưc hiện thông qua các API của nó, gói gọn các chi tiết triển khai của nó. Điều này cho phép việc implement service
+          có thể thay đổi mà không ảnh hưởng đến các Client. Loose Coupling Service là chìa khóa để cải thiệt thời gian cho việc deployed ứng dụng như maintainability
+        hay testability. Nó dễ hiểu hơn, dê thay đổi và kiểm tra hơn.</p>
+
+        <p>Ngoài ra, việc mỗi Service có 1 database của riêng nó cũng đóng vai trò quan trọng để đạt được tính lỏng lẻo này. Việc giữ data của mỗi Service
+        riêng tư cho phép ta có thể thay đổi Data model của nó mà  ko làm ảnh hưởng đến tới các Service khác, cũng như ko làm mất thời gian phối hợp
+        với các dịch vụ khác. Không chia sẻ Database Table cũng góp phần tạo nên sự độc lập trong quá trình Runtime, khi nó đảm bảo rằng Service A này sẽ không
+        lock lại các Record và ngăn chặn sự truy cập của Các Service khác. Nhược điểm của nó đó là việc duy trì tính nhất quán của dữ liệu
+        và truy vấn trên các dịch vụ trở nên phức tạp hơn.</p>
+
+        <h5>The role of shared libraries</h5>
+
+        <p>Developer thường đóng gọi các chức năng package lại thành 1 library để nó có thể được reused trong nhiều Service khác nhau mà không có
+        bất cứ sự trùng lặp code nào cả. Việc sử dụng lại các Library là cần thiết nhưng cần xem xét để tránh trường hợp vô tình ta tạo thành khới nối/ sự phụ
+        thuộc giữa các Service.</p>
+
+        <p>Giả sử ta có 1 Service A cũng depend  vào 1 function N1, 1 Service B cũng depend vào 1 function N1, thì khi này việc cùng sử dụng Library này ở
+        đây có thể ko sao cả, nhưng, nếu như Service A sử dụng 1 Method mà cái đó lại có ảnh hưởng đến Service B thì đây là điều tuyệt đối không nên làm.</p>
+
+        <p>Một ví dụ khác, giả sử ta có nhiều Service cần update Order Business Object chẳng hạn. (1) Khi này, ta có thể package các function đó lại thành 1 Library
+        để có thể dùng chung cho nhiều Service. Việc này có thể hạn chế việc trùng lặp khác, nhưng ta cũng cần phải xem xét xem khi requirement bị thay đổi thì
+        nó có ảnh hưởng tới các Service đang sử dụng ko. (2) Vì vậy, cách tiếp cận tốt hơn đó là xây dựng nó thành 1 Service độc lập thay vì Library.</p>
+
+        <p>Vì vậy, trong MicroService, khi ta có 1 functional mà không coskhar năng thay đổi, thì ta mới sử dụng library cho riêng nó.</p>
+
+        <h5>The size of a service is mostly unimportant</h5>
+
+        <p>Khi nhắc tới MicroService, từ đầu tiên ta nghe thấy là Micro. Điều này cho thấy rằng, một Service nên có 1 kích thước nhỏ.</p>
+
+        <p>Một mục tiêu tốt hơn khi xây dựng một MicroService, đó là một Service phải được phát triển bởi 1 nhóm nhỏ, với thời gian ít, và hợp tác
+        tối thiếu với các team khác. Khái niệm này rất hữu ích trong việc tổ chức team. Về lí thuyết, 1 team chỉ chịu trách nhiệm cho 1 Service duy nhất. Vì vậy,
+        Service đó ko có nghĩa là Micro. Ngược lại, nếu 1 Service yêu cầu một nhóm lớn hoặc mất nhiều thời gian để test, Ta có thể chia nó
+        thành nhiều team và các Service nhỏ hơn. Còn nếu như ta cliene tục thay đổi 1 Service vì sự thay đổi của các Service khác, thì ta cần xem xét
+        lại cấu trúc. Có thể ta đã đi không đúng hướng, thay vì ta xây dựng 1 MicroService, thì ta đã xây dựng 1 Distributed Monolith.</p>
+
+        <p>Tóm lại, MicroService cấu trúc 1 Application thành 1 Set các Servic nhỏ, lỏng lẻo. Kết quả, nó sẽ cải thiện thời gian hát triển
+        deployument time attributes như Maintainability0, Testability, Deployability và thêm vào đó, nó cho phép một tổ chức có thể phát triển
+        phần meemnfh nhanh hơn. Ngoài ra, nó cũng cải thiện khả năng mở rộng ứng dụng, mặc dù đó ko phải là mục tiêu chính.</p>
+
+        <p>Để develop một MicroService cho Applicatiom, ta cần xác định các Service và xác định làm cách nào để nó hợp tác với nhau.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Defining an application’s microservice architecture
+      </div>
+
+      <div class="card-body">
+        <p>Làm thế nào để ta có thể define một MicroService Architecture. Như các software develope khác, đầu tiên ta cũng bắt đầu bằng
+        việc xác định các requirement, các domain experts, các application hiện tại. Giống hầu hết các software development khác,
+        xác đinh 1 kiến trúc là nghệ thuật hơn là sự khoa học. Dưới đây mô tả 3 bước để xác định kiến trúc ứng dụng. Tuy nhiên, điều
+        ta cần nhớ ở đây, nó không phải là 1 process mà ta cần follow theo 1 cách máy móc. Nó có khả năng lặp đi lặp lại và liên quan rất
+        nhiều đến sự sáng tạo.</p>
+
+
+
+        <blockquote>
+          <img src="assets/micro-service/three_step_to_defining_service.jpg">
+        </blockquote>
+
+        <dl>
+          <dt>Identify system Operation</dt>
+          <dd>
+            <p>
+              Một ứng dụng tồn tại để xử lý các yêu cầu. Vì vậy, việc đầu tiên trong bước xác định kiến trúc của nó đó là chắt lọc các
+              requirment thành các key request. Nhưng thay vì mô tả các request theo các công nghệ IPC cụ thể như REST hoặc message, ta sử dụng
+              các khái niệm trừu tượng hơn về các hoạt động của System.
+            </p>
+
+            <p>Một <b>System Operation</b> là 1 abstraction của 1 request, mà Application phải handle. Nó có thẻ là 1 Command yêu cầu update data,
+              hoặc cũng có thể là 1 Query, truy vấn dữ liệu. Behavior của mỗi command được define trong terms of Abstract domain model,
+              cũng xuất phát từ Requrment. System Operation trở thành kịch bản kiến trúc, và được dùng ddeeer mình họa cho sự liên kết/ hợp tác
+              giữa các Service.</p>
+          </dd>
+
+          <dt>Identify services</dt>
+          <dd>
+            <p>Step này có nhiệm vụ decomposition thành các Service. Có nhiều strategies được lựa chọ ở đây. Một chiến lược - xác
+              định các Service tương ứng với Business Capacity. Đây là 1 chiến lược cổ điển, dựa trên
+              <a href="https://www.youtube.com/watch?v=EOXAx53mxa4" target="_blank">the discipline of business architecture</a>.
+             Một chiến lược khác là tổ chức các Service xung quanh cách <a href="https://viblo.asia/p/domain-driven-design-phan-1-mrDGMOExkzL"
+                                                                           target="_blank">domain-driven design subdomains</a>.</p>
+
+            <p>Kết quả cuối cùng, các Service được tổ chức xung quanh các khái niệm kinh odanh hơn là các khái niệm kĩ thuật.</p>
+
+
+            <p class="small">Đọc về cái DDD, ta hiểu rằng vấn đề nó nằm ở chỗ sự khác biệt giữa ngôn ngữ giữa 1 người kĩ sư và 1 chuyên
+            gia trong lĩnh vực của họ (domain expert).</p>
+          </dd>
+
+          <li>Identify Service APIs and Collaborations.</li>
+
+          <p>Bước thứ 3 trong xác định Application đó là định ra từng Service API. Để làm được điều đó, ta cần chỉ định từng System operation
+          trong bước đầu tiền thành các Service. Một Service có thể tự thực hiện 1 hoạt động (operation) hoặc cũng có thể cần phải hợp tác
+            với các Service khác. Trong trường hợp này, ta cần xác định làm cách nào để các Service cộng tác với nhau, để thực hiện các operation bổ sung.</p>
+        </dl>
+
+        <p>Có một số hạn chế khi phân chia một ứng dụng thành các Service. Thứ nhất, độ trễ mạng. Ta sẽ nhận ra rằng
+        một decomposition có thể sẽ không khả dụng khi có quá nhiều round-trip (khứ hồi) giữa các Service. Một trở ngại
+          khác cho decomposition đó là các giao tiếp đồn bộ gữa các Service làm giảm tính khả dụng. Trở ngại thứ 3 đó là tính nhất quán của
+          data giữa các dịch vụ (Vấn đề này sẽ được giải quyết với Pattern Sagas). Trở ngại cuối cùng đó là god-class, thứ được sử dụng
+        xuyên suốt trong một ứng dụng.</p>
+
+        <p>May mắn lkaf ta có thể sử dụng các khái niệm từ Domain-Driven Design để loại bỏ các God Class.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        Architecture determines your application’s -ilities, including maintainability, testability, and deployability, which directly impact development velocity.
+        The microservice architecture is an architecture style that gives an application high maintainability, testability, and deployability.
+        Services in a microservice architecture are organized around business concerns—business capabilities or subdomains—rather than technical concerns.
+        There are two patterns for decomposition:
+          Decompose by business capability, which has its origins in business architecture
+          Decompose by subdomain, based on concepts from domain-driven design
+        You can eliminate god classes, which cause tangled dependencies that prevent decomposition, by applying DDD and defining a separate domain model for each service.
+
+      </div>
+    </div>
+  </div>
+</div>

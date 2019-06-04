@@ -79,6 +79,8 @@
 
         <p>Nói cách khác, Decorate Pattern sử dụng composition thay thế cho inheritance để có thể mở rộng functionality của Object
         trong quá trình Run-time.</p>
+
+        <p>Khi sử dụng decorate, ta nhắc tới feature hơn là method.</p>
       </div>
     </div>
   </div>
@@ -93,7 +95,26 @@
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Các bước triển khai nó bao gồm:</p>
+
+        <ul>
+          <li>Component Interface  - The interface or abstract class defining the methods that will be implemented.</li>
+
+          <li>Component Implementation - The basic implementation of the component interface</li>
+
+          <li>Decorator - Decorator class implements the component interface and it has a HAS-A relationship
+            with the component interface. The component variable should be accessible to the child decorator
+            classes, so we will make this variable protected.</li>
+
+          <li>Concrete Decorators - Extending the base decorator functionality and modifying the component behavior accordingly.</li>
+        </ul>
+
+        <img src="./../assets/design_pattern/decorator-pattern.png" class="img-fluid"/>
+
+        <img src="../assets/design_pattern/uml_diagram/decorator_pattern_uml_diagram.jpg" class="img-fluid">
+
+        <p>Một ví dụ nữa của Decorate Pattern đó là Directive trong Angular. Directive trong Angular là 1 taglib, mà ta có thể
+        nhúng vào bất cứ đâu mà ta muốn. Khi element đó có 2 directive, nó sẽ chịu ảnh hưởng luôn của 2 thằng.</p>
       </div>
     </div>
   </div>
@@ -104,11 +125,46 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Advantages & Disadvantages
+        Advantages & Disadvantages & Usage
       </div>
 
       <div class="card-body">
-        ________________________________
+        <h5>Advantages</h5>
+
+        <p>Cung cấp một cách thức linh hoạt hơn so với kế thừa mặc định (static inheritance)</p>
+
+        <p>Tăng cường khả năng mở rộng của object bởi vì việc thay đổi được thực hiện bằng cách thêm các class mới
+        hơn là update các class  hiện tại.</p>
+
+        <p>Cho phép ta phát triển một loạt các chức năng của object từ các lớp có sẵn thay vì phải code toàn bộ các chức năng
+        vào trong cùng một đối tượng. *</p>
+
+        <p class="small-text">
+          * Về mặt bản chất, Decorate cho phép class vừa có đặc điểm của cái này, vừa có đặc diểm của cái kia. Do đó, đây
+          là điều quan trọng nhất trong số những ưu điểm của decorate. Điều này đồng nghĩa với việc, thay vì ta xây dựng 1 object
+          với đầy đủ các method, thì ta có thể tách nó ra thành các object độc lập, nhắm vào từng chức năng cụ thể rồi gom nó lại thành 1 cục.
+          Điều này đặc biệt hữu ích hơn nữa, khi các method đó đã được xây dựng trong các object đã có sẵn, ta có thể kế thừa nó,
+          mà ko cần phải rewrite lại code.
+        </p>
+
+        <h5>Disadvantages</h5>
+
+        <p>Việc sử dụng decorate giúp ta có thể tạo các Class mới được extend từ các Class cũ thông qua 1 cơ chế linh hoạt hơn nhưng nó lại mang lại
+        những rủi ro khi ta cần phải custom lại behavior của cái đó. Ta đều biết rằng, Decorate đưa các object kia thành 1 thành phần của nó, và từ đó mà
+        behavior của nó có luôn những đặc điểm của thằng này lẫn thằng kia, nhưng đó cũng chính là vấn đề của đa kế thừa.</p>
+
+        <p>Chịu ảnh hưởng của quá nhiều object đói lúc khiến cho behavior của nó không còn đúng đắn nữa. Vì vậy ta cần xem xét kĩ lưỡng khi
+        quyết định sử dụng decorate này. Hoặc khi sử dụng, thì các behavior của các Object mà nó sử dụng bên trong phải trở nên độc lập với nhau
+        thì mới có thể tránh được điều này.</p>
+
+        <h5>Usage</h5>
+
+        <p>Khi ta muốn tăng sự minh bạch và linh động và add thêm trách nhiệm - responsibility cho đối tượng mà không làm ảnh hưởng đến các đối tượng khác</p>
+
+        <p>Khi ta muốn thêm responsibility cho các dối tượng mà có thể thay dổi trong tương lai</p>
+
+        <p>Khi việc mở rộng function bằng việc sử dụng các subclass không thực tế, ví dụ như có quá nhiều sub-class được tạo để handle các trường hợp
+        chẳng hạn.</p>
       </div>
     </div>
   </div>
@@ -123,7 +179,10 @@
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Decorate giúp ta có thể xây dựng các class với những feature từ các class đã có hiện tại.</p>
+
+        <p>Đối với decorate, vấn đề quan trọng nhất đó là các feature của các object mà nó muốn sở hữu. cần đảm bảo
+        các feature này là độc lập với nhau.</p>
       </div>
     </div>
   </div>

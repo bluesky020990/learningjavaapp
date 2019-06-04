@@ -270,6 +270,20 @@
             <p>Có 2 loại copy, shadow copy (Copy địa chỉ tham chiếu) hoặc deep copy (copy bằng giá trị) và chọn cách nào phụ thuộc vào quyết định của ta.</p>
           </div>
         </div>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Object Pool</h5>
+          <div class="text-dark pt-3">
+            <p>Giới hạn số lượng object tạo ra bằng 1 Pool. Các object trong pool được reuse và share giữa các client.</p>
+
+            <p>Khi các client cần 1 object, nó sẽ get từ pool. Sau khi mượn xong nó sẽ trả object lại pool - vị trí ban đầu
+            để các client khác có thể sử dụng.</p>
+
+            <p>Trong pattern này, điều ta quan tâm đó là việc setup các giá trị min, max object trong pool cũng như điều chỉnh
+            các behavior khi pool cạn kiệt object hơn là việc implement nó.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

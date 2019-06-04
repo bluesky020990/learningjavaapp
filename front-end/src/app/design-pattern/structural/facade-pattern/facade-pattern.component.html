@@ -1,3 +1,194 @@
-<p>
-  facade-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Facade Pattern  - Structural Pattern</h2>
+
+      <p>Về mặt bản chất, Facade tương tự như Factory, chỉ khác đó là Factory che dấu việc khởi tạo Object, còn
+        Facade che dấu behavior của Interface.</p>
+
+      <p>Thông thường, Facade thường được sử dụng khi mà một method quá phức tạo, và ta muốn nhóm nó lại cho
+        dễ quản lý, đồng thời cung cấp một interface đơn giản đối với người dùng.</p>
+
+      <p>Facade patern đơn giản hóa một tập các giao diện trong hệ thống con và chỉ một cung cấp giao diện chung duy nhất
+        cho client. Đó là ý nghĩa của nó.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Ta cùng quay lại cửa hàng góc phố nhé :) </p>
+
+        <p>Cửa hàng ngày càng đông, nhân viên thì ko đủ. Nhưng mà ông chủ keo, nên quyết định sẽ thay đổi phương pháp phục vụ.</p>
+
+        <p>Từ giờ, khách hàng vào cửa hàng, tự xem thực đơn, tự order món, tự đưa cho anh phục vụ.</p>
+
+        <p>Anh phục vụ chỉ việc ngồi một chỗ, nhận Order, rồi đưa cho đầu bếp.</p>
+
+        <p>Còn khách hàng thì lại tiếp tục ngồi chờ để tự nhận món ăn, tự bưng ra, tự chủ động thanh toán tiền.</p>
+
+        <p>Ông chủ nghĩ rằng việc này sẽ không phải tốn thêm nhân sự nữa, thế là lại tiết kiệm một đống tiền.</p>
+
+        <p>Tuy nhiên, mọi thứ ko như ông nghĩ. Chỉ ngày đầu áp dụng, cửa hàng ông đã rối tung rối mù lên. Những khách hàng
+          quen thì không sao, nhưng những khách mới vào thì bỡ ngỡ, chả biết đi đâu để gọi đồ, cũng chả biết khi nào đến
+          lượt mình, cũng chả biết nhận món ăn từ đâu. Mọi thứ cứ thế rối tung rối mù lên</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Giải pháp
+      </div>
+
+      <div class="card-body">
+        <p>Rõ ràng là quyết định của ông chủ là một quyết định sai lầm. Quy trình quá phức tạp khiến cho mọi thứ rối tung lên.</p>
+
+        <p>Và ông chủ nhận ra rằng, vị trí của anh giúp việc là vô cùng quan trọng. Vì vậy, ổng cũng chịu cúi đầu tuyển thêm một anh nữa vào làm.</p>
+
+        <p>Thế là từ giờ, cửa hàng có thêm một anh phục vụ. Hai anh tự phân công công việc cho nhau, một anh thì lo việc order
+          và tính tiền, một anh thì chịu trách nhiệm
+          đưa order đến tay ông đầu bếp, rồi chờ mang món ăn ra cho khách hàng.</p>
+
+        <p>Trong ví dụ này, thì 2 anh giúp việc, chính là 2 Facade.</p>
+
+        <p>Trong lập trình cũng vậy, có đôi khi ta có những method mà quá trình xử lý nó quá phức tạp. Nó là tập hợp của nhiều
+          method con và nó có thể xảy ra ở bất cứ đâu trong hệ thống.</p>
+
+        <p>Thay vì để nó rải rác như vậy, ta sẽ gom nó lại làm một, và chỉ cung cấp một interface để client
+          có thể tương tác với hệ thống thông qua nó. Đó là ý nghĩa của Facade Pattern</p>
+
+        <p>Nhìn một khía cạnh khác, Facade cũng tương tự như Factory, chỉ khác ở chỗ, Factory che dấu việc khởi tạo Object, còn
+          Facade che dấu các method bên trong nó hoạt động ntn.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        <blockquote>
+          A Facade Pattern says that just "just provide a unified and simplified interface to a set of interfaces in a subsystem,
+          therefore it hides the complexities of the subsystem from the client".
+        </blockquote>
+
+        <p>Bản chất của Facade đó là 1 Factory của Interface. Nhìn chung thì Facade cũng giống như Abstract Factory, chỉ khác ở chỗ
+        Abstract Factory cung cấp Factory của Object, thì Facade cung cấp Factory của Interface mà thôi.</p>
+
+        <p>Facade đóng gói một sub-system phức tạp vào trong 1 interface. Điều này làm giảm sự phức tạp của ứng dụng và có thể
+        tách rời các sub-system từ nhiều client khác nhau. Mặt khác, nếu như Facade là điểm truy cập của các sub-system,
+        thì nó sẽ hạn chế các feature và cũng như sự linh hoạt mà các power user có thể cần.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <img src="../assets/design_pattern/uml_diagram/facade_pattern_uml_diagram.jpg" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <h5>Advantages</h5>
+
+        <p>Bảo vệ client khỏi sự phức tạp của sub-system components.</p>
+
+        <p>Tạo nên sự lỏng lẻo giữa client và các sub-system của nó</p>
+
+        <h5>Disadvantages</h5>
+
+        <p>Việc xác định các interface và gom nó lại là điều cần xem xét kĩ lưỡng. Ta sử dụng Facade để tạo thành các
+        access points chứ không phải là gom lại toàn bộ và trở thành 1 god-object.</p>
+
+        <h5>Usage</h5>
+
+        <p>Khi ta muốn cung cấp một inteface đơn giản cho một complex sub-system</p>
+
+        <p>Khi có quá nhiều sự phụ thuộc tồn tại giữa client và các implementation class/ abstract class.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Facade có nhiệm vụ thay vì để các interface một cách riêng lẻ, thì Facade nhóm nó lại trong 1 inteface lớn hơn, và dùng
+        nó như 1 access point cho các sub-system components.</p>
+
+        <p>Khi sử dụng facade, ta cần chú ý tới việc nhóm các interface như thế nào, tránh trường hợp gom nó lại thành 1 god-class.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Important things
+      </div>
+
+      <div class="card-body">
+        <p>Trong phần này, ta cùng discuss để nhận thấy sự khác biệt giữa Facade và các Design Pattern khác.</p>
+
+        <p>Đối với Adapter, Facade define một inteface mới, trong khi Adapter sử dụng lại inteface cũ. Mục đích của Adapter đó là
+        làm cho 2 interface hiện có (1 cái cũ, 1 cái mới) hoạt động cùng nhau thay vì xác định một interface hoàn toàn mới.</p>
+
+        <p>Flyweight chỉ ra cách tạo ra nhiều đối tượng nhỏ, trong khi Facade chỉ ra cách tạo ra 1 đối tượng "lớn", đại diện cho toàn bộ sub-system.</p>
+
+        <p>Mediator cũng tương tự như Facade ở chỗ nó trừu tượng hóa chức năng của các lớp hiện có. Mediator thường xuyên thêm các
+        object khác vào cái hiện có để mở rộng sub-system, trong khi Facade không làm điều này.</p>
+
+        <p>Abstract Factory cũng có thể được sử dụng thay thế cho Facade để che dấu các Class đặc biệt của platform. Các Facade Object nàyu
+        thường là các singleton vì chỉ cần 1 Facade object.</p>
+
+        <p>Adapter và Facade đều là wrapper. nhưng mà nó lại khác nhau ở loại wrap. Mục đích của Facade là tạo 1 interface
+        đơn giản hơn trong khi Adapter là thiết kế/ sửa đổi 1 giao diện hiện có. Facade wrap nhiều object lại làm 1, trong khi đo, Adapter
+        chỉ wrap 1 object mà thôi. </p>
+      </div>
+    </div>
+  </div>
+</div>

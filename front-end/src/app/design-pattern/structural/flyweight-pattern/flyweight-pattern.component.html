@@ -1,3 +1,155 @@
-<p>
-  flyweight-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Flyweight Pattern - Structural Pattern</h2>
+
+      <p>Sử dụng việc chia sẻ để support một số lượng lớn thành các đối tượng nhỏ hơn</p>
+
+      <p>Thay thế các heavy-weight bằng các light-weight. Đây là lý do nó được gọi là flyweight.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Ai cũng biết dãy số Fibonacci rồi phải không, công thức tổng quát của nó là n3 = n2 + n1. Và giờ ta cần tìm số Fibonacci thứ N chẳng hạn</p>
+
+        <p>Và ta sẽ sử dụng Flyweight để giải quyết bài toán đó, bằng cách sử dụng Flyweight.</p>
+
+        <p>Ta nhận ra rằng, để biết được kết quả của số F(n), ta cần biết kết quả của F(n - 1), F(n - 2). Để biết F(n - 1) ta lại cần biết  F(n - 2), F(n - 3).</p>
+
+        <p>Rõ ràng giá trị của F(n - 2) được sử dụng ở trong phép tính F(n -1)  và của bản thân nó. Do đó, nếu như ko có 1 cơ chế lưu trữ,
+          ta lại phải mất thời gian để tính toán lại nó.</p>
+
+        <p>Vì vậy, ta xây dựng một hash map để lưu trữ các giá trị Fibonacci đã được tính, chỉ tính và thêm vào khi mà giá trị đó chưa có.</p>
+
+        <p>Ví dụ này chưa thật sự chuẩn xác đối với Flyweight. Mục đích của flyweight phức tạp hơn thế nhiều. Vì vậy ta cần xem xét lại nó.</p>
+
+        <p>Ví dụ ta sẽ có 1 chức năng chấm điểm, danh sách truyền vào của nó là các component. Mỗi component có 1 type khác nhau.</p>
+
+        <p>Giả sử ta cần grade 1 bài học với lesson A, điều gì ta sẽ cần làm. Hoặc ta find hết toàn bộ các Scoring Formula của cái này lên 1 lượt,
+        chịu tốn chi phí cho các Component không xuất hiện trong Lesson, hoặc ta sẽ sử dụng Flyweight để chỉ cần load các Component cần thiết.</p>
+
+        <p>Nếu xài Flyweight, ta build 1 cái map chứa scoringFormular của nó. Cái này có 1 key là componentType. Đây là trạng thái ta dùng để nhận biết,
+        phân biệt với mấy cái khác. Và ta cũng có 1 method  score, với 2 params là correctAns và studentResponse.</p>
+
+        <p>Khi 1 Component chưa có trong Map, ta new 1 cái, push vào, và trả lại, nếu có rồi thì ta sẽ trả lại nó luôn. Đó là mục đích của Flyweight.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        <blockquote>
+          A Flyweight Pattern says that just "to reuse already existing similar kind of objects by storing them and create
+          new object when no matching object is found".
+        </blockquote>
+
+        <p>Flyweight Pattern mô tả cách chia sẻ các đối tượng để chho phép sử dụng chúng bằng cách chia nhỏ thành các thành phần
+        với chi phí thấp nhất. Mỗi flyweight sẽ được chia thành 2 phần,  state-dependent (extrinsic) part, và state-independent (intrinsic).</p>
+
+        <p>Intrinsic state được lưu trữ/ chia sẻ trong các Flyweight Object, trong khi đó Extrinsic state được lưu trữ và tính toán bởi các client object
+        và được chuyển tới các Flyweight khi các hoạt động của nó được gọi.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <p>Việc implement của Flyweight phức tạp hơn những gì ta nghĩ. Ta cần tuân thủ các bước sau để đảm bảo là nó không đi sai hướng.</p>
+
+        <p>
+          Đầu tiên, ta phải đảm bảo rằng chi phí cho các đối tượng là 1 vấn đề thực sự đáng quan tâm. Có thể do thời gian, chi phí và độ
+          phức tạp của nó nên ta cần tiết kiệm tối thiểu. Lưu ý cái này khá phức tạp, nên việc áp dụng phải xem xét xem nó có
+          thực sự cần thiết hay ko.
+        </p>
+
+        <p>Sau đó, ta chia các Target class thành 2 phần, shareable (intrinsic state) và non-shareable (extrinsic state).</p>
+
+        <p>Tiếp nữa là remove toàn bộ các shareable state ra khỏi Class. Đây là những thứ ta sẽ dùng lại, vì vậy ta cần đưa nó
+        ra khỏi các attribute của Class và đưa nó vào các affected method (affected - bị ảnh hưởng) mà sử dụng những arguments này.</p>
+
+        <p>Sau đó ta sử dụng 1 Factory để caching và có thể reuse lại các existing class đó.</p>
+
+        <p>Yêu cầu các Client phải sử dụng Factory thay vì new method cho việc khởi tạo các đối tượng.</p>
+
+        <p>Client/ third party phải tra cứu hoặc tính toán trên các non-shareable state và cung cấp các state đó cho class.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <h5>Advantages</h5>
+
+        <p>Giảm số lượng của object</p>
+
+        <p>Giảm số lượng memory và storage khi object đã tồn tại</p>
+
+        <h5>Disadvantages</h5>
+
+        <p>Flyweight là một Pattern mà cách thực hiện của nó khá phức tạp vì phải thay đổi nhiều. Do đó cần có 1 sự phân tích
+        kĩ lưỡng trong việc chia tách các shareable state và non-shareable state khi áp dụng nó.</p>
+
+        <h5>Usage</h5>
+
+        <p>Khi application sử dụng một số lượng lớn các object</p>
+
+        <p>Khi chi phí lưu trữ cao vì số lượng đối tượng quá lớn</p>
+
+        <p>Khi application không phụ thuộc vào danh tính đối tượng.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        <p>Bản chất của Flyweight đó là chia một cái lớn thành nhiều cái nhỏ, và tái sử dụng các cái nhỏ đó.</p>
+
+        <p>Vì vậy, nó thường được sử dụng trong môi trường mà ta cần xử lý nhiều thứ, trong đó kết quả của cái này có
+          liên quan tới kết quả của 1 cái đã đc xử lý trước đó.</p>
+
+        <p>Hoặc cũng đơn thuần làm cache, lấy object lên khi nó ko tồn tại, hoặc trả ra ngay nếu nó tồn tại trong map</p>
+      </div>
+    </div>
+  </div>
+</div>

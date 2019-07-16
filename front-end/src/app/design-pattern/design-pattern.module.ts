@@ -20,7 +20,6 @@ import { ProxyPatternComponent } from './structural/proxy-pattern/proxy-pattern.
 import { CoRPatternComponent } from './behavioral/co-rpattern/co-rpattern.component';
 import { CommandPatternComponent } from './behavioral/command-pattern/command-pattern.component';
 import { InterpreterPatternComponent } from './behavioral/interpreter-pattern/interpreter-pattern.component';
-import { IntergratorPatternComponent } from './behavioral/intergrator-pattern/intergrator-pattern.component';
 import { MediatorPatternComponent } from './behavioral/mediator-pattern/mediator-pattern.component';
 import { MementoPatternComponent } from './behavioral/memento-pattern/memento-pattern.component';
 import { ObserverPatternComponent } from './behavioral/observer-pattern/observer-pattern.component';
@@ -33,6 +32,7 @@ import { DependencyInjectionPatternComponent } from './advance/dependency-inject
 import { ModelAndViewPatternComponent } from './advance/model-and-view-pattern/model-and-view-pattern.component';
 import { ObjectPoolPatternComponent } from './creational/object-pool-pattern/object-pool-pattern.component';
 import { FilterPatternComponent } from './structural/filter-pattern/filter-pattern.component';
+import {IteratorPatternComponent} from "./behavioral/iterator-pattern/iterator-pattern.component";
 
 const routing: Routes = [{
   path: '',
@@ -60,7 +60,7 @@ const routing: Routes = [{
     { path: 'chain-of-responsibility', component: CoRPatternComponent},
     { path: 'command', component: CommandPatternComponent},
     { path: 'interpreter', component: InterpreterPatternComponent},
-    { path: 'iterator', component: IntergratorPatternComponent},
+    { path: 'iterator', component: IteratorPatternComponent},
     { path: 'mediator', component: MediatorPatternComponent},
     { path: 'memento', component: MementoPatternComponent},
     { path: 'observer', component: ObserverPatternComponent},
@@ -95,7 +95,7 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
     CoRPatternComponent,
     CommandPatternComponent,
     InterpreterPatternComponent,
-    IntergratorPatternComponent,
+    IteratorPatternComponent,
     MediatorPatternComponent,
     MementoPatternComponent,
     ObserverPatternComponent,

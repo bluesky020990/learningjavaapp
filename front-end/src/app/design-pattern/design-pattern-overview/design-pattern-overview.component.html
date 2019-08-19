@@ -335,8 +335,9 @@
             <p>Flyweight được sử dụng trong mục đích chia sẻ các đối tượng của một lớp. Giả sử ta có 1 bank các đối tượng, và ta muốn reuse lại chúng giữa các object khác
               thì Flyweight là một lựa chọn tuyệt với nhất.</p>
 
-            <p>Flyweight tạo ra một Map các object để chia sẻ, và khi cần lấy 1 Object nào đó, thì Flyweight sẽ kiểm tra trong Map hiện tại của nó hay không, nếu có thì đưa luôn, nếu
-              không thì nó sẽ đi request lấy cái đó, và save lại trong Map cho những lần tìm kiếm tiếp theo.</p>
+            <p>Mục đích của flyweight đó là tách các phần chung vào 1 Object riêng biệt (flyweight) và đưa các sự khác biệt thành các param để reuse trong method của nó. Từ đó, thay vì phải
+            khởi tạo nhiều Object cho nhiều properties khác nhau, thì ta chỉ cần init 1 Object và reuse chúng lại trong các tình huống khác, thông qua một cơ chế quản lý (có thể là hash map
+            cũng có thể là cái khác).</p>
           </div>
         </div>
 
@@ -346,10 +347,7 @@
             <p>Mục đích của Facade là giúp cho client Application dễ dàng tương tác với hệ thống. Nó che dấu việc implement các service bên trong và chỉ cung cấp 1 interface
               ra bên ngoài để Client có thể dễ dàng tương tác.</p>
 
-            <p>Về mặt bản chất, Facade khá giống với Factory, chỉ khác, Factory trả về các Object, còn Facade sẽ run các service dựa vào tham số đầu vào.</p>
-
-            <p>Ví dụ ta có 2 service xử lý file doc và file xml. Khi đó ta xây dựng 2 service để process 2 loại file này, và cung cấp 1 Method, mà ở đó, người dùng
-              chỉ cần truyền vào "XML" hay là "DOC" để đạt được mục đích mình mong đợi.</p>
+            <p>Về mặt bản chất, Facade khá giống với Factory, chỉ khác, Factory trả về các Object, còn Facade sẽ trả lại các service dựa vào tham số đầu vào.</p>
           </div>
         </div>
 

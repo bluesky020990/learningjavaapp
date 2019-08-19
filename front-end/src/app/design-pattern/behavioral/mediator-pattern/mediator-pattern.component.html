@@ -132,11 +132,13 @@
           <li>Xác định một tập hợp các Object sẽ có lợi khi tách rời lẫn nhau. </li>
           <li>Đòng gọi tất cả những tương tác đó trong 1 Abstraction của new Class.</li>
           <li>Tạo 1 thể hiện của lớp đó và sửa đổi để các đối tượng trên kia sẽ chỉ tương tác với Mediator.</li>
-          <p>Cân bằng nguyên tắc tách rời (principle of decoupling) với nguyên tắc phấn phối trách nhiemej đồng đều (principle of distributing)</p>
-          <li>Tránh tạo ra các đối tượng Controller/ GOd object.</li>
+          <p>Cân bằng nguyên tắc tách rời (principle of decoupling) với nguyên tắc phấn phối trách nhiệm đồng đều (principle of distributing)</p>
+          <li>Tránh tạo ra các đối tượng Controller/ God object.</li>
         </ol>
 
-        <p>Đầu tiên là ta phải có 2 cái Zone độc lập rồi.</p>
+        <p>Hiểu nôm na thì</p>
+
+        <p>Đầu tiên là ta phải tách thành 2 Zone độc lập rồi.</p>
 
         <p>Sau đó thì xây dựng một Mediator để liên kết 2 cái đó. Tùy vào điều kiện mà ta sẽ xây dựng Mediator theo những
           mục đích khác nhau. Ví dụ dưới đây chỉ minh họa cho cái đó thôi</p>
@@ -156,16 +158,30 @@
       <div class="card-body">
         <h5>Advantages</h5>
 
-        <p>__________</p>
+        <p>Uu điểm đầu tiên cần kể đến của Mediator đó là nó khiến cho các decouple các Object. Điều này vô cùng rõ ràng khi
+        tất cả các Object chỉ tương tác với Mediator chứ ko tương tác với nhau. Do đó, nó chỉ có duy nhất 1 mối liên hệ với Mediator mà thôi.</p>
+
+        <p>Chính điều trên khiến cho ta có thể đơn giản hóa các giao thức giữa các đối tượng, đồng thơi cũng đưa việc control các object
+        một cách tập trung, vào từng Object với nhiệm vụ của riêng nó.</p>
+
+        <p>Khi các mối quan hệ trở nên lỏng lẻo, chức năng bị cô lập và giới hạn, thì rõ ràng việc quản lý các đối tượng này
+        trở nên dễ dàng hơn nhiều vì lúc này ta ko cần phải pass các message cross objects.</p>
+
+        <p>Đồng thời, những đối tượng này không bao hàm các logic bên trong (vi dụ như check available check valid này nọ) nên
+        ta chỉ cần tập trung cho việc communication của chúng. Về các logic đó, ta sẽ tập trung cho Mediator cho đầy đủ và chính xác hơn.</p>
 
         <h5>Disadvantages</h5>
 
-        <p>Rõ ràng ta thấy, có một vài action cơ bản, mà bỏ cai mediator vào, nó phức tạp hẳn, chạy lòng vòng. Nên đối với những cái design pattern này, chỉ đc áp dụng khi thực sự
-          hiểu và thực sự cần, nếu ko, nó ko những ko mang lại lợi ích, mà còn khiến hệ thống trở nên rắc rối hơn.</p>
+        <p>Rõ ràng ta thấy, có một vài action cơ bản, mà bỏ cai mediator vào, nó phức tạp hẳn, chạy lòng vòng. Nên đối
+          với những cái design pattern này, chỉ đc áp dụng khi thực sự hiểu và thực sự cần, nếu ko, nó ko những ko mang
+          lại lợi ích, mà còn khiến hệ thống trở nên rắc rối hơn.</p>
 
         <h5>Usage</h5>
 
-        <p>__________</p>
+        <p>Trước hết, đó là message-based system. Chat application/message broadcast là một ví dụ.</p>
+
+        <p>Ngoài ra ta nên sử dụng nó trong những tình huống mà ở đó có nhiều Object communicate một cách phức tạp với nhau. Khi
+        này ta sẽ cần sử dụng Mediator để làm đơn giản quá trình này (well-defined ways).</p>
       </div>
     </div>
   </div>
@@ -218,11 +234,15 @@
         <p>Có những điểm cần chú ý khi sủ dụng cái này bao gồm:</p>
 
         <ul>
-          <li>Mediator pattern is useful when the communication logic between objects is complex, we can have a central point of communication that takes care of communication logic.</li>
-          <li>Java Message Service (JMS) uses Mediator pattern along with Observer pattern to allow applications to subscribe and publish data to other applications.</li>
-          <li>We should not use mediator pattern just to achieve lose-coupling because if the number of mediators will grow, then it will become hard to maintain them.</li>
-        </ul>
+          <li>Mediator pattern is useful when the communication logic between objects is complex, we can have a central
+            point of communication that takes care of communication logic.</li>
 
+          <li>Java Message Service (JMS) uses Mediator pattern along with Observer pattern to allow applications to
+            subscribe and publish data to other applications.</li>
+
+          <li>We should not use mediator pattern just to achieve lose-coupling because if the number of mediators will
+            grow, then it will become hard to maintain them.</li>
+        </ul>
       </div>
     </div>
   </div>

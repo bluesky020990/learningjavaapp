@@ -33,6 +33,7 @@ import { ModelAndViewPatternComponent } from './advance/model-and-view-pattern/m
 import { ObjectPoolPatternComponent } from './creational/object-pool-pattern/object-pool-pattern.component';
 import { FilterPatternComponent } from './structural/filter-pattern/filter-pattern.component';
 import {IteratorPatternComponent} from "./behavioral/iterator-pattern/iterator-pattern.component";
+import {NullObjectPatternComponent} from "./behavioral/null-object-pattern/null-object-pattern.component";
 
 const routing: Routes = [{
   path: '',
@@ -63,6 +64,7 @@ const routing: Routes = [{
     { path: 'iterator', component: IteratorPatternComponent},
     { path: 'mediator', component: MediatorPatternComponent},
     { path: 'memento', component: MementoPatternComponent},
+    { path: 'null-object', component: NullObjectPatternComponent},
     { path: 'observer', component: ObserverPatternComponent},
     { path: 'state', component: StatePatternComponent},
     { path: 'template', component: TemplatePatternComponent},
@@ -98,6 +100,7 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
     IteratorPatternComponent,
     MediatorPatternComponent,
     MementoPatternComponent,
+    NullObjectPatternComponent,
     ObserverPatternComponent,
     StatePatternComponent,
     TemplatePatternComponent,

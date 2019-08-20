@@ -7,7 +7,6 @@ import {EngResourceComponent} from './components/resource/english-resource/eng-r
 import {EngPronunciationComponent} from './components/resource/english-resource/eng-pronunciation/eng-pronunciation.component';
 import {EngOverviewComponent} from './components/resource/english-resource/eng-overview/eng-overview.component';
 import {EngVocabularyWorkshopComponent} from './components/resource/english-resource/eng-vocabulary-workshop/eng-vocabulary-workshop.component';
-import {SpringFrameworkComponent} from './spring-framework/spring-framework.component';
 import {HibernateComponent} from './hibernate/hibernate.component';
 
 const routes: Routes = [
@@ -17,16 +16,16 @@ const routes: Routes = [
   { path: 'java',            loadChildren: './java/java.module#JavaModule',                                 data: {preload: false, delay: false} },
   { path: 'design-pattern',  loadChildren: './design-pattern/design-pattern.module#DesignPatternModule',    data: {preload: false, delay: true}},
   { path: 'micro-service',   loadChildren: './micro-service/micro-service.module#MicroServiceModule',       data: {preload: true,  delay: true}},
-  { path: 'spring-framework', component: SpringFrameworkComponent},
+  { path: 'spring',          loadChildren: './spring-framework/spring-module.module#SpringModuleModule',    data: {preload: true,  delay: true}},
   { path: 'hibernate', component: HibernateComponent},
 
-  { path: 'english', component: EngResourceComponent, children: [
-      {path: '', redirectTo: 'overview', pathMatch: 'full'},
-      {path: 'overview', component: EngOverviewComponent},
-      {path: 'pronunciation', component: EngPronunciationComponent},
-      {path: 'vocabulary-workshop', component: EngVocabularyWorkshopComponent},
-    ]
-  },
+  // { path: 'english', component: EngResourceComponent, children: [
+  //     {path: '', redirectTo: 'overview', pathMatch: 'full'},
+  //     {path: 'overview', component: EngOverviewComponent},
+  //     {path: 'pronunciation', component: EngPronunciationComponent},
+  //     {path: 'vocabulary-workshop', component: EngVocabularyWorkshopComponent},
+  //   ]
+  // },
 ];
 
 @NgModule({

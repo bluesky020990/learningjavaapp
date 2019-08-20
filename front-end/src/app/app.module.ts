@@ -32,7 +32,6 @@ import {EngParagraphComponent} from './components/common/eng-paragraph/eng-parag
 import {EngWordComponent} from './components/common/eng-word/eng-word.component';
 import { EngVocabularyWorkshopComponent } from './components/resource/english-resource/eng-vocabulary-workshop/eng-vocabulary-workshop.component';
 
-import { SpringFrameworkComponent } from './spring-framework/spring-framework.component';
 import { HibernateComponent } from './hibernate/hibernate.component';
 import {RouterModule} from '@angular/router';
 import {CustomPreloadStrategyService} from './custom-preload-strategy.service';
@@ -57,7 +56,6 @@ import {CustomPreloadStrategyService} from './custom-preload-strategy.service';
     EngPronunciationComponent,
     EngOverviewComponent,
 
-    SpringFrameworkComponent,
     HibernateComponent,
   ],
   imports: [

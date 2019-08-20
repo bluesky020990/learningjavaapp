@@ -1,3 +1,35 @@
-<p>
-  spring-framework works!
-</p>
+<div class="row">
+  <div class="col-12 col-md-9">
+    <router-outlet></router-outlet>
+
+    <div class="col-12 actions">
+      <a class="btn btn-default" mat-menu-item [routerLink]="['/spring/overview']">Back to Overview</a>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-3">
+    <h3 class="mb-3">Introduction</h3>
+    <div class="row mb-3">
+      <div class="col-12">
+        <p>Trong series này ta sẽ cùng tìm hiểu về Spring Framework, cách nó hoạt động cũng như những ưu điểm mà nó mang lại</p>
+
+
+      </div>
+    </div>
+
+    <h3 class="mb-3">About</h3>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <ul class="list-group">
+          <li class="list-group-item">Author: Khanh Tran</li>
+          <li class="list-group-item">Email: quockhanhqb011@gmail.com</li>
+          <li class="list-group-item">Phone: 0989 890 960</li>
+          <li class="list-group-item">Company: BanVien</li>
+          <li class="list-group-item">Position: Developer</li>
+          <li class="list-group-item">Skill: Front-end, Java, OOP, DB</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

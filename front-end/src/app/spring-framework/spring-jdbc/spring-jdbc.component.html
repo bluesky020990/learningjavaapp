@@ -1,3 +1,147 @@
-<p>
-  spring-jdbc works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Overview</h2>
+      <p>Mục đích của Spring Jdbc đó là làm đơn giản hóa các thao tác với Database để tăng tốc độ code. Nó tự tạo các connection,
+      quản lý các transaction.... và ta ko cần quan tâm cái gì cả.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Problems of JDBC API
+      </div>
+
+      <div class="card-body">
+        <p>Spring JDBC  cung cấp cho ta 1 cơ chế mạnh mẽ để kết nói tới cơ sở dữ liệu và thực hiện các truy vấn SQL. Nó
+          sử dụng các internal JDBC nhưng lại loại bỏ rất nhiều những thiếu sót mà JDBC gặp phải.</p>
+
+        <ul>
+          <li>Trước khi thực thi câu Query ta cần làm rất nhiều thứ, tạo connection, init các data, connect tới db chẳng hạn.</li>
+          <li>Đôi lúc câu query của ta bị lỗi, do đó cần có 1 cơ chế để quản lý exception đó.</li>
+          <li>Ngoài ra đó là vấn đề về transaction. Khi 1 giao dịch bị lỗi ta cần rollback lại</li>
+          <li>Cuối cùng đó là vấn đề khi ta thay đổi 1 db này bằng 1 db khác. Khi đó bắt buộc ta phải sửa đổi lại các câu
+          SQL để support cho môi trường mới.</li>
+        </ul>
+
+        <p>Spring JDBC loại bỏ tất cả các vấn đề ở trên. Nó cung cấp các phương thức để viêt struy vấn trực tiếp. Do đó nó
+        giúp ta tiết kiệm rất nhiều thời gian.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        JdbcTemplate class
+      </div>
+
+      <div class="card-body">
+        <p>Trong phần này ta sẽ đi lướt qua, chủ yếu là tìm hiểu hơn là sử dụng, vì trong môi trường thực tế, ta sẽ sử dụng
+        hibernate thay thế cái rườm rà rắc rối này.</p>
+
+        <p>JDBC không như Hibernate. Nó chỉ cung cấp cách thức để ta viết câu Query một cách nhanh chóng, theo đúng định nghĩa
+        của SQL. Vì vậy, nếu muốn insert 1 cái gì, thì phải viết 1 loại các DAO saving với query là từng phần rất mất thời gian.</p>
+
+        <p>Dưới đây là những phần quan trọng trong chủ đề này.</p>
+
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">JdbcTemplate class</h5>
+          <div class="text-dark pt-3">
+            <p>Đây là 1 lớp trung tâm của Spring JBC. Nó đảm nhiệm vài trò tạo và giải phóng các tài nguyên nhue khởi tạo hoặc kết nối
+            đối tượng. Do đó, ta sẽ ko gặp những vấn đề khi quên đóng mở các connection. Việc ta cần làm chỉ là tập trung viết
+            SQL mà thôi.</p>
+
+            <p>Ngoài ra nó còn hỗ trợ xử lý các Exception, và cung cấp các thông tin về exception được quy định trong org.springframework.dao
+            packgage.</p>
+
+            <p>Mọi hoạt động cơ bản như insert, update, delete và retrieval data đều có thể được thực hiện thông qua nó.</p>
+
+            <p>Xem danh sách các method bên trong nó.</p>
+            <table class="alt">
+              <tbody><tr><th>No.</th><th>Method</th><th>Description</th></tr>
+              <tr><td>1)</td><td>public int update(String query)</td><td>is used to insert, update and delete records.</td></tr>
+              <tr><td>2)</td><td>public int update(String query,Object... args)</td><td>is used to insert, update and delete records using PreparedStatement using given arguments.</td></tr>
+              <tr><td>3)</td><td>public void execute(String query)</td><td>is used to execute DDL query.</td></tr>
+              <tr><td>4)</td><td>public  T execute(String sql, PreparedStatementCallback action)</td><td>executes the query by using PreparedStatement callback.</td></tr>
+              <tr><td>5)</td><td>public  T query(String sql,  ResultSetExtractor rse)</td><td>is used to fetch records using ResultSetExtractor.</td></tr>
+              <tr><td>6)</td><td>public List query(String sql,  RowMapper rse)</td><td>is used to fetch records using RowMapper.</td></tr>
+              </tbody></table>
+          </div>
+        </div>
+
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Example of PreparedStatement in Spring JdbcTemplate</h5>
+          <div class="text-dark pt-3">
+            <p>Thằng này tiện dụng hơn cái kia nhiều. Nó có thể cấu hình thông tin db bên trong file applicationContext,
+            và việc truyền data vào câu SQL cũng dễ dàng hơn.</p>
+          </div>
+        </div>
+
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">ResultSetExtractor Example | Fetching Records by Spring JdbcTemplate</h5>
+          <div class="text-dark pt-3">
+            <p>JDBC template cung cấp 1 method có tên là query. Method này sẽ trả lại cho ta 1 List các record theo câu SQL trả về/</p>
+
+            <p>ResultSetExtractor  lkaf 1 interface được sử dụng để fetch record. Phương thức extractData của nó trả về 1 đối tượng
+            ResultSet và data có thể được lấy ra từ đó.</p>
+          </div>
+        </div>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">RowMapper Example | Fetching records by Spring JdbcTemplate</h5>
+          <div class="text-dark pt-3">
+            <p>về mặt bản chất nó tương tự nhue cái trên thôi cũng chả khác gì</p>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Spring NamedParameterJdbcTemplate Example
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Spring SimpleJdbcTemplate Example
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>

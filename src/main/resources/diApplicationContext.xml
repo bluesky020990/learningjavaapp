@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="studentbean" class="com.khanhtran.springboot.example.diexample.Student">
+        <property name="name" value="Khanh Tran"></property>
+    </bean>
+
+    <bean id="schoolbean" class="com.khanhtran.springboot.example.diexample.School">
+        <constructor-arg value="Khanh Tran School"></constructor-arg>
+        <constructor-arg value="Grade 2"></constructor-arg>
+    </bean>
+
+    <bean id="schoolbeanSetter" class="com.khanhtran.springboot.example.diexample.School">
+        <property name="name">
+            <value>Khanh Tran School By Setter</value>
+        </property>
+
+        <property name="grade">
+            <value>Grade XXX</value>
+        </property>
+    </bean>
+
+
+    <bean id="studentByInject" class="com.khanhtran.springboot.example.diexample.Student">
+        <constructor-arg value="Khanh Tran Student"></constructor-arg>
+
+        <constructor-arg>
+            <ref bean="schoolbean"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="clazz01" class="com.khanhtran.springboot.example.diexample.Clazz">
+        <constructor-arg value="Ktran Class 01"></constructor-arg>
+        <constructor-arg value="Grade 1"></constructor-arg>
+        <constructor-arg>
+            <list>
+                <value>Teacher 01</value>
+                <value>Teacher 02</value>
+                <value>Teacher 03</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="clazz02" class="com.khanhtran.springboot.example.diexample.Clazz">
+        <constructor-arg value="Ktran Class 02"></constructor-arg>
+        <constructor-arg value="Grade 2"></constructor-arg>
+        <constructor-arg>
+            <list>
+                <value>Teacher 01</value>
+                <value>Teacher 02</value>
+                <value>Teacher 03</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="schoolSample" class="com.khanhtran.springboot.example.diexample.School">
+        <constructor-arg value="School 03"></constructor-arg>
+        <constructor-arg value="Grade X"></constructor-arg>
+        <constructor-arg>
+            <list>
+                <ref bean="clazz01"/>
+                <ref bean="clazz02"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

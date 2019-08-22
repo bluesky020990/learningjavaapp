@@ -1,3 +1,298 @@
-<p>
-  spring-dependence-injection works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Overview</h2>
+
+      <p>Bài học đầu tiên khi ta tìm hiểu về Spring đó là cách nó sử dụng IoC Container ntn. Ở bài này ta sẽ cùng tìm hiểu
+      về BeanFactory và ApplicationContext. Thông qua đó, ta sẽ hiểu về cách khai báo bean cũng như sử dụng nó ntn.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        IoC Container
+      </div>
+
+      <div class="card-body">
+        <p>IoC Container trong Spring có nhiệm vụ khởi tạo, cấu hình và lắp ráp các đối tượng. IOC Container có thể lấy
+        thông tin từ các file xml hoặc cũng có thể thông qua các annotation.</p>
+
+        <p>Nhiệm vụ chính của IoC bao gồm:</p>
+
+        <ul>
+          <li>Khởi tạo application class</li>
+          <li>Cấu hình các Object</li>
+          <li>Lắp ráp các dependence giữa các đối tượng</li>
+        </ul>
+
+        <p>Để làm được điều này, spring cung cấp 2 cơ chế cho IoC container, bao gồm BeanFactory và ApplicationContext.</p>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Difference between BeanFactory and the ApplicationContext</h5>
+          <div class="text-dark pt-3">
+            <p>Về bản chất, org.springframework.beans.factory.BeanFactory và org.springframework.context.ApplicationContext intefaces
+            hoạt động tương tự các IoC Container. ApplicationContext interface được phát triển dựa trên BeanFactory Interface.
+            Nó bổ sung một vài chức năng so với BeanFactor như tích hợp với SPring AOP, Message Resource Handle, Event Propagate....
+            Do đó, ApplicationContext là tốt hơn so với BeanFactory.</p>
+          </div>
+        </div>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Using BeanFactory</h5>
+          <div class="text-dark pt-3">
+            <p> XmlBeanFactory  là 1 implement của BeanFactory. để sử dụng được BeanFactory, ta cần create 1 Instance của XMLBeanFactory.</p>
+
+            <blockquote>
+              Resource resource=new ClassPathResource("applicationContext.xml");<br />
+              BeanFactory factory=new XmlBeanFactory(resource);
+            </blockquote>
+          </div>
+        </div>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Using ApplicationContext</h5>
+          <div class="text-dark pt-3">
+            <p> ClassPathXmlApplicationContext là 1 implement của ApplicationContext. để sử dụng được ApplicationContext, ta cần create 1 Instance của ClassPathXmlApplicationContext.</p>
+
+            <blockquote>
+              ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+            </blockquote>
+          </div>
+        </div>
+
+        <p>Theo cái ví dụ trên kia, rõ ràng là việc sử dụng ApplicationContext nó đơn giản hơn đúng ko nào.</p>
+
+        <p>Dưới đây là mẫu của 1 applicationContext.xml. Trong này ta sẽ khai báo các bean và từ đó ta có thể get nó ra 1
+        cách dễ dàng</p>
+
+        <blockquote>
+          &lt;?xml version="1.0" encoding="UTF-8"?><br />
+          \t&lt;beans<br />
+           xmlns="http://www.springframework.org/schema/beans"<br />
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
+           xmlns:p="http://www.springframework.org/schema/p"<br />
+          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"><br />
+          <br />
+            &lt;bean id="studentbean" class="com.javatpoint.Student"><br />
+          &lt;property name="name" value="Vimal Jaiswal">&lt;/property><br />
+          &lt;/bean><br />
+          <br />
+          &lt;/beans><br />
+        </blockquote>
+
+
+        <blockquote>
+          Resource resource=new ClassPathResource("applicationContext.xml");<br />
+          BeanFactory factory=new XmlBeanFactory(resource);<br />
+          <br />
+          Student student=(Student) factory.getBean("studentbean");<br />
+          student.displayInfo();<br />
+        </blockquote>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Dependency Injection in Spring
+      </div>
+
+      <div class="card-body">
+        <p>DI là 1 pattern rất hay, nó giảm thiểu sự phụ thuộc của các object trong ứng dụng.</p>
+
+        <p>Đối với Spring, một bean muốn làm việc thường sẽ cần sự hợp tác của nhiều bean khác. Trong mô hình này, ta sử dụng
+        các bean khác trong 1 Object Bean như 1 composite của nó vậy.</p>
+
+        <p>Vì vậy, xem lại file applicationContext.xml, ta sẽ có 1 bean, hoặc nhiều bean được định nghĩa bên trong nó. Khi cần
+        Spring sẽ tự động móc cái thằng có liên quan trong Object Bean và inject nó vào Object mà ta cần.</p>
+
+        <p>Spring cung cấp 2 cơ chế để có thể inject 1 đối tượng vào trong 1 đối tượng khác, thông qua constructor, hoặc thông
+        qua các hàm get/set.</p>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Dependency Injection by constructor</h5>
+          <div class="text-dark pt-3">
+            <p>Trước hết, cần lưu ý, ta đang sử dụng những cái này theo cách config thông qua file xml. Nói chung việc sử dụng
+            annotation cũng không khác biệt gì lắm nên chỉ cần tìm hiểu sơ qua là được.</p>
+
+
+            <p>Việc init giá trị của bean theo constructor cũng khá đơn giản. Đầu tiên ta cần phải tạo constructor tương ứng, sau
+            đó quyết định param truyền vào như sau:</p>
+
+            <blockquote>
+              &lt;bean id="schoolbean" class="School"><br />
+              &lt;constructor-arg value="Khanh Tran School">&lt;/constructor-arg><br />
+              &lt;constructor-arg value="Grade 2">&lt;/constructor-arg><br />
+              &lt;/bean>
+            </blockquote>
+
+            <p>Ứng với constructor này : </p>
+
+            <blockquote>
+              public School(String name, String grade) {{'{'}}<br />
+              this.name = name;<br />
+              this.grade = grade;<br />
+              }
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Dependency Injection by setter method</h5>
+          <div class="text-dark pt-3">
+            <p>Tương tự như vậy, đây là cách ta inject các giá trị vào Object thông qua getter setter </p>
+
+            <blockquote>
+              &lt;bean id="schoolbeanSetter" class="com.khanhtran.springboot.example.diexample.School"><br />
+              &lt;property name="name"><br />
+              &nbsp; &nbsp; &lt;value>Khanh Tran School By Setter&lt;/value><br />
+              &lt;/property><br />
+              <br />
+              &lt;property name="grade"><br />
+              &nbsp; &nbsp; &lt;value>Grade XXX&lt;/value><br />
+              &lt;/property><br />
+              &lt;/bean>
+            </blockquote>
+
+            <p>Lưu ý, nếu sử dụng getter/setter thì ta cần 1 constructor trống/ ko có constructor nào nhé. Nguyên tắc của java
+            đó là mỗi Class phải có ít nhất 1 constructor, nếu ko có thì java sẽ tạo mặc định 1 constructor. Nhưng nếu đã
+            có rồi thì nó sẽ ko tạo dùm cho đâu nhé. Trong ví dụ trên ban đầu school có 1 constructor với 2 tham số, school và grade,
+            nhưng nó sẽ làm cho cái DI bằng setter ko chạy được, vì đơn giản nó ko có 1 constructor mặc định nên bắt buộc phải khai báo vào.</p>
+          </div>
+        </div>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Constructor Injection with Dependent Object</h5>
+          <div class="text-dark pt-3">
+            <p>2 ví dụ trên kia chỉ là 2 ví dụ đơn giản. Ở đây ta inject vào đối tượng thông qua các tham số. Nhưng, nếu ta muốn
+            truyền vào 1 Object thì phải setup ntn?</p>
+
+            <p>Trước hết, mối quan hệ ta đang đề cập phải là Has-A. Khi đó đối tượng cần inject như là 1 properties của đối tượng
+            chính mà ta đang thao tác.</p>
+
+            <blockquote>
+              &lt;bean id="studentByInject" class="com.khanhtran.springboot.example.diexample.Student"><br />
+              &lt;onstructor-arg value="Khanh Tran Student">&lt;/constructor-arg><br />
+              <br />
+              &lt;onstructor-arg><br />
+              &lt;ref bean="schoolbean"/><br />
+              &lt;/constructor-arg><br />
+              &lt;/bean><br />
+            </blockquote>
+          </div>
+        </div>
+
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Constructor Injection with Collection Example</h5>
+          <div class="text-dark pt-3">
+            <p>Ta đã thử truyền primary dât vào, object, và giờ sẽ là 1 collection. Collection ở đây có thể là set, cũng
+            có thể là list, hoặc cũng có thể là map.</p>
+
+            <p>Để bắt đầu, ta tạo 1 list các đối tượng class trong school.</p>
+
+            <blockquote>
+              &lt;bean id="clazz" class="com.khanhtran.springboot.example.diexample.Clazz">
+              &lt;constructor-arg value="Ktran Class">&lt;/constructor-arg>
+              &lt;constructor-arg value="Grade 1">&lt;/constructor-arg>
+              &lt;constructor-arg>
+              &lt;list>
+              &lt;value>Teacher 01&lt;/value>
+              &lt;value>Teacher 02&lt;/value>
+              &lt;value>Teacher 03&lt;/value>
+              &lt;/list>
+              &lt;/constructor-arg>
+              &lt;bean>
+            </blockquote>
+
+            <p>Tiếp nữa là truyền vào 1 list các Object</p>
+
+
+            <blockquote>
+              &lt;bean id="schoolSample" class="com.khanhtran.springboot.example.diexample.School">
+              &lt;constructor-arg value="School 03">&lt;/constructor-arg>
+              &lt;constructor-arg value="Grade X">&lt;/constructor-arg>
+              &lt;constructor-arg>
+              &lt;list>
+              &lt;ref bean="clazz01"/>
+              &lt;ref bean="clazz02"/>
+              &lt;/list>
+              &lt;/constructor-arg>
+              &lt;/bean>
+            </blockquote>
+
+            <p>Ở ví dụ trên, ta cần tạo trước 2 Clazz với bean clazz01 và clazz02 sau đó mới inject nó vào trong School.</p>
+          </div>
+        </div>
+
+        <p>Tương tự như vậy, ta sẽ có thêm CI với Map và các đối tượng khác. Phần này có thể dễ dàng tìm hiểu nên sẽ không
+        đi sâu vào. Với lại ít ai sử dụng bean như thế này lắm, thường sẽ thông qua các Autowriting cho thoải mái.</p>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Difference between constructor and setter injection</h5>
+          <div class="text-dark pt-3">
+            <p>Trước hết, về mặt bản chất, khi sử dụng CI, ta phải inject toàn bộ, căn cứ vào constructor params. Do đó, nếu muốn
+              inject 1 phần thì ta ko thể làm được. Vì vậy, sự khác nhau đầu tiên phải kể đến đò là việc inject 1 phần hay toàn phần.</p>
+
+            <p>Điều thứ 2 đó là Setter có thể ghi đè lên Constructor. Nếu object vừa có setter vừa có constructor thì ta có thể
+              sử dụng setter để SI cho nó.</p>
+
+            <p>Điều cuối cùng đó là ta có thể dễ dàng thay đổi giá trị của 1 Object bằng cách sử dụng các Setter. Tuy nhiên nó là ko thể
+              với Constructor.</p>
+
+            <p>Tóm lại, khi ta muốn init 1 đối tượng với toàn bộ state có sẵn ta có thể sử dụng Constructor, nếu muốn inject từng
+              phần hoặc thay đổi giá trị thì dùng setter, tốt nhất là kết hợp cả 2.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Autowiring in Spring
+      </div>
+
+      <div class="card-body">
+
+        <p>Tương tự như 2 cái kia, cũng chỉ là settup mà thôi.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>
+

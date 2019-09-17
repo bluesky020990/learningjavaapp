@@ -1,49 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-body{
-  padding-top: 80px + 15px;
-  padding-bottom: 25px;
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
 }
 
-.card{
-  .card-header {
-    font-weight: bold;
-    font-size: 1.375rem;
-  }
-
-  .card{
-    > .card-header{
-      font-size: 1.125rem;
-    }
-  }
-}
-
-.overview-container {
-  font-size: 1.1rem;
-  background: #343a40;
-  color: #FFF;
-  padding: 1em;
-}
-
-.rounded.box-shadow{
-  border: 1px solid #343a40;
-}
-
-
-blockquote,
-.example{
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 2px solid #840bcc;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-
-.hidden-field{
-  font-weight: 500;
-  color: #dc3545;
+mat-card{
+  margin-bottom: .75em;
+  margin-top: .75em;
 }

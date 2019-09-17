@@ -23,7 +23,7 @@ const routing: Routes = [{
   path: '',
   component: SpringFrameworkComponent,
   children: [
-    {path: '', redirectTo: 'overview', pathMatch: 'full'},
+    // {path: '', redirectTo: 'overview', pathMatch: 'full'},
     {path: 'overview', component: SpringOverviewComponent},
     {path: 'dependence-injection', component: SpringDependenceInjectionComponent},
     {path: 'aop', component: SpringAOPComponent},

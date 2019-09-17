@@ -10,7 +10,7 @@ const routing: Routes = [{
   path: '',
   component: MicroServiceComponent,
   children: [
-    {path: '', redirectTo: 'overview', pathMatch: 'full'},
+    // {path: '', redirectTo: 'overview', pathMatch: 'full'},
     {path: 'overview', component: MicroServiceOverviewComponent},
     {path: 'decompose-service', component: DecomposeServiceComponent},
   ]

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ManagerComponent implements OnInit {
 
   constructor() {
-    console.log('.................');
+    console.log('................. ' + 'inti manager component !!!');
   }
 
   ngOnInit() {

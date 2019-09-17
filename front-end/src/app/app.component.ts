@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'learningjava';
 
   constructor() {
-    setTheme('bs4'); // or 'bs4'
+    // setTheme('bs4'); // or 'bs4'
+    console.log('..................');
   }
 }

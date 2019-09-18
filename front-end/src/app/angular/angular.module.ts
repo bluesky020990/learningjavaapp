@@ -27,6 +27,7 @@ import {AngularBookComponent} from './angular-book/angular-book.component';
 import {AngularCoreComponent} from './angular-core/angular-core.component';
 import {AngularTestingComponent} from './angular-testing/angular-testing.component';
 import {AngularHelpComponent} from "./angular-help/angular-help.component";
+import {CommonLessonModule} from "../common/common.module";
 
 @NgModule({
   entryComponents: [
@@ -63,7 +64,8 @@ import {AngularHelpComponent} from "./angular-help/angular-help.component";
 
     FormsModule,
     MaterialModule,
-    BootstrapModule
+    BootstrapModule,
+    CommonLessonModule
   ]
 })
 export class AngularModule { }

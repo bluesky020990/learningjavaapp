@@ -1,37 +1,20 @@
-<div class="row">
-  <div class="col-12 col-md-9">
-    <router-outlet></router-outlet>
-  </div>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Angular App</h1>
+  </mat-toolbar>
 
-  <div class="col-12 col-md-3">
-    <h3 class="mb-3">About</h3>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <app-lesson [listLesson]="listLesson" [currentLesson]="angularService.getCurrentLesson()"></app-lesson>
+      </mat-nav-list>
+    </mat-sidenav>
 
-    <div class="row mb-3">
-      <div class="col-12">
-        <ul class="list-group">
-          <li class="list-group-item">Author: Khanh Tran</li>
-          <li class="list-group-item">Email: quockhanhqb011@gmail.com</li>
-          <li class="list-group-item">Phone: 0989 890 960</li>
-          <li class="list-group-item">Company: BanVien</li>
-          <li class="list-group-item">Position: Developer</li>
-          <li class="list-group-item">Skill: Front-end, Java, OOP, DB</li>
-        </ul>
+    <mat-sidenav-content>
+      <div class="lesson-container-display">
+        <router-outlet></router-outlet>
       </div>
-    </div>
-
-    <h3 class="mb-3">List Lessons</h3>
-
-    <div class="row mb-3">
-      <div class="col-12">
-        <ul class="list-group">
-          <li class="list-group-item"><button mat-menu-item [routerLink]="['lesson-01']">Create Project</button></li>
-          <li class="list-group-item"><button mat-menu-item [routerLink]="['lesson-03']">Create Project</button></li>
-          <li class="list-group-item"><button mat-menu-item [routerLink]="['bootstrap']">Bootstrap</button></li>
-          <li class="list-group-item"><button mat-menu-item [routerLink]="['ng-bootstrap-component']">Ng-Bootstrap Components</button></li>
-          <li class="list-group-item"><button mat-menu-item [routerLink]="['router']">Router</button></li>
-          <li class="list-group-item"><button mat-menu-item [routerLink]="['../angular/router-advance']">Router Advance</button></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

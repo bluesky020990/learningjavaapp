@@ -18,33 +18,33 @@ import {AngularFormComponent} from './angular-form/angular-form.component';
 import {IncrementalDomInAngularComponent} from './incremental-dom-in-angular/incremental-dom-in-angular.component';
 import {AngularHelpComponent} from "./angular-help/angular-help.component";
 
-
 const routes: Routes = [{
   path: '',
   component: AngularComponent,
   children: [
+    {path: '', redirectTo: 'overview', pathMatch: 'full' },
     {path: 'overview', component: AngularCoreComponent},
-    {path: 'ng-core', component: AngularCoreComponent},
-    {path: 'ng-basic', component: AngularBasicComponent},
+    {path: 'core', component: AngularCoreComponent},
+    {path: 'basic', component: AngularBasicComponent},
     {
-      path: 'ng-component',
+      path: 'component',
       children: [
         {path: '', component: AngularCompComponent},
         {path: 'view-person/:id', component: AngularInputComponent}
       ]
     },
-    {path: 'ng-service', component: AngularServiceComponent},
+    {path: 'service', component: AngularServiceComponent},
     {path: 'bootstrap', component: AngularBoostrapComponent},
     {path: 'ng-bootstrap', component: NgBootstrapComponentComponent},
-    {path: 'ng-form', component: AngularFormComponent},
+    {path: 'form', component: AngularFormComponent},
     {path: 'router', component: AngularRouterComponent},
     {path: 'ng-lazy-loader', component: LazyLoaderComponent},
 
     {path: 'ng-dom', component: IncrementalDomInAngularComponent},
-    {path: 'ng-data-architecture', component: AngularDataArchitectureComponent},
-    {path: 'ng-testing', component: AngularTestingComponent},
+    {path: 'data-architecture', component: AngularDataArchitectureComponent},
+    {path: 'testing', component: AngularTestingComponent},
     {path: 'ng-help', component: AngularHelpComponent},
-    { path: '**', redirectTo: 'basic' }
+    { path: '**', redirectTo: 'overview' }
   ]
 }];
 

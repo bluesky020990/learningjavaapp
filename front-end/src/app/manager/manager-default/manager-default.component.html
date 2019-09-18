@@ -1,3 +1,8 @@
+<mat-toolbar>
+  <span>Khanh Tran Documentation</span>
+</mat-toolbar>
+
+
 <div class="container">
   <div class="row mt-5">
     <div class="col-sm">
@@ -10,10 +15,14 @@
       <mat-card class="example-card">
         <mat-card-header>
           <!--<div mat-card-avatar class="example-header-image"></div>-->
-          <mat-card-title>Angular</mat-card-title>
+          <mat-card-title>
+            <a [routerLink]="['/angular']" preserveQueryParams preserveFragment>Angular</a>
+          </mat-card-title>
           <mat-card-subtitle>Khanh Tran</mat-card-subtitle>
         </mat-card-header>
-        <img  class="lesson-icon" mat-card-image src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/300/full/angular2.png" alt="Angular IO">
+        <a [routerLink]="['/angular']" preserveQueryParams preserveFragment>
+          <img  class="lesson-icon" mat-card-image src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/300/full/angular2.png" alt="Angular IO">
+        </a>
         <mat-card-content>
           <p>
             Trong module này ta sẽ tổng hợp các bài học về Angular, cách xây dựng 1 Ứng dụng Angular từ cơ bản đến nâng cao
@@ -29,10 +38,15 @@
       <mat-card class="example-card">
         <mat-card-header>
           <!--<div mat-card-avatar class="example-header-image"></div>-->
-          <mat-card-title>Java</mat-card-title>
+          <mat-card-title>
+            <a [routerLink]="['/java']" preserveQueryParams preserveFragment>Java</a>
+          </mat-card-title>
           <mat-card-subtitle>Khanh Tran</mat-card-subtitle>
         </mat-card-header>
-        <img  class="lesson-icon" mat-card-image src="https://cdn.vox-cdn.com/thumbor/_AobZZDt_RVStktVR7mUZpBkovc=/0x0:640x427/1200x800/filters:focal(0x0:640x427)/cdn.vox-cdn.com/assets/1087137/java_logo_640.jpg" alt="Java">
+        <a [routerLink]="['/java']" preserveQueryParams preserveFragment>
+          <img  class="lesson-icon" mat-card-image
+                                                                                        src="https://cdn.vox-cdn.com/thumbor/_AobZZDt_RVStktVR7mUZpBkovc=/0x0:640x427/1200x800/filters:focal(0x0:640x427)/cdn.vox-cdn.com/assets/1087137/java_logo_640.jpg" alt="Java">
+        </a>
         <mat-card-content>
           <p>
             Phần này ta sẽ tìm hiểu về Java, cụ thể thì là các OOP của Java. Có thể có các lesson khác về các mục cao hơn
@@ -48,10 +62,14 @@
       <mat-card class="example-card">
         <mat-card-header>
           <!--<div mat-card-avatar class="example-header-image"></div>-->
-          <mat-card-title>Design Pattern</mat-card-title>
+          <mat-card-title>
+            <a [routerLink]="['/design-pattern']" preserveQueryParams preserveFragment>Design Pattern</a>
+          </mat-card-title>
           <mat-card-subtitle>Khanh Tran</mat-card-subtitle>
         </mat-card-header>
-        <img  class="lesson-icon" mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI3O8-D80zzqVsUU0wpl1xMRX3ArtrxjQkbCuJyfGl3h-wJtuVrg" alt="Design Pattern">
+        <a [routerLink]="['/design-pattern']" preserveQueryParams preserveFragment>
+          <img  class="lesson-icon" mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI3O8-D80zzqVsUU0wpl1xMRX3ArtrxjQkbCuJyfGl3h-wJtuVrg" alt="Design Pattern">
+        </a>
         <mat-card-content>
           <p>
             Design Pattern là một chuyên đề khá hay. Nó khiến cho các principle của OOP được đảm bảo và đưa ra các mẫu thiết
@@ -67,10 +85,14 @@
       <mat-card class="example-card">
         <mat-card-header>
           <!--<div mat-card-avatar class="example-header-image"></div>-->
-          <mat-card-title>Spring Framework</mat-card-title>
+          <mat-card-title>
+            <a [routerLink]="['/spring-framework']" preserveQueryParams preserveFragment>Spring Framework</a>
+          </mat-card-title>
           <mat-card-subtitle>Khanh Tran</mat-card-subtitle>
         </mat-card-header>
-        <img  class="lesson-icon" mat-card-image src="https://spring.io/img/homepage/icon-spring-framework.svg" alt="Spring Framework">
+        <a [routerLink]="['/spring-framework']" preserveQueryParams preserveFragment>
+          <img  class="lesson-icon" mat-card-image src="https://spring.io/img/homepage/icon-spring-framework.svg" alt="Spring Framework">
+        </a>
         <mat-card-content>
           <p>
             Spring Framework là 1 thư viện nổi tiếng của Java. Theo quá trình phát triển, giờ đây ta cần xây dựng các ứng dụng 1
@@ -85,10 +107,14 @@
       <mat-card class="example-card">
         <mat-card-header>
           <!--<div mat-card-avatar class="example-header-image"></div>-->
-          <mat-card-title>Micro Service</mat-card-title>
+          <mat-card-title>
+            <a [routerLink]="['/micro-service']" preserveQueryParams preserveFragment>Micro Service</a>
+          </mat-card-title>
           <mat-card-subtitle>Khanh Tran</mat-card-subtitle>
         </mat-card-header>
-        <img class="lesson-icon" mat-card-image src="https://www.openlegacy.com/hubfs/Partner%20Portal/cube2.svg" alt="Micro Service">
+        <a [routerLink]="['/micro-service']" preserveQueryParams preserveFragment>
+          <img class="lesson-icon" mat-card-image src="https://www.openlegacy.com/hubfs/Partner%20Portal/cube2.svg" alt="Micro Service">
+        </a>
         <mat-card-content>
           <p>
            Chuyên đề này tập trung vào phần Architecture. Ta sẽ cùng tìm hiểu về các tính chất của nó, nguyên tắc và cách xây dựng.
@@ -128,3 +154,7 @@
     <!--</div>-->
   <!--</div>-->
 <!--</div>-->
+
+
+
+<app-footer></app-footer>

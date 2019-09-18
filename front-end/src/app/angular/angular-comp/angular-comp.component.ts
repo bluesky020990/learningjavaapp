@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {BreadcrumbItem} from '../../data-model/breadcrumb';
 import {BreadcrumbService} from '../../services/breadcrumb.service';
+import {LessonMapping} from "../../common/data.model";
+import {AngularService} from "../angular.service";
 
 export interface IPerson {
   name: string;
@@ -32,17 +34,16 @@ export class AngularCompComponent implements OnInit, OnDestroy {
   listBarGraphColor = [{color: 'red', value : 10}, {color: 'blue', value : 5}, {color: 'orange', value : 7}];
   selectName: string = null;
 
-  constructor(private breadcrumbService: BreadcrumbService) {
+  constructor(private angularService: AngularService) {
 
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Angular Components', 'ng-component');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('component', '', 1));
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 
   listenEmitEventFromChild(event) {

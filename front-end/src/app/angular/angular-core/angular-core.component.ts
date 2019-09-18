@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BreadcrumbItem} from '../../data-model/breadcrumb';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
+import {AngularService} from "../angular.service";
+import {LessonMapping} from "../../common/data.model";
 
 @Component({
   selector: 'app-angular-core',
@@ -11,16 +12,15 @@ import {BreadcrumbService} from '../../services/breadcrumb.service';
 export class AngularCoreComponent implements OnInit, OnDestroy {
   breadCrumbItem: BreadcrumbItem = null;
 
-  constructor(private breadcrumbService: BreadcrumbService) {
+  constructor(private angularService: AngularService) {
 
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Angular Core', 'ng-core');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('overview', '', 1));
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 }

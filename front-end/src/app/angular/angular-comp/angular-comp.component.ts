@@ -1,6 +1,5 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BreadcrumbItem} from '../../data-model/breadcrumb';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
 import {LessonMapping} from "../../common/data.model";
 import {AngularService} from "../angular.service";
 
@@ -16,7 +15,6 @@ export interface IPerson {
 })
 
 export class AngularCompComponent implements OnInit, OnDestroy {
-  breadCrumbItem: BreadcrumbItem = null;
   sampleVariable: string = 'This is sample Variable';
   ngIfValue: string = 'red';
   personArray: IPerson[] = [{
@@ -49,5 +47,4 @@ export class AngularCompComponent implements OnInit, OnDestroy {
   listenEmitEventFromChild(event) {
     this.selectName = event;
   }
-
 }

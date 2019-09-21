@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BreadcrumbItem} from '../../data-model/breadcrumb';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
+import {LessonMapping} from "../../common/data.model";
+import {AngularService} from "../angular.service";
 
 @Component({
   selector: 'app-angular-router-advance',
@@ -8,17 +8,15 @@ import {BreadcrumbService} from '../../services/breadcrumb.service';
   styleUrls: ['./angular-router-advance.component.scss']
 })
 export class AngularRouterAdvanceComponent implements OnInit, OnDestroy {
-  breadCrumbItem: BreadcrumbItem = null;
 
-  constructor(private breadcrumbService: BreadcrumbService) {
+  constructor(private angularService: AngularService) {
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Router Advance', 'router-advance');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('router-advance', '', 1));
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 }

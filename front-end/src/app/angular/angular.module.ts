@@ -28,6 +28,7 @@ import {AngularCoreComponent} from './angular-core/angular-core.component';
 import {AngularTestingComponent} from './angular-testing/angular-testing.component';
 import {AngularHelpComponent} from "./angular-help/angular-help.component";
 import {CommonLessonModule} from "../common/common.module";
+import {AngularTutorialComponent} from "./angular-tutorial/angular-tutorial.component";
 
 @NgModule({
   entryComponents: [
@@ -55,7 +56,8 @@ import {CommonLessonModule} from "../common/common.module";
     RaphaelDirective,
     AngularComponent,
     LazyLoaderComponent,
-    AngularHelpComponent
+    AngularHelpComponent,
+    AngularTutorialComponent
   ],
   imports: [
     CommonModule,

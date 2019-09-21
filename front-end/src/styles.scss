@@ -10,3 +10,30 @@ mat-card{
   margin-bottom: .75em;
   margin-top: .75em;
 }
+
+.overview-container {
+  font-size: 1.1rem;
+  background: #343a40;
+  color: #FFF;
+  padding: 1em;
+}
+
+.rounded.box-shadow{
+  border: 1px solid #343a40;
+}
+
+
+blockquote,
+.example{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #840bcc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
+.hidden-field{
+  font-weight: 500;
+  color: #dc3545;
+}

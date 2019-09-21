@@ -1,0 +1,320 @@
+<h3 class="mb-3">Angular Tutorial</h3>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Tutorial
+      </div>
+
+      <div class="card-body">
+        <p>Thông thường, một ứng dụng sẽ được cấu thành từ nhiều module khác nhau. Angular App cũng vậy, ta xây dựng 1 App
+        từ nhiều Moduler khác nhau. Và đó là thứ mà ta sẽ bắt đầu từ lesson đầu tiên. Angular Module.</p>
+
+        <p>Một App là 1 list các Module. 1 Module sẽ có 1 list các Module nhỏ. Và tương tự, 1 Module nhỏ lại gồm các Module
+        nhỏ nhỏ hơn nữa. Vì vậy, thay vì ta tìm hiểu 1 App phức tạp, ta chỉ cần nhìn và nắm rõ bản chất của 1 Module, ta
+        sẽ hiểu cách xây dựng 1 Angular App như thế nào.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Module
+      </div>
+
+      <div class="card-body">
+        <p>Một Module thường sẽ gồm có những thành phần sau:</p>
+
+        <ul>
+          <li>package.module.ts</li>
+          <li>package-routing.module.ts</li>
+          <li>package.component.ts</li>
+          <li>package.service.ts</li>
+        </ul>
+
+        <p>Để tách 1 Ứng dụng thành các thành phần nhỏ ta cùng xem thêm về phần Lazy Loader ở phía dưới. Ở đây ta sẽ đi sơ qua
+        về việc sử dụng Routing + Module để chia nhỏ 1 App.</p>
+
+        <p>Cách làm như sau:</p>
+
+        <p>Đầu tiên ta xây dựng các module độc lập. Ví dụ trong Cái App này, ta tách Angular, Java, Spring thành các Module độc lập.</p>
+
+        <p>Sau đó ta khai báo lại file <b>app-routing.module.ts</b> để support cho việc chia nhỏ Module ra.</p>
+
+        <blockquote>
+          `const routes: Routes = [<br />
+          &nbsp; &nbsp; {{'{'}} path: '',  loadChildren: 'src/app/manager/manager.module#ManagerModule'},<br />
+          ];<br />
+          <br />
+          @NgModule({{'{'}}<br />
+          &nbsp; &nbsp; imports: [RouterModule.forRoot(routes)],<br />
+          &nbsp; &nbsp; exports: [RouterModule]<br />
+          })<br />
+          <br />
+          export class AppRoutingModule {{'{'}} }`
+        </blockquote>
+
+         <p>Routing ở đây có nghĩa, với cái path '' này (path root) thì nó sẽ điều hướng request sang cho Module Manager xử lý.</p>
+
+        <p>Ta tiếp tục xem Module ManagerModule để xem có gì đặc biệt.</p>
+
+        <blockquote>
+          `const routes: Routes = [{{'{'}}<br />
+          &nbsp; &nbsp; path: '',<br />
+          &nbsp; &nbsp; component: ManagerComponent,<br />
+          &nbsp; &nbsp; children: [<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: '', component: ManagerDefaultComponent},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'angular', loadChildren: 'src/app/angular/angular.module#AngularModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'java', loadChildren: 'src/app/java/java.module#JavaModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'design-pattern', loadChildren: 'src/app/design-pattern/design-pattern.module#DesignPatternModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'micro-service', loadChildren: 'src/app/micro-service/micro-service.module#MicroServiceModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'spring', loadChildren: 'src/app/spring-framework/spring-module.module#SpringModuleModule'}<br />
+          &nbsp; &nbsp; ]<br />
+          }];<br />
+          <br />
+          <br />
+          @NgModule({{'{'}}<br />
+          &nbsp; &nbsp; imports: [RouterModule.forChild(routes)],<br />
+          &nbsp; &nbsp; exports: [RouterModule],<br />
+          })<br />
+          <br />
+          export class ManageRoutingModule {{'{'}} }`
+        </blockquote>
+
+        <p>Tương tự như vậy, ta có angular thì sẽ do module angular xử lý</p>
+        <p>Tương tự như vậy, ta có java thì sẽ do module java xử lý</p>
+        <p>Tương tự như vậy, ta có design-pattern thì sẽ do module design-pattern xử lý</p>
+
+        <p>Việc chia nhỏ module rất quan trọng, trước hết, các component chỉ được khai báo và sử dụng bên trong 1 Moduler, ta
+        không thể khai báo component thuộc 2 Module. Điều này làm cô lập các Component và khiến cái app của ta trở nên phân nhỏ hơn.</p>
+
+        <p>Tuy nhiên, vẫn có cách để ta có thể sử dụng các Common Component trong nhiều module. Phần dưới đây sẽ đề cập tới
+        vấn đề đó.</p>
+
+        <p>Điều thứ 2, đó là router bên trong Moduler quy định riêng cho module đó. Những giá trị này nên khai báo là tương đối,
+          phụ thuộc vào component cha. Xem phần khai báo routing để hiểu rõ thêm. Giả sử ta cần thay đổi 1 path, ta chỉ
+          cần đổi cái router của thằng cha là được.</p>
+
+        <p>Cũng quay lại bài toán trên, làm sao để sử dụng các common Component.</p>
+
+        <p>Trước hết, ta cần khai báo 1 Common Module để chứa chúng. Sau nữa ta đưa nó vào khai báo trong declaration và phần export.</p>
+
+        <p>Cuối cùng, muốn xài ở đâu thì ta khai báo nó ở đó. Vậy là xong.</p>
+
+        <blockquote>
+          `@NgModule({{'{'}}<br />
+          &nbsp; &nbsp; entryComponents: [<br />
+          ],<br />
+          <b>declarations: [<br />
+          &nbsp; &nbsp; LessonComponent<br />
+            ],</b><br />
+          imports: [<br />
+          &nbsp; &nbsp; CommonModule,<br />
+          &nbsp; &nbsp;  RouterModule,<br />
+          &nbsp; &nbsp; FormsModule,<br />
+          &nbsp; &nbsp; MaterialModule,<br />
+          &nbsp; &nbsp; BootstrapModule<br />
+          <b>], exports: [br />
+          &nbsp; &nbsp; LessonComponent]<br />
+            })</b><br />
+          export class CommonLessonModule {{'{'}} }`<br />
+        </blockquote>
+
+        <p>Vậy, ta có thể khai báo các Common Module xài chung ko? Giả sử ta có 1 Module của Material, làm sao để ta import
+        nó vào các Module relative như Angular, Java, .... Câu trả lời là ko, đúng ra là khó, và ko nên làm vậy. Lý do để
+        Angular chặn việc thừa kế component là nó có thể dẫn đến các lỗi kì cục khi ta import 2 component từ 2 module khác nhau vào, nếu nó
+        cùng name-tag thì sẽ bị đụng độ này nọ. Và vì vậy họ hạn chế ko cho phép ta làm điều đó.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Router
+      </div>
+
+      <div class="card-body">
+        <p>Cùng xem lại khai báo của file app-routing.module</p>
+        <blockquote>
+          `const routes: Routes = [<br />
+          &nbsp; &nbsp; {{'{'}} path: '',  loadChildren: 'src/app/manager/manager.module#ManagerModule'},<br />
+          ];<br />
+          <br />
+          @NgModule({{'{'}}<br />
+          &nbsp; &nbsp; imports: [RouterModule.forRoot(routes)],<br />
+          &nbsp; &nbsp; exports: [RouterModule]<br />
+          })<br />
+          <br />
+          export class AppRoutingModule {{'{'}} }`
+        </blockquote>
+
+        <p>Routing ở đây có nghĩa, với cái path '' này (path root) thì nó sẽ điều hướng request sang cho Module Manager xử lý.</p>
+
+        <p>Ta tiếp tục xem Module ManagerModule để xem có gì đặc biệt.</p>
+
+        <blockquote>
+          `const routes: Routes = [{{'{'}}<br />
+          &nbsp; &nbsp; path: '',<br />
+          &nbsp; &nbsp; component: ManagerComponent,<br />
+          &nbsp; &nbsp; children: [<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: '', component: ManagerDefaultComponent},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'angular', loadChildren: 'src/app/angular/angular.module#AngularModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'java', loadChildren: 'src/app/java/java.module#JavaModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'design-pattern', loadChildren: 'src/app/design-pattern/design-pattern.module#DesignPatternModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'micro-service', loadChildren: 'src/app/micro-service/micro-service.module#MicroServiceModule'},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'spring', loadChildren: 'src/app/spring-framework/spring-module.module#SpringModuleModule'}<br />
+          &nbsp; &nbsp; ]<br />
+          }];<br />
+          <br />
+          <br />
+          @NgModule({{'{'}}<br />
+          &nbsp; &nbsp; imports: [RouterModule.forChild(routes)],<br />
+          &nbsp; &nbsp; exports: [RouterModule],<br />
+          })<br />
+          <br />
+          export class ManageRoutingModule {{'{'}} }`
+        </blockquote>
+
+        <p>Giải mã cái Router này như sau: Ví dụ ta truy cập đường dẫn <b>/angular/basic</b></p>
+
+        <p>Đầu tiên, ta chia cái router này thành 2 phần theo dấu <b>/</b> thứ nhất, ta được ''  và <b>angullar/basic</b></p>
+
+        <p>Trong file <b>app-routing.module.ts</b> ta quy định, toàn bộ các Router theo path '' này sẽ do Moduler ManagerModule xử lý. Vì vậy
+          request sẽ được chuyển hướng sang file <b>manager-routing.module.ts</b> giải quyết.</p>
+
+        <p>Trong file <b>manager-routing.module.ts</b> quy định.</p>
+
+        <p>Nếu đường dẫn là '' thì sẽ do ManagerComponent handle. Vậy là đầu tiên, ngoài AppComponent, ta có ManagerComponent được tạo.</p>
+
+        <p>Đường dẫn tiếp theo là <b>angullar/basic</b>, nó được đẩy sang cho AngularModuler xử lý. Cùng nhìn xem khai báo của Angular Module. </p>
+
+        <blockquote>
+          `const routes: Routes = [{{'{'}}<br />
+          &nbsp; &nbsp; path: '',<br />
+          &nbsp; &nbsp; component: AngularComponent,<br />
+          &nbsp; &nbsp; children: [<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: '', redirectTo: 'tutorial', pathMatch: 'full' },<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'tutorial', component: AngularTutorialComponent },<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'overview', component: AngularCoreComponent},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'core', component: AngularCoreComponent},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'basic', component: AngularBasicComponent},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; path: 'component',<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; children: [<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: '', component: AngularCompComponent},<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{'{'}}path: 'view-person/:id', component: AngularInputComponent}<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ]<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; },<br />
+          &nbsp; &nbsp; {{'{'}}path: 'service', component: AngularServiceComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'bootstrap', component: AngularBoostrapComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'ng-bootstrap', component: NgBootstrapComponentComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'form', component: AngularFormComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'router', component: AngularRouterComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'ng-lazy-loader', component: LazyLoaderComponent},<br />
+          <br />
+          &nbsp; &nbsp; {{'{'}}path: 'ng-dom', component: IncrementalDomInAngularComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'data-architecture', component: AngularDataArchitectureComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'testing', component: AngularTestingComponent},<br />
+          &nbsp; &nbsp; {{'{'}}path: 'ng-help', component: AngularHelpComponent},<br />
+          &nbsp; &nbsp; {{'{'}} path: '**', redirectTo: 'overview' }<br />
+          &nbsp; &nbsp; ]<br />
+          }];
+          `
+        </blockquote>
+
+        <p>Cái Router lúc này sẽ là '' và <b>basic</b> theo cách chia của kí tự <b>/</b>. Và lúc này, ta có '' do AngularComponent xử lý, cái <b>basic</b>
+          thì do component AngularBasicComponent xử lý.</p>
+
+        <p>Vậy là cái đường dẫn kia sẽ đi qua các component, AppComponent -> ManagerComponent -> Angular Component và AngularBasic Component.</p>
+
+        <p>Đấy cũng là cách mà 1 router trong Angular hoạt động như thế nào.</p>
+
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Component
+      </div>
+
+      <div class="card-body">
+        <p>Component là 1 thành phần chủ chốt trong Angular, nó gồm 1 file ts quy định Component Object, 1 file template quy định layout render
+        ra theo dạng HTML, 1 file style (css, scss). Mỗi component liên quan tới 1 name-tag, ta có thể lấy cái name-tag này bỏ vào bất cứ đâu để nó chạy.</p>
+
+        <p>Vậy, trong 1 Angular App, cách sử dụng của Component như thế nào.</p>
+
+        <p>Dễ dàng ta thấy, đầu tiên, nó được sử dụng trong các Router. Các router quy định rõ, với các path gì thì sẽ do component nào xử lý.
+        Angular sẽ break down các URL từ browser thành các path, đưa nó vào các router (phần trên) và tiến hành load các component liên quan.</p>
+
+        <p>Thứ 2, ta có thể ịn nó ở bất cứ chỗ nào, bằng việc sử dụng các name-tag của nó được quy định trong file ts ở trên.</p>
+
+        <p>Component dùng để hiển thị dữ liệu. Vì vậy, khi ta làm việc với component, ta quan tâm tới các dữ liệu của nó.</p>
+
+        <p>Dữ liệu của Component gồm 2 loại, loại thứ nhất internal properties, các giá trị được khai báo bên trong Component chẳng hạn, và các
+        giá trị external, được truyền từ bên ngoài.</p>
+
+        <p>Có 2 cách để truyền dũ liệu từ bên ngoài vào Component, hoặc thông quan Router, hoặc thông qua @Input() directive.</p>
+
+        <p>Với trường hợp Component được sử dụng để handle các router, thì lúc này, dữ liệu cần thông qua các URL để truyền vào, ta có 1
+        cơ chế giúp lấy các giá trị từ param truyền vào thông qua class RouterActive.</p>
+
+        <p>Với trường hợp nó được embed ở tại bất cứ đâu của bất cứ component nào, thì lúc này ta sẽ sử dụng các thuộc tính input để handle nó. Cái này đơn giản
+        tự tìm hiểu nhé.</p>
+
+        <p>Component là 1 thành phần quan trọng, vì nó sử dụng để thiết kế layout. Ta cần tìm hiểu thêm về các third Party hay dùng như
+        Material, Bootstrap, ReactForm này nọ để sử dụng cho đúng và hiệu quả.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Service
+      </div>
+
+      <div class="card-body">
+        <p>Một thành phần không thể thiếu của Component đó là các Service. Service là các dịch vụ để thao tác trên dữ liệu, như getData, Update data, .....</p>
+
+        <p>Khác với Component, mục đích chính của Service là xử lý dữ liệu. Các Service trong Angular chủ yếu là các Singleton, và sử dụng
+        DI để inject vào các component cũng như các Service khác.</p>
+
+        <p>Mục đích của Service là sử dụng để thao tác trên Data, nên cần chú ý điểm này.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Angular Directive
+      </div>
+
+      <div class="card-body">
+        <p>Cái này cũng khá quan trọng. Nó ở 1 level khác, cao hơn. Nếu thực sự cần thì ta sẽ đi sâu vào nó sau.</p>
+      </div>
+    </div>
+  </div>
+</div>

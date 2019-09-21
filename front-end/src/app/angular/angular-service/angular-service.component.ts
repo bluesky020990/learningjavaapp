@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AngularBook} from '../../data-model/angular-book';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
-import {BreadcrumbItem} from '../../data-model/breadcrumb';
 import {BookService} from '../../services/angular-services/book.service';
+import {AngularService} from "../angular.service";
+import {LessonMapping} from "../../common/data.model";
 
 @Component({
   selector: 'app-angular-service',
@@ -11,18 +11,16 @@ import {BookService} from '../../services/angular-services/book.service';
 })
 export class AngularServiceComponent implements OnInit, OnDestroy {
   selectedBook: AngularBook = null;
-  breadCrumbItem: BreadcrumbItem = null;
 
-  constructor(private breadcrumbService: BreadcrumbService, private bookService: BookService) {
+  constructor(private angularService: AngularService, private bookService: BookService) {
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Angular Service', 'ng-service');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('service', '', 1));
     this.selectedBook = this.bookService.getSelectedBook();
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 }

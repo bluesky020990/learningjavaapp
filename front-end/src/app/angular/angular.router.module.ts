@@ -17,12 +17,14 @@ import {AngularInputComponent} from './angular-input/angular-input.component';
 import {AngularFormComponent} from './angular-form/angular-form.component';
 import {IncrementalDomInAngularComponent} from './incremental-dom-in-angular/incremental-dom-in-angular.component';
 import {AngularHelpComponent} from "./angular-help/angular-help.component";
+import {AngularTutorialComponent} from "./angular-tutorial/angular-tutorial.component";
 
 const routes: Routes = [{
   path: '',
   component: AngularComponent,
   children: [
-    {path: '', redirectTo: 'overview', pathMatch: 'full' },
+    {path: '', redirectTo: 'tutorial', pathMatch: 'full' },
+    {path: 'tutorial', component: AngularTutorialComponent },
     {path: 'overview', component: AngularCoreComponent},
     {path: 'core', component: AngularCoreComponent},
     {path: 'basic', component: AngularBasicComponent},

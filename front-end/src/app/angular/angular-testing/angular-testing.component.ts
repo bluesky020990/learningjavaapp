@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
-import {BreadcrumbItem} from '../../data-model/breadcrumb';
+import {LessonMapping} from "../../common/data.model";
+import {AngularService} from "../angular.service";
 
 @Component({
   selector: 'app-angular-testing',
@@ -8,18 +8,16 @@ import {BreadcrumbItem} from '../../data-model/breadcrumb';
   styleUrls: ['./angular-testing.component.scss']
 })
 export class AngularTestingComponent implements OnInit, OnDestroy {
-  breadCrumbItem: BreadcrumbItem = null;
 
-  constructor(private breadcrumbService: BreadcrumbService) {
+  constructor(private angularService: AngularService) {
 
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Angular Testing', 'ng-testing');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('testing', '', 1));
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 }

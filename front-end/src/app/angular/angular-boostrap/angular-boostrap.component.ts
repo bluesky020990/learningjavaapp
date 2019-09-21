@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
-import {BreadcrumbItem} from '../../data-model/breadcrumb';
+import {AngularService} from "../angular.service";
+import {LessonMapping} from "../../common/data.model";
 
 @Component({
   selector: 'app-angular-boostrap',
@@ -8,17 +8,15 @@ import {BreadcrumbItem} from '../../data-model/breadcrumb';
   styleUrls: ['./angular-boostrap.component.scss']
 })
 export class AngularBoostrapComponent implements OnInit, OnDestroy {
-  breadCrumbItem: BreadcrumbItem = null;
-
-  constructor(private breadcrumbService: BreadcrumbService) {
+  constructor(private angularService: AngularService) {
   }
 
+
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Bootstrap', 'bootstrap');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('bootstrap', '', 1));
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 }

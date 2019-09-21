@@ -18,6 +18,10 @@ h1.example-app-name {
   margin-left: 8px;
 }
 
+.example-spacer{
+  flex-grow: 1;
+}
+
 .example-sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
@@ -32,5 +36,5 @@ h1.example-app-name {
 
 
 .lesson-container-display{
-  padding: 1em 2em;
+  padding: 1.5em 2em;
 }

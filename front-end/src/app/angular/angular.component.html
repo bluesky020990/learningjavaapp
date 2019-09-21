@@ -2,6 +2,8 @@
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Angular App</h1>
+    <span class="example-spacer"></span>
+    <a routerLink="/"><mat-icon class="arrow_back" aria-hidden="false" aria-label="Example delete icon">back</mat-icon></a>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -18,3 +20,6 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+
+
+

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {BreadcrumbItem} from '../../data-model/breadcrumb';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
+import {AngularService} from "../angular.service";
+import {LessonMapping} from "../../common/data.model";
 
 
 @Component({
@@ -10,18 +10,17 @@ import {BreadcrumbService} from '../../services/breadcrumb.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AngularBasicComponent implements OnInit, OnDestroy {
-  breadCrumbItem: BreadcrumbItem = null;
   templateMessage: string = 'Đây là cái message vớ vẩn thôi.!!!';
 
-  constructor(private breadcrumbService: BreadcrumbService) {
+  constructor(private angularService: AngularService) {
   }
 
+
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Angular Basic', 'ng-basic');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('basic', '', 1));
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 }

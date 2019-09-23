@@ -124,6 +124,24 @@
     </div>
 
     <div class="col-sm-4">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <!--<div mat-card-avatar class="example-header-image"></div>-->
+          <mat-card-title>
+            <a [routerLink]="['/database']" preserveQueryParams preserveFragment>Database</a>
+          </mat-card-title>
+          <mat-card-subtitle>Khanh Tran</mat-card-subtitle>
+        </mat-card-header>
+        <a [routerLink]="['/database']" preserveQueryParams preserveFragment>
+          <img class="lesson-icon" mat-card-image src="https://www.gridgain.com/themes/gridgain1185/images/icons/website-icons/purple/svg/purple_IMDB.svg" alt="Database">
+        </a>
+        <mat-card-content>
+          <p>
+            Trong chuyên đề này, ta cùng tìm hiểu về Database, về 2 loại database, RDBMS và NON-SQL.
+          </p>
+        </mat-card-content>
+      </mat-card>
+
 
     </div>
   </div>

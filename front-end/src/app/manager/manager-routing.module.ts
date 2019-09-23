@@ -8,11 +8,12 @@ const routes: Routes = [{
   component: ManagerComponent,
   children: [
     {path: '', component: ManagerDefaultComponent},
-    {path: 'angular', loadChildren: 'src/app/angular/angular.module#AngularModule'},
-    {path: 'java', loadChildren: 'src/app/java/java.module#JavaModule'},
+    {path: 'angular',        loadChildren: 'src/app/angular/angular.module#AngularModule'},
+    {path: 'java',           loadChildren: 'src/app/java/java.module#JavaModule'},
     {path: 'design-pattern', loadChildren: 'src/app/design-pattern/design-pattern.module#DesignPatternModule'},
-    {path: 'micro-service', loadChildren: 'src/app/micro-service/micro-service.module#MicroServiceModule'},
-    {path: 'spring', loadChildren: 'src/app/spring-framework/spring-module.module#SpringModuleModule'}
+    {path: 'micro-service',  loadChildren: 'src/app/micro-service/micro-service.module#MicroServiceModule'},
+    {path: 'spring',         loadChildren: 'src/app/spring-framework/spring-module.module#SpringModuleModule'},
+    {path: 'database',       loadChildren: 'src/app/database/database.module#DatabaseModule'}
   ]
 }
 ];

@@ -26,7 +26,6 @@ const routes: Routes = [{
     {path: '', redirectTo: 'tutorial', pathMatch: 'full' },
     {path: 'tutorial', component: AngularTutorialComponent },
     {path: 'overview', component: AngularCoreComponent},
-    {path: 'core', component: AngularCoreComponent},
     {path: 'basic', component: AngularBasicComponent},
     {
       path: 'component',
@@ -40,12 +39,12 @@ const routes: Routes = [{
     {path: 'ng-bootstrap', component: NgBootstrapComponentComponent},
     {path: 'form', component: AngularFormComponent},
     {path: 'router', component: AngularRouterComponent},
-    {path: 'ng-lazy-loader', component: LazyLoaderComponent},
+    {path: 'lazy-loader', component: LazyLoaderComponent},
 
     {path: 'ng-dom', component: IncrementalDomInAngularComponent},
     {path: 'data-architecture', component: AngularDataArchitectureComponent},
     {path: 'testing', component: AngularTestingComponent},
-    {path: 'ng-help', component: AngularHelpComponent},
+    {path: 'help', component: AngularHelpComponent},
     { path: '**', redirectTo: 'overview' }
   ]
 }];

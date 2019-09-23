@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularService} from "../angular.service";
+import {LessonMapping} from "../../common/data.model";
 
 @Component({
   selector: 'app-lazy-loader',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LazyLoaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private angularService: AngularService) { }
 
   ngOnInit() {
+    this.angularService.setCurrentLesson(new LessonMapping('lazy-loader', '', 1));
   }
 
+  ngOnDestroy(): void {
+    this.angularService.setCurrentLesson(null);
+
+  }
 }

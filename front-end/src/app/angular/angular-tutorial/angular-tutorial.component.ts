@@ -9,7 +9,6 @@ import {LessonMapping} from "../../common/data.model";
   styleUrls: ['./angular-tutorial.component.scss']
 })
 export class AngularTutorialComponent implements OnInit, OnDestroy {
-  angularRoutingContent: string = null;
   constructor(private angularService: AngularService) { }
 
   ngOnInit() {

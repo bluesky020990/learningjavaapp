@@ -13,7 +13,7 @@ export class AngularBoostrapComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.angularService.setCurrentLesson(new LessonMapping('ng-bootstrap', '', 1));
+    this.angularService.setCurrentLesson(new LessonMapping('bootstrap', '', 1));
   }
 
   ngOnDestroy(): void {

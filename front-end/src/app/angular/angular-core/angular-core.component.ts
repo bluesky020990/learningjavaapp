@@ -15,7 +15,7 @@ export class AngularCoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.angularService.setCurrentLesson(new LessonMapping('core', '', 1));
+    this.angularService.setCurrentLesson(new LessonMapping('overview', '', 1));
   }
 
   ngOnDestroy(): void {

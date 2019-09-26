@@ -1,3 +1,229 @@
-<p>
-  non-sql works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Overview</h2>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        RDBMS
+      </div>
+
+      <div class="card-body">
+        <p>Trước khi cùng tìm hiểu về NO-SQL ta cùng nhìn lại RDBMS để xem giữa chúng có những điểm gì khác biệt.</p>
+
+        <p>RDBMS là hệ quản trị được xây dựng trên một cấu trúc bảng, với những quy định chặt chẽ nhằm giúp dữ liệu nhất quán,
+          và có tính toàn vẹn dữ liệu cao.</p>
+
+        <p>Trong mô hình RBDMS thì transaction là điều cần chú ý. 1 transaction là 1 đơn vị logic thao tác dữ liệu. Nó có thể
+          là 1, cũng có thể là 1 tập hợp các thao các. Đối với Transaction, khi ta nói về 1 giao dịch, ta cần đảm bảo, nó chỉ
+          thành công khi toàn bộ các tác vụ của nó thành công, nó thất bại khi có bất cứ 1 tác vụ nào đó thất bại, và việc thất
+          bại phải được xử lý để revert data về trạng thái trước khi bắt đầu transaction.</p>
+
+        <p>Dưới đây là những tính chất của 1 hệ cơ sở dữ liệu quan hệ (RELATIONAL DATABASE MANAGEMENT SYSTEM)</p>
+
+        <blockquote>
+          <dl>
+            <dt>Designed for all purposes</dt>
+
+            <dd>
+              <p>Điểm này thì ta ko cần gì phải xem xét nữa, nhìn vào thực tế cách nó được sử dụng là biết.</p>
+            </dd>
+
+            <dt>ACID</dt>
+            <dd>
+              <p>ACID là viết tắt của 4 chữ : [A]tomicity (nguyên tố), [C]onsistency (nhất quán), [I]solation (độc lập),
+                và [D]urability (bền vững). Bất cứ một RDBMS nào cũng cần tuân thủ các nguyên tắc này, nhờ nó mà các transaction
+                được thực hiện 1 cách đáng tin cậy</p>
+
+              <p>Atomicity  là một đề xuất tất cả hoặc không có gì. Tính chất này đảm bảo rằng khi một giao dịch liên quan đến hai hay
+                nhiều xử lý, hoặc là tất cả các xử lý được thực hiện hoặc không có xử lý được thực hiện.</p>
+
+              <p>Consistency đảm bảo rằng một giao dịch không bao giờ được thông qua cơ sở dữ liệu của bạn trong tình trạng dở dang.
+                Tính chất này, hoặc là tạo ra toàn bộ trạng thái mới hoặc rollback tất cả các xử lý để về trạng thái ban đầu,
+                nhưng không bao giờ thông qua cơ sở dữ liệu trong trạng thái dở dang.</p>
+
+              <p>Isolation Isolation giữ giao dịch tách rời nhau cho đến khi chúng đã hoàn tất. Tính chất này đảm bảo rằng
+                hai hoặc nhiều giao dịch không bao giờ được trộn lẫn với nhau, tạo ra dữ liệu không chính xác và không phù hợp.</p>
+
+              <p>Durability đảm bảo rằng cơ sở dữ liệu sẽ theo dõi các thay đổi cấp phát trong một cách mà các máy chủ có
+                thể phục hồi từ một sự kết thúc bất thường. Tính chất này đảm bảo rằng trong trường hợp thất bại hay dịch
+                vụ khởi động lại các dữ liệu có sẵn trong  trước khi gặp lỗi.</p>
+            </dd>
+
+            <dt>Strong consistancy, concurrency, recovery</dt>
+            <dd>
+              <p>Những tính chất này nhờ việc tuân thủ nguyên tắc ACID trên kia mà có</p>
+            </dd>
+
+            <dt>Mathematical background</dt>
+            <dd>
+              <p>Một RDBMS có số lượng record rất lớn. Vì vậy chúng cần được tổ chức và truy vấn theo nhiều cách
+                khác nhau. Thông thường mỗi DB sẽ tập trung vào 1 khía cạnh, để giải quyết những bài toán cụ thể
+                của chúng.</p>
+            </dd>
+
+            <dt>Standard Query language (SQL)</dt>
+            <dd>
+              <p>Vì nó ra đời đã lâu và có 1 lịch sử lâu dài, được nhiều người sử dụng nên nó đã định ra cho mình
+                1 cách viết tiêu chuẩn. Có thể có 1 vài sự khác biệt về functional của các DB khác, nhưng những cấu trúc
+                cơ bản thì vẫn tuân thủ chặt chẽ theo SQL.</p>
+            </dd>
+
+            <dt>Lots of tools to use with i.e: Reporting services, entity frameworks, ...</dt>
+            <dd>
+              <p>MySQL, Postgres, Oracle, ...</p>
+            </dd>
+          </dl>
+        </blockquote>
+
+        <p>Nhìn qua thì thấy nó có vẻ khá toàn diện, nhưng, nếu như nó đã toàn diện thế thì tại sao lại có NO-SQL?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Disadvantage of RDBMS
+      </div>
+
+      <div class="card-body">
+        <p>Nhược điểm của nó chỉ xuất hiện, khi ta có 1 system khá lớn. Ta không thể xây dựng 1 Server quá lớn
+          để đáp ứng đầy đủ mọi yêu cầu, vì vậy ta buộc phải áp dụng các mô hình phân tán cho việc xây dựng Server
+          nhằm tăng cường khả năng đáp ứng của hệ thống. Và đó cũng là lúc ta thấy được giới hạn của RDBMS.</p>
+
+        <p>RDBMS cho ta 1 cấu trúc DB chặt chẽ, các khóa chính khóa ngoại được tham chiếu với nhau, ràng buộc trên nhau.
+          Nhưng, trong một hệ thống phân tán, ta ko/thường không đặt toàn bộ db lên 1 máy chủ, thay vì vậy, ta chia nhỏ nó
+          ra thành nhiều máy chủ khác nhau. Bài toán ở đây là, làm sao để đảm bảo tính toàn vẹn dữ liệu, khi ta insert
+          1 record mà record đó lại tham chiếu tới 1 table nằm trong nhiều máy chủ khác nhau.</p>
+
+        <p>RDBMS không làm được điều này, hoặc có chăng thì nó cũng không quá hiệu quả. Việc join từ nhiều máy chủ
+          đòi hỏi chi phí cao, và chính cái khối thống nhất này khiến cho khả năng mở rộng của nó bị hạn chế.</p>
+
+        <p>Những nhược điểm của nó được liệt kê dưới đây:</p>
+
+        <ul>
+          <li>Joins are expensive</li>
+          <li>Hard to scale horizontally</li>
+          <li>Impedance mismatch occurs</li>
+          <li>Expensive (product cost, hardware, Maintenance)</li>
+        </ul>
+
+        <p>Nói về khả năng mở rộng, scalable, ta có theo chiều ngang và theo chiều dọc. Horizontal scaling tức là việc
+          ta thêm nhiều node/ machines để tăng khả năng đáp ứng, trong khi đó, Vertical scaling có ý nghĩa là ta tăng
+          cường sức mạnh của Server bằng cách cung cấp thêm nhiều resource cho nó. Trong RDBMS, Horizontal Scale thực
+          sự không quá hiệu quả khi ta cần quan tâm đến tính nhất quán của DBMS.</p>
+
+        <p>Hậu quả của nó, khi 1 số lượng record trở nên quá lớn, thì tốc độ truy cập giảm -> khả năng đáp ứng cũng
+          giảm và  Partition tolerance giảm.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        NO-SQL
+      </div>
+
+      <div class="card-body">
+        <p>Trong môi trường hiện nay, ta có những new trend mới, bắt buộc cần thay đổi lại những quan điểm ngày xưa
+          để phù hợp hơn. Đó có thể là big data, có thể là cloud, cũng có thể là connectivity (social network), ...</p>
+
+        <p>Và đối với những dữ liệu này, tính toàn vẹn nhất quán ít được chú trọng hơn. Thay vào đó ta đòi hỏi tốc độ xử lý
+          nhanh, tính đáp ứng cao và dễ phân tán, hi sinh sự chặt chẽ để khắc phục những hạn chế của RDBMS.</p>
+
+        <p>Chính những thách thức này khiến ta cần phải xây dựng 1 hệ thống quản trị CSDL mà đáp ứng được những yêu cầu
+          công nghệ mới.</p>
+
+        <p>NO-SQL DB cung cấp một cơ chế để lưu trữ và truy xuất dữ liệu sử dụng tính nhất quán và ít ràng buộc
+          hơn mô hình CSDL truyền thống.</p>
+
+        <p>NO-SQL (NOT ONLY SQL) được xây đựng nhằm tránh những nhược điểm sau:</p>
+
+        <ul>
+          <li>Overhead of ACID transactions</li>
+          <li>Complexity of SQL query</li>
+          <li>Burden of up-front schema design</li>
+          <li>DBA presence</li>
+          <li>Transactions (It should be handled at application layer)</li>
+        </ul>
+
+        <p>Đồng thời nó cung cấp :</p>
+
+        <ul>
+          <li>Easy and frequent changes to DB</li>
+          <li>Fast development</li>
+          <li>Large data volumes(eg.Google)</li>
+          <li>Schema less</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        When and When not to use it
+      </div>
+
+      <div class="card-body">
+        <p>Ta nên sử dụng NO-SQL cho các trường hợp sau:</p>
+
+        <ul>
+          <li>Khi ta cần 1 flexible schema trong khi RDBMS Model lại quá hạn chế</li>
+          <li>Khi ACID không thực sự cần thiết, đúng ra là vẫn có cần thiết như sự sai/khác dữ liệu ko quá quan trọng.</li>
+          <li>Object-to-Relational (O/R) impedance</li>
+          <li>Sử dụng distributed </li>
+          <li>Logging Dât từ distributed source.</li>
+          <li>________________</li>
+          <li>________________</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        ________________________________
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        ________________________________
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>
+

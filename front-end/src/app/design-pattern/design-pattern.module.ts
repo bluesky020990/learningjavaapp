@@ -34,11 +34,16 @@ import { ObjectPoolPatternComponent } from './creational/object-pool-pattern/obj
 import { FilterPatternComponent } from './structural/filter-pattern/filter-pattern.component';
 import {IteratorPatternComponent} from "./behavioral/iterator-pattern/iterator-pattern.component";
 import {NullObjectPatternComponent} from "./behavioral/null-object-pattern/null-object-pattern.component";
+import {FormsModule} from "@angular/forms";
+import {MaterialModule} from "../material/material.module";
+import {BootstrapModule} from "../material/bootstrap.module";
+import {CommonLessonModule} from "../common/common.module";
 
 const routing: Routes = [{
   path: '',
   component: DesignPatternComponent,
   children: [
+    { path: '', redirectTo: 'overview', pathMatch: 'full'},
     { path: 'overview', component: DesignPatternOverviewComponent},
 
     { path: 'factory', component: FactoryPatternComponent},
@@ -113,7 +118,12 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
   ],
   imports: [
     CommonModule,
-    Routing
+    Routing,
+
+    FormsModule,
+    MaterialModule,
+    BootstrapModule,
+    CommonLessonModule
   ]
 })
 export class DesignPatternModule { }

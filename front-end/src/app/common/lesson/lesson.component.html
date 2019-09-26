@@ -1,7 +1,18 @@
-<a mat-list-item routerLink="{{lesson.path}}" *ngFor="let lesson of listLesson">
-  <span class="app-lesson-item" [ngClass]="{
-    'selected': currentLesson && currentLesson.path === lesson.path
-  }">
+<ng-container *ngFor="let lesson of listLesson">
+  <div *ngIf="lesson.category">
+    <a mat-list-item><span class="app-lesson-item"><b>{{lesson.name}}</b></span></a>
+  </div>
+
+  <div *ngIf="! lesson.category">
+    <a mat-list-item routerLink="{{lesson.path}}" disabled="true">
+    <span class="app-lesson-item" [ngClass]="{
+      'selected': currentLesson && currentLesson.path === lesson.path
+    }">
     Lesson {{lesson.displayOrder}}: {{lesson.name}}
   </span>
-</a>
+    </a>
+  </div>
+
+</ng-container>
+
+

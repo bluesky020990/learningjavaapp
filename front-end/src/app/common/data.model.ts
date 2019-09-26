@@ -17,3 +17,12 @@ export class LessonMapping implements LessonMappingI{
   }
 }
 
+export class LessonCategory extends LessonMapping{
+  category: string;
+
+
+  constructor(path: string, name: string, displayOrder, category: string) {
+    super(path, name, displayOrder);
+    this.category = category;
+  }
+}

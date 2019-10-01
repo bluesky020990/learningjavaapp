@@ -9,7 +9,6 @@ export class LessonMapping implements LessonMappingI{
   name: string;
   displayOrder;
 
-
   constructor(path: string, name: string, displayOrder) {
     this.path = path;
     this.name = name;

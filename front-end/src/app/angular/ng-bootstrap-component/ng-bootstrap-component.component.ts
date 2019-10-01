@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit, TemplateRef} from '@angular/core';
-import {BreadcrumbItem} from '../../data-model/breadcrumb';
-import {BreadcrumbService} from '../../services/breadcrumb.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {AngularService} from "../angular.service";
+import {LessonMapping} from "../../common/data.model";
 
 @Component({
   selector: 'app-ng-bootstrap-component',
@@ -10,19 +10,17 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 })
 
 export class NgBootstrapComponentComponent implements OnInit, OnDestroy {
-  breadCrumbItem: BreadcrumbItem = null;
   modalRef: BsModalRef;
 
-  constructor(private breadcrumbService: BreadcrumbService, private modalService: BsModalService) {
+  constructor(private angularService: AngularService, private modalService: BsModalService) {
   }
 
   ngOnInit() {
-    this.breadCrumbItem = new BreadcrumbItem('Ng-Bootstrap', 'ng-bootstrap');
-    this.breadcrumbService.addBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(new LessonMapping('ng-bootstrap', '', 1));
   }
 
   ngOnDestroy(): void {
-    this.breadcrumbService.removeBreadcrumbItem(this.breadCrumbItem);
+    this.angularService.setCurrentLesson(null);
   }
 
   openModal(template: TemplateRef<any>) {

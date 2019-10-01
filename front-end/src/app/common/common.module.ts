@@ -7,12 +7,14 @@ import {FormsModule} from '@angular/forms';
 import {MaterialModule} from '../material/material.module';
 import {BootstrapModule} from '../material/bootstrap.module';
 import {LessonComponent} from "./lesson/lesson.component";
+import { LessonMenuComponent } from './lesson-menu/lesson-menu.component';
 
 @NgModule({
   entryComponents: [
   ],
   declarations: [
-    LessonComponent
+    LessonComponent,
+    LessonMenuComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,6 @@ import {LessonComponent} from "./lesson/lesson.component";
     FormsModule,
     MaterialModule,
     BootstrapModule
-  ], exports: [LessonComponent]
+  ], exports: [LessonComponent, LessonMenuComponent]
 })
 export class CommonLessonModule { }

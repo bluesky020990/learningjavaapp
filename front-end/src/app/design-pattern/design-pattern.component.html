@@ -1,70 +1,51 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Design Pattern</h1>
-    <span class="example-spacer"></span>
-    <a routerLink="/"><mat-icon class="arrow_back" aria-hidden="false" aria-label="Example delete icon">home</mat-icon></a>
-  </mat-toolbar>
+<app-lesson-menu [lessonTitleDisplay]="'Design Pattern'" [lessonService]="this.lessonService">
+  <div class="lesson-container-display">
+    <div class="col-12">
+      <div class="row mt-3">
+        <div class="col-12 col-md-9">
+          <router-outlet></router-outlet>
+        </div>
 
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <app-lesson [listLesson]="listLesson" [currentLesson]="lessonService.getCurrentLesson()"></app-lesson>
-      </mat-nav-list>
-    </mat-sidenav>
+        <div class="col-12 col-md-3">
+          <h3 class="mb-3">About</h3>
 
-    <mat-sidenav-content>
-      <div class="lesson-container-display">
-        <div class="col-12">
-          <div class="row mt-3">
-            <div class="col-12 col-md-9">
-              <router-outlet></router-outlet>
+          <div class="row mb-3">
+            <div class="col-12">
+              <ul class="list-group">
+                <li class="list-group-item">Author: Khanh Tran</li>
+                <li class="list-group-item">Email: quockhanhqb011@gmail.com</li>
+                <li class="list-group-item">Phone: 0989 890 960</li>
+                <li class="list-group-item">Company: BanVien</li>
+                <li class="list-group-item">Position: Developer</li>
+                <li class="list-group-item">Skill: Front-end, Java, OOP, DB</li>
+              </ul>
             </div>
+          </div>
 
-            <div class="col-12 col-md-3">
-              <h3 class="mb-3">About</h3>
+          <h3 class="mb-3">Introduction</h3>
+          <div class="row mb-3">
+            <div class="col-12">
+              <p>Design Pattern được chia thành 3 nhóm</p>
 
-              <div class="row mb-3">
-                <div class="col-12">
-                  <ul class="list-group">
-                    <li class="list-group-item">Author: Khanh Tran</li>
-                    <li class="list-group-item">Email: quockhanhqb011@gmail.com</li>
-                    <li class="list-group-item">Phone: 0989 890 960</li>
-                    <li class="list-group-item">Company: BanVien</li>
-                    <li class="list-group-item">Position: Developer</li>
-                    <li class="list-group-item">Skill: Front-end, Java, OOP, DB</li>
-                  </ul>
-                </div>
-              </div>
+              <dl>
+                <dt>Creational Patterns</dt>
+                <dd>Quản lý việc tạo ra các đối tượng.</dd>
 
-              <h3 class="mb-3">Introduction</h3>
-              <div class="row mb-3">
-                <div class="col-12">
-                  <p>Design Pattern được chia thành 3 nhóm</p>
+                <dt>Structural Patterns</dt>
+                <dd>Tạo ra 1 Class/1 method dựa trên Class đã có</dd>
 
-                  <dl>
-                    <dt>Creational Patterns</dt>
-                    <dd>Quản lý việc tạo ra các đối tượng.</dd>
-
-                    <dt>Structural Patterns</dt>
-                    <dd>Tạo ra 1 Class/1 method dựa trên Class đã có</dd>
-
-                    <dt>Structural Patterns</dt>
-                    <dd>Giao tiếp giữa các đối tượng</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 actions">
-              <a class="btn btn-default" mat-menu-item [routerLink]="['/design-pattern']">Back to Overview</a>
+                <dt>Structural Patterns</dt>
+                <dd>Giao tiếp giữa các đối tượng</dd>
+              </dl>
             </div>
           </div>
         </div>
+
+        <div class="col-12 actions">
+          <a class="btn btn-default" mat-menu-item [routerLink]="['/design-pattern']">Back to Overview</a>
+        </div>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
-
-
+    </div>
+  </div>
+</app-lesson-menu>
 

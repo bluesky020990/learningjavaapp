@@ -1,6 +1,7 @@
 import {LessonCategory, LessonMapping, LessonMappingI} from "../common/data.model";
-import {of} from "rxjs";
+import {Observable, of} from "rxjs";
 import {Injectable} from "@angular/core";
+import {LessonMenuService} from "../common/lesson-menu.service";
 
 // <dl>
 //   <dt></dt>
@@ -55,20 +56,14 @@ const MAP_LESSON_DATA = [
   providedIn: 'root'
 })
 
-export class DesignPatternService {
-
+export class DesignPatternService extends LessonMenuService{
   currentLesson: LessonMappingI = null;
-  constructor() { }
 
-  getListLesson (){
+  constructor() {
+    super();
+  }
+
+  getListLesson(): Observable<LessonMappingI[]> {
     return of(MAP_LESSON_DATA);
-  }
-
-  getCurrentLesson(): LessonMappingI{
-    return this.currentLesson;
-  }
-
-  setCurrentLesson(currentLesson: LessonMappingI){
-    this.currentLesson = currentLesson;
   }
 }

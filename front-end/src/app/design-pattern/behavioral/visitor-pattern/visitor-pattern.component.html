@@ -1,3 +1,146 @@
-<p>
-  visitor-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Visitor Pattern - Behavioral Pattern</h2>
+
+      <p>Bản chất của Visitor đó là tách việc xử lý business ra khỏi object, và giao trách nhiệm đó cho 1 Visitor Object.</p>
+
+      <p>Để làm được điều này ta sử dụng đặc tính quá tải toán tử (overload) của Java.</p>
+
+      <p>Nó thường được sử dụng trong môi trường, ta có nhiều object, và có một chức năng liên quan chung giữa chúng, mà ta muốn gom
+        lại cho dễ quản lý.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Cửa hàng bánh kem giờ đã mở rộng hơn. Bây giờ không phải chỉ làm bánh mang đi, mà h đã có riêng
+          một đại sảnh, cho khách vào ngồi ăn bánh và uống cf nhâm nhi nữa.</p>
+
+        <p>Tuy nhiên, nước uống ko phải là thế mạnh của ông chủ, nên ông quyết định cùng hợp tác với bạn mình.</p>
+
+        <p>Thế nhưng, điều này gây khó cho cô thu ngân, khi cô không thể biết thông tin giá cả của 2 bên, nên mỗi lần tính tiền, thường chạy đi chạy lại rất mất thời gian.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Giải pháp
+      </div>
+
+      <div class="card-body">
+        <p>Sau một thời gian xem xét, ông chủ quyết định kêu bạn ông mang theo 1 cô thu ngân sang nữa.</p>
+
+        <p>Bây giờ, với mỗi order, người phục vụ sẽ phân loại ra thành 2 loại, loại đồ ăn thì để cửa hàng xử lý, loại đồ uống thì mang cho cô kia tính.</p>
+
+        <p>Rõ ràng việc tính tiền là một nhiệm vụ, nhưng đối tượng mà nó xử lý lại không giống nhau.</p>
+
+        <p>Một bên là tính theo giá ghi trên menu, một bên lại phụ thuộc vào option của khách hàng, ví dụ gọi trà sữa thêm hạt trân châu này nọ,
+          thì rõ ràng việc tính toán nó sẽ phụ thuộc vào yêu cầu của khách hàng, chứ ko phải là đã được xác định trước.</p>
+
+        <p>Vì vậy ta không thể xây dựng chung một phương thức tính tiền cho cả 2 được (vì bản chất nó khác nhau mà).</p>
+
+        <p>Trong lập trình cũng vậy, đôi lúc ta cần thao tác trên các nhóm Object khác nhau, nhưng việc thao tác đó (logic) lại phụ thuộc vào từng
+          loại object. Thay vì việc xây dựng một method tổng quát, thì ta sẽ tách riêng nó ra để có thể làm hệ thống linh động hơn.</p>
+
+        <p>Đó chính là mục đích của visitor.</p>
+
+        <p>Bản chất của Visitor đó là việc overload toán tử, phụ thuộc vào từng tham số đầu vào mà điều chỉnh hành vi cho phù hợp.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <p>Visitor được gửi như là một tham số tới việc thực hiện task. Nó xây dựng những method tính toán, dựa trên group các loại
+          object, và vì vậy mà nó giúp hệ thống của ta trở nên lỏng lẻo hơn.</p>
+
+
+        <p>Việc xây dựng như sau:</p>
+
+        <p>Đầu tiên ta xây dựng một Visitor interface với method + các Object cho phù hợp.</p>
+
+        <p>Tiếp đến ta xây dựng một Element Interface/ Abstract gì cũng được, định nghĩa một method cho phép truyền Visitor vào trong đó.</p>
+
+        <p>Tiếp theo nữa, ta xây dựng Một Visitor Implement, implement cái trên.</p>
+
+        <p>Và cuối cùng là một test thôi.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <h5>Advantages</h5>
+
+        <p>__________</p>
+
+        <h5>Disadvantages</h5>
+
+        <p>__________</p>
+
+        <h5>Usage</h5>
+
+        <p>__________</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Summary
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>

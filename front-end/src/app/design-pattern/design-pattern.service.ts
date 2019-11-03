@@ -45,8 +45,8 @@ const MAP_LESSON_DATA = [
   new LessonMapping('null-object', "Null Object",  22),
   new LessonMapping('observer', "Observer",  23),
   new LessonMapping('state', "State",  24),
-  new LessonMapping('template', "Template",  25),
-  new LessonMapping('strategies', "Strategies",  26),
+  new LessonMapping('strategies', "Strategies",  25),
+  new LessonMapping('template', "Template",  26),
   new LessonMapping('visitor', "Visitor",  27),
   new LessonMapping('dependence-injection', "Dependence Injection",  28),
   new LessonMapping('mvc', "Modal and View",  29)

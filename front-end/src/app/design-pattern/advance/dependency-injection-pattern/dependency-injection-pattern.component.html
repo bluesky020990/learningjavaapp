@@ -1,3 +1,139 @@
-<p>
-  dependency-injection-pattern works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Dependence Injection Pattern</h2>
+
+      <p>Dependence Injection - Nghịch đảo phụ thuộc  là một trong số các design pattern được sử dụng trong Spring Framework.</p>
+
+      <p>Ý tưởng của DI rất hay, nó khiến cho việc thiết kế các service trong hệ thống trở nên lỏng lẻo hơn và dễ mở rộng hơn.</p>
+
+      <p>Nó tuân thủ nguyên tắc, Don't call us, we call you.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Bài toán
+      </div>
+
+      <div class="card-body">
+        <p>Thông thường, để xây dựng 1 ứng dụng, ta xây dựng các service để thực hiện các nhiệm vụ khác nhau.</p>
+
+        <p>Một service có thể liên quan đến 1 hay nhiều service khác, và nếu ko phân tích kĩ lưỡng, thì các service sẽ bị liên
+          kết với nhau một cách cứng nhắc.</p>
+
+        <p>Điều này hạn chế việc mở rộng, hay bảo trì chúng. Vì mỗi một thay đổi có thể ảnh hưởng tới nhiều service khác.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Giải pháp
+      </div>
+
+      <div class="card-body">
+        <p>Trong một ứng dụng bình thường, để có thể sử dụng 1 service, ta hoặc sử dụng inheritance hoặc sử dụng composite.</p>
+
+        <p>Tuy nhiên, rõ ràng các service nó hoàn toàn không giống nhau, nên việc sử dụng inheritance nó có nhiều hạn chế. THay vào đó
+          người ta sẽ sử dụng composite để đạt được mục đích tốt hơn.</p>
+
+        <p>Vì là composite nên ta cần phải biến các service này thành thuộc tính của service khác.</p>
+
+        <p>Lúc này, ta gặp trường hợp, khi muốn khởi tạo 1 service, ta cần phải khởi tạo các service bên trong nó. Và cứ như thế, ta sẽ rơi vào
+          1 vòng luẩn quẩn, nếu như A chứa B và B chứa A.</p>
+
+        <p>Dependence Injection ra đời để giải quyết điều đó.</p>
+
+        <p>Thay vì phải gọi tới các thằng service con bên trong, thì giờ đây, các service con có thể được "tiêm" vào thằng cha. Đó là ý tưởng của
+          "Don't call us, We call you" mà đầu bài đã đề cập.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Introduction
+      </div>
+
+      <div class="card-body">
+        ________________________________
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implements
+      </div>
+
+      <div class="card-body">
+        <p>Việc implement DI trong Spring được tiến hành như sau:</p>
+
+        <ol>
+          <li>Xây dựng các service cho từng chức năng</li>
+          <li>Inject service vào các service khác bằng @Autowired annotation.</li>
+          <li>Xây dựng 1 file xml để chứa thông tin các service cũng như implement của nó.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages & Disadvantages
+      </div>
+
+      <div class="card-body">
+        <h5>Advantages</h5>
+
+        <p>__________</p>
+
+        <h5>Disadvantages</h5>
+
+        <p>__________</p>
+
+        <h5>Usage</h5>
+
+        <p>__________</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Cách thức hoạt động của DI trong Spring
+      </div>
+
+      <div class="card-body">
+        <p>Spring sẽ đọc file config, init lên các service. Các service này đều là các singleton.</p>
+
+        <p>Khi sử dụng 1 service nào đó, ta sử dụng annotation @Autowired. Annotation này đánh dấu để hệ thống biết mà sinh ra các getter và setter
+          để có thể inject các service con vào. Nếu ko thích sử dụng nó, thì ta có thể xây dựng các method get set cho các service bên trong đó là được.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,12 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Visitor Pattern - Behavioral Pattern</h2>
 
-      <p>Bản chất của Visitor đó là tách việc xử lý business ra khỏi object, và giao trách nhiệm đó cho 1 Visitor Object.</p>
+      <p>Đại diện cho 1 hoạt động được thực hiện dựa trên các yếu tố của cấu trúc đối tượng. Visitor cho phép ta xác định một
+        operation mới mà không thay đổi các lớp có liên quan/phụ thuộc vào tới hoạt động đó.</p>
 
-      <p>Để làm được điều này ta sử dụng đặc tính quá tải toán tử (overload) của Java.</p>
+      <p>Thực hiện đúng mục đích trên ít nhất 2 loại đối tượng khác nhau.</p>
 
-      <p>Nó thường được sử dụng trong môi trường, ta có nhiều object, và có một chức năng liên quan chung giữa chúng, mà ta muốn gom
-        lại cho dễ quản lý.</p>
+      <p>Double Dispatch</p>
     </div>
   </div>
 </div>
@@ -72,7 +72,24 @@
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Trong tình huống thực tế, ta thường gặp những trường hợp tương tự. Ta có nhiều hoạt động riêng biệt và không liên quna
+        cần phải thực hiện trên các đối tượng trong 1 cấu trúc tổng hợp không đồng nhất.</p>
+
+        <p>Ta sử dụng Visitor để tránh cho code bị bẩn (polluting) và không cần phải truy vấn từng node và chuyển con trỏ đến đúng loại trước khi thực hiện
+        thao tác mong muốn.</p>
+
+        <p>Mục đích chính của Visitor đó là một abstract function có thể áp dụng cho 1 hệ thống phân cấp các đối tựng. Cách tiếp cận này
+        khuyến khích việc sử dụng các Flyweight Element classes vì chức năng xử lý cần được loại bỏ khỏi danh sách trách nhiệm của chúng.</p>
+
+        <p>Những chức năng mới có thể dễ dàng thêm vào hệ thống phân cấp ban đầu bằng cách tạo ra 1 Visitor Subclass khác.</p>
+
+        <p>Trong đầu bài, ta đã nhắc tới khái niệm double dispatch. Visitor implement "double dispatch". Vậy double dispatch là gì?</p>
+
+        <p> Trong OOP, các object tương tác với nhau thông qua các message. Các OO Message này thường là các Single dispatch - operation này được thực hiện phụ thuộc vào
+          2 yếu tố, tên của request và kiểu người nhận.</p>
+
+          <p>Trong Double Dispatch, Operation được thực thi dụa vào tên của Yêu cầu và kiểu của TWO RECEIVER. TWO RECEIVER
+            ở đây bao gồm kiểu của Visitor và kiểu của Element mà nó Visit. Vì vậy nó mới có tên là Double Dispatch.</p>
       </div>
     </div>
   </div>
@@ -87,19 +104,89 @@
       </div>
 
       <div class="card-body">
-        <p>Visitor được gửi như là một tham số tới việc thực hiện task. Nó xây dựng những method tính toán, dựa trên group các loại
-          object, và vì vậy mà nó giúp hệ thống của ta trở nên lỏng lẻo hơn.</p>
+        <p>
+          Việc implement được tiến hành như sau: Trong mô hình này, ta gom các dối tượng cần được hỗ trợ thành 1 nhóm, sử dụng
+          1 Element interface để gom nó lại. và sử dụng 1 Visitor, cũng là 1 abstract class để truy xuất qua từng loại đối tượng này.
+          Từ đó, ta xác định 2 loại đối tượng trong mô hình này bao gồm:
+        </p>
 
+        <ul>
+          <li>Element và Concrete Subclass Element</li>
+          <li>Visitor và Concrete Subclass của Visitor.</li>
+        </ul>
 
-        <p>Việc xây dựng như sau:</p>
+        <ul>
+          <li>Đầu tiên, ta tạo 1 Visitor class hierarchy. Visitor class này định nghĩa 1 pure virtual methods visit(). Mỗi method này nhận
+          duy nhất là 1 argument,  1 pointer hoặc 1 tham chiếu đến 1 original Element Derived class</li>
 
-        <p>Đầu tiên ta xây dựng một Visitor interface với method + các Object cho phù hợp.</p>
+          <li>Mỗi Operation phải được mô hình hóa với 1 lớp dẫn xuất cụ thể của Visitor Hierarchy. Vì vậy, các method visit()
+          được khai báo trong Visitor hierarchy giờ đây phải được implement trong các lớp dẫn xuất của nó. Lưu ý, method visit() này là pure virtual
+          nên chắc chắn những thằng con phải implement nó.</li>
 
-        <p>Tiếp đến ta xây dựng một Element Interface/ Abstract gì cũng được, định nghĩa một method cho phép truyền Visitor vào trong đó.</p>
+          <li>Add 1 single pure method accept() cho Element base class. Tương tự với visit() trong Visitor, accept() của Element cũng
+          chỉ chấp nhận 1 đối số duy nhất, là 1 pointer hoặc 1 tham chiếu đến Visitor class ở trên.</li>
 
-        <p>Tiếp theo nữa, ta xây dựng Một Visitor Implement, implement cái trên.</p>
+          <li>Lại tương tự như Visitor, mỗi Concreted subclass của Element hierarchy cũng cần implement accept() method bằng
+          cách đơn giản là gọi lại visiter.visit() method ở trên kia, chuyển con trỏ này là đối số duy nhất.</li>
 
-        <p>Và cuối cùng là một test thôi.</p>
+          <li>Toàn bộ visitor và element đã được setup xong. Nếu client cần thực hiện 1 operation, nó sẽ tạo 1 instance của
+          Visitor Oject, call accept() method trên mỗi Element object, và truyền vào đó là visitor Object.</li>
+        </ul>
+
+        <ul>
+          <li>Đầu tiên, ta khai báo 1 Abstract Class Element. Nó có 1 method là accept(). accept() này nhận đầu vào là 1 Visitor.</li>
+
+          <li>Ta tiếp tục khai báo các Derived subclass cho Element class ở trên. Nói là class nhưng nó cũng có thể là interface. Mỗi
+          derived subclass này cần overwrite lại các method accept() ở trên cho hợp lý.</li>
+
+          <li>Tạo 1 Visitor abstract class. Visitor này có 1 list các abstract method visit. Mỗi method này nhận đầu vào là 1 pointer hoặc
+          tham chiếu đến danh sách các derived subclass Element trên kia.</li>
+
+          <li>Tạo các Visitor Derived class implement từ Visitor interface kia ra. Mỗi concrete class này sẽ implement 1 list các abstract method visit
+          trên kia.</li>
+
+          <li>Khi muốn thực hiện 1 operation nào đó, ta for each các element trên kia, và cho các element trên kia gọi method accept với
+          đối số là các Concrete Derived Visitor mà ta đã tạo.</li>
+        </ul>
+
+       <p>Trong mô hình này, ta dễ dàng thêm vào các operation hoặc tiện ích mới. Chỉ cần add new Visitor derived class. Nhưng nếu như subclass trong
+         aggregate node hierarchy  (Element hierarchy) không ổn định, việc giữ cho các lớp con của Visitor subclass đồng bộ, đòi hỏi phải kiểm
+       soát chặt chẽ và nghiêm ngặt. Ta lưu ý, Visitor sử dụng double dispatch, nên nếu có 1 lớp con được bổ sung, Visitor cần add
+       thêm các visit() method có liên quan.</p>
+
+        <p>Một ứng dụng nữa của Visitor đó là biểu thị cho việc phân rã chức năng, tách các thuật toán khỏi cấu trúc dữ liệu. Trong operation
+        rõ ràng thuật toán được implement trong Concrete subclass của Visitor, nó tách biệt hoàn toàn với Element. Do đó, ta có thể gọi nó như vậy.
+        Ngoài ra, nó còn biết đến với 1 mục đích khác, full object status behavior.</p>
+
+        <p>Tóm lại, ta có thể hiểu, mục đích của visitor đó là represent cho một hoạt động được thực hiện dựa trên các thành phần của cấu trúc đối tượng
+        mà không thay đổi các class mà nó hoạt động,</p>
+
+        <p>Dưới đây là cách implement cụ thể</p>
+
+        <ul>
+
+          <li>Đầu tiên, ta cần xác nhận hệ thống phân cấp hiện tại (Element hierarchy) là khá ổn định và các public interface của
+          class này là đủ cho các Visitor class yêu cầu. Nếu 1 trong 2 không thỏa mãn, thì trong trường hợp này Visitor không phải
+          là 1 lựa chọn đúng đắn. Lưu ý, Visitor sử dụng full object status, do đó, cần kiểm tra xem các operation của Visitor có thể dựa vào
+          các public interface của class này để hoạt động được ko, và liệu Element Hierarchy này có ổn định hay ko.</li>
+
+          <li>Create Visitor Class base class với visit (Element x) method ứng với mỗi Element Delivery Type. (Do đó ta cần cấu trúc của Element này phải
+          thật ổn định. Nếu nó có thay đổi, toàn bộ các Visitor có liên quan cần phải thay đổi.)</li>
+
+          <li>Add accept(Visitor v) method cho Element Hierarchy. Việc triển khai các method này trong các Derived Subclass của Element đều
+          giống nhau, v.visit(this) Do là circle dependence nên việc khai báo các Element và Visitor subclass này phải được thực hiện xen kẽ, thêm
+          cái Element nào thì phải bổ sung trên Visitor và update lại cho các Concreted subclass Visitor tương ứng.</li>
+
+          <li>Element hierarchy được ghép nối với Visitor base class, nhưng Visitor Hierarchy lại được couple với mỗi Element derived class.
+          Nếu độ ổn định của Element Hierarchy là thấp và đô ổn định của hệ thống Visitor là cao, thì luc snafy ta cần xem xét việc hoán
+          đổi vai trò của 2 thứ bậc. Nếu làm tốt điều này ta có thể giải quyết nhược điểm của nó đã được đề cập ở mục 1 và 2.</li>
+
+          <li>Create Visitor Derived class cho mỗi Operation, được thực hiện trên các đối tượng Element. visit() method
+          implement dựa trên giao diện chung của Element public interface.</li>
+
+          <li>Client tạo các Visitor Object và chuyển từng đối tượng trong Element bằng method accept() của chính nó..</li>
+
+        </ul>
       </div>
     </div>
   </div>
@@ -116,15 +203,20 @@
       <div class="card-body">
         <h5>Advantages</h5>
 
-        <p>__________</p>
+        <p>dễ dàng bổ sung 1 hoạt động trên 1 list các object mà không làm thay đổi cấu trúc của các đối tượng đó.</p>
 
         <h5>Disadvantages</h5>
 
-        <p>__________</p>
+        <p>Ban đầu, ta thấy nó rất ok, mọi thứ đều hoạt động tốt. Việc thêm các operator vào là cực kì dễ dàng, ta chỉ cần add
+        các Concrete derived class và implement các operation bên trong chúng. Tuy nhiên, đó là đối với trường hợp thêm
+        các Visitor, còn đối với các trường hợp thêm các Element thì sao. Có bao nhiêu Visitor, thì có bấy nhiêu method cần được
+        tạo khi thêm 1 Element mới vào cấu trúc ban đầu. Do đó việc quản lý và đảm bảo cho chúng đồng bộ là yếu tố cần được
+        xem xét.</p>
 
         <h5>Usage</h5>
 
-        <p>__________</p>
+        <p>Trong nhiều trường hợp, ta muốn thực hiện 1 operation trên 1 list các đối tượng, hoặc tách algorithms ra khỏi cấu trúc dữ
+        liệu của đối tượng để quản lý dễ dàng.</p>
       </div>
     </div>
   </div>
@@ -135,11 +227,19 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Abstract Syntax tree của Interpreter là Composite. Vì vậy, ta có thể sử dụng Iterator và Visitor để thay thế cho Composit trong
+        Interpretor pattern.</p>
+
+        <p>Iterator có thể đi qua 1 Composite. Visitor có thể apply 1 operation trên 1 composite.</p>
+
+        <p>Visitor Pattern giống như Command Pattern nhưng nó nhiều sức mạnh hơn vì Visitor có thể khởi tạo bất cứ thứ gì phù
+        hợp với loại đối tượng mà nó gặp, trong khi Command thì chỉ 1/vài loại.</p>
+
+        <p>Visitor </p>
       </div>
     </div>
   </div>

@@ -3,9 +3,10 @@
     <div class="overview-container">
       <h2 class="mb-3">Abstract Factory Pattern - Creational Pattern</h2>
 
-      <p>Bản chất của Abstract Factory đó là cung cấp một tập hợp các Factory có phụ thuộc hoặc liên quan với nhau.</p>
+      <p>Cung cấp 1 interface để tạo 1 families của các đối tượng có liên quan hoặc phụ thuộc lẫn nhau, mà không chỉ định các
+      lớp cụ thể của nó</p>
 
-      <p>Chia nhỏ các Factory thành từng cụm có liên quan, và sử dụng các interface để get các cụm đó.</p>
+      <p>Một hệ thống phân cấp gói gọn, dựa trên many platform và construction của 1 bộ sản phẩm ("product").</p>
     </div>
   </div>
 </div>
@@ -81,15 +82,22 @@
         <blockquote>
           An Abstract Factory Pattern is also known as Kit.
         </blockquote>
-        
-        <p>Abstract Factory là 1 dạng mở rộng của Factory. Nó ra đời khi ta cần gom các Factory lại với nhau để cho gọn 
-          và code đồng nhất hơn trong hệ thống.</p>
-        
-        <p>Abstract Factory được sử dụng khi ta đã có quá nhiều Factory và những Factory này có liên quan với nhau ở một khía cạnh nào đó,
-        ví dụ như 1 công thức chẳng hạn.</p>
-        
-        <p>Abstract Factory nhóm các Object có liên quan lại với nhau, để có thể gọi nó 1 cách thuận tiện nhất.</p>
-        
+
+        <p>Theo như khái niệm trên, ta cần hiểu rằng, Abstract Factory có nhiệm vụ cung cấp 1 cách thức trừu tượng để cóp thể tạo ra 1
+        Families các đối tượng có liên quan/ phụ thuộc lẫn nhau 1 cách gián tiếp, mà không chỉ định trực tiếp các lớp cụ thể của nó.</p>
+
+        <p>Đối tượng "factory" có trách nhiệm cung cấp dịch vụ tạo ra các Families entire cho platform. Khách hàng không được quyền tạo
+        đối tượng trực tiếp, thay vào dó, họ yêu cầu "factory" thực hiện điều này cho họ.</p>
+
+        <p>Cơ chế này khiến việc trao đổi các sản phẩm trong cùng 1 family trở nên dễ dàng vì các "factory" chỉ xuất hiện
+          1 lần trong ứng dụng, nơi nó được khởi tạo. Application có thể dễ dàng bổ sung/ thay thế các families product này bằng cách tạo
+        1 concrete instance khác.</p>
+
+        <p>Trong Pattern này ta cần lưu ý: Abstract Factory là để lấy 1 "họ" các sản phẩm liên quan. Và khi ta cần lấy 1 family khác,
+        ta tạo ra 1 concrete instance khác. Bao nhiêu bộ thì bấy nhiêu Instance.</p>
+
+        <p>Vì cái Abstract Factory được dùng rất phổ biến, nên nó nên được triển khai thường xuyên như 1 Singleton.</p>
+
         <p>Ví dụ ta có object A được tạo thành từ đống B1, C2, D5, E4, Object B được tạo thành từ B2, C3, D1, E2, thì lúc này thay vì
         việc ta phải gọi 4 cái Factory cho mỗi lần tạo cái Object A, thì ta dùng luôn 1 Abstract Factory mà có thể gọi tới 4 Factory để
         tạo ra 4 Object đó. </p>
@@ -126,7 +134,18 @@
       </div>
 
       <div class="card-body">
-        <p>Một abstract Factory gồm những thành phần sau :</p>
+        <p>Dưới đây là các checklist cần phân tích trước khi bắt đầu implement</p>
+
+        <ul>
+          <li>Xác định xem "platform independence" và các service khởi tạo có phải là nguồn gốc của những vấn đề hiện tại ko</li>
+          <li>Tạo 1 ma trận giữa các "platforms" và "products"</li>
+          <li>Xác định factory interface bao gồm factory method cho mỗi product</li>
+          <li>Xác định các factory derived class cho mỗi platform. Factory này đóng gói toàn bộ các tham chiếu đến new operation.</li>
+          <li>Remove toàn bộ các tham chiếu đến new và sử dụng các factory methods để tạo ra các product objects.</li>
+        </ul>
+
+
+        <p>Từ những requirment đó, thông thường, một Abstract Factory gồm những thành phần sau :</p>
 
         <ul>
           <li>AbstractFactory : Định nghĩa một interface cho thao tác khởi tạo các Abstract Product</li>
@@ -134,29 +153,8 @@
           <li>Factories </li>
         </ul>
 
-        <p>Ví dụ: Ở đây ta đã có sẵn các Factory Trứng, Factory Rau, Factory Thịt này nọ rồi.</p>
-
-        <p>Cửa hàng cung cấp thực đơn các món hầm gồm gà hầm nấm, bò hầm khoai tây, heo hầm đu đủ.</p>
-
-        <p>Khách hàng vào yêu cầu món Bò hầm khoai tây, khi này anh phục vụ sẽ mang Bò từ Factory Thịt,
-          Khoai tây, cà rốt từ Factory Rau lên cho anh đầu bếp.</p>
-
-        <p>Khách hàng vào yêu cầu món Bò hầm khoai tây, nhưng phải là bò tót Tây Ban Nha, thì anh phục
-          vụ sẽ vào lấy dĩa thịt trâu hôm qua cùng ít khoai tây mang cho anh đầu bếp.</p>
-
-        <blockquote>
-          Thay vì sử dụng if - else như trong Factory, đối với Abstract Factory, ta tạo ra 1 class để handle
-          chuyện create object cho nó.<br />
-          <br />
-          <br />
-          Nó cung cấp cách tiếp cận đến interface hơn là implements.<br />
-          <br />
-          Nó dễ dàng mở rộng từ các Factory đã có sẵn.<br />
-          <br />
-          Nó rất mạnh mẽ và tránh được điều kiện if-else của Factory.<br />
-        </blockquote>
-
-        <img src="assets/design_pattern/uml_diagram/abstractfactory_pattern_uml_diagram.jpg" class="img-fluid">
+        <p>Ta cần lưu ý rằng, Abstract Factory cung cấp 1 interface để có thể tạo ra 1 family product, do đó, khi cần tạo 1 đống các object khác,
+        ta cần tạo 1 Concrete Factory khác.</p>
       </div>
     </div>
   </div>
@@ -219,16 +217,35 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Abtract Factory được sử dụng trong trường hợp ta có nhiều Object cùng 1 nhóm, mỗi object lại có các properties
-          khác nhau và mỗi properties này lại được cung cấp bới các Factory khác nhau.</p>
+        <p>Đôi khi ta sẽ gặp được sự cạnh tranh trong các Pattern thuộc nhóm Creational này. Ví dụ giữa Prototype và Abstract Factory đều
+        có ích trong việc giải quyết vấn đề. Nhưng đôi lúc, nó là các phần bổ sung cho nhau. Abstract Factory có thể store 1 set các Prototype
+        để sao chép và trả lại các product, Builder có thể sử dụng các Pattern khác để triển khai việc build từng phần của nó.
+        Abstract Factory, Builder và Prototype cùng có thể sử dụng Singleton trong quá trình thực hiện.</p>
 
-        <p>Abstract Factory sẽ gom các Factory này lại, theo điều kiện của từng Object, và vì vậy mà ta sẽ có 1 cái Utils của Factory luôn.</p>
+        <p>Abstract Factory, Builder, và Prototype xác định 1 đối tượng Factory object, chịu tránh nhiệm biết và tạo 1 class product objects,
+        và biến nó thành 1 tham số của hệ thống. Abstract Factory có các Factory object sản xuất các đối tượng của 1 só lớp.</p>
 
-        <p>Thay vì sử dụng điều kiện if else, mỗi Object có 1 method để lấy các Factories của riêng nó. Method này cung cấp các factory mà nó cần.</p>
+        <p>Builder cũng có thể có 1 Factory object để build 1 complex product sử dụng các giao thức phức tạp tương ứng. Prototype cũng vậy, nó có
+          thể sử dụng các Factory Object để build các product bằng việc copy các prototype object.
+        </p>
+
+        <p>Abstract Factory class thường được implement với Factory Method, nhưng nó cũng có thể được implement bằng Prototype.</p>
+
+        <p>Abstract Factory có thể sử dụng thay thế cho các Facade để ẩn các platform-specific classes.</p>
+
+        <p>Builder tập trung vào việc xây dựng 1 đối tượng phức tạp theo từng bước. Trong khi đó Abstract Factory nhận mạnh việc tạo ra
+        1 family products</p>
+
+        <p>Builder return lại product ở step cuối cùng nhưng Abstract Factory lại trả lại đối tượng ngay lập tức.</p>
+
+        <p>Thông thường, designer sử dụng Factory Method tại thời điểm mới bắt đầu. Lúc này, Factory Method thể hiện rõ sức mạnh của nó
+        ít phức tạp, dễ tùy chỉnh và số lượng các subclass được sinh ra. Tuy nhiên sau 1 thời gian, nó lại phát triển theo hướng
+        hoặc là Abstract Factory hoặc là Protype hoặc là Builder vì những Pattern này linh hoạt hơn, phức tạp hơn. Khi Designer nhận ra rằng
+        cần sử dụng nó ở 1 số vị trí để đảm bảo sự linh hoạt.</p>
       </div>
     </div>
   </div>

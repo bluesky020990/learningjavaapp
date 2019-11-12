@@ -15,10 +15,10 @@ import {LessonMenuService} from "../common/lesson-menu.service";
 // </dl>
 
 const MAP_LESSON_DATA = [
-  new LessonCategory('Factory Pattern', "Factory Pattern",  1,  'Creational Patterns'),
-
   new LessonMapping('overview', "Overview",  1),
-  new LessonMapping('factory', "Factory Pattern",  2),
+
+  new LessonCategory('Factory Pattern', "Factory Pattern",  1,  'Creational Patterns'),
+  new LessonMapping('factory', "Factory Method Pattern",  2),
   new LessonMapping('abstract-factory', "Abstract Factory",  3),
   new LessonMapping('singleton', "Singleton",  4),
   new LessonMapping('builder', "Builder",  5),

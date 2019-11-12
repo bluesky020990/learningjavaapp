@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-12">
     <div class="overview-container">
-      <h2 class="mb-3">Factory Pattern - Creational Pattern</h2>
+      <h2 class="mb-3">Factory Method Pattern - Creational Pattern</h2>
 
       <p>Factory pattern che dấu hoàn toàn việc khởi tạo object, ta không thể sử dụng toán tử new để lấy được object
         mà ta muốn, thay vào đó, Factory sẽ cung cấp cho ta 1 interface để làm việc đó.</p>
@@ -23,6 +23,17 @@
       </div>
 
       <div class="card-body">
+        <p>Trong những lần trước, ta đã hiểu nhầm về Pattern này. Chính xác thì chưa hiểu đủ.</p>
+
+        <p>Tên của nó ko phải là Factory Pattern mà là Factory Method Pattern. Method ở đây để ghi chú rằng nó là 1 phương thức
+        để cung cấp 1 Object, chứ đôi khi không cần phải xây dựng 1 Object riêng để handle điều đó. Việc tạo ra 1 đối tượng Factory
+        đảm nhận việc đó cũng tốt, nhưng nên lưu ý, nó là Factory Method, nên chính hàm static của 1 Class nào đó cũng được hiểu là
+        1 thể hiện của Pattern này.</p>
+
+        <p>Đối với Design Pattern, ta cần phải ghi nhớ, nó là 1 mẫu thiết kế, 1 quy tắc. Do đó, ta ko cần dựa vào chính xác
+        những step được mô tả, mà thay vì vậy, ta chỉ cần nắm rõ cách mà ngta phân tích nó và code dựa vào requirement đó, thay vì
+        1 cấu trúc cứng nhắc.</p>
+
         <p>Ở nhà hàng nọ có 1 anh đầu bếp rất tài ba. Vì khả năng nấu nướng tuyệt vời của mình nên lúc
           nào cửa hàng của anh cũng đông khách. Anh luôn phải tất bật làm việc, từ đi chuẩn bị rau củ, đến
           rã đông cá cua,  rồi băm chặt đủ thứ.</p>
@@ -87,26 +98,20 @@
           The Factory Method Pattern is also known as Virtual Constructor.
         </blockquote>
 
-        <p>
-          Factory Pattern là một trong những pattern phổ biến nhất trong lập trình hướng đối tượng.
-        </p>
+        <p>Nhiệm vụ của Factory Method đó là khởi tạo các đối tượng, nó có chút tương đồng với Template Pattern, thực hiện 1 thuật toán.</p>
 
-        <p>Nhiệm vụ của nó là quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đối
-          tượng
-          một cách linh hoạt hơn.</p>
+        <p>Một Super class chỉ định cho toàn bộ các tiêu chuẩn và các hành đồng sau đó ủy thác việc khởi tạo này cho các Derived class.</p>
 
-        <p>Bản chất của Factory là <b>Định nghĩa một giao diện (interface) cho việc tạo một đối tượng,
-          nhưng
-          để các lớp con quyết định lớp nào sẽ được tạo. <i>Factory method</i> giao việc khởi tạo đối
-          tượng cụ thể
-          cho lớp con.</b></p>
+        <p>Factory Method làm cho một thiết kế có thể tùy chỉnh nhiều hơn và chỉ phức tạp 1 chút. Các mẫu thiết kế khác thường
+        yêu cầu khởi tạo 1 lớp mới, trong khi đó Factory Method lại chỉ yêu cầu thêm 1 thao tác mới.</p>
 
-        <p>Nói giao việc khởi tạo cho lớp con, ko có nghĩa là có cái lớp con nào đó và override cái method đó,
-          mà lớp con sẽ sử dụng interface + danh sách các tham số mà Factory cung cấp, và quyết định xem nó muốn cái
-          gì.</p>
+        <p>Ta thường sử dụng Factory như 1 cách thức tiêu chuẩn để khởi tạo 1 đối tượng, tuy nhiên, trong những trường hợp này
+        thì nó không cần thiết: Nếu lớp được khởi tạo không bao giờ bị thay đổi, hoặc việc khởi tạo chỉ diễn ra trong nhất thời và các lớp con
+        có thể dễ dàng ghi đè nó.</p>
 
-        <p>Tức là nó kêu, tao muốn trứng gà, thì nó gọi interface + "trung-ga" chẳng hạn.</p>
+        <p>Factory Method tương tự như Abstract Factory nhưng nó không chú trọng đến tính Family. Thay vào đó nó chú trọng tới Object.</p>
 
+        <p>Thường Factory Method được quy định bởi framework, và được implement bởi người dùng.</p>
       </div>
     </div>
   </div>
@@ -122,45 +127,30 @@
 
       <div class="card-body">
 
-        <p>Nhóm các object cùng chức năng thành một loại, có thể dụng Abstract Class hoặc Interface</p>
+        <p>Một định nghĩa phổ biến của Factory Method đó là một static method của 1 lcass trả về 1 đối tượng thuộc loại đó. Nhưnmg
+        nó không giống như 1 Constructor. Đối tượng trả về có thể là một thể hiện của 1 lớp con.</p>
 
-        <p>Xây dựng một Factory để lấy ra một object trong nhóm đó, tùy thuộc vào tham số truyền
-          vào.</p>
+        <p>Không giống như constructor, một đối tượng hiện có có thể được sử dụng lại, thay vì một đối tượng mới được tạo. Và một đặc điểm nữa,
+        các Factory Method thường sẽ có những tên riêng biệt, thay vì 1 cái tên chung nhưu Constructor.</p>
 
-        <p>Ví dụ, ta xếp trứng gà, trứng vịt, trứng ngỗng, trứng khủng long vào cùng một rổ. Mỗi khi anh
-          đầu bếp yêu cầu trứng gà, thì anh
-          trợ lý sẽ vào và lấy quả trưng theo yêu cầu ra. </p>
+        <p>Factory Method định nghĩa một giao diện để tạo các đối tượng, nhưng cho phép các lớp con quyết định class nào sẽ được tạo.</p>
 
 
-        <p>Ta thường sử dụng Factory khi mà chúng ta có 1 super class và multiple sub-classes. Và tùy
-          theo input truyền vào, ta cần phải trả lại 1 trong số các subclass ở trên kia.</p>
-
-        <p>Factory pattern mang nhiệm vụ instance của class từ client đến Factory. Và việc của bạn còn
-          lại  rất đơn giản, getFactoryObjectByType, và nó sẽ trả ra object mà bạn cần.</p>
-
-        <p>Dưới đây là mô tả về việc implement của nó</p>
+        <p>Dưới đây là những điều cần thực hiện/phân tích trước khi implement</p>
 
         <ul>
-          <li>Super class - Có thể là interface / abstract</li>
-          <li>Subclass -- Các class implements interface trên kia / extend từ abstract class trên  kia. </li>
-          <li>Factory Class với một static method handle việc initialize và return lại subclass từ tham số client truyền vào </li>
+          <li>Nếu ta có 1 cấu trúc phân cấp ta cần xem xét xem có thể tạo 1 phương thức đa hình bằng cách khai báo 1 static class ngày trong lớp cơ sở.</li>
+          <li>Thiết kế các tham số cho Factory Method. Những đặc tính hoặc đặc điểm nào là cần thiết và đủ để để xác đính chính xác đối tượng nào cần khởi tạo.</li>
+          <li>Xem xét việc thiết kế một nhóm đối tượng(object pool) bên trong, cho phép các đối tượng được sử dụng lại thay vì được tạo từ đầu.</li>
+          <li>Xem xét việc che dấu các constructor kia bằng việc set private hoặc protected.</li>
         </ul>
 
-        <img src="assets/design_pattern/uml_diagram/factory_pattern_uml_diagram.jpg" class="img-fluid">
+        <p>Ta lưu ý, mục đích của Factory Method đó là che dấu việc khởi tạo object và cung cấp 1 interface hỗ trợ điều đó. Nhưng nên nhớ,
+        ta không cần thiết lúc nào cũng phải new 1 đối tượng mới hoàn toàn. Ta có thể kết hợp với Object Pool Pattern ở dưới kia để giảm thiểu
+        chi phí cho việc khởi tạo đối tượng.</p>
 
-        <p>Những lưu ý thêm về việc implement pattern này:</p>
-
-        <ul>
-          <li>Bản chất của Factory pattern là quản lý việc khởi tạo các object. Vì vậy ta nên khai báo
-            private cho constructor của subclass để ngăn cho nó không được khởi tạo từ bên ngoài của
-            Factory.</li>
-
-          <li>Factory class được sử dụng như một Utils Class (utils - sử dụng). Vì vậy ta nên biến cái
-            Factory
-            Class thành một Singleton Class / hoặc khai báo static cho cái method getFactoryObjectByType
-            của nó
-            để có thể sử dụng ở bất cứ đâu.</li>
-        </ul>
+        <p>Trên nguyên tắc, Design Pattern chỉ là mẫu thiết kế. Ta sử dụng nó để tham khảo chứ không phải căn cứ vào nó để thiết kế.
+        Vì vậy, việc phân tích kĩ lưỡng trước khi áp dụng sẽ giúp ta hạn chế/ giải quyết được các bài toán phát sinh sau này.</p>
 
         <p>Nói thêm về việc che dấu constructor của Class.</p>
 
@@ -194,8 +184,6 @@
         <p>Tách constructor ra khỏi code, cho phép chỉ tương tác thông qua các Interface/ Abstract. Điều này cho phép reused
         lại code ở bất cứ đâu với những class implements/extends từ các Object đó.</p>
 
-
-
         <p>Ưu điểm của Factory là dễ dàng thấy được. Nó che dấu đi logic khởi tạo của 1 đối tượng. Người dùng chỉ cần
         gọi thông qua 1 interface của Factory cung cấp mà thôi.</p>
 
@@ -225,16 +213,30 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important Things
       </div>
 
       <div class="card-body">
-        <p>Factory che dấu việc khởi tạo các Object và cung cấp 1 interface để cung cấp các Object này như 1 biện pháp thay thế.</p>
 
-        <p>Cần implement đúng để tránh trường hợp có thể khởi tạo 1 Object mà ko thông qua các Factory. Điều này sẽ khiến cho mục đích
-        của Pattern bị phá vỡ.</p>
+        <p>Abstract Factory thường được triển khai với các Factory Method. nhưng chúng cũng có thể được thực hiện nhờ các Prototype</p>
 
-        <p>Factory không giải quyết được bài toán cần khởi tạo 1 Object phức tạp, có nhiều tham số truyền vào. Thay vào đó, ta phải sử dụng Builder để thay thế.</p>
+        <p>Factory Method thường được sử dụng trong Template Pattern.</p>
+
+        <p>Factoy Method tạo ra các Object thông qua tính thừa kế, trong khi đó, Prototype khởi tạo các Object thông qua sự ủy quyền.</p>
+
+        <p>Thông thường, các thiết kế sử dụng Factory lúc bắt đầu, vì nó ít phức tạp, dễ tùy biến, và dễ bổ sung các lớp con,
+        nhưng nó sẽ phát triển theo hướng trừu tượng, bằng việc sử dụng Abstract Factory, Prototype hoặc Builder. Những Pattern này linh hoạt hơn
+        và phức tạp hơn. Điều này được xác định bởi người thiết kế, xem ở đâu cần sự linh hoạt.</p>
+
+        <p>Prototype không yêu cầu Subclass, nhưng nó yêu cầu thao tác khởi tạo. Factory Method thì ngược lại, nó yêu cầu subclass nhưng lại không yêu cầu khởi tạo.</p>
+
+        <p>Ưu điểm của Factory Method đó là nó có thể trả về cùng 1 instame nhiều lần, hoặc có thẻ trả về 1 lớp con thay vì 1 đối tượng thuộc chính xác class đó.</p>
+
+        <p>Một vài Factory Method khuyến nghị rằng, để đảm bảo an toàn thì tất cả các constructor của đối tượng cần được bảo vệ.</p>
+
+        <p>từ khóa New được xem là yếu tôc có hại. Có một sự khác biết giữa việc request 1 đối tượng và khởi tạo 1 đối tượng mới. Toán tử new
+        luôn tạo 1 đối tượng và không đóng gói việc tạo đối tương. Factory Method thực thi việc này và cho phép cung cấp 1 đối tượng được yêu cầu
+        mà không cần ghép nối chặt chẽ với việc khởi tạo.</p>
       </div>
     </div>
   </div>

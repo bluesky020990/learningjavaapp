@@ -3,10 +3,9 @@
     <div class="overview-container">
       <h2 class="mb-3">Singleton Pattern</h2>
 
-      <p>Singleton được sử dụng khi ta muốn đảm bảo chỉ có duy nhất 1 Object tồn tại trong hệ thống.</p>
+      <p>Đảm bảo một lớp chỉ có 1 thể hiện và cung cấp 1 điểm truy cập global cho nó.</p>
 
-      <p>Do đó, nó thường được sử dụng khi ta có 1 Object nào đó đảm nhận 1 công việc nào đó và ta muốn hạn chế tài nguyên để khởi tạo nó
-      đến mức có thể.</p>
+      <p>Just in time Initialization hoặc initialization on fisst use.</p>
     </div>
   </div>
 </div>
@@ -77,16 +76,31 @@
 
       <div class="card-body">
         <blockquote>
-          Singleton Pattern says that just"define a class that has only one instance and provides a global point of access to it".
+          Singleton Pattern says that just "define a class that has only one instance and provides a global point of access to it".
         </blockquote>
 
         <p>Singleton là một mẫu design khá phổ biến, được sử dụng rất rất nhiều trong hệ thống.</p>
 
-        <p>Mục đích của nó chính là đảm bảo chỉ có duy nhất 1 đối tượng thuộc class đó tồn tại trong hệ thống.</p>
+        <p>Đôi khi trong một hệ thống, ta chỉ cần 1 và chỉ 1 instance của 1 object. Ngoài ra ta cũng cần quan tâm tới lazy
+          initialization và global access tới nó. </p>
 
-        <p>Singleton được chia thành 2 loại, Early Instantiation được khởi tạo ngay lúc class được nạp (load time) và
-          Lazy Instantiation, khởi tạo khi instance được gọi (required).
-        </p>
+        <p>Khi ta xem xét sử dụng Singleton Pattern, ta cần kiểm tra lại 3 tiêu chí sau:</p>
+
+        <ul>
+          <li>Quyền sở hữu của single instance không thể phân phối một cách hợp lý. Nói cách khác, muốn hạn chế quyền truy cập/ khởi tạo.</li>
+          <li>Lazy Initialization là thực sự cần thiết</li>
+          <li>Global access</li>
+        </ul>
+
+        <p>Nếu quyền sở hữu, khi nào, và làm sao việc khởi tạo xảy ra, và global access không phải là vấn đề, thì ta ko cần phải sử dụng
+        Pattern này làm gì cho phiền phức.</p>
+
+        <p>Gọi là Singleton, nhưng đôi khi nó có thể được mở rộng để đáp ứng một vài yêu cầu đặc biệt.</p>
+
+        <p>Thường ta có 1 cách dễ nhất để tạo singleton, đó là sử dụng static method. Nhưng cách tiếp cận này không support
+        subclassing của Singleton class.</p>
+
+
       </div>
     </div>
   </div>
@@ -104,25 +118,16 @@
         <p>Để tạo ra một Singleton, ta cần làm các bước sau:</p>
 
         <ul>
-          <li>private constructor của Class đó để tránh nó được khởi tạo từ bên ngoài.</li>
-
-          <li>Khai báo 1 instance và xây dựng method để có thể lưu trữ và trả về instance duy nhất này.</li>
-
-          <li>Quản lý việc truy cập và khởi tạo của các method liên quan đến instance này.</li>
+          <li>Khai báo 1 private static attribute trong single instance class.</li>
+          <li>Khai báo 1 public static accessor function trong clas này</li>
+          <li>THực hiện lazy initialization (creation on first use) trong accessor function</li>
+          <li>Biến toàn bộ các constructor của nó thành private hoặc protected</li>
+          <li>Client chỉ có thể sử dụng accessor function để thao tác với Singleton.</li>
         </ul>
-
 
         <img src="../assests/design_pattern/uml_diagram/singleton_pattern_uml_diagram.jpg" class="img-fluid">
 
-        <p>Để thực hiện điều 1, chỉ cần khai báo private cho constructor để ko thể gọi nó từ bên ngoài,
-          khai báo final để nó không thể được kế thừa.</p>
-
-        <p>Để thực hiện điều 2, khai báo 1 method static là instance để lưu trữ cái instance duy nhất đó, và
-          method getInstance sẽ kiểm tra, nếu instance chưa được khởi tạo, thì khởi tạo nó, còn nếu ko
-          thì trả về instance hiện tại. Vậy là ta chỉ có 1 instance đại diện cho 1 Class duy nhất trong cả hệ thống</p>
-
-
-        <p>Để thực hiện điều 3, hơi phức tạp, xem các cách tiếp cận dưới đây.</p>
+        <p>Dưới đây là các cách triển khai lazy loader.</p>
 
         <div class="my-4 p-3 bg-white rounded box-shadow">
           <h5 class="border-bottom border-gray pb-2 mb-0">Static binding.</h5>
@@ -221,7 +226,8 @@
 
         <h5>Usage </h5>
 
-        <p>Trong môi trường multiple thread, và database application. Đặc biệt là logging, catching, thead pools, configuration,
+        <p>Khi hệ thống chỉ cần 1 và chỉ 1 instance và cần cung cấp 1 global point để truy cập vào nó.</p>
+        <p>Ví dụ trong môi trường multiple thread, và database application. Đặc biệt là logging, catching, thead pools, configuration,
         setting.</p>
       </div>
     </div>
@@ -233,14 +239,33 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Singleton được sử dụng khi ta muốn chỉ có 1 Instance đảm nhận 1 nhiệm vụ nào đó trong hệ thống.</p>
+        <p>Abstract Factory, Builder, và Prototype đều có thể sử dụng singleton trong quá trình thực hiện.</p>
 
-        <p>Có 2 loại Singleton, tùy bài toán mà sử dụng cho phù hợp. Đối với loại Lazy, việc triển khai nó cần tiến hành
-          cẩn thận và tuân thủ đúng 3 điều ở trên nếu như ko muốn phá vỡ quy tắc.</p>
+        <p>Facade objects thường là các singleton, bởi vì chỉ cần 1 đối tượng Facade mà thôi. Xem facade pattern ở mục duwois.</p>
+
+        <p>State object thường là singleton</p>
+
+        <p>Ưu điểm của Singleton so với global variable là ta hoàn toàn chắc chắn về số lượng instance khi ta sử dụng Singleton, và
+        ta có thể thay đổi quyết đinh và quản lý bất kì một number instance. Ví dụ như Object pool chẳng hạn.</p>
+
+        <p>Singleton là 1 trong số các pattern được sử dụng không phù hợp nhất. Singleton chỉ nên được sử dụng khi 1 lớp phải
+        có chính xác 1 instance, không hơn không kém. Thường ta hay sử dụng Singleton trong 1 nỗ lực sai lầm để thay thế cho các
+        biến global. Nếu ta sử dụng singleton với ý định và mục đích như 1 global object, thì đó ko phải là singleton. đó chỉ là
+        ta đổi tên cái global variable đó mà thôi.</p>
+
+        <p>Vậy, trường hợp nào Singleton là ko cần thiết. Đơn giản nhất, hầu hết là ko cần thiết. Cụ thể hơn, khi việc pass 1 object
+        resource như 1 tham chiếu đến 1 đối tượng cần nó đơn giản, thay vì để các đối tượng truy cập đến các global resources.
+        Vấn đề thực sự của singleton đó là Pattern này cung cấp cho ta một lý do hợp lý để không cần suy nghĩ cẩn thận về khả năng visible của
+        1 đối tượng.</p>
+
+        <p>Và điều cuối cùng, mục đích của Singleton không phải là Global object. Vì vậy, khi sử dụng cái Singleton này cần
+        xem xét cái này. Singleton phải thỏa mãn 3 yếu tố ở trên: Ownership, Lazy initialyze và Global Access.</p>
+
+
       </div>
     </div>
   </div>

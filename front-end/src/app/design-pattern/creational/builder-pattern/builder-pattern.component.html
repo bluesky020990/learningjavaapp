@@ -3,18 +3,22 @@
     <div class="overview-container">
       <h2 class="mb-3">Builder Pattern - Creational Pattern</h2>
 
-      <p>Bản chất của Builder Pattern đó là xây dựng Object từng phần.</p>
+      <p>Tách việc xây dựng 1 đối tượng phức tạp ra khỏi biểu diễn của nó, để quá trình xây dựng có thể tạo ra các biểu diễn khác nhau.</p>
 
-      <p>Nó được sử dụng khi ta muốn Build một Object quá phức tạp, mà việc init nó phải thực hiện theo từng bước, nhưng ta không biết/ không quan
-        tâm tới thứ tự của từng bước đó.</p>
+      <p>Phân tích một biểu diễn phức tạp, tạo 1 trong số các mục tiêu</p>
 
-      <p>Ngoài ra nó còn được sử dụng để xây dựng 1 Object mới bằng cách mở rộng một Object đã có sẵn</p>
-      
-      <p>Builder Pattern dùng trong việc quản lý những đối tượng một cách phức tạp. Nếu như Abstract Factory tiếp cận theo kiểu
-        có thực đơn trước, rồi tạo ra luôn sản phẩm, thì Builder Pattern tiếp cận theo hướng sử dụng step by step để đạt được mục đích cuối cùng.
-      </p>
+      <!--<p>Bản chất của Builder Pattern đó là xây dựng Object từng phần.</p>-->
 
-      <p>Cùng trở lại cửa hàng góc phố thôi nào.</p>
+      <!--<p>Nó được sử dụng khi ta muốn Build một Object quá phức tạp, mà việc init nó phải thực hiện theo từng bước, nhưng ta không biết/ không quan-->
+        <!--tâm tới thứ tự của từng bước đó.</p>-->
+
+      <!--<p>Ngoài ra nó còn được sử dụng để xây dựng 1 Object mới bằng cách mở rộng một Object đã có sẵn</p>-->
+      <!---->
+      <!--<p>Builder Pattern dùng trong việc quản lý những đối tượng một cách phức tạp. Nếu như Abstract Factory tiếp cận theo kiểu-->
+        <!--có thực đơn trước, rồi tạo ra luôn sản phẩm, thì Builder Pattern tiếp cận theo hướng sử dụng step by step để đạt được mục đích cuối cùng.-->
+      <!--</p>-->
+
+      <!--<p>Cùng trở lại cửa hàng góc phố thôi nào.</p>-->
     </div>
   </div>
 </div>
@@ -99,22 +103,30 @@
           Builder Pattern says that "construct a complex object from simple objects using step-by-step approach"
         </p>
 
-        <p>Builder Pattern sử dụng trong trường hợp object phức tạp và không theo một khuôn khổ nào. Việc truyền parameter 
-          vào constructor của Object không thực sự khả thi ở đây, khi mà các properties của nó thay đổi xoành xạch. Thay vì thế, 
-          nó hướng tới cách tiếp cận từng phần. Nó sử dụng các Inner class để thực hiện điều này.</p>
+        <p>Trong thực tế, đôi khi ta cần phải xây dựng các element từ 1 tập hợp phức tạp. Đặc tả của tập hợp (aggregate) này có thể
+        tồn tai trên 1 secondary storage và 1 trong số các representation của nó cần được xây dựng trong 1 primary storage.</p>
 
-        <p>Nó đặc biệt hữu dụng khi không thể create object với chỉ 1 step, hoặc dùng constructor, hoặc dùng 1 method nào đó.</p>
-        
-        <p>Builder Pattern cũng được sử dụng khi ta muốn mở rộng 1 class đã có từ trước. Lúc này ta sẽ thêm các thuộc tính mới 
-        vào thông qua một Builder.</p>
-        
-        <p>Builder giải quyết vấn đề mà Factory gặp phải, đó là khi Object có quá nhiều tham số, thì Factory sẽ trở nên vô dụng. 
-          Builder không sử dụng toàn bộ tham số để khởi tạo Object liền, thay  vào đó nó truyền các tham số vào 1 cách từ từ, 
-          tiếp cận theo hướng xây dựng từng phần trước khi quyết định kết quả trả về là gì.</p>
+        <p>Bản chất của Builder là vậy, ta sẽ có 1 secondary storage, nơi ta xây dựng đối tượng này từng phần, và 1 primary storage,
+        nơi ta trả lại sản phẩm cuối cùng.</p>
 
-        <p>Xem ví dụ về cái ở trên kia, rõ ràng ta thấy việc sử dụng thực đơn là vô nghĩa trong trường hợp này, mà ta cần phải 
-          xây dựng từng phần - bằng danh sách liệt kê trong tờ giấy đấy. Kết quả trả về cuối cùng là món ăn của cô gái.</p>
-       
+        <p>Ngoài cái ví dụ trên kia, ta cũng hình dung lại quá trình làm bánh. Quá trình làm bánh đi qua các công đoạn, từ nhào bột, đem nướng
+        tạo hình trang trí và đóng gói, đó cũng là các quá trình, nó nằm ở secondary storage. Chỉ khi nào cái bánh hoàn thành, nó mới được
+        gửi sang cho bộ phận giao nhận, primary storage.</p>
+
+        <p>Vì vậy, khi phân tích, ta thấy Builder thường được sử dụng để tách các algorithms ra khỏi các interpreting  (reading and parsing)
+          lưu trữ nó trong 1 stored persistence machanism khỏi các thuật toán nhằm xây dựng và đại diện cho 1 trong nhiều sản phẩm mục tiêu.
+          Trong tâm/ sự khác biệt của pattern này đó là xây dựng các tập hợp phức tạp.
+        </p>
+
+        <p>Trong mô hình này, ta sẽ có 1 director và 1 builder. Director gọi các builder service để xây dựng từng phần theo các format bên ngoài.
+        Bulder tạo ra 1 phần của đối tượng phức tạp mỗi lần nó được gọi, và duy trì tất cả trạng thái trung gian. Khi sản phẩm
+        hoàn thành, client sẽ lấy kết quả từ Builder. </p>
+
+        <p>Điều này cho phép ta có thể kiểm soát tốt hơn quá trình xây dựng. Khác biệt hoàn toàn với các Creational Pattern khác, Builder pattern
+        xây dựng sản phẩm từng bước dưới sự kiểm soát của Director.</p>
+
+        <p>Tóm lại, Builder tách biệt việc xây dựng 1 đối tượng phức tạo khỏi biểu diễn của nó, đẻ cùng 1 quy trình xây dựng có thể tạo ra các
+        biểu diễn khác nhau.</p>
       </div>
     </div>
   </div>
@@ -129,7 +141,30 @@
       </div>
 
       <div class="card-body">
-        <p>Trong Java, để tạo ra một Builder ta cần làm như sau:</p>
+        <p>Để xây dựng 1 Builder, ta cần tuân thủ các bước sau :</p>
+
+        <ul>
+          <li>Bước 1. Quyết định xem 1 common input và many posible representation (or outputs) có phải là vấn đề ko. Nếu thực sự là
+          vấn đề thì ta nên áp dụng. Đừng nên lạm dụng quá.</li>
+
+          <li>Bước 2. Đóng gói các parsing common inputs trong 1 Reader class</li>
+
+          <li>Bước 3. Thiết kế 1 standard protocol để tạo tất cả các posible output representations. Capture từng step của giao thức
+          này trong 1 interface của Builder</li>
+
+          <li>Bước 4. Xác định 1 lớp dẫn xuất Builder cho mỗi target representation. </li>
+
+          <li>Client khởi tạo 1 Reader và 1 đối tượng Builder, sau đó đăng kí Builder với Reader đã tạo.</li>
+
+          <li>Client yêu cầu Reader xây dựng</li>
+
+          <li>Client yêu cầu Builder trả về.</li>
+        </ul>
+
+        <p>Không chính xác như lần trước ta đã học, trong mô hình đó, 1 Builder chỉ xây dựng được 1 đối tượng mà thôi. Ở bài toán
+        tổng quát hơn, ta sử dụng Builder như 1 công cụ để tạo ra nhiều đối tượng trong nhiều tập hợp khác nhau. Đó mới là cái hay của vấn đề.</p>
+
+        <p>Dưới đây là 1 ví dụ cơ bản về việc sử dụng 1 Builder để tạo ra 1 Object trong 1 ngữ cảnh xác định.</p>
 
         <ol>
           <li>First of all you need to create a <a href="https://www.journaldev.com/996/java-inner-class">static nested class</a>
@@ -150,6 +185,23 @@
 
         <img src="assets/design_pattern/uml_diagram/builder_pattern_uml_diagram.jpg" class="img-fluid">
 
+        <p>Giờ, ta sẽ đi qua 1 bài toán khác, phức tạp hơn. Ta có 1 cái report, nó có thể trả về data của ta dưới dạng bar graph,
+        hoặc cũng có thể là linegrap, hoặc cũng có thể là circle grap.</p>
+
+        <p>Trong trường hợp này, đối tượng chúng ta cần là Report. Nhưng bản chất của Report đối với mỗi loại là khác nhau. Vậy, cách ta tiến hành như thế nào.</p>
+
+        <p>Đầu tiên, theo đúng nguyên tắc ở đầu, bước 1 ta quyết định sử dụng pattern này.</p>
+
+        <p>Bước 2, bước 3 Ta đóng gói các parsing common input của nó trong 1 Reader class, các standard protocal cuiar nó là các method. Do đó
+        ta thấy cần có readData, addData, addListData, parseData, processData, setMin, setMax, setDisplayType chẳng hạn, là các method,
+        và đưa nó vào 1 Interface có tên là ReportBuilder.</p>
+
+        <p>Bước 4, ta xây dựng 3 lớp dẫn xuất cho 3 cái builder kia, tên là CircleReportBuilder, BargraphReportBuilder, lineGraphReportBuilder
+        và tiến hành implement các method kia.</p>
+
+        <p>giờ, nếu ta cần 1 CircleReportBuilder, ta khởi tạo/gọi 1 CircleReportBuilder, tiến hành readData, parseData, processData, setMin,
+        setMax này nọ, và cuối cùng, gọi hàm get là được.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -190,15 +242,22 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Builder Pattern là một Pattern rất hữu dụng. Nó có tác dụng build một object step by step.</p>
+        <p>Các Creational là bổ sung. Builder có thể sử dụng các Pattern khác trong quá trình sử dụng. Abstract Factory,
+        Builder và Prototype thường sử dụng Singleton trong quá trình triển khai</p>
 
-        <p>Mục đích sử dụng chính của nó đó là tạo nên những object phức tạp, theo từng bước, dựa vào tham số truyền vào.</p>
+        <p>Builder chủ yếu tập trung vào việc xây dựng 1 đối tượng phức tạp theo từng bước. Abstract Factory cung cấp
+        1 family các products ( đơn giản hoặc phức tạp) trong khi đó Builder trả lại product ở bưới cuối cùng, khác với Abstract Factory,
+        product sẽ được trả lại lập tức.</p>
 
-        <p>Ngoài ra nó còn được sử dụng rất nhiều trong việc mở rộng dựa vào các object hiện tại.</p>
+        <p>Builder thường xây dựng như 1 Composite. Nếu ta nhìn vào cái ví dụ thứ 2, ta có thể thấy rõ điều đó. Bản chất của Composite đó
+        là tương tác với tất cả các đối tượng trong mẫu như nhau. Trong trường hợp này, 1 Builder có thể có nhiều concreted derived nhưng
+        nó cùng tuân thủ 1 Interface, nên nó cũng như 1 Composite.</p>
+
+        <p>Thông thường, ta bắt đầu với Factory Method và phát triển theo hướng Abstract Factory, Prototype hoặc Builder.</p>
       </div>
     </div>
   </div>

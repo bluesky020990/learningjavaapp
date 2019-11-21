@@ -3,10 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Prototype Pattern - Creational Pattern</h2>
 
-      <p>Bản chất của Prototype đó là clone/ khởi tạo một Object từ một Object đã có sẵn.</p>
+      <p>Xác định rõ loại đối tượng để tạo bằng cách sử dụng 1 Prototypical Instance, và tạo các đối tượng mới bằng việc
+      copy prototype này.</p>
 
-      <p>Nó thường được sử dụng trong việc Cache dữ liệu, hoặc khi mà việc khởi tạo/ copy 1 Object mới tốn quá nhiều chi phí
-        trong khi ta đã có một Object tương tự.</p>
+      <p>Chọn lọc và sử dụng 1 Instance của 1 class như vai trò của 1 nhà tạo giống của tất cả các instance khác trong tương lai</p>
+
+      <p>Khi ta thấy việc sử dụng new operator là nguy hiểm/ có hại.</p>
     </div>
   </div>
 </div>
@@ -68,14 +70,21 @@
           as per the requirement.
         </blockquote>
 
-        <p>Prototype được sử dụng khi việc tạo đối tượng đòi hỏi quá nhiều chi phí, thời gian và tài nguyên trong khi ta
-          đã có một đối tượng tương tự tồn tại</p>
+        <p>Prototype chỉ định loại đối tượng cần tạo bằng cách sử dụng 1 prototype instance. Prototype instance của các product, thường
+          được chế tạo trước khi sản xuất đầy đủ. </p>
 
-        <p>Nó cung cấp một cơ chế để sao chép original object thành một new object, và có thể sửa đổi nó - nếu cần.</p>
+        <p>Trong hầu hết các Creational Pattern, ta luôn xem xét về việc sử dụng từ khóa new khi muốn khởi tạo đối tượng. Hầu
+        hết những trường hợp này, new operator không phải là 1 lựa chọn đúng đắn vì việc lặp code -> vì quá trình khởi tạo quá rườm raf
+        và vì ta muốn tiếp kiệm tài nguyên hệ thống.</p>
 
-        <p>Prototype sử dụng java cloning để copy object.</p>
+        <p>Prototype cũng vậy, nó được xây dựng dựa trên việc hạn chế từ khóa new, và cung cấp 1 đối tượng mới từ 1 Instance đã có sẵn.</p>
 
-        <img src="assets/design_pattern/uml_diagram/prototype_pattern_uml_diagram.jpg" class="img-fluid">
+        <p>Trong Pattern này, ta khai báo 1 abstract base class chỉ định 1 clone method và duy trì 1 từ điển của các clonable của các
+        concrete derived base class. Bất cứ class nào cần 1 poymorrphic constructor capability thì cần phải derived cái clone method
+        ở abstract class, đăng kí prototype instance của nó và implement clone operator.</p>
+
+        <p>Sau đó, thay vì sử dụng toán tử new, client sẽ gọi method clone này trên abstract base class, cung cấp 1 chuỗi
+        string hoặc kiểu dữ liệu liệt kê chỉ định lớp dẫn xuất cụ thể mà nó muốn.</p>
       </div>
     </div>
   </div>
@@ -90,8 +99,20 @@
       </div>
 
       <div class="card-body">
-        <p>Prototype được sử dụng khi việc tạo đối tượng đòi hỏi quá nhiều chi phí, thời gian và tài nguyên trong khi ta
-          đã có một đối tượng tương tự tồn tại</p>
+        <p>Việc implement tuân thủ các nguyên tâc sau:</p>
+
+        <ul>
+          <li>Thêm 1 method clone vào product hierachy hiện tại.</li>
+
+          <li>Tạo 1 Registry để maintain ccache prototypical objects. Register có thể được đóng gói trong 1 Factory Class, hoặc trong 1 base
+          class của Product Hierarchy.</li>
+
+          <li>Thiết kế 1 factory method với các param cần thiết ddeer có thể tìm chính xác prototype objects, sau đó, gọi method
+          clone trên prototype đó, và trả lại result.</li>
+
+          <li>Client thay thế toàn bộ new operator bằng cách gọi factory method kia. </li>
+        </ul>
+
 
         <p>Nó cung cấp một cơ chế để sao chép original object thành một new object, và có thể sửa đổi nó - nếu cần.</p>
 
@@ -112,6 +133,15 @@
             <p>Java Clone là deep Copy.</p>
           </div>
         </div>
+
+
+        <p>Những lưu ý, clone có thể dùng để copy 1 object, hoặc cũng được dùng để copy nhiều object khác nhau. Cái này tùy thuộc vào
+        việc ta implement nó như thế nào.</p>
+
+        <p>Đôi khi clone object nó sẽ ko phải chính xác 100% của prototype object, nó có thể thay đổi để phù hợp vào bài toán.</p>
+
+        <p>Nếu chỉ clone 1 object thì nó sẽ không có quá nhiều thứ để bàn, ở đây ta cần xây dựng 1 list các sản phẩm, và xem nó là 1 factory
+        prototype. Vì điều này mà nó được sử dụng cho mục đích caching.</p>
       </div>
     </div>
   </div>
@@ -163,17 +193,32 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Prototype thường được dùng cho mục đích Caching.</p>
+        <p>Abstract Factory có thể sử dụng 1 set các Prototype để sao chép và trả lại các product object. Abstract Factory,
+        Builder và Prototype có thể sử dụng Singleton trong quá trình triển khai.</p>
 
-        <p>Nói Prototype là clone object cũng ko phải lắm, nhiệm vụ của nó đó là sao chép một object đã có, theo một cơ chế nào đó.
-          Object mới được tạo ra, có thể khác với object cha ban đầu. Vì vậy, nó không hẳn là clone được.</p>
+        <p>Abstract Factory thường được triển khai cùng với các Factory nhưng chúng cũng có thể được thực hiện bằng các prototype.</p>
 
-        <p>Mỗi prototype bắt buộc phải override lại method clone của class Object (Class lớn nhất của Java). Và chính việc implement method
-          Clone này nên mỗi Object nó sẽ có 1 cơ chế clone khác nhau. Vì vậy, shadow clone hay deep clone là do ta định nghĩa.</p>
+        <p>Factory Method : creation thông qua thừa kế, Prototype : creation thông qua ủy quyền.</p>
+
+        <p>Thông thường ta đều start bằng Factory Method, sau đó phát triển theo Abstract Factory, Prototype và Builder. </p>
+
+        <p>Prototype không yêu cầu subclassing, nhưng nó yêu cầu thao tác initialization operation. Trong khi đó, Factory Method
+        sử dụng subclassing nhưng không cần initialization. Đây là 2 điểm khác biệt rõ ràng nhất giữa 2 pattern này. Prototype luôn
+        cần 1 object có sẵn, nhưng Factory Method thì ko.</p>
+
+        <p>Thường Composite và Decorate pattern thường sử dụng Prototype nhằm cải thiện hiệu năng. Bản chất của Composite là 1 list
+        các object có liên quan, Decorate cũng tương tự như vậy.</p>
+
+        <p>Prototype rất hữu ích khi việc khởi tạo đối tượng rất tốn chi phí và ta có thể dự đoán trước một vài biến thể trên các tham số khởi tạo.
+        Trong bối cảnh này, Prototype có thể tránh được việc creation from scratch và support cheap cloning của 1 pre-initialization prototype.</p>
+
+        <p>Prototype là pattern duy nhất trong creational pattern mà không require class. Nó chỉ require 1 object prototype mà thôi.</p>
+
+        <p></p>
       </div>
     </div>
   </div>

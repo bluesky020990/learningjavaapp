@@ -3,12 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Adapter Design Pattern - Structural Pattern</h2>
 
-      <p>Adapter Pattern được định nghĩa là một mẫu thiết kế cho phép bạn sửa đổi/mở rộng một giao diện giữa đối tượng
-        và một lớp mà không phải sửa đổi trực tiếp lên chúng. Hay nói ngắn gọn nó là một bộ chuyển đổi.
-      </p>
+      <p>Chuyển đổi giao diện của 1 lớp thành 1 giao diện khác mà client mong đợi. Adapter cho phép các class có thể làm việc
+      cùng nhau bỏ qua vấn đề giao diện không tương thích.</p>
 
-      <p>Vì vậy, nó thường được sử dụng khi ta muốn integrate/ 2 Module khác khau hoặc chuyển đổi một interface
-        đã có sẵn cho phù hợp với một interface khác.</p>
+      <p>Bao bọc 1 lớp hiện có với 1 giao diện mới.</p>
+
+      <p>Công cụ giúp cho 1 thành phần cũ có thể tương thích với 1 hệ thống mới</p>
     </div>
   </div>
 </div>
@@ -61,13 +61,21 @@
       </div>
 
       <div class="card-body">
-        <p>Adapter là một Pattern rất hay. Nó giúp cho ta có thể thay đổi Class để tương thích với các điều kiện khác mà che dấu hoàn
-        toàn việc thay đổi này với bên ngoài. Cái tên Adapter cũng nói lên khá nhiều điều. Nó là bộ chuyển đổi, tức là nằm ở vị trí trung
-        gian giữa Class Interface và Client.</p>
-
         <blockquote>
           An Adapter Pattern says that just "converts the interface of a class into another interface that a client wants".
         </blockquote>
+
+        <p>Reused là một trong những mục tiêu mà OOP nói riêng và các phương thức khác nói chung cố gắng tiếp cận đến. Điều gì sẽ xảy ra
+        khi ta có 1 component với những chức năng tuyệt vời và muốn sử dụng lại nó nhưng hệ thống hiện tại lại ko cho phép ta làm điều đó.</p>
+
+        <p>Adapter nói về việc tạo ra 1 intermediary abstraction có thể chuyển đổi hoặc ánh xạ 1 component cũ sang một hệt thống mới.</p>
+
+        <p>Client gọi các phương thức trên đối tượng Adapter để chuyển hướng chúng thành các cuộc gọi tới lagacy component. Chiến lược
+        này có thể được thực hiện bằng kế thừa (Object Adapter hoặc tổng hợp (Class Adapter)</p>
+
+        <p>Adapter có chức năng như 1 trình bao bọc, wrapper hoặc sửa đổi, modifier một lớp hiện có. Kết quả là ta có 1 lớp mới
+        với các phương thức khác hoặc chuyển đổi lớp hiện tại.</p>
+
 
         <p>Có hai loại Adapter phổ biến, Object Adapter và Class Adapter. Ví dụ về tờ giấy trên kia là một ví dụ về Object Adapter.</p>
 
@@ -105,6 +113,26 @@
       </div>
 
       <div class="card-body">
+        <p>Để implement Pattern này, ta tuân thủ các bước sau:</p>
+
+        <ul>
+          <li>Xác định các đối tượng : Component muốn được cung cấp (Client) và thành phần cần thay đổi (Adaptee)</li>
+
+          <li>Định nghĩa các interface mà client cần.</li>
+
+          <li>Thiết kế 1 Wrap Class có thể impedance match adapter với Client.</li>
+
+          <li>Adapter/Wrapper class maps client interface với adapter interface</li>
+
+          <li>Client sử dụng / couple với new interface.</li>
+        </ul>
+
+        <p>Trong mô hình này, ta luôn có 2 đối tượng cần quan tâm, đối tượng sử dụng dịch vụ và đối tượng cần cung cấp. Từ
+        các yêu cầu đề ra của đối tượng sử dụng dịch vụ, client mà ta thiết kế lại các adapter thỏa mãn yêu cầu đó.
+        Bản chất của Adapter chỉ đơn giản là vậy.</p>
+
+        <p>Như đã nói ở trên, có 2 cách implement cho trường hợp này. Dưới đây là chi tiết mô tả của 2 cách thức design cái Adaptee đó.</p>
+
         <p>Class Adapter: Triển khai theo mối quan hệ IS-A</p>
 
         <p>Object Adapter: Triển khai theo mối quan hệ HAS-A</p>
@@ -135,15 +163,22 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Advantages & Disadvantages
+        Advantages & Disadvantages and Usage
       </div>
 
       <div class="card-body">
-        <p>Ưu điểm của Adapter Pattern đó là che dấu đi sự thay đổi của Object đối với Client.</p>
+        <h5>Advantages</h5>
 
-        <p>Với Object Adapter thì ta có thể reuse nó ở bất cứ đâu.</p>
+        <p>Reused lại hệ thống cũ mà không cần implement lại quá nhiều</p>
 
-        <p>Nhược điểm của nó là, chưa thấy có điều gì đáng kẻ.</p>
+        <h5>Disadvantages</h5>
+
+        <p>Có thể có những adapter không thể tương thích được. Trong trường hợp này cần thay đổi cách giải quyết.</p>
+
+        <h5>Usage</h5>
+
+        <p>Muốn sử dụng lại 1 component trong 1 hệ thống đã có.</p>
+        <p>Mở rộng class hiện tại nhưng không muốn làm thay đổi nó.</p>
       </div>
     </div>
   </div>
@@ -154,18 +189,26 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Adapter pattern thường được sử dụng, khi ta có 1 require mới mà interface cũ không đáp ứng được/ không tương thích.
-          Lúc này ta quyết định update method/behavior bên trong nhưng không làm thay đổi interface bên ngoài, tức là che dấu
-          đi sự thay đổi đối với client.</p>
+        <p>Adapter làm cho mói thứ hoạt động sau khi nó được thiết kế. Trong khi đó, Bridge làm cho mọi thứ hoạc động trước
+        khi nó tồn tại. Lưu ý, Bridge tách tính trừu tượng ra khỏi implement của nó, vì vậy, trước khi Object được thiết kế
+        xong thì cái interface kia đã hoạt động rồi.</p>
 
-        <p>Việc sử dụng Adapter phải đảm bảo là ko làm ảnh hưởng tới Interface hiện tại, mà chỉ mở rộng nó.</p>
+        <p>Bridge được thiết kế up-front để cho sự trừu tượng (abstraction) và sự triển khai implement có thể thay đổi một cách độc lập.
+        Trong khi đó, Adapter được trang bị thêm để giúp cho các class không liên quan có thể làm việc cùng với nhau.</p>
 
-        <p>Có 2 cách tiếp cận để đạt được, tùy vào trường hợp mà ta sẽ sử dụng Class Adapter hoặc Object Adapter. Tuy nhiên,
-          Object Adapter thì luôn linh hoạt hơn, vì nó tách được sự phụ thuộc giữa Interface cũ và Interface mới.</p>
+        <p>Adapter cung cấp 1 interface khác hoàn toàn với Subject của nó. Proxy cung cấp 1 giao diện tương tự. Decorate cung cấp
+        1 giao diện nâng cao.</p>
+
+        <p>Adapter thay đổi giao diện của 1 đối tượng hiện có. Decorate tằng thêm 1 đối tượng khác mà không làm thay đổi interface
+        của nó. Do đó, Decorator minh bạch hơn cho Application hơn là Adapter. Kế quả, Decorate thường được hỗ trợ cho các thành phần
+        đệ quy, đây là điều không thể với Adapter.</p>
+
+        <p>Facade định nghĩa 1 giao diện mới, trong khi Adapter sử dụng lại 1 giao diện cũ. Lưu ý, Adapter giúp cho 2 giao diện có thể
+        làm việc với nhau, thay vì xác định 1 giao diện hoàn toàn mới.</p>
       </div>
     </div>
   </div>

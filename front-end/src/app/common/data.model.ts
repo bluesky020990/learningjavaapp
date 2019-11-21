@@ -11,7 +11,7 @@ export class LessonMapping implements LessonMappingI{
   displayOrder;
   children: LessonMapping[];
 
-  constructor(path: string, name: string, displayOrder, children: LessonMapping[]) {
+  constructor(path: string, name: string, displayOrder, children ? : LessonMapping[]) {
     this.path = path;
     this.name = name;
     this.displayOrder = displayOrder;

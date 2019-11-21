@@ -13,7 +13,7 @@ export class AngularHelpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.angularService.setCurrentLesson(new LessonMapping('help', '', 1));
+    this.angularService.setCurrentLesson(new LessonMapping('help', '', 1, null));
   }
 
   ngOnDestroy(): void {

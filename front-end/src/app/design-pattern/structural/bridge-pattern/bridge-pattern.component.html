@@ -3,10 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Bridge Pattern - Structural Pattern</h2>
 
-      <p>Bản chất của Bridge đó là tách riêng tính trừu tượng ra khỏi Object, để nó có thể làm việc một cách độc lập,
-        biến nó thành các Abstract Class, hoặc các Interface, và đẻ quá trình Run-time quyết định chính xác thì Object nào sẽ được sử dụng.</p>
 
-      <p>Nó được sử dụng trong trường hợp Object có những thuộc tính mà mang tính tổng quát/ trừu tượng.</p>
+      <p>Phân tách 1 sự trừu tượng từ implementation của nó để 2 cái có thể thay đổi 1 cách độc lập.</p>
+
+      <p>Publish interface của 1 hệ thống phân cấp thừa kế, và che dấu việc implementation của nó trong hệ thống phân cấp của chính nó.</p>
+
+      <p>Đóng gói và cô lập.</p>
     </div>
   </div>
 </div>
@@ -107,6 +109,50 @@
 
         <p>Bridge tách các behavior đó thành các đối tượng độc lập, sử dụng nó như các composition để "nhúng" vào Object,
           giúp nó thay đổi behavior/state tại thời điểm runtime.</p>
+
+        <p>Trong bài toán lập trình, ta gặp những trường hợp ứng dụng bi ràng buộc chặt chẽ vì việc sử dụng các phân lớp của 1 abstract base class
+        để cung cấp các triển khai thay thế. Điều này làm cho việc binding trong quá trình compile time bị lock giữa interface và implementation.
+        Và hậu của nó đó là Abstraction và Implementation không thể được mở rộng hoặc độc lập với nhau.</p>
+
+        <p>Trong java, 2 trường hợp của Polymorphing thường gặp nhất là Override và Overload. Overload là việc ta nạp chồng các phương thức, cung cấp
+        tính đa hình tại compile time, và overwrite cung cấp cơ chế ghi đè cho phép ta đa hình trong quá trình run-time. Mỗi cái đều có 1 mục đích
+        sử dụng khác nhau, nhưng nếu ta muốn 1 đa hình trong run-time thì ta cần nhắm tới đó là override. Bridge dựa vào cơ chế này. Thay vì việc
+        ràng buộc chặt chẽ như kiểu của overload, thì nó tách riêng interface và implement thành 2 class độc lập, cho phép ta có thể thực hiện override 1
+        cách dễ dàng.</p>
+
+        <p>Bridge phân tách interface và implementation của thành phần thành các hệ thống phâ cấp thừa kế. Interface class chứa
+        1 con trỏ tới lớp triển khai trừu tượng. Con trỏ này được khởi tạo với 1 thể hiện của lớp triển khai cụ thể nhưng tất cả
+        các tương tác tiếp theo từ interface class tới implement class đều được duy trì trong implement base class. Client tương tác với interface class
+        và interface class này ủy thác toàn bộ request cho implementation class.</p>
+
+        <p>Interface Object được gọi là HANDLE, được client biến đến và sử dụng. Trong khi đó, implement object hoặc BODY được đóng gói an toàn
+        nhawmnf đảm bảo nó có thể tiếp tục được phát triển hoặc đuuợc thay thế hoàn toàn, hoặc được chia sẻ trong quá trình run-time.</p>
+
+        <p>Vậy, khi nào ta cần Bridge</p>
+
+        <ul>
+          <li> Ta muốn binding implementation trong quá trình run-time.</li>
+          <li>Ta có 1 danh sách các class là kết quả của việc ghép nối giữa interface và nhiều triển khai</li>
+
+          <li>Chia sẻ implementation giữa nhiều đối tượng</li>
+
+          <li>Cần 1 ánh xạ phân cấp class hierarchy</li>
+        </ul>
+
+        <p>Và đây là những gì ta nhận được</p>
+
+        <ul>
+          <li>Tách rời interface của Object.</li>
+
+          <li>Cải thiện khả năng mở rộng, có thể extend abstraction và implementation 1 cách độc lập</li>
+
+          <li>Ẩn detail implementation từ phía khách hàng.</li>
+        </ul>
+
+        <p>Bridge còn được biết đến với HANDLE/BODY. Đây là 1 cơ chế gói gọn 1 lớp thực hiện bên trong 1 giao  diện. Cái đầu tiên
+        là BODY và cái tiếp theo là HANDLE. HANDLE được Client xèm là actual class nhưng công việc được thực hiện bởi BODY. Thành ngữ HANDLE/BODY
+        có thể được sử dụng để phân tách một sự trừu tượng phức tạp thành các lớp nhỏ hơn, dễ quản lý hơn. Thành ngữ này có thể phản ánh
+        việc chia sẻ  tài nguyên bởi nhiều lớp kiểm soát vào nó. </p>
       </div>
     </div>
   </div>
@@ -121,6 +167,27 @@
       </div>
 
       <div class="card-body">
+        <p>Dưới đây là các bước phân tích để triển khải Pattern này</p>
+
+
+        <ul>
+          <li>Quyết định nếu có 2 khía cạnh như vậy trong ứng dụng. Tất nhiên nó phải có xuất hiện/tồn tại thì mới cần áp dụng chứ</li>
+
+          <li>Các khái niệm độc lập này có thể là abstraction/platform hoặc domain/cơ sở hạ tầng (infrastructure) hoặc front-end/back-end
+          hoặc interface/implementation.</li>
+
+          <li>Thiết kế phân tách các concenrs: WHat does client want? What do platform provide?</li>
+
+          <li>thiế kế 1 inteface hướng nên tảng (platform oriented interface) là tối tiểu, cần thiết và đủ. Mục tiêu của nó là tách
+          rời abstraction khỏi platform.</li>
+
+          <li>Xác định 1 derived class của interface cho mỗi platform.</li>
+
+          <li>Tạo 1 abstract base class mà "has-a" platform object và ủy thác các platform-oriented functionality cho nó.</li>
+
+          <li>Xác định các specialization abstraction class nếu muốn.</li>
+        </ul>
+
         <p>Trong Design, ta cũng sẽ sử dụng các properties, để quyết định các tính trừu tượng của nó.</p>
 
         <p>Bản chất của Pattern này đó là sẽ tách những thuộc tính trừu tượng, biến nó thành các Interface, và sử dụng nhiều Class để implememts cho các Interface đó.</p>
@@ -143,6 +210,8 @@
 </div>
 
 
+
+
 <div class="row mb-3">
   <div class="col-12">
     <div class="card">
@@ -151,16 +220,33 @@
       </div>
 
       <div class="card-body">
-        <p>Ưu điểm của Bridge Pattern đó là tách implementations ra khỏi interface.</p>
+        <p>Phần này đã nói ở trên.</p>
 
-        <p>Chính điều này giúp tăng khả năng mở rộng của Object. Mỗi lần có cái gì đó mới, thì chỉ việc tạo 1 class mới, implements cái
-        interface đó mà thôi.</p>
 
-        <p>Nó cũng góp phần che dấu đi việc implement từ phía Client.</p>
+        <h5>Advantages</h5>
 
-        <p>Nhược điểm của nó đó là việc phân tích để decouple cho chính xác.</p>
+        <ul>
+          <li>Tách rời interface của Object.</li>
 
-        <p>Việc giấu đi chi tiết của implementation làm ta phải cẩn thận khi xác định sẽ truyền đối tượng nào vào.</p>
+          <li>Cải thiện khả năng mở rộng, có thể extend abstraction và implementation 1 cách độc lập</li>
+
+          <li>Ẩn detail implementation từ phía khách hàng.</li>
+        </ul>
+
+        <h5>Disadvantages</h5>
+
+        <p>phức tạp</p>
+
+        <h5>Usage</h5>
+
+        <ul>
+          <li> Ta muốn binding implementation trong quá trình run-time.</li>
+          <li>Ta có 1 danh sách các class là kết quả của việc ghép nối giữa interface và nhiều triển khai</li>
+
+          <li>Chia sẻ implementation giữa nhiều đối tượng</li>
+
+          <li>Cần 1 ánh xạ phân cấp class hierarchy</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -171,26 +257,28 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Bridge Pattern đặc biệt hữu ích trong các trường hợp sau:</p>
+        <p>Adapter làm cho mọi thứ hoạt động sau khi nó được design, còn Bridge làm mọi thứ hoạt động trước khi nó được tạo.
+          Tại sao nói như vậy, Adapter cần tạo các interface để giúp 2 class có thể làm việc với nhau, trong khi đó, Bridge sửa
+          đổi từ 1 đối tượng sẵn có, tách nó ra làm 2. Do đó, Bridge làm cho nó hoạt động trước khi nó được tạo.
+        </p>
 
-        <p>muốn tách vĩnh việc functional Abstraction và Implementation</p>
+        <p>Bridge được thiết kế theo hướng up-front để cho abstraction và implementation được thay đổi độc lập. Adapter được
+        trang bị theem để làm cho các lớp ko liên quan có thể làm việc cùng nhau.</p>
 
-        <p>khi Functional Abstraction và Implementation cần được mở rộng thường xuyên.</p>
+        <p>State, Strategy, và Bridge và Adapter (ở 1 mức độ nào đó) có thể có 1 solution structure tương tự. Tất cả dều sử dụng
+        thành ngữ HANDLE/BODY. Nó chỉ khác nhau về ý nghĩa, là nó giải quyết các vấn đề khác nhau.</p>
 
-        <p>Đặc biệt, trong những trường hợp có quá nhiều thay đổi và không muốn sự thay đổi đó làm ảnh hưởng đến Client.</p>
+        <p>Cấu trúc của State và Bridge là giống hệt nhau, chỉ khác, Bridge chấp nhận hệ thống phân cấp của các evelope class
+        trong khi đó State chỉ cho phép 1. Hai mô hình sử dụng cùng 1 cấu trúc để giải quyết các vấn đề khác nhau, đối với State, đó là
+        cho phép 1 đối tượng thay đổi cùng với trạng thái của nó, trong khi đó, đối với Bridge đó là tách rời trừu tượng ra khỏi việc
+        thực hiện để 2 bên có thể thay đổi 1 cách độc lập.</p>
 
-        <p>Việc phân tích trước khi thiết kế là khâu quan trọng nhất. Trong trường hợp này ông chủ chỉ quan tâm tới khuôn mẫu và
-          thời gian sản xuất mà quên mất đi rằng hình dáng và họa tiết là những thuộc tính luôn luôn thay đổi tùy theo sở
-          thích của khách hàng.</p>
-
-        <p>Khi đã xác định những thuộc tính mà có thể thường xuyên bị thay đổi, thì ta có thể sử dụng Pattern này để tha
-          hồ mở rộng mà ko cần thay đổi lại những thứ sẵn có.</p>
-
-        <p>Nói chung, thứ hay nhất của nó, đó là khâu phân tích để nhận ra vấn đề.</p>
+        <p>Nếu interface class ủy quyền việc tạo các lớp triển khai của chúng, thay vì tự tạo/couple một cách trực tiếp, thì lúc này ta thường
+        sử dụng Abstract Factory để tạo các đối tượng triển khai hơn là Bridge.</p>
       </div>
     </div>
   </div>

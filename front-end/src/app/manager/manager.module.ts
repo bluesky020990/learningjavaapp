@@ -8,9 +8,10 @@ import {FooterComponent} from './footer/footer.component';
 
 import {ManagerDefaultComponent} from './manager-default/manager-default.component';
 import {MaterialModule} from "../material/material.module";
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
-  declarations: [ManagerComponent, HeaderComponent, FooterComponent, ManagerDefaultComponent],
+  declarations: [ManagerComponent, HeaderComponent, FooterComponent, ManagerDefaultComponent, HelpComponent],
   imports: [
     CommonModule,
     RouterModule,

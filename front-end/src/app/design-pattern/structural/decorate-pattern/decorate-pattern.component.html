@@ -3,14 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Decorate Pattern - Structural Pattern</h2>
 
-      <p>Về mặt chức năng, Decorate Pattern tương tự với Builder, tuy nhiên, Builder thì xây dựng Object còn Decorate thì xây dựng behavior của Object.</p>
+      <p>Attach thêm 1 trách nhiệm bổ sung cho 1 đối tượng 1 cách  năng động/ dynamic. Decorate cung cấp 1 sự thay thế
+      linh hoạt cho các Subclass để mở rộng các chức năng.</p>
 
-      <p>Decorate được sử dụng để xây dựng các Object vừa có đặc điểm của cái này, vừa có đặc điểm của cái kia. Nó kiểu như đa kế thừa, một thứ
-      mà Java không cho phép.</p>
+      <p>Đóng gói đệ quy 1 core object vào bên trong 1 đối tượng để bổ sung các chức năng cho nó.</p>
 
-      <p>Nói cách khác, thì Decorate hướng tới việc mở rộng Object, bằng hình thức đa kế thừa ảo - (cái này do tui đặt á).</p>
-
-      <p>Ngoài ra nó còn được gọi là <b>Wrapper</b></p>
+      <p>Wrapping a gift, putting it in a box, and wrapping the box.</p>
     </div>
   </div>
 </div>
@@ -67,20 +65,15 @@
 
         <blockquote>The Decorator Pattern is also known as Wrapper</blockquote>
 
-        <p>Rõ ràng, trong lập trình, ta cũng gặp những tình huống éo le như vậy.</p>
+        <p>Trong lập trình, đôi khi ta gặp bài toán, muốn thêm hành vi hoặc trạng thái cho các đối tượng riêng lẻ tại run-time.
+        Ta suy nghĩ tới tính kế thừa của OOP nhưng nó không khả thi vì nó là static và nó sẽ applied cho toàn bộ class.</p>
 
-        <p>Java không hề có Multiple Inheritance. Việc Multiple Inheritance của nó là thông qua Interface, và cái thằng Object implement method đó,
-          phải quyết định nó sẽ phải xây dựng method đó ntn.</p>
+        <p>Để giải quyết vấn đề này, ta sử dụng Decorate. Decorate đóng gói đối tượng ban đầu bên trong 1 abstract wrapper interface. Cả decorate
+        Object và Cỏe Object đều kế thừa từ abstract interface này. Interface sử dụng recursive composition để cho phép 1 số lượng không
+        giới hạn các layer có thể được add vào 1 core object.</p>
 
-        <p>Tuy nhiên, trong trường hợp này, ta không muốn implement 1 new method, thay vì vậy ta muốn sử dụng lại từ những Object đã có cho nó nhanh
-          và hiệu quả nhất. </p>
-
-        <p>Chính design pattern này sẽ giúp chúng ta giải quyết bài toán Multiple Inheritance đó.</p>
-
-        <p>Nói cách khác, Decorate Pattern sử dụng composition thay thế cho inheritance để có thể mở rộng functionality của Object
-        trong quá trình Run-time.</p>
-
-        <p>Khi sử dụng decorate, ta nhắc tới feature hơn là method.</p>
+        <p>Ngoài ra, ta có thể tham khảo 1 ví dụ chính xác với decorate, đó là cây thông noel. Ta có thể trang trí nó bởi các hộp quà,
+          cái chuông, những bóng đèn led hoặc mấy cái tất để đảm bảo cho mùa noel vui vẻ.</p>
       </div>
     </div>
   </div>
@@ -95,6 +88,31 @@
       </div>
 
       <div class="card-body">
+        <p>Dưới đây là các bước cần thiết trong quá trình phân tích trước khi tiến hành applied pattern này.</p>
+
+        <ul>
+          <li>Đảm bảo bối cảnh 1 Single-core (hoặc non-optional) Component và 1 số optional embellishemnt hoặc wrappers,,
+          và 1 interface chung cho tất cả.</li>
+
+          <li>Tạo 1 interface chung nhất để cho phép các class có thể hoán đổi cho nhau.</li>
+
+          <li>Tạo 1 second level base class (DECORATE) để support các Optional WRAPPER class.</li>
+
+          <li>Core class và Decorate class kế thừa từ interface chung trên kia.</li>
+
+          <li>Decorate class khai báo 1 composition relationship (HAS A) với interface kia, và các thành viên dữ liệu này được khởi tạo
+          trong constructor của nó.</li>
+
+          <li>Decorate class ủy quyền cho abstract interface kia. </li>
+
+          <li>Define 1 Decorate Derived class cho mỗi optional embllisment</li>
+
+          <li>Decorate Derived class thực hiện chức năng trình bao bọ của chungs, và ủy quyền cho Decorate Base Class.</li>
+
+          <li>Client Cấu hình loại và thứ tự của các đối tượng core và decorate.</li>
+        </ul>
+
+
         <p>Các bước triển khai nó bao gồm:</p>
 
         <ul>
@@ -175,14 +193,30 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Decorate giúp ta có thể xây dựng các class với những feature từ các class đã có hiện tại.</p>
+        <p>Adapter cung cấp 1 giao diện khác với chủ đề của nó, Proxy cung cấp 1 giao diện tương tự, trong khi đó Decorate lại cung cấp 1 giao diện nâng cao.</p>
 
-        <p>Đối với decorate, vấn đề quan trọng nhất đó là các feature của các object mà nó muốn sở hữu. cần đảm bảo
-        các feature này là độc lập với nhau.</p>
+        <p>Adapter thay đổi object interface, Decorate nâng cao trách nhiệm của 1 đối tượng. Decorate minh bạch hơn cho khách hàng. Vì vậy,
+        decorate hỡ trợ recursive composition, trong khi điều này là không thể đối với Adapter.</p>
+
+        <p>Composite và Decorate có cấu trúc tương tự nhau, phản ánh là cả 2 đều dựa vào Recursive Composition để tổ chức một open-ended  number objects.</p>
+
+        <p>Một decorate có thể được xem như 1 Composite với chỉ 1 thành phần. Tuy nhiên, Decorate bổ sung thêm trách nhiệm cho đối tượng, và
+        nó không dành cho việc thổng hợp các đối tượng.</p>
+
+        <p>Mục đích của decorate đó là bổ sung thêm trách nhiệm cho các đối tượng mà không phải thêm lớp (Subclass). Trong khi đó, Composite lại không phải
+        là trang trí thêm/bổ sung mà là đại diện. Vì vậy, Composite và Decorate thường được cùng xem xét trong 1 vài trường hợp,</p>
+
+        <p>Composite có thể sử dụng Chain of Responsibility để cho phép các thành phần có thể truy cập các đối tượng toàn cầu thông qua parent của nó.
+        Nó cũng có thể sử dụng Decorate để ghi đè các thuộc tính này lên từng phần của Composition.</p>
+
+        <p>Decorate và Proxy có mục đích khác nhau nhưng cấu trúc tương tự nhau. Cả 2 cung mô tả làm thế nào để cung cấp 1 mức độ giản tiếp
+        cho 1 đối tượng khác, và việc triển khai giữu 1 tham chiếu đến 1 đối tượng mà họ chuyển tiếp yêu cầu.</p>
+
+        <p>Decorate cho phép ta có thể thay đổi skin của 1 đối tượng. Trong khi đó Strategy có thể cho ta thay đổi bản chất của 1 đối tượng.</p>
       </div>
     </div>
   </div>

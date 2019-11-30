@@ -79,24 +79,32 @@
       </div>
 
       <div class="card-body">
-        <p>Việc implement của Flyweight phức tạp hơn những gì ta nghĩ. Ta cần tuân thủ các bước sau để đảm bảo là nó không đi sai hướng.</p>
+        <p>Dưới đây là danh sách checklist cần phân tích trước khi tiến hành</p>
 
-        <p>
-          Đầu tiên, ta phải đảm bảo rằng chi phí cho các đối tượng là 1 vấn đề thực sự đáng quan tâm. Có thể do thời gian, chi phí và độ
-          phức tạp của nó nên ta cần tiết kiệm tối thiểu. Lưu ý cái này khá phức tạp, nên việc áp dụng phải xem xét xem nó có
-          thực sự cần thiết hay ko.
-        </p>
+        <ul>
+          <li>Đảm bảo rằng chi phí cho các đối tượng là 1 vấn đề đáng quan tâm, và client của class có thể và sẵn sàng tiếp thu trách nhiệm.</li>
 
-        <p>Sau đó, ta chia các Target class thành 2 phần, shareable (intrinsic state) và non-shareable (extrinsic state).</p>
+          <li>Chia trạng thái của target class thành 2 phần, trạng thái có thể chia sẻ (instrinsis state) và trạng thái không thể chia
+          sẻ (Extrinsic state)</li>
 
-        <p>Tiếp nữa là remove toàn bộ các shareable state ra khỏi Class. Đây là những thứ ta sẽ dùng lại, vì vậy ta cần đưa nó
-        ra khỏi các attribute của Class và đưa nó vào các affected method (affected - bị ảnh hưởng) mà sử dụng những arguments này.</p>
+          <li>Remove các trạng thái không thể chia sẻ ra khỏi các thuôc tính của class và thêm nó vào danh sách đối số (tham số) của các phương
+          thức bị ảnh hưởn</li>
 
-        <p>Sau đó ta sử dụng 1 Factory để caching và có thể reuse lại các existing class đó.</p>
+          <li>Tạo 1 factory có thể lưu trữ và sử dụng lại các thể hiện của lớp hiện có.</li>
 
-        <p>Yêu cầu các Client phải sử dụng Factory thay vì new method cho việc khởi tạo các đối tượng.</p>
+          <li>Client sử dụng Factory thay vì new operator để request các đối tượng.</li>
 
-        <p>Client/ third party phải tra cứu hoặc tính toán trên các non-shareable state và cung cấp các state đó cho class.</p>
+          <li>Client hoặc third party phải tra cứu và tính toán trạng thái không thể chia sẻ và cung cấp các trạng thái này dưới dạng
+          các tham số đã liệt kê ở trên cho các method của class.</li>
+        </ul>
+
+
+        <p>Bản chất của Flyweight đó là chia một cái lớn thành nhiều cái nhỏ, và tái sử dụng các cái nhỏ đó.</p>
+
+        <p>Vì vậy, nó thường được sử dụng trong môi trường mà ta cần xử lý nhiều thứ, trong đó kết quả của cái này có
+          liên quan tới kết quả của 1 cái đã đc xử lý trước đó.</p>
+
+        <p>Hoặc cũng đơn thuần làm cache, lấy object lên khi nó ko tồn tại, hoặc trả ra ngay nếu nó tồn tại trong map</p>
       </div>
     </div>
   </div>
@@ -139,16 +147,20 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Summary
+        Important things
       </div>
 
       <div class="card-body">
-        <p>Bản chất của Flyweight đó là chia một cái lớn thành nhiều cái nhỏ, và tái sử dụng các cái nhỏ đó.</p>
+        <p>Nếu Flyweight chỉ ra cách tạo nên các đối tượng nhỏ, thì Facade lại có ý nghĩa là tạo ra 1 đối tượng duy nhất
+        đại diện cho toàn bộ subsystem.</p>
 
-        <p>Vì vậy, nó thường được sử dụng trong môi trường mà ta cần xử lý nhiều thứ, trong đó kết quả của cái này có
-          liên quan tới kết quả của 1 cái đã đc xử lý trước đó.</p>
+        <p>Flyweight thường được kết hợp với Composite để thực hiện các nút lá có thể chia sẻ. Composite là 1 list các
+        đối tượng, nên việc đối tượng có thể lặp lại nhiều lần là bình thường.</p>
 
-        <p>Hoặc cũng đơn thuần làm cache, lấy object lên khi nó ko tồn tại, hoặc trả ra ngay nếu nó tồn tại trong map</p>
+        <p>Các kí hiệu trong cây cú pháp trừu tượng của Interpretor có thể được chia sẻ bằng Flyweight.</p>
+
+
+        <p>Flyweight giải thích khi nào và làm thế nào để các đối tượng State có thể được chia sẻ.</p>
       </div>
     </div>
   </div>

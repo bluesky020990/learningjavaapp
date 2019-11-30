@@ -3,14 +3,10 @@
     <div class="overview-container">
       <h2 class="mb-3">Facade Pattern  - Structural Pattern</h2>
 
-      <p>Về mặt bản chất, Facade tương tự như Factory, chỉ khác đó là Factory che dấu việc khởi tạo Object, còn
-        Facade che dấu behavior của Interface.</p>
+      <p>Cung cấp 1 giao diện hợp nhất cho 1 tập các giao diện trong 1 hệ thống con. Facade định nghĩa 1 giao diện
+      cao cấp hơn giúp subsystem dễ sử dụng hơn..</p>
 
-      <p>Thông thường, Facade thường được sử dụng khi mà một method quá phức tạo, và ta muốn nhóm nó lại cho
-        dễ quản lý, đồng thời cung cấp một interface đơn giản đối với người dùng.</p>
-
-      <p>Facade patern đơn giản hóa một tập các giao diện trong hệ thống con và chỉ một cung cấp giao diện chung duy nhất
-        cho client. Đó là ý nghĩa của nó.</p>
+      <p>Bao bọc 1 hệ thống con phức tạp với 1 giao diện đơn giản hơn.</p>
     </div>
   </div>
 </div>
@@ -89,12 +85,31 @@
           therefore it hides the complexities of the subsystem from the client".
         </blockquote>
 
-        <p>Bản chất của Facade đó là 1 Factory của Interface. Nhìn chung thì Facade cũng giống như Abstract Factory, chỉ khác ở chỗ
+        <p>Facade thảo luận về việc đóng gói 1 hệ thống con phức tạp trong 1 đối tượng inteface duy nhất. Điều này làm giảm
+        các "đường cong học tập" - nói nôm na là hiểu về các method bên trong cũng như bản chất của sub-system, để tận dụng thành
+        công subsystem này.
+        </p>
+
+        <p>Ngoài ra nó cũng thúc đẩy việc tách rời 1 subsystem từ nhiều client của nó. Ví dụ trong Sadlier, nó có thể có ClassLink.
+        Renassance, thì để tương thích với cái hệ thống hiện tại, ta cần tạo cho nó 1 subsystem. Nhưng rõ ràng với mỗi client thì
+        các implement nó khác nhau, dù cái interface giữa 2 bên là giống nhau. Do đó, dùng Facade dể có thể phân biệt rạch ròi
+        giữa 2 client này, tránh chồng chéo</p>
+
+        <p>Vì Facade là điểm truy cập duy nhất cho hệ thống con, nên ta có thể giới hạn lại các tính năng và tính linh hoạt mà
+        client có thể cần.</p>
+
+        <p>Khi sử dụng Facade, ta cần  biến nó thành 1 người ủng hộ/ người hỗ trợ đơn giản. Tránh không biến nó thành god object, hoặc 1
+        nhà tiên tri biết tuốt.</p>
+
+        <p>Về bản chất, Facade là 1 Factory của Interface. Nhìn chung thì Facade cũng giống như Abstract Factory, chỉ khác ở chỗ
         Abstract Factory cung cấp Factory của Object, thì Facade cung cấp Factory của Interface mà thôi.</p>
 
         <p>Facade đóng gói một sub-system phức tạp vào trong 1 interface. Điều này làm giảm sự phức tạp của ứng dụng và có thể
         tách rời các sub-system từ nhiều client khác nhau. Mặt khác, nếu như Facade là điểm truy cập của các sub-system,
         thì nó sẽ hạn chế các feature và cũng như sự linh hoạt mà các power user có thể cần.</p>
+
+        <p>Một ví dụ nữa của Facade đó là dịch vụ chăm sóc khách hàng qua điện thoại. Người ta có thể có các nhu cầu cần tư
+        vấn hoặc giải đáp về đặt hàng, thanh toán, và giao nhận, nhưng rõ ràng chỉ cần 1 cổng thông tin chăm sóc khách hàng là đủ.</p>
       </div>
     </div>
   </div>
@@ -109,6 +124,21 @@
       </div>
 
       <div class="card-body">
+        <p>Việc implement cần được phân tích theo các bước sau:</p>
+
+        <ul>
+          <li>Xác định 1 giao diện đơn giản, thống nhất cho hệ thống con hoặc thành phần.</li>
+
+          <li>Thiết kế 1 lớp "Wrapper" để bao bọc subsystem.</li>
+
+          <li>Facade/Wrapper nắm bắt sự phức tạp và hợp tác giữa các component, và ủy thác cho các phương thức thích hợp.</li>
+
+          <li>Client chỉ sử dụng/được ghép nối với Facade.</li>
+
+          <li>Xem xét nơi mà cần thiết sử dụng Facade</li>
+        </ul>
+
+
         <img src="../assets/design_pattern/uml_diagram/facade_pattern_uml_diagram.jpg" class="img-fluid">
       </div>
     </div>

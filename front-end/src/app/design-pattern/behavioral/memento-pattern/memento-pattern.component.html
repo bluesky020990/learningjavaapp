@@ -3,11 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Memento Design Pattern - Behavioral Pattern</h2>
 
-      <p>Bản chất của Memento đó là lưu trữ lại state của Object để có thể resume khi cần thiết.</p>
+      <p>Không vi phạm encapsulation, nhưng vẫn có thể capture và external trạng thái nội bộ của 1 đối tượng để đối tượng
+      có thể được phục hồi/trả về trạng thái này sau đó.</p>
 
-      <p>Để làm được điều này, nó sử dụng một private inner class để lưu trữ thông tin object.</p>
+      <p>Cung cấp 1 cookie đóng gói 1 check point.</p>
 
-      <p>Memento được dùng khi ta có 1 list những action phức tạp và ta muốn lưu trữ các step của nó để có thể revert lại khi cần.</p>
+      <p>Cung cấp undo roll back operation</p>
     </div>
   </div>
 </div>
@@ -72,13 +73,23 @@
 
         <blockquote>The Memento pattern is also known as Token.</blockquote>
 
-        <p>Design này đảm bảo rằng tính bao đóng của OOP không bị vi phạm mà vẫn có thể "capture" và "externalize" các trạng thái
-        bên trong của Object, cho phép ta có thể trả về trạng thái của đối tượng này trước đó.</p>
+        <p>Trong lập trình, đôi khi ta gặp trường hợp cần redo lại 1 đối tượng ở trại thái trước đó.</p>
 
-        <p>Ta có thể xem nó như một cách để cung cấp 1 Checkpoint capability</p>
+        <p>Client yêu cầu 1 Memetor từ source object khi nó cần kiểm tra trạng thái của đối tượng này. Source object khởi tạo
+        memeto cùng với đặc tính trạng thái của nó. Client take-care Memetor, nhưng chỉ có source object mới có thể lưu trữ
+        và truy xuất thông tin từ Memetor. Nếu client cần khôi phục lại trạng thái của source object, nó sẽ trao lại Memeto
+        cho soủce object để phục hồi.</p>
 
-        <p>Cung cấp khả năng undo/ roll back full object status.</p>
+        <p>Khả năng undo và redo không giới hạn có thể được thực hiện dễ dàng với 1 stack Command Objects và 1 stach Menmetor
+        Object.</p>
 
+        <p>Memetor Pattern xác đin hj 3 vai trò riêng biệt</p>
+
+        <ul>
+          <li>Original - đối tượng biết cách tự phục hồi/save chính nó</li>
+          <li>Caretaker - Đối tượng biết tại sao và khi nào mà Original cần hải sao lưu và khôi phục chính nó.</li>
+          <li>Memetor - lock box được viết và đọc bởi Original và được CareTaker che đấu/quản lý.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -93,27 +104,6 @@
       </div>
 
       <div class="card-body">
-
-        <p>Trong pattern này, điều đầu tiên ta cần đó là 1 đói tượng cần được lưu trữ trạng thái của nó.</p>
-
-        <p>Khi có 1 client cần capture 1 trạng thái của đối tượng này (Originator), nó sẽ gửi 1 request đến Originator.
-          Originator sẽ capture trạng thái của nó,  khởi tạo 1 Mementor, save state của nó trong Memento đó và trả lại cho
-        Client.</p>
-
-        <p>Client lúc này sẽ đóng vai trò như 1 Care Taker. Nó nhận các Memento của Originator, quản lý nó trong 1 array bên trong.
-        Nếu cần để rollback lại 1 trạng thái bất kì nào đó mà nó đã lưu của Originator, nó sẽ trao lại Mementor cho Originator
-          để có thể phục hồi..</p>
-
-
-        <p>Từ những điều trên, khi ta sử dụng Memento, ta cần xây dựng các đói tượng sau:</p>
-
-        <p>Originator - Object này cần "biết cách" để save lại bản thân nó cũng như khôi phục lại state của chính bản thân nó</p>
-
-        <p>CareTaker - Object biết cách why and when Originator cần save/ restore bản thân nó.</p>
-
-        <p>Memento - 1 hộp kín có thể được đọc/ghi bởi Orginator và dược quản lý bởi CareTaker.</p>
-
-
         <p>Các bước implement như sau:</p>
 
         <ol>
@@ -131,7 +121,6 @@
 
           <li>Originator tự rollback data của nó theo trạng thái bên trong của Memento.</li>
         </ol>
-
 
         <p>Khái niệm friend ở đây có vẻ hơi không rõ ràng. Ta xem lại các access modifier. Friend là có thể nhìn thấy nhau.
         Đối với Java nó chính là các inner class miễn sao các method của nó không được truy cập từ bên ngoài để đảm bảo tính

@@ -3,15 +3,14 @@
     <div class="overview-container">
       <h2 class="mb-3">Iterator Pattern - Behavioral Pattern</h2>
 
-      <p>Bản chất của Iterator đó là cung cấp cách thức để duyệt qua các phần tử của 1 đối tượng tổng hợp một cách tuần
-        tự mà không để lộ đại diện/ chi tiết bên trong của nó.</p>
+      <p>Cung cấp 1 cách thức đểcó thể truy cập các phần tử của một đối tượng một cách tuần tự mà không để lộ đại diện cơ
+      bản của nó.</p>
 
-      <p>Nó tách rời các collection classes và algorithms. Bằng cách này ta có thể sử dụng cho các mục đích khác nhau
-        như filter chẳng hạn.</p>
+      <p>Chuẩn hóa các lớp abstract cho phép tách rời các thuật toán khỏi các collection.</p>
 
-      <p>Hỗ trợ "full object status" cho việc duyệt 1 collection</p>
+      <p>Cung cấp 1 "full object status" đến traveral collection</p>
 
-      <p>Polymorphic traversal.</p>
+      <p>Polymorphic traversal</p>
     </div>
   </div>
 </div>
@@ -101,16 +100,6 @@
       </div>
 
       <div class="card-body">
-
-        <p>Trong một vài trường hợp, ta có 1 collection gồm các Object không có 1 điểm nào chung cả. Nhưng, ta muốn duyệt qua nó, tìm kiếm
-        hay thao tác trên đó, vậy ta phải làm gì?</p>
-
-        <p>Collection trong java, với các Array, Set, HashMap đã support ta rất nhiều. Nhưng nên nhớ, khi khai báo 1 Array thì ta phải
-        khai báo cùng 1 kiểu đối tượng. Trong trường hợp này ta ko thể sử dụng cách default được.</p>
-
-        <p>Do đó, mục đích của Iterator đó là trừu tượng hóa quá trình duyệt của các cấu trúc dữ liệu(data structure) khác nhau để thuật toán
-        (algorithms) có khả năng giao tiếp với nhau (một cách trong suốt - tường minh).</p>
-
         <blockquote>
           to access the elements of an aggregate object sequentially without exposing its underlying implementation".
         </blockquote>
@@ -119,27 +108,29 @@
           The Iterator pattern is also known as Cursor.
         </blockquote>
 
+        <p>Trong một hệ thống, đôi khi ta cần phải xây dựng những collection. Những collection này có thể được xây dựng
+        bằng những cách thức khác nhau, do đó, nếu muốn duyệt/travesal nhũng collection này, ta cần xây dựng các phương thức
+        phù hợp với nó.</p>
 
-        <p>Một đối tượng tổng hợp (list) sẽ cung cấp cho ta 1 cách để truy cập vào các phần tử của nó mà không để lộ cấu trúc bên
-        trong của nó. Ngoài ra ta cũng có thể muốn filter theo 1 cách thức khác nhau, tùy thuộc vào những gì ta cần thực hiện.</p>
 
-        <p>Bây giờ, ta xây dựng 1 List A với 1 Iterator dành riêng cho nó. Sau đó ta lại xây dựng một List B với iterator của riêng nó.
-          Và càng ngày số lượng List càng tăng. Một ngày đẹp trời ta lại có bài toán duyệt và xử lý các object của cả List A và B trong cùng
-          1 interface. Và điều đó khiến ta ko biết cần phải làm chính xác những gì khi có quá nhiều interface cần thao tác với cái collection của chúng ta.
-          Ta có thể dự đoaán ra các trường hợp khác nhau nhưng khó để có thể handle chúng hoàn toàn. Vì vậy, ta cần cung cấp 1 giao diện thống nhất
-          để duyệt qua nhiều đối tượng tổng hợp (polymorphic iteration).</p>
+        <p>Một đối tượng tổng hợp như 1 list sẽ cung cấp cho ta cách thức truy cập các phần tử của nó mà không để lộ cấu trúc
+          bên trong nó. Ngoài ra, ta có thể muốn duyệt qua danh sách với các cách thức khác nhau, tùy thuộc vào những gì cần thực hiện.</p>
 
-        <p>Iterator cho phép ta thực hiện điều này. Ý tưởng của pattern này đó là tách trách nhiệm của việc truy vập và duyệt
-        ra khỏi đối tượng tổng hợp và đưa nó vào 1 Iterator object mà xác định một giao thức duyệt tiêu chuẩn.</p>
+        <p>Tuy nhiên, điều đó là không hay lắm nếu có quá nhiều collection và ta không biết được cần áp dụng chính xác cách thức nào. </p>
 
-        <p>Sự trừu tượng của Iterator là nền tảng cho một công nghệ mới nổi là "generic programming". Chiến lược này tìm các tách biệt rõ ràng
-        giữa thuật toán và cấu trúc dữ liệu. Động lực của nó là thúc đẩy phát triển theo hướng component, tăng năng saats và giảm thiếu
-        quản lý cấu hình.</p>
+        <p>Interator cung cấp 1 chuẩn hóa/standard định ra các quy tắc, cung cấp 1 giao diện thống nhất để duyệt qua nhiều loại đối
+        tượng tổng hợp (đa hình).</p>
+
+        <p>Ý tưởng của Iterator đó là nó nhận trách nhiệm truy cập và duyệt ra khỏi dối tượng tổng hợp, đưa nó vào 1 đối tượng
+        Iterator xác định với 1 giao thức duyệt tiêu chuẩn.</p>
+
+        <p>Sự trừu tượng hóa của Iterator là nền tảng cho 1 công nghệ mới nổi là generic programming. Chiến lược này
+        tìm cách tách biệt rõ ràng khái niệm thuật toán với cấu trúc dữ liệu. Điều này sẽ thúc đẩy việc hát triển dựa vào component-base
+        development và giảm số configuration management.</p>
 
         <p>Một ví dụ cho điều nà, nếu ta muốn support 4 loại dữ liệu như array, binary tree, linked list và hast table và 3 thuật toán
         sort, find và merge, theo sự tiếp cận truyền thống ta sẽ cần 4 x 3 = 12 function cần tạo. Trong khi nếu sử dụng Generic
         thì ta chỉ cần 4 + 3 chức năng.</p>
-
 
         <p class="small-text">
           với mỗi array ta cần implement đủ  3 cái function trên. Nên theo cách truyền thống ta cần 4 x 3 = 12.
@@ -160,10 +151,6 @@
       </div>
 
       <div class="card-body">
-        <p>Client sử dụng các collection interface để duyệt qua các phần tử của Object. Tuy nhiên, quyền truy cập trực tiếp vào các element
-        bên trong collection được đóng gói bên trong 1 Abstract Class bổ sung - Iterator. Mỗi lớp dẫn xuất bộ sưu tập biết Itegration
-        nào sẽ được tạo và trả về. Sau đó, Client dựa vào các interface được define trong Iterator base class.</p>
-
         <p>Để implement 1 Iterator cần thực hiện các step sau:</p>
 
         <ol>
@@ -173,7 +160,9 @@
           <li>Client sử dụng first(), isDone(), next() và các protocol khác để truy câp các phần tử của collection class.</li>
         </ol>
 
-        <p>Một iterator thì cần có những method sau:</p>
+        <p>Client sử dụng các collection interface để duyệt qua các phần tử của Object. Tuy nhiên, quyền truy cập trực tiếp vào các element
+        bên trong collection được đóng gói bên trong 1 Abstract Class bổ sung - Iterator. Mỗi lớp dẫn xuất bộ sưu tập biết Itegration
+        nào sẽ được tạo và trả về. Sau đó, Client dựa vào các interface được define trong Iterator base class.</p>
 
         <ul>
           <li>Một Collection Interface để define những thuộc tính chung của nó:
@@ -193,8 +182,6 @@
 
           <li>Các collection implement nó.</li>
         </ul>
-
-        <p>Còn cách sử dụng ấy hả, xem trong hash map của java ấy.</p>
       </div>
     </div>
   </div>

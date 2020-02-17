@@ -3,17 +3,10 @@
     <div class="overview-container">
       <h2 class="mb-3">Interpreter Pattern - Behavioral Pattern</h2>
 
-      <p>Interpreter là một design pattern ít được sử dụng nhất vì tính đặc thù của nó.</p>
+      <p>Đưa ra 1 language, xác định 1 biểu diễn cho ngữ pháp của nó cùng với 1 trình thông dịch siwr dụng biểu diễn đó
+      để diễn tả các câu trong ngôn ngữ.</p>
 
-      <p>Theo định nghĩa, nó được sử dụng để định nghĩa một biểu diễn ngữ pháp cho một ngôn ngữ và cung cấp
-        một Thông dịch viên để xử lý ngôn ngữ này.</p>
-
-      <p>Ví dụ đơn giản nhất của nó là Google Translate, chỉ cần nhập vào một đoạn tiếng Việt và bụp cái, ta có thể
-        chuyển sang tất cả các kiểu ngôn ngữ khác nhau.</p>
-
-      <p>Hay là cũng là 1 kiểu ngày tháng, mà ta có thể xuất ra những định dạng khác nhau. Ví dụ 20 - 12 - 2018
-
-        đổi thành 12 - 20 - 2010 hay 12/20/08 hay 20-Dec-18, .... Đó cũng là một thể hiện của Interpreter Pattern.</p>
+      <p>Ánh xạ Domain đến language, language đến grammar, grammar đến 1 một thiết kế hướng đối tượng phân cấp.</p>
     </div>
   </div>
 </div>
@@ -27,7 +20,8 @@
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Nếu ai đã từng trải qua tuổi học trò, chắc hẳn đều quen thuộc với trò viết thư tay. Nhưng, viết thư tay trong giờ
+        học, nếu nó chuyển tiếp bình thường thì ko sao, nếu giữa đường bị thầy cô bắt gặp thì thế nào.</p>
       </div>
     </div>
   </div>
@@ -42,7 +36,10 @@
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Dạo đó lũ học sinh nghĩ ra 1 cách đó là mã hóa kế quả của nó. Các chữ cái sẽ được thay thế bằng con số, vì dụ
+        chữ A là số 2, 11 là chữ N, 111 là chữ M chẳng hạn. Và chỉ có lũ học sinh mới biết được cái quy luật đó.</p>
+
+        <p>Đó là ví dụ của Interpreter trong cuộc sống. Interpreter </p>
       </div>
     </div>
   </div>
@@ -56,7 +53,26 @@
       </div>
 
       <div class="card-body">
-        ________________________________
+        <blockquote>
+          "to define a representation of grammar of a given language, along with an interpreter that uses this representation
+          to interpret sentences in the language"
+        </blockquote>
+
+        <p>Nếu các vấn đề của 1  lớp xuất hiện lặp đi lặp lại trong một miền được xác định và hiểu rõ, nếu Domain được đặc trưng
+        bởi 1 ngôn ngữ, thì các vấn đề có thể được giải quyết 1 cách dễ dàng bằng 1 công cụ interpreter.</p>
+
+        <p>Interpreter thảo luận về : Xác định 1 domain language, tức là đặc tính hóa vấn đề, dưới dạng 1 ngôn ngữ đơn giản,
+        biểu diễn các quy tắc domain duwois dạng các sentence và biên dịch/interpreter các câu này để giải quyết vấn đề.</p>
+
+        <p>Pattrern này sử dụng class để biểu diễn các grammar rule, và vì các grammar thường được phân cấp theo cấu trúc
+        nên một hệ thống phân cấp kế thừa của các rule của class sẽ ánh xạ một cách tuyệt vời.</p>
+
+        <p>Một abstract base class xác định 1 interpret() method. Mỗi concreted subclass thực hiện interpress bằng cách
+        accept(như các param) trạng thái hiện tại của luồng ngôn ngữ và thêm phần đóng góp của nó vào quá trình đó.</p>
+
+        <p>Thông thường, Interpreter đề nghị việc mô hình hóa domain với 1 recursive grammar. Mỗi quy tắc trong grammar là
+        1 composite, tức là 1 quy tắc tham chiếu tới các quy tắc khác, hoặc 1 terminal/left node. Interpreter dựa vào
+        giao thức đệ quy của Composite Pattern để diễn giải các câu mà nó được yêu cầu xử lý.</p>
       </div>
     </div>
   </div>
@@ -71,25 +87,18 @@
       </div>
 
       <div class="card-body">
-        <p>Để sử dụng Interpreter ta cần implement các thành phần sau:</p>
+        <p>Việc implement cần tuân thủ các bước phân tích sau:</p>
 
-        <ol>
-          <li>Interpreter Context Engine: thực hiện công việc diễn giải (interpretation)</li>
-          <li>Expression: consume the functionalities provided by the interpreter.</li>
-          <li>Client : Take input from user and decided which expression to use and then generate output
-            for the user.</li>
-        </ol>
+        <ul>
+          <li>Quyết định xem 1 little language có mang lại lợi ích đầu tư chính đạng ko?</li>
+          <li>Xác định grammar cho language</li>
+          <li>Ánh xạ mỗi production trong grammar với 1 class.</li>
+          <li>Tổ chức các bộ classes trong 1 hệ thống của Composite Pattern</li>
+          <li>Xác định 1 interpret(Concept) method trong Composite Hierarchy.</li>
+          <li>Concept Object đóng gói trạng thái hiện tại của input và output như 1 khuôn mẫu. Nó được thao tác bởi mỗi grammar
+          class giống như 1 interpret process chuyển đổi đầu vào thành đầu ra.</li>
+        </ul>
 
-        <img class="img-fluid" src="../assest/design_pattern/interpreter-pattern-java.png" />
-
-        <p>Interpreter cũng sử dụng if else để xác định output. Vậy liệu nó và cái Factory có khác nhau ko?</p>
-
-        <p>Về mặt bản chất, Factory nó trả lại object, còn ở đây thì nó trả lại/ sử dụng 1 method.</p>
-
-        <p>Condition trong Factory là điều kiện để phân biệt object, còn Condition trong Interpreter là điều kiện của ngữ cảnh - Context.</p>
-
-        <p>Giả sử trong bài toán phiên dịch, nếu như sử dụng Factory thì ta phải new rất nhiều nhiều nhiều Object, tùy thuộc vào tham số truyền vào. Tuy nhiên
-          đối với Interpreter thì ta chỉ việc set cho cái Context ban đầu là được.</p>
       </div>
     </div>
   </div>
@@ -106,15 +115,19 @@
       <div class="card-body">
         <h5>Advantages</h5>
 
-        <p>__________</p>
+        <p>Dễ dàng thêm và mở rộng grammar</p>
+
+        <p>Việc implement Grammar là vô cùng đơn giản, vì nó tách biệt hoàn toàn với hệ thống, giống lũ con nít đặt ra rule vậy</p>
 
         <h5>Disadvantages</h5>
 
-        <p>__________</p>
+        <p>Khi ngữ pháp đạt được đến 1 số lượng nhất định thì lúc đó nó sẽ là trở ngại vô cùng lớn. Các câu phức tạp, ngữ pháp
+        cũng phức tạp đòi hỏi có sự quản lý 1 cách thông minh mới được.</p>
 
         <h5>Usage</h5>
 
-        <p>__________</p>
+        <p>Khi mà Grammar của Language đó không quá phức tạp</p>
+        <p>Khi performance không phải là 1 ưu tiên hàng đầu.</p>
       </div>
     </div>
   </div>
@@ -137,3 +150,24 @@
     </div>
   </div>
 </div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Important things
+      </div>
+
+      <div class="card-body">
+        <p>Nhìn chung, mỗi khi sử dụng Interpreter, ta thường cần áp dụng Composite vào đó. Tuy nhiên, Interprester pattern
+        chỉ nên dành riêng cho những trường hợp ta cần sử dụng 1 hệ thống phân cấp như 1 định nghĩa ngôn ngữ.</p>
+
+        <p>Các kí hiệu đầu cuối trong cây cú pháp trừu tượng của nó có thể được chia sẻ với Flyweight.</p>
+
+        <p>Mẫu không phân tích địa chỉ. Khi Grammar trở nên phức tạp, thì các kĩ thuật khác (như Parser) sẽ phù hợp hơn.</p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -3,11 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Proxy Pattern - Structural Pattern</h2>
 
-      <p>Bản chất của Proxy đó là nó xây dựng một object, mang tính đại diện cho một đối tượng nào đó để thực thi công việc.</p>
+      <p>Cung cấp người thay thế (surogate) hoặc người giữ chỗ (placeholder) cho 1 đối tượng khác để kiểm soát quyền truy cập vào
+        đối tượng đó.</p>
 
-      <p>Proxy được sử dụng cho 3 mục đích: 1. Virtual Proxy, Protected Proxy, Remove Proxy.</p>
+      <p>Sử dụng 1 extra level của indirection để hỗ trợ distributed, controller, hoặc truy cập thông minh. </p>
 
-      <p>Tuy nhiên, thông thường ta sử dụng proxy khi ta muốn quản lý/ hạn chế quyền truy cập vào một chức năng nào đó.</p>
+      <p>Thêm 1 trình bao bọc và ủy quyền để hỗ trợ component khỏi sự phức tạp không đáng có.</p>
     </div>
   </div>
 </div>
@@ -73,36 +74,42 @@
           Proxy pattern is also known as Surrogate or Placeholder.
         </blockquote>
 
-        <p>Đúng như cái tên của nó, Proxy là 1 Object đại điện cho một object khác.</p>
+        <p>Trong lập trình, đôi lúc ta gặp bài toán, ta cần hỗ trợ các đối tượng tài nguyên nhưng ta không hề muốn khởi
+        tạo các đối tượng này trừ khi và cho đén khi nó thực sự được client yêu cầu.</p>
 
-        <p>Mục đích của Proxy cũng như tên gọi của nó, bảo vệ các đối tượng bên trong khỏi thế giới bên ngoài.</p>
+        <p>Proxy được dùng trong bài toán trên, bằng cách thiết kế 1 người hỗ trợ (surrogate) hoặc proxy: <br />
+          Khởi tạo đối tượng thực lần đầu tiên khi Client gửi request đến prodxy. <br />
+          Ghi nhớ danh tính (ID) của đối tượng này và chuyển tiếp các request tiếp theo đến nó.<br />
+          Sau đó, toàn bộ các request tiếp theo chỉ đơn giản được forward trực tiếp tới đối tượng thực được đóng gói này.
+        </p>
 
-        <p>Ta sẽ không quá quan tâm vào định nghĩa, mà cùng đi vào chi tiết các thể hiện của nó để hiểu chính xác hơn những
-        nhiệm vụ mà Proxy sẽ đảm nhiệm.</p>
+        <p>Dưới đây là 4 tình huống phổ biến mà proxy thường được áp dụng</p>
 
         <div class="my-4 p-3 bg-white rounded box-shadow">
           <h5 class="border-bottom border-gray pb-2 mb-0">Virtual Proxy</h5>
           <div class="text-dark pt-3">
-            <p>Virtual Proxy được dùng trong môi trường mà có quá nhiều object truy cập đến hệ thống. Thay vì mỗi object mình
-              cho nó một cái Session thì giờ đây, ta sử dụng các Proxy để làm điều đó. Mỗi Proxy đại diện cho một nhóm group để
-              giải quyết công việc.</p>
+            <p>Virtual Proxy là 1 placeholder cho "expensive to create". Object chỉ được tạo tại lần đầu tiên Client
+            yêu cầu/truy cập tới nó.</p>
 
-            <p>Bản chất của cái này là xây dựng một Proxy Pool. Mỗi request tới nó sẽ được sắp xếp để đưa vào các proxy cho phù hợp.
-              Vì vậy, ta có thể tiết kiệm tài nguyên và chi phí.</p>
+            <p>Thông thường Virtual Proxy thường đi kèm với Object Pool hoặc Singleton để đảm bảo tiết kiệm tài nguyên và
+            vẫn đảm bảo được hiệu quả cao nhất.</p>
+          </div>
+        </div>
 
-            <p>Ví dụ như làm một trang tin tức phục vụ 100.000 lượt truy cập chẳng hạn.</p>
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Remote  Proxy</h5>
+          <div class="text-dark pt-3">
+            <p>Remote Proxy cung cấp 1 đại diện nội bộ cho 1 object nằm trong 1 không gian dịa chỉ khác. Nói cách khác, cái thằng này
+            như là 1 nội gián, có nhiệm vụ liên lạc giữa 2 system với nhau. Để đảm bảo security thì hệ thống kia chỉ chấp nhận các request
+            đến từ proxy này.</p>
           </div>
         </div>
 
         <div class="my-4 p-3 bg-white rounded box-shadow">
           <h5 class="border-bottom border-gray pb-2 mb-0">Protected Proxy</h5>
           <div class="text-dark pt-3">
-            <p>Protected cần kiểm tra quyền hạn của Client trước khi thực hiện công việc. Giả sử như Client là admin
-              khi đó họ có quyền thấy những chức năng khác của hệ thống. Nhưng nếu nó chỉ là một user bt thì nó sẽ chỉ thấy
-              được những thứ đơn giản.</p>
-
-            <p>Protected Proxy được sử dụng khi ta muốn hạn chế quyền truy cập, hay là muốn xảy ra những sự cố không đáng
-              có vì vượt quyền hạn.</p>
+            <p>Proxy này đóng vai trò kiểm soát truy cập vào 1 đối tượng nhạy cảm. Đối tượng thay thế này cần kiểm tra Client
+            có đủ quyền truy cập cần thiết trước khi chuyển tiếp yêu cầu.</p>
 
             <p>Ví dụ như bạn ra cây ATM rút tiền, bạn gửi request rút tiền. ATM đóng vai trò như một Proxy, thực hiện giao dịch
               của bạn với ngân hàng và sau đó sẽ trả lại tiền cho bạn.</p>
@@ -115,27 +122,11 @@
           </div>
         </div>
 
-        <div class="my-4 p-3 bg-white rounded box-shadow">
-          <h5 class="border-bottom border-gray pb-2 mb-0">Remote  Proxy</h5>
-          <div class="text-dark pt-3">
-            <p>Remote  Proxy có nhiệm vụ nhận request và chuyển đổi nó tới những Proxy khác, sau đó nhận kết quả và phản hồi lại cho Client.</p>
-
-            <p>Remote  Proxy được sử dụng khi ta có 2 hệ thống communicate với nhau, và một trong 2 thằng đó hạn chế/ giới hạn các đối tác của nó.</p>
-
-            <p>Hoặc cũng có thể sử dụng để giảm tải/ cân bằng tải cho hệ thống lớn. Trong đó, các Proxy con đóng vai trò như các nhà phân phối, vừa xử lý
-              request, vừa gửi nó đến những Proxy phù hợp khác. Xem ví dụ dưới đây để hiểu thêm.</p>
-
-            <p>Ví dụ của nó như là một trang web bán vé máy bay. Proxy nhận request của khách hàng, format nó lại và gửi tới một Proxy khác của Airline chẳng hạn.</p>
-
-            <p>Sau đó Airline này xử lý request, trả về phản hồi cho Proxy này. Proxy này lại gửi trả lại cho khách hàng.</p>
-          </div>
-        </div>
 
         <div class="my-4 p-3 bg-white rounded box-shadow">
           <h5 class="border-bottom border-gray pb-2 mb-0">Smart Proxy </h5>
           <div class="text-dark pt-3">
-            <p>Mục đích của Smart Proxy đó là cung cấp các lớp bảo mật bổ sung bằng các can thiệp vào các hành động cụ thế khỉ đối tượng
-              được truy cập.</p>
+            <p>Smart Proxy can thiệp các hành động bổ sung khi 1 đối tượng được truy cập.</p>
 
             <p>Các hình thức sử dụng điển hình:</p>
 
@@ -152,6 +143,8 @@
             </ul>
           </div>
         </div>
+
+        <p>Ngoài ra còn có các hình thức sau, là bổ sung/biến thể khác của 4 cái ở trên</p>
 
         <div class="my-4 p-3 bg-white rounded box-shadow">
           <h5 class="border-bottom border-gray pb-2 mb-0">Monitor Proxy</h5>
@@ -195,6 +188,18 @@
       </div>
 
       <div class="card-body">
+        <p>Việc implement cần tuân thủ các bước sau:</p>
+
+        <ul>
+          <li>Xác định leverage hoặc aspect được triển khai tốt nhất dưới dạng bao bọc (wrapped) haowjc thay thế (surrogate)</li>
+          <li>Xác định 1 interface giúp cho proxy và component ban đầu có thẻ thay đổi cho nhau.</li>
+          <li>Xem xét việc xác định 1 Factory có thể gói gọn quyết định 1 Proxy hay original Object là móng muốn</li>
+          <li>Tạo 1 Wrapper class giữ 1 con trỏ đến real class và implement interface kia.</li>
+          <li>Con trỏ có thể được khởi tạo khi xây dựng hoặc sủ dụng lần đầu.</li>
+          <li>Mỗi wrap method đóng góp leverage và ủy thác cho dối tượng wrappee.</li>
+        </ul>
+
+
         <img src="../assets/design_pattern/uml_diagram/proxy_pattern_uml_diagram.jpg" class="img-fluid">
 
         <p>Việc implement nó có lẽ ko có gì quá phức tạp nên ta không đi vào chi tiết, thay vào đó, ta sẽ phân tích vào
@@ -273,3 +278,19 @@
 </div>
 
 
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Important things
+      </div>
+
+      <div class="card-body">
+        <p>Adapter cung cấp 1 giao diện khác cho subject, trong khi dó Proxy cung cấp 1 interface tương tự, Decorate cung cấp 1 interface nâng cao./</p>
+
+        <p>Proxy và Decorate có mục đích khác nhau cnhuwng có cấu trúc tương tự. Cả 2 đều mô tả làm thế nào để cung cấp 1 mức độ gián tiếp
+        cho 1 đối tượng và việc triển khai giữ 1 tham chiếu đến đối tượng mà họ chuyển tiếp yêu cầu.</p>
+      </div>
+    </div>
+  </div>
+</div>

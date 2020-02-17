@@ -3,12 +3,12 @@
     <div class="overview-container">
       <h2 class="mb-3">Chain of Responsibility Pattern - Structural Pattern</h2>
 
-      <p>Bản chất của Chain of Responsibility Pattern đó là đưa 1 request thông qua một chuỗi các object - Chain, và để cho những phần tử trong chuỗi đó
-        tự quyết định xem nó sẽ xử lý hay sẽ chuyển tiếp request đó đến phần tử/ đối tượng kế tiếp.</p>
+      <p>Tránh việc Sender gửi request tới Receive bẳng cách cho nhiều đối tượng cơ hội xử lý yêu cầu. Xâu chuỗi
+      các đối tượng nhận và chuyển yêu cầu dọc theo chuỗi cho đến khi 1 đối tượng xử lý nó.</p>
 
-      <p>Nó thường được áp dụng khi mà ta có quá nhiều process trong một hệ thống, và ta không biết nên gửi nó chính xác từ đâu/ hay ta muốn cho cái hệ thống
-        của ta trở nên lỏng lẻo.
-      </p>
+      <p>Yêu cầu khởi chạy lại và để lại với 1 đường dẫn có chứa nhiều trình xử lý có thể</p>
+
+      <p>Một danh sách liên kết đối tượng với duyệt đệ quy. </p>
     </div>
   </div>
 </div>
@@ -78,18 +78,28 @@
           avoid coupling the sender of a request to its receiver by giving multiple objects a chance to handle the request
         </blockquote>
 
-        <p>Khi ta nói về Chain of Responsibility ta thường chỉ nghĩ đến đó là 1 chuỗi các object, mỗi object có 1 nhiệm vụ khác nhau.
-        Điều này có thể đúng. Bởi bản chất của CoR là vậy. Tuy nhiên, thử nhìn nó theo 1 khía cạnh khác.
+        <p>Trong lập trình ta có thể gặp các bài toán, có 1 số lượng các đối tượng/ phần tử xyuwr lý, hoặc nút có khả năng thay đổi
+        và 1 luồng các yêu cầu cần được xử lý. Ta cần phải xử lý hiệu quả các request này mà không cần quan tâm các mối quan hệ,
+        các thứ tự ưu tiên, hay anh xạ yêu cầu tới xử lý.</p>
+
+        <p>Chain of Responsibility là 1 chuỗi các Object thành các "đường ống"-pipe. và để khách hàng quyết định "launches and leaves"
+          các request của họ tại đầu đường ống.
         </p>
 
-        <p>Giả sử bạn có 1 chuỗi các interface để handle 1 vấn đề/ request nào đó. Khi có 1 yêu cầu gửi từ client, ta sẽ phải phân vân
-        không biết nên lấy cái interface nào ra để giải quyết. Lúc này CoR là một giải pháp vô cùng thuận lợi. Nó cung cấp 1 giao diện hợp nhất
-        cho 1 tập hợp các giao diện trong một sub-system. Nói cách khác, nếu Facade là Factory của Interface, thì cái này cũng là 1 thứ
-        tương tự, chỉ khác, nó không yêu cầu bạn phải lấy chính xác interface mà bạn cần, mà nó sẽ làm điều đó thay cho bạn.</p>
+        <p>Chain of Responsibility xâu chuỗi các đối tượng receiver lại với nhau, và sau đó chuyển bất cứ thông điệp nào từ
+        đối tượng này sang đối tượng khác cho đến khi nó đến được một đối tượng có khả năng xử lý thông điệp.</p>
 
-        <p>Vì vậy, ta cũng có thể định nghĩa CoR là một giao diện cấp cao hơn giúp hệ thống con dễ sử dụng hơn. Và để làm được điều này, nó wrap
-        một sub-system complex bằng 1 inteface đơn giản.</p>
-      </div>
+        <p>Số lượng và loại đối tượng không được biết đến trước. Chúng sẽ được cấu hành tự động. Cơ chế chainning
+        sử dụng recursive component để cho phép hỗ trợ unlimitted number.</p>
+
+        <p>Chain of Responsibility đơn giản hóa các kết nối giwuax các đối tượng. Thay vì Sender và Receive phải duy trì tham
+        chiếu đến tất cả các ứng cử viên, thì giờ đây mỗi Senderchỉ giữ 1 tham chiếu duy nhất đến người đứng đầu chuỗi và
+        mỗi Receive gữi 1 tham chiếu duy nhất cho người kế nhiệm trực tiếp trong chuỗi.</p>
+
+        <p>Khi áp dụng Pattern này, cẩn đảm bảo tồn tại 1 "mạng lưới an toàn" để catch mọi request không được xử lý.</p>
+
+        <p>Không sử dụng Chain of Responsibility khi mỗi yêu cầu chỉ được xử lý bởi 1 handle hoặc khi Client/Sender biết chính
+        xác service object nào sẽ sử lý yêu cầu đó.</p>
     </div>
   </div>
 </div>
@@ -103,21 +113,7 @@
       </div>
 
       <div class="card-body">
-        <p>Chain of Responsibility là 1 chuỗi các Object thành các "đường ống"-pipe. và để khách hàng quyết định "launches and leaves"
-          các request của họ tại đầu đường ống.
-        </p>
-
-        <p>Chain of Responsibility Pattern xâu chuỗi các receiving objects lại với nhau, và sau đó chuyển lần lượt message từ đối tượng này
-        sang đối tượng khác cho đến khi nó được chuyển đến 1 đối tượng có khả năng xử lý message. </p>
-
-        <p>Số lượng và loại của các Handler Objects không được cho biết từ trước. Nó có thể được nạp vào 1 cách tự động
-          và sử dụng cơ chế đệ quy để cho phép unlimited số lượng handle được liên kết.
-        </p>
-
-        <p>Mỗi CoR gồm 2 phần, 1 list các delivery class đóng vai trò các node trong chuỗi và 1 base class đóng vai trò
-        handle các request từ phía client - root of chain.</p>
-
-        <p>Các bước implement như sau:</p>
+        <p>Dưới đây là các bước cần phân tích khi tiến hành</p>
 
         <ul>
           <li>Đầu tiên, lớp cơ sở (base class/ main class) sẽ định nghĩa một "next" pointer. Mục đích của thằng này là liên kết giữa các

@@ -3,12 +3,11 @@
     <div class="overview-container">
       <h2 class="mb-3">Command Pattern - Behavioral Pattern</h2>
 
-      <p>Command Pattern cũng như Chain of Responsibility, đó là tạo ra các khớp nối lỏng lẻo giữa các service / Object</p>
+      <p>Đóng gói 1 request như 1 đối tượng, cho phép ta tham số hóa client với các request khác nhau, queue hoặc log request, và support undoable operation.</p>
 
-      <p>Bản chất của Command đó là sử dụng một Command object, đóng vai trò là một người điều khiển để thực hiện các action
-        của Client - khi Client không biết nên làm thế nào.</p>
+      <p>Thúc đẩy viejc gọi 1 phương thức trên 1 đối tượng thành trạng thái đối tượng đầy đủ.</p>
 
-      <p>Nó sử dụng trong các tình huống, mà ở đó ta có nhiều action, và ta muốn tách biệt nó ra để dễ quản lý.</p>
+      <p>Object-Oriented Callback.</p>
     </div>
   </div>
 </div>
@@ -90,27 +89,31 @@
           It is also known as Action or Transaction.
         </blockquote>
 
-        <p>Bản chất của command đó là đóng gói request dưới dạng 1 object, cho phép ta có thể tham số clients với các request khác nhau, queue, log request
-        và hỗ trợ undo operation</p>
+        <p>Trong môi trường thực tế, đôi khi ta gặp các trường hợp Client đưa ra 1 request cho 1 đối tượng mà không biết gì về
+        hoạt động được yêu cầu hoặc người nhận yêu cầu.</p>
 
-        <p>Biến việc gọi 1 method trên 1 object, trở thành 1 full object status. Điều này có thể xem như 1 object oriented callback hoặc, event driven vậy. (**)</p>
+        <p>Command tách đối tượng gọi operation ra khỏi đối tượng thực hiện operation đó. Để làm được điều này, ta cần tạo 1
+        Abstract base class ánh xạ giữa 1 RECEIVER với 1 action. Base Class chứa execute method, method này đơn giản chỉ gọi
+          function này trên RECEIVER</p>
 
-        <p>Chính xác như những gì được mô tả, Command đóng gói các request dưới các object/command và gửi nó cho Invoker Object để xử lý.
-        Đối tượng này có nhiệm vụ chuyển tiếp command đó cho các Object có nhiệm vụ handle request này và thực thi command.</p>
+        <p>Toàn bộ Clients của Commadn Object xem các đối tượng như là 1 Black box bằng cách gọi execute method bất cứ khi nào
+        Client yêu cầu dịch vụ của đội tượng</p>
 
-        <p>Trong pattern này, điều quan trọng đó là xây dựng 1 list các Object để handle các request. Nếu nhìn 1 khía cạnh khác, ta thấy nó
-        cũng tương tự như là Chain of Responsibility nhưng nó khác ở chỗ, trong chuối CoR, ta ko xác định được cái nào sẽ xử lý. Còn cái này, ta
-        cần xây dựng 1 "Factory" để lưu trữ các công cụ, và thêm 1 đặc điểm nữa, đó là chỉ có 1 Object tham gia vào quá trình này - Đối tượng Invoker
-        được nhà máy xác định.</p>
 
-        <p>Nói chung, cái này có thể thay đổi, tùy vào cách ta implement cái handle của command mà thôi. Tuy nhiên, ta nên tuân thủ theo nguyên
-        tắc thiết kế của Pattern nếu ko muốn có những rắc rối sau này.</p>
+        <p>Commadn chứa 1 số tập hợp con sau: 1 đối tượng, 1 method có thể áp dụng cho đối tượng, và các arguments được truyền khi phương
+        thức được áp dụng. Phương thức execute sau đó làm cho các miếng ghép được nối lại với nhau.</p>
 
-        <p class="small-text">** Nếu bạn là 1 người làm việc nhiều với js, bạn sẽ gặp rất nhiều trường hợp của callback. Callback là khi 1 event được phát ra, thì ta gọi lại 1 method
-          để xử lý sự thay đổi đó. Method được gọi lại này đó là callback function. CallbackFunction có thể có các tham số của object cha. Và điều này khiến
-          ta có thể thao tác trên data của client trong callback function này. Liên hệ với command, ta thấy rõ, client gọi 1 request, nhưng cái callback của nó
-          không phải xử lý trên data của Object có nhiệm vụ, mà nó xử lý trực tiếp trên data của client. Chính điều này khiến ta có thể support undo action, log, hay queue
-          cho nó.</p>
+        <p>Một chuỗi các đối tượng Command có thể được tập hợp thành 1 lạnh tổng hợp hoặc macro.</p>
+
+        <p>Client tạo ra command không phải là client thực thi nó. Sự tách biệt này cung cấp tính linh hoạt trong thời gian và tình tự các lệnh. Tham số
+        hóa command giống như 1 đối tượng có nghĩa là ta có thể pass, staged, shared, load trong 1 bảng hoặc cũng có thể được thao tác
+        như 1 đối tượng nào khác.</p>
+
+        <p>Ta cần lưu ý rằng, Client không thực hiện action này, nó nhờ 1 đối tượng khác COMMAND thực hiện dùm nó với những data của chính bản thân nó.
+        Điều này giúp ta liên tưởng tới các hoạt động mua bán hàng, ta không trực tiếp đặt hàng, ta chỉ yêu cầu đặt hàng và có nhân
+        viên tư vấn gọi điện xác nhận, hỏi thông tin cá nhần và field đầy đủ cho ta.</p>
+
+
       </div>
     </div>
   </div>
@@ -125,11 +128,19 @@
       </div>
 
       <div class="card-body">
-        <p>Client create command không phải là client thực thi nó. Đó là điều quan trọng ta cần nhớ đầu tiên khi implement pattern này.
-        Sự tách biệt này cung cấp cho ta 1 cơ chế linh hoạt trong thời gian xử lý và trình tự các request. </p>
+        <p>Việc implement thực hiện theo các step sau:</p>
 
-        <p>Khi ta biến data của client thành các tham số, thì ta cũng có thể thực hiện những thao tác quan trọng trên chúng như có thể pass,
-        chia sẻ, load trong 1 table hay tương tự vậy.</p>
+        <ol>
+          <li>Define 1 command interface với method chính như execute() chẳng hạn</li>
+          <li>Tạo 1 hoặc nhiều lớp dẫn xuất để gói gọn một tập hợp con bao gồm các receiver object, phương thức được gọi,
+            các arguments để truyền đi</li>
+
+          <li>Khởi tạo 1 Command object cho các execution request</li>
+
+          <li>Pass Command object từ creator(sender) cho invoker(receive)</li>
+
+          <li>Receiver sẽ tự quyết định khi nào cần thực thi và việc thực thi như thế nào.</li>
+        </ol>
 
         <p>Nếu ví dụ trên kia chưa đủ rõ để mô tả về behavior của command này, thì mời các bạn xem tiếp 1 ví dụ sau, cũng là của nhà hàng góc phố.</p>
 
@@ -144,30 +155,6 @@
         <p>Ví dụ trên mô tả đầy đủ hơn về những tình huống ta sử dụng command. Request của khách hàng, 5 món, nhưng chỉ có 4 món được làm
         và khách hàng chỉ phải trả tiền 4 món, đó cũng coi như là 1 trường hợp của undo. Tương tự như vậy, ta cũng có thể có share/ difference nếu như
         đầu bếp đó nhờ 1 đồng nghiệp làm giúp, đưa vào queue, log này nọ.</p>
-
-
-        <p>Việc implement thực hiện theo các step sau:</p>
-
-        <ol>
-          <li>Define 1 command interface với method chính như execute() chẳng hạn</li>
-          <li>Tạo 1 hoặc nhiều lớp dẫn xuất để gói gọn một tập hợp con bao gồm các receiver object, phương thức được gọi,
-          các arguments để truyền đi</li>
-
-          <li>Khởi tạo 1 Command object cho các execution request</li>
-
-          <li>Pass Command object từ creator(sender) cho invoker(receive)</li>
-
-          <li>Receiver sẽ tự quyết định khi nào cần thực thi và việc thực thi như thế nào.</li>
-        </ol>
-
-        <p>Hoặc cũng có thể đơn giản như sau:</p>
-
-        <ol>
-          <li>Tạo một Command Interface đại diện cho một đống Command, và một đống Command implements interface đó.</li>
-          <li>Tạo một Command Receiver Interface và một đống Command Receiver Implement nó.</li>
-          <li>Tạo một Invoker. Invoker này có vai trò đóng gói Command và gửi đến client</li>
-          <li>Tạo một Client để test.</li>
-        </ol>
       </div>
     </div>
   </div>

@@ -1,0 +1,250 @@
+$left_panel_color: #E5DADB;
+$text_color: #548AD7;
+$text_light_color: #E9F0F6;
+$header_color: #503D1B;
+
+@mixin printStyle{
+  @media print{
+   @content;
+  }
+}
+
+@include printStyle(){
+  body{
+    padding: 0px;
+    width: 1030px;
+  }
+}
+
+.container{
+  display: flex;
+  width: 1030px;
+  max-width: 1030px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  padding: 20px;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .left-panel{
+    width: 35%;
+    background-color: $left_panel_color;
+    padding: 20px;
+  }
+
+  .right-panel{
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0px;
+  }
+}
+
+
+
+.left-panel{
+  font-size: 16px;
+
+  .avatar{
+    margin-bottom: 1em;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  .header{
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 0.5em;
+    font-size: 18px;
+    color: $text_color;
+    text-transform: uppercase;
+  }
+
+  .sub-header{
+    font-size: 17px;
+  }
+
+  .user-info{
+    ul{
+      padding: 0px;
+    }
+  }
+
+  @mixin skillSetLevel($percent, $color){
+    &[value='#{$percent}'] {
+      &:after{
+        right: percentage(1 - $percent / 100);
+        background: $color;
+      }
+    }
+  }
+
+  .skills-info{
+    margin-top: 1em;
+
+    .skill-group{
+      margin-bottom: 1em;
+
+      .group-name{
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: .5em;
+      }
+
+      ul{
+        margin-bottom: 1em;
+
+        li{
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+
+          border: 1px solid $header_color;
+          height: 15px;
+          margin-top: 30px;
+          margin-bottom: 5px;
+
+
+          &:before{
+            content: attr(title);
+            display: inline-block;
+            top: 0px;
+            left: 0px;
+            -webkit-transform: translate(0%, -100%);
+            -moz-transform: translate(0%, -100%);
+            -ms-transform: translate(0%, -100%);
+            -o-transform: translate(0%, -100%);
+            transform: translate(0%, -100%);
+            line-height: 26px;
+            z-index: 1;
+            position: absolute;
+          }
+
+          &:after{
+            content: "";
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            bottom: 0px;
+            display: inline-block;
+            border-right: 1px solid $header_color;
+          }
+
+          @for $i from 1 through 100 {
+            @include skillSetLevel($i, $text_color);
+          }
+        }
+      }
+    }
+
+  }
+
+
+}
+
+
+.right-panel{
+  font-size: 16px;
+
+   .user-info{
+     text-align: center;
+
+     h1{
+       font-size: 30px;
+       font-weight: bolder;
+     }
+
+     h2{
+       font-size: 20px;
+       color: grey;
+       font-weight: 200;
+     }
+   }
+}
+
+//<div class="cv-section">
+//<h2>EDUCATION</h2>
+//<div class="content">
+//<div class="section-time">(2008 - 2015)</div>
+//<h3>Software engineer</h3>
+//<div class="detail">
+//                   The University of Transport in HCM City
+//</div>
+//</div>
+//</div>
+
+
+.cv-section{
+  padding-top: 1em;
+  margin-bottom: 1.5em;
+
+
+
+  h2{
+    font-size: 18px;
+    color: $text_color;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1;
+  }
+
+  h3{
+    font-size: 16px;
+    color: $header_color;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .section-time{
+    background-color: $text_light_color;
+    text-align: right;
+    padding: 1px 5px;
+    font-size: 85%;
+    margin-bottom: .5em;
+
+    .place{
+      float: left;
+    }
+
+    &:before{
+      content: "";
+      display: inline-block;
+    }
+  }
+
+  .detail{
+    //color: $text_light_color;
+  }
+
+  .highlight{
+    font-weight: 600;
+    color: $text_color;
+  }
+
+  ul{
+    li{
+      margin-bottom: .25em;
+    }
+  }
+
+  .content{
+    @include printStyle(){
+      page-break-inside: avoid;
+    };
+
+    &:not(:first-child){
+      padding-top: 1em;
+    }
+  }
+
+
+}

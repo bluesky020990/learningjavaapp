@@ -10,6 +10,7 @@ const routes: Routes = [{
   children: [
     {path: '', component: ManagerDefaultComponent},
     {path: 'help',      component: HelpComponent},
+    {path: 'cv-template',    loadChildren: 'src/app/cv-layout/cv-layout.module#CvLayoutModule'},
     {path: 'angular',        loadChildren: 'src/app/angular/angular.module#AngularModule'},
     {path: 'java',           loadChildren: 'src/app/java/java.module#JavaModule'},
     {path: 'design-pattern', loadChildren: 'src/app/design-pattern/design-pattern.module#DesignPatternModule'},

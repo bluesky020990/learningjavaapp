@@ -1,3 +1,264 @@
-<p>
-Từ từ tìm hiểu sau.
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Overview</h2>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        AOP là gì
+      </div>
+
+      <div class="card-body">
+        <p>AOP (Aspect Oriented Programming) tập trung theo hướng tiếp cận hoàn toàn mới, nó theo hướng module hơn là
+          lớp.</p>
+
+        <p>AOP chia nhỏ program logic theo nhiều thành phần riêng biệt (concerns). Nó được sử dụng để tăng tính
+          modularity
+          bằng cach sử dụng cross-cutting concerns.</p>
+
+        <p>1 Cross cutting concern là mối quan tâm có thể ảnh hưởng đến toàn bộ ứng dụng và nên được tập trung tại 1 ví
+          trí trong
+          code, chẳng hạng như transaction manager, xác thực, logging, security.</p>
+
+        <p>Chính vì như vậy, AOP có tính pluggin. Nó cung cấp cách thức để ta có thể thêm các concern trước, sau actual
+          logic.</p>
+
+        <p>Một ví dụ thực tế cung cấp cách nhìn rõ hơn về AOP:</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Where use AOP?
+      </div>
+
+      <div class="card-body">
+        <p>AOP đặc biệt được lưu ý sử dụng trong các trường hợp sau:</p>
+
+        <ul>
+          <li>Cung cấp 1 cách thức khai báo các enterprise service như quản lý các transaction management.</li>
+
+          <li>Cho phép người dùng thực hiện các custom aspects.</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        AOP Concepts and Terminology
+      </div>
+
+      <div class="card-body">
+        <p>AOP đặc biệt được lưu ý sử dụng trong các trường hợp sau:</p>
+
+        <ul>
+          <li>Join point</li>
+          <li>Advice</li>
+          <li>Pointcut</li>
+          <li>Introduction</li>
+          <li>Target Object</li>
+          <li>Aspect</li>
+          <li>Interceptor</li>
+          <li>AOP Proxy</li>
+          <li>Weaving</li>
+        </ul>
+
+        <p>Ta cần chú ý tới các khái niệm của nó bao gồm:</p>
+
+        <dl>
+          <dt>Join point</dt>
+          <dd>
+            <p>
+              Join point is any point in your program such as method execution, exception handling, field access etc.
+              Spring supports only method execution join point.
+            </p>
+
+            <p>
+              Khi ta nhắc đến join point, ta đang nói tới các sự kiện mà ta cần can thiệp vào. Nó có thể là method
+              execution,
+              exception handling, field access. Tuy nhiên, Spring chỉ support duy nhất method execution.
+            </p>
+          </dd>
+
+          <dt>Advice</dt>
+
+          <dd>
+            <p>Advice represents an action taken by an aspect at a particular join point. There are different types of
+              advices:</p>
+
+            <ul>
+              <li>Before Advice : method này được thực thi trước join points</li>
+              <li>After Returning Advice : method này được thực thi nếu join points thực hiện xong (mà ko có lỗi )</li>
+              <li>After throwing Advice : method này được thực thi nếu join points throw ra exception</li>
+              <li>After (finally) Advice: Method này được thực thi bất kể join points có complete hay ko.</li>
+              <li>Around Advice: execute trước và sau join points.</li>
+            </ul>
+
+            <p>Nói chung, nếu nhìn theo khía cạnh của Java thì cái này giống như là 1 block try catch vậy.</p>
+          </dd>
+
+          <dt>Pointcut</dt>
+
+          <dd>
+            <p>It is an expression language of AOP that matches join points.</p>
+          </dd>
+
+          <dt>Introduction</dt>
+          <dd>
+            <p>It is an expression language of AOP that matches join points.</p>
+          </dd>
+
+          <dt>Target Object</dt>
+          <dd>
+            <p>It is the object i.e. being advised by one or more aspects. It is also known as proxied object in spring
+              because Spring AOP is implemented using runtime proxies.</p>
+          </dd>
+
+          <dt>Aspect</dt>
+          <dd>
+            <p>It is a class that contains advices, joinpoints etc.</p>
+          </dd>
+
+          <dt>Interceptor</dt>
+          <dd>
+            <p>It is an aspect that contains only one advice.</p>
+            <p>Không biết mình hiểu đúng ko, hình như thằng này là thằng nó sẽ chỉ có cái beforeAdvice thôi hay sao
+              ấy.</p>
+          </dd>
+        </dl>
+
+        <ul>
+          <li>AspectJ</li>
+          <li>Spring AOP</li>
+          <li>JBoss AOP</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        AspectJ
+      </div>
+
+      <div class="card-body">
+        <p>Dưới đây là hierarchy của Aspect J</p>
+
+        <img src="https://static.javatpoint.com/sppages/images/advicehierarchy.jpg">
+
+        <ul>
+          <li>Before Advice it is executed before the actual method call.</li>
+          <li>After Advice it is executed after the actual method call. If method returns a value, it is executed after
+            returning value.
+          </li>
+          <li>Around Advice it is executed before and after the actual method call.</li>
+          <li>Throws Advice it is executed if actual method throws exception.</li>
+        </ul>
+
+        <p>Trong mô hình này, ta tạo 1 class ứng với vai trò của aspects, implement các method cần thiết như before,
+          after... này nọ
+          và sau đó đưa nó vào 1 file config bằng xml.</p>
+
+        <p>Spring sẽ căn cứ trên nội dung của file config này để trigger các method tương ứng.</p>
+
+        <p>Điều này đảm bảo 3 điều kiện.</p>
+
+        <ol>
+          <li> Ta có thể can thiệp vào bất cứ concerns nào mà không làm thay đổi cấu trúc của ứng dụng</li>
+          <li>Cô lập được việc khai báo</li>
+          <li>Dễ sử dụng</li>
+        </ol>
+
+
+        <p>Tuy nhiên đây chỉ là giải pháp thuở ban đầu. Việc config bằng file xml và việc implement các interface này
+          vẫn
+          khiến cho khả năng linh hoạt của nó bị sụt giảm. Do đó, Spring đã bổ sung bởi 1 cách thức mới ở dưới.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Spring AOP AspectJ Annotation
+      </div>
+
+      <div class="card-body">
+        <p>Spring Framework recommend sử dụng Spring AOP vì nó cung cấp nhiều cách kiểm soát hơn và dễ sử dụng hơn. Cụ
+          thể, với
+          Spring AspectJ AOP, ta có thể có 2 cách sử dụng:</p>
+
+        <ul>
+          <li>annotation</li>
+          <li>xml configuration</li>
+        </ul>
+
+        <p>Đối với trường hợp sử dụng Annotation, ta sử dụng các annotation để đánh dấu Class là 1 aspert, cung cấp các
+          point cut,
+          cũng như khai báo các method sẽ trigger trước, sau và các trường hợp khác như ở trên.</p>
+
+        <p>Dưới đây là các annotation và mục đích của chúng</p>
+
+        <dl>
+          <dt>@Aspect</dt>
+          <dd>declares the class as aspect</dd>
+
+          <dt>@Pointcut</dt>
+          <dd>declares the pointcut expression.</dd>
+        </dl>
+
+        <p>Annotation của advice</p>
+
+        <dl>
+          <dt>@Before</dt>
+          <dd>declares the before advice. It is applied before calling the actual method</dd>
+
+          <dt>@After</dt>
+          <dd>declares the after advice. It is applied after calling the actual method and before returning result</dd>
+
+          <dt>@AfterReturning</dt>
+          <dd>declares the after returning advice. It is applied after calling the actual method and before returning
+            result.
+            But you can get the result value in the advice.
+          </dd>
+
+          <dt>@AfterThrowing</dt>
+          <dd>declares the throws advice. It is applied if actual method throws exception.
+
+          <dt>@Around</dt>
+          <dd>declares the around advice. It is applied before and after calling the actual method</dd>
+        </dl>
+
+
+        <p>Đối với XML thì nó có 1 chút thay đổi nhỏ, chủ yếu về tag name mà thôi.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>

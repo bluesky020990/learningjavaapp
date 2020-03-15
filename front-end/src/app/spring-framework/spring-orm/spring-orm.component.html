@@ -18,7 +18,17 @@
       </div>
 
       <div class="card-body">
-        <p></p>
+        <p>Trước khi đi vào phần này, ta cùng liệt kê những ưu điểm của nó, nguyên nhân vì sao nó lại được sử dụng mạnh mẽ đến vậy</p>
+
+        <ul>
+          <li>Thứ nhất, ít code hơn. Đây là lợi ích của spring JDBC đem lại. ta ko cần quan tâm tới việc mở đóng connection ntn, quản
+          lý transaction ra làm sao, mà chỉ tập trung vào việc code logic, viết các query mà thôi.</li>
+          <li>Easy to test</li>
+          <li>Xử lý ngoại lệ tốt hơn. </li>
+          <li>Quản lý transaction hiệu quả hơn với sự can thiệp của AOP</li>
+        </ul>
+
+        <p>Có 2 framework được sử dụng trong ORM, đó là Hibernate và JPA.</p>
       </div>
     </div>
   </div>
@@ -29,11 +39,58 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Example
+        Hibernate Framework and Spring Integration
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Hibernate  được thực hiện thông qua các file config. Trong file config này, có chứa các thông tin của database,
+        các object mapping này nọ.</p>
+
+        <p>Spring Framework cung cấp các hibernate template class, do đó, ta ko cần phải config như trong hibernate, thay vào đó
+        ta chỉ tập trung vào vấn đề code business cho nó mà thôi.</p>
+
+        <p>Các method trong Hibernate Template Class bao gồm:</p>
+
+        <dl>
+          <dt>void persist(Object entity)	</dt>
+          <dd>persists the given object.</dd>
+
+          <dt>Serializable save(Object entity)	</dt>
+          <dd>persists the given object and returns id.</dd>
+
+          <dt>void saveOrUpdate(Object entity)</dt>
+          <dd>	persists or updates the given object. If id is found, it updates the record otherwise saves the record.</dd>
+
+          <dt>void update(Object entity)	</dt>
+          <dd>updates the given object.</dd>
+
+          <dt>void delete(Object entity)</dt>
+          <dd>deletes the given object on the basis of id.</dd>
+
+          <dt>Object get(Class entityClass, Serializable id)</dt>
+          <dd>returns the persistent object on the basis of given id.</dd>
+
+          <dt>Object load(Class entityClass, Serializable id)</dt>
+          <dd>returns the persistent object on the basis of given id.</dd>
+
+          <dt>List loadAll(Class entityClass)</dt>
+          <dd>returns the all the persistent objects.</dd>
+        </dl>
+
+        <p>Các bước triển khai bao gồm </p>
+
+        <ol>
+          <li>create table in the database It is optional.</li>
+          <li>create applicationContext.xml file It contains information of DataSource, SessionFactory etc.</li>
+          <li>create Employee.java file It is the persistent class</li>
+          <li>create employee.hbm.xml file It is the mapping file.</li>
+          <li>create EmployeeDao.java file It is the dao class that uses HibernateTemplate.</li>
+          <li>create InsertTest.java file It calls methods of EmployeeDao class.</li>
+        </ol>
+
+        <p>Trong mô hình này, tốt hơn hết là sử dụng các generic method cho tiết kiệm thời gian, hơi đâu mà viết mấy cái này hoài.</p>
+
+
       </div>
     </div>
   </div>
@@ -43,11 +100,32 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        Important Things
+        Spring Data JPA Tutorial
       </div>
 
       <div class="card-body">
-        ________________________________
+        <p>Spring Data JPA API cung cấp JpaTemplate để tích hợp Spring với JPA.</p>
+
+        <p>JPA là đặc tả các persiting objects trong 1 enterprise application. Nó đang được thay thế cho các complex entity bean.</p>
+
+        <p>Việc implement JPA specification được cung cấp bởi nhiều vendor, và Hibernate là 1 trong số đó.</p>
+
+
+        <p>Tương tự như Hibernate, Spring JPA template cũng lược bỏ đi các method không cần thiết. Kêu lược bỏ thì ko đúng, ở đây
+        nó có ý nghĩa là JPA sẽ làm thay cho ta các action tổng quát như: persisting, updating, deleting hhoặc searching object.</p>
+
+        <p>Nó hơn cái Hibernate ở điểm đó, đúng ra thì ta có thể viết thêm 1 abstract DAO để support điều đó.</p>
+
+        <p>Các bước triển khai bao gồm </p>
+
+        <ol>
+          <li>create Account.java file</li>
+          <li>create Account.xml file</li>
+          <li>create AccountDao.java file</li>
+          <li>create persistence.xml file</li>
+          <li>create applicationContext.xml file</li>
+          <li>create AccountsClient.java file</li>
+        </ol>
       </div>
     </div>
   </div>

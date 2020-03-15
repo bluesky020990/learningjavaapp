@@ -1,3 +1,222 @@
-<p>
-  spring-mvc works!
-</p>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Spring MVC</h2>
+
+      <p>Spring MCV là 1 java framework được dùng để build web application. Nó tuân thủ theo Modal View Controller design
+      patter. Và implement basic feature của Core Spring Framework : IoC vs DI.</p>
+
+      <p>Spring MVC cung cấp 1 solution sử dụng MCV bằng sự giúp đỡ cúa dispatch Servlet. DispatchServlet là 1 class, nó
+      đóng vai trò nhận toàn bộ request và ánh xạ tới đúng resource như controllers, models and views.</p>
+
+      <p>Trong Spring, DispatchServlet đóng vai trò như 1 Front Controller, có vai trò manage flow của Spring MVC application.</p>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Spring Web MVC
+      </div>
+
+      <div class="card-body">
+        <p>Dưới đây là mô hình hoạt động của MCV</p>
+        <img src="https://static.javatpoint.com/sppages/images/spring-web-model-view-controller.png">
+
+        <p>Và cách mà DispatchServlet hoạt động</p>
+
+        <img src="https://static.javatpoint.com/sppages/images/flow-of-spring-web-mvc.png">
+
+
+        <ul>
+          <li>Đầu tiên toàn bộ incomming request sẽ được handle bởi dispatchServlet. Lúc này nó làm việc như là 1 front controller</li>
+          <li>Sau đó, nó sẽ ánh xạ request tới controller tương ứng theo cấu hình trong file xml</li>
+          <li>Controller sẽ return 1 object của MCV</li>
+          <li>DispatchServlet sẽ kiểm tra entry of view resolves bởi XML và gọi view component được chỉ định.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages of Spring MVC Framework
+      </div>
+
+      <div class="card-body">
+        <p>Dưới đây là các ưu điểm mà MCV framework mang lại:</p>
+
+
+        <dl>
+          <dt>separate roles</dt>
+          <dd>
+            <p>
+              The Spring MVC separates each role, where the model object, controller, command object, view resolver,
+              DispatcherServlet, validator, etc. can be fulfilled by a specialized object.
+            </p>
+
+            <p>Đầu tiên phải kể đến đó là việc separate các roles trong mô hình này  thành từng đối tượng riêng biệt, model,
+            controller, command, view, ..... Việc phân tích này giúp ta dễ đọc và dễ tiếp cận hơn.</p>
+
+          </dd>
+
+          <dt>Light-weight</dt>
+          <dd>
+            <p>It uses light-weight servlet container to develop and deploy your application.</p>
+          </dd>
+
+          <dt>Powerful Configuration</dt>
+          <dd>
+            <p>It provides a robust configuration for both framework and application classes that includes easy referencing
+              across contexts, such as from web controllers to business objects and validators.</p>
+
+            <p>Nó cung cấp 1 cấu hình mạnh mẽ cho framework và cả application classes, bao gồm tham chiếu dễ dàng,
+            chẳng hạn như từ web controller tới business object và validator.</p>
+
+
+          </dd>
+
+          <dt>Rapid development</dt>
+          <dd>
+            <p>The Spring MVC facilitates fast and parallel development.</p>
+            <p>Tách biệt các vai trò nên ta có thể dễ dàng phát triển</p>
+          </dd>
+
+          <dt>Reusable business code </dt>
+          <dd>
+            <p> Instead of creating new objects, it allows us to use the existing business objects.</p>
+          </dd>
+
+          <dt>Easy to test</dt>
+          <dd>
+            <p>In Spring, generally we create JavaBeans classes that enable you to inject test data using the setter methods.</p>
+          </dd>
+
+          <dt>Flexible Mapping</dt>
+          <dd>
+            <p>It provides the specific annotations that easily redirect the page.</p>
+          </dd>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Implementation
+      </div>
+
+      <div class="card-body">
+        <p>Cách implement model trên được thực hiện như sau:</p>
+
+        <ul>
+          <li>Load string jar files hoặc dependency của nó từ Maven</li>
+          <li>Tạo 1 controller class</li>
+          <li>provides entry của controller trong file web.xml</li>
+          <li>define bean trong các file xml khác</li>
+          <li>display message trong jsp page</li>
+          <li>start server và deploy project</li>
+        </ul>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Step 1. add dependency của nó từ Maven</h5>
+          <div class="text-dark pt-3">
+            <p>Điều này thực hiện thông qua 2 cái , import spring-webmvc và javax servlet.</p>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Create the controller class</h5>
+          <div class="text-dark pt-3">
+            <p>Để tạo 1 controller ta sử dụng 2 annotation, @Controller để đánh dấu nó là 1 controller, và @RequestMapping
+            để map class ứng với 1 specified URL.</p>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Provide the entry of controller in the web.xml file</h5>
+          <div class="text-dark pt-3">
+            <p>Ở đây ta sử dụng DispatcherServlet  như 1 front controller</p>
+
+            <blockquote [innerHtml]="dispatchServletContent"></blockquote>
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Define the bean in the xml file</h5>
+          <div class="text-dark pt-3">
+            <p>Cấu hình lại file config để nó scan các @controller.</p>
+
+          </div>
+        </div>
+
+        <div class="my-4 p-3 bg-white rounded box-shadow">
+          <h5 class="border-bottom border-gray pb-2 mb-0">Display the message in the JSP page</h5>
+          <div class="text-dark pt-3">
+            <p>Xác định view và hiển thị của nó</p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Annotation
+      </div>
+
+      <div class="card-body">
+        <p>Trong spring, ta quản lý các controller class qua các annotation của nó. Bao gồm:</p>
+
+        <dl>
+          <dt>@Controller</dt>
+          <dd>đánh dấu 1 Object là controller</dd>
+
+
+          <dt>@RequestMapping</dt>
+          <dd>xác định url mapping với Controller này</dd>
+
+
+          <dt>@RequestParam </dt>
+          <dd>Đánh dấu controller này đọc data từ HTML Form data submit lên, và bind nó vào request parameter. Đây
+          là cách để từ client submit data lên server.</dd>
+
+
+          <dt>@ModelAttribute("modelName") ModelType res</dt>
+          <dd>Đánh dấu data submit lên là 1 model (command)</dd>
+        </dl>
+
+
+        <p>Phân biệt giữa @RequestParams và @ModalAttribute như sau:</p>
+
+        <ul>
+          <li>@RequestParam chỉ nhận các stand-alone variable. Trong khi đó @ModellAttribute biến các field data thành 1 class
+          sau đó set các attribute cho nó và cuối cùng đưa trở lại view.</li>
+          <li>Nói cách khác, @ModalAttribute biến 1 entire Java Object, support multiple request trong khi đó, @#RequestParams
+          chỉ là đọc 1 số lượng nhỏ các Params.</li>
+          <li>@ModelAttribute còn được sử dụng cho mục đích binding, validation, hay form prepopulation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

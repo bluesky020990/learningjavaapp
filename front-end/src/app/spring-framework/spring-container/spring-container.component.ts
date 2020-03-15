@@ -21,6 +21,6 @@ export class SpringContainerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.lessonService.setCurrentLesson(null);
-}
+  }
 
 }

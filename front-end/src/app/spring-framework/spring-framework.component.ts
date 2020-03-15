@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SpringService} from "./spring.service";
 
 @Component({
   selector: 'app-spring-framework',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpringFrameworkComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lessonServices: SpringService) { }
 
   ngOnInit() {
   }

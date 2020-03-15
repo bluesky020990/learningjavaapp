@@ -18,13 +18,19 @@ import { SpringWebComponent } from './spring-web/spring-web.component';
 import { SpringSecurityComponent } from './spring-security/spring-security.component';
 import { SpringBootComponent } from './spring-boot/spring-boot.component';
 import { SpringNAngularComponent } from './spring-nangular/spring-nangular.component';
+import {CommonLessonModule} from "../common/common.module";
+import {FormsModule} from "@angular/forms";
+import {MaterialModule} from "../material/material.module";
+import {BootstrapModule} from "../material/bootstrap.module";
+import {SpringContainerComponent} from "./spring-container/spring-container.component";
 
 const routing: Routes = [{
   path: '',
   component: SpringFrameworkComponent,
   children: [
-    // {path: '', redirectTo: 'overview', pathMatch: 'full'},
+    {path: '', redirectTo: 'overview', pathMatch: 'full'},
     {path: 'overview', component: SpringOverviewComponent},
+    {path: 'module', component: SpringContainerComponent},
     {path: 'dependence-injection', component: SpringDependenceInjectionComponent},
     {path: 'aop', component: SpringAOPComponent},
     {path: 'jdpb', component: SpringJDBCComponent},
@@ -49,6 +55,7 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
   declarations: [
     SpringFrameworkComponent,
     SpringOverviewComponent,
+    SpringContainerComponent,
     SpringDependenceInjectionComponent,
     SpringAOPComponent,
     SpringJDBCComponent,
@@ -66,7 +73,12 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
   ],
   imports: [
     CommonModule,
-    Routing
+    Routing,
+
+    FormsModule,
+    MaterialModule,
+    BootstrapModule,
+    CommonLessonModule
   ]
 })
 

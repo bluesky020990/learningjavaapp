@@ -55,4 +55,25 @@ public class School {
     public void setClazzList(List<Clazz> clazzList) {
         this.clazzList = clazzList;
     }
+
+
+
+    public static void main(String args[]){
+        School a = new School("Khanh Tran", "Grade 1");
+
+        a.setName("Ltran B");
+
+
+        Long numb_1 = 10l;
+        Long numb_2 = 10l;
+
+        System.out.println(numb_1 == numb_2);
+
+        String char_1 = "abc";
+        String char_2 = new String("aBc");
+
+        System.out.println(char_1 == char_2);
+        System.out.println(char_1.equalsIgnoreCase(char_2));
+
+    }
 }

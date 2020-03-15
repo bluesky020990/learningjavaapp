@@ -1,0 +1,72 @@
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="overview-container">
+      <h2 class="mb-3">Overview</h2>
+
+      <p>Trong bài học này ta cùng tìm hiểu về các module chính của Spring Framework.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Spring Modules
+      </div>
+
+      <div class="card-body">
+        <p>Spring Framework bao gồm nhiều modules như core, beans, context, expression language, AOP, Aspect, Instrumentation,
+          JDBC, ORM, OXM, JMS, transaction, Web, Servlet, Structs. Nó được gom lại thành từng group bao gồm Test, Core Container,
+          AOP, Aspect, Instrumentation, Data Access/ Integration, Web/Remoting.</p>
+
+        <p>Dưới dây là sơ đồ cụ thể:</p>
+
+        <blockquote>
+          <img src="/assets/spring-framework/spmodules.jpg" class="img-fluid"/>
+        </blockquote>
+
+        <dl>
+          <dt>Test</dt>
+          <dd>
+            <p>Layer này support cho việc testing bằng cách sử dụng JUnit và TestNG</p>
+          </dd>
+
+
+          <dt>Spring Core Container</dt>
+          <dd>
+            <p>Container này bao gồm 3 phần, core, beans, context và Expression Language.</p>
+
+            <p>Core and Beans cung cấp các IOC và DI feature  trong khi đó Context lại đóng vai trò hỗ trợ cho việc
+              chuẩn hóa. Cuối cùng, Expression Language là một phần mở rộng cho EL được định nghĩa trong JSP. Nó cung cấp
+              các hỗ trợ để thiếp lập và nhận các giá trị thuộc tính, gọi các phương thức, truy cập các collection và indexers,
+              các variable, logical và số học, truy xuất các đối tượng theo tên,</p>
+          </dd>
+
+          <dt>AOP, Aspects and Instrumentation</dt>
+          <dd>
+            <p>Modules này hỗ trợ cho việc lập trình theo khía cạnh, nơi ta có thể đặt các Advices, Pointcuts, để tách mã.</p>
+
+            <p>Aspect Modules cung cấp các hỗ trợ để tích hợp với AspectJ </p>
+
+            <p>Trong khi đó instructment modules cung cấp hỗ trợ cho các class instrucmentation và class loader implementations</p>
+          </dd>
+
+          <dt>Data Access / Integration</dt>
+          <dd>
+            <p>Nhóm này bao gồm các modules như JDBC, ORM, OXM, JMS và transaction Modules. Các module này về cơ bản
+              cuan cấp các hỗ trợ để tuong tác với database.</p>
+          </dd>
+
+          <dt>Web</dt>
+          <dd>
+            <p>Nhóm này bao gồm các moduels như Web, Web-Servlet, Web-Struts, và Web-Portlet. Các module này cung cấp
+              các hỗ trợ để tạo nên các ứng dụng web.</p>
+          </dd>
+
+
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

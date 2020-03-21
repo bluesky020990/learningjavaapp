@@ -15,7 +15,7 @@ export class SpringContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const currentLesson = MAP_LESSON_DATA[1];
+    const currentLesson = MAP_LESSON_DATA[2];
     this.lessonService.setCurrentLesson(new LessonMapping(currentLesson.path, currentLesson.name, currentLesson.displayOrder));
   }
 

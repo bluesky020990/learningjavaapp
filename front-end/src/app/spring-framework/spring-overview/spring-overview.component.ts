@@ -15,9 +15,7 @@ export class SpringOverviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const currentLesson = MAP_LESSON_DATA[0];
-
-    this.lessonService.setCurrentLesson(new LessonMapping(currentLesson.path, currentLesson.name, currentLesson.displayOrder));
+    this.lessonService.setCurrentLessonByObject(MAP_LESSON_DATA[0]);
   }
 
   ngOnDestroy(): void {

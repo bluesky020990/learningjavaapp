@@ -16,6 +16,11 @@ export abstract class LessonMenuService {
     return this.currentLesson;
   };
 
+  setCurrentLessonByObject(currentLesson: LessonMapping){
+    //new LessonMapping(currentLesson.path, currentLesson.name, currentLesson.displayOrder)
+    this.setCurrentLesson(currentLesson);
+  }
+
   setCurrentLesson(currentLesson: LessonMapping){
     this.currentLesson = currentLesson;
   };

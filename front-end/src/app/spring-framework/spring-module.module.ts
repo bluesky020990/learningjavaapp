@@ -30,19 +30,26 @@ const routing: Routes = [{
   children: [
     {path: '', redirectTo: 'overview', pathMatch: 'full'},
     {path: 'overview', component: SpringOverviewComponent},
+
+
     {path: 'module', component: SpringContainerComponent},
     {path: 'dependence-injection', component: SpringDependenceInjectionComponent},
     {path: 'aop', component: SpringAOPComponent},
+
     {path: 'jdpb', component: SpringJDBCComponent},
     {path: 'orm', component: SpringORMComponent},
+
+
+    {path: 'web', component: SpringWebComponent},
     {path: 'mvc', component: SpringMVCComponent},
     {path: 'mvc-form', component: SpringMVCFormComponent},
     {path: 'mcv-application', component: SpringMVCApplicationComponent},
     {path: 'mvc-validator', component: SpringMVCValidatorComponent},
+
+    {path: 'security', component: SpringSecurityComponent},
     {path: 'remoting', component: SpringRemotingComponent},
     {path: 'java-mail', component: SpringJavaMailComponent},
-    {path: 'web', component: SpringWebComponent},
-    {path: 'security', component: SpringSecurityComponent},
+
     {path: 'springboot', component: SpringBootComponent},
     {path: 'angular', component: SpringNAngularComponent}
   ]

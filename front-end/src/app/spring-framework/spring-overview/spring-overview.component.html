@@ -91,81 +91,77 @@
 
         <p>AOP nó ko phải là phủ định của OOP, nó chỉ là 1 phần bổ sung của OOP để có thể giải quyết những vấn đề linh
           động mà không làm phá vỡ code mà thôi. </p>
-
-
       </div>
     </div>
   </div>
+</div>
 
-  <div class="row mb-3">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          Advantages of Spring Framework
-        </div>
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Advantages of Spring Framework
+      </div>
 
-        <div class="card-body">
-          <p>Khi ta đi vào tìm hiểu 1 framework, điều đầu tiên ta cần quan tâm đó là mục đích sử dụng của nó. Sau đó là
-            những
-            ưu điểm, những bài toán mà framework này có thể giải quyết tốt. Bên cạnh đó ta cũng cần xem xét các nhược
-            điểm của nó
-            để tránh phải những sai lầm khi chọn architecture sau này.</p>
+      <div class="card-body">
+        <p>Khi ta đi vào tìm hiểu 1 framework, điều đầu tiên ta cần quan tâm đó là mục đích sử dụng của nó. Sau đó là
+          những
+          ưu điểm, những bài toán mà framework này có thể giải quyết tốt. Bên cạnh đó ta cũng cần xem xét các nhược
+          điểm của nó
+          để tránh phải những sai lầm khi chọn architecture sau này.</p>
 
-          <p>Về mục đích, Spring ra đời để giảm sự cồng kềnh của J2EE. Ngày xưa nhìn vào đống component của J2EE là thấy
-            choáng rồi.
-            Spring làm đơn giản J2EE. Nó thường đã support rất nhiều thức, việc của ta chỉ là quan tâm tới khía cạnh
-            logic của chương
-            trình, bỏ qua những rắc rối không đáng có. Vì vậy nó nhẹ hơn và linh hoạt hơn J2EE rất nhiều.</p>
+        <p>Về mục đích, Spring ra đời để giảm sự cồng kềnh của J2EE. Ngày xưa nhìn vào đống component của J2EE là thấy
+          choáng rồi.
+          Spring làm đơn giản J2EE. Nó thường đã support rất nhiều thức, việc của ta chỉ là quan tâm tới khía cạnh
+          logic của chương
+          trình, bỏ qua những rắc rối không đáng có. Vì vậy nó nhẹ hơn và linh hoạt hơn J2EE rất nhiều.</p>
 
-          <p>Sau đây ta cùng đi sâu vào các ưu </p>
+        <p>Sau đây ta cùng đi sâu vào các ưu </p>
 
-          <dl>
-            <dt>Predefined Templates</dt>
-            <dd>Trong Spring, các template của nó đều được xác định từ trước. Đó có thể là JDBC, Hibernate, JPA. Ta
-              không cần
-              quan tâm tới việc inject/setup các template này vào bên trong framework, ta chỉ cần tập trung vào việc
-              implement
-              các function có liên quan tới nó mà thôi. Spring sẽ lo tất tần tật những việc đó, và vì thế, công việc của
-              ta sẽ đơn giản hơn nhiều.
-            </dd>
+        <dl>
+          <dt>Predefined Templates</dt>
+          <dd>Trong Spring, các template của nó đều được xác định từ trước. Đó có thể là JDBC, Hibernate, JPA. Ta
+            không cần
+            quan tâm tới việc inject/setup các template này vào bên trong framework, ta chỉ cần tập trung vào việc
+            implement
+            các function có liên quan tới nó mà thôi. Spring sẽ lo tất tần tật những việc đó, và vì thế, công việc của
+            ta sẽ đơn giản hơn nhiều.
+          </dd>
 
-            <dt>Loose Coupling</dt>
-            <dd>Trong một ứng dụng, thường 1 service cần 1 đống các sub-service để làm việc với nhau. Chính sự phụ thuộc
-              đó làm
-              cho ứng dụng trở nên cứng nhắc và khó thay đổi. Spring cung cấp IoC nhằm phá vỡ điều đó. DI là một trong
-              những pattern quan
-              trọng trong pattern này, nhờ nó mà tính linh động của Spring rất cao.
-            </dd>
-
-
-            <dt>Easy to test</dt>
-            <dd>DI mang lại khả năng test ứng dụng dễ dàng hơn. Việc chia thành nhiều service khiến ta có khả năng test
-              từng bộ phận một.
-            </dd>
+          <dt>Loose Coupling</dt>
+          <dd>Trong một ứng dụng, thường 1 service cần 1 đống các sub-service để làm việc với nhau. Chính sự phụ thuộc
+            đó làm
+            cho ứng dụng trở nên cứng nhắc và khó thay đổi. Spring cung cấp IoC nhằm phá vỡ điều đó. DI là một trong
+            những pattern quan
+            trọng trong pattern này, nhờ nó mà tính linh động của Spring rất cao.
+          </dd>
 
 
-            <dt>Lightweight</dt>
-            <dd>Spring sử dụng Pojo cho các Object bên trong nó. Vì vậy nó khiến cho ứng dụng trở nên gọn gàng và sạch
-              sẽ, khi không có
-              quá nhiều sự phụ thuộc cũng như mở rộng. Nó không bắt buộc ta phải extend 1 class hay implement 1
-              interface nào. Chính điều đó mang
-              lại cho nó tên gọi non-invasive.
-            </dd>
+          <dt>Easy to test</dt>
+          <dd>DI mang lại khả năng test ứng dụng dễ dàng hơn. Việc chia thành nhiều service khiến ta có khả năng test
+            từng bộ phận một.
+          </dd>
 
 
-            <dt>Fast Development</dt>
-            <dd>Spring hỗ trợ nhiều framework khác nhau giúp cho việc phát triển ứng dụng trở nên dễ dàng.</dd>
+          <dt>Lightweight</dt>
+          <dd>Spring sử dụng Pojo cho các Object bên trong nó. Vì vậy nó khiến cho ứng dụng trở nên gọn gàng và sạch
+            sẽ, khi không có
+            quá nhiều sự phụ thuộc cũng như mở rộng. Nó không bắt buộc ta phải extend 1 class hay implement 1
+            interface nào. Chính điều đó mang
+            lại cho nó tên gọi non-invasive.
+          </dd>
 
-            <dt>Powerful abstraction</dt>
-            <dd>Nó cung cấp sự trừu tượng mạnh mẽ cho các thông số kĩ thuật của JMS, JDBC, JPA, JTA</dd>
 
-            <dt>Declarative support</dt>
-            <dd>Nó cung cấp hỗ trợ khai báo cho catching, validation, transaction và formating.</dd>
-          </dl>
-        </div>
+          <dt>Fast Development</dt>
+          <dd>Spring hỗ trợ nhiều framework khác nhau giúp cho việc phát triển ứng dụng trở nên dễ dàng.</dd>
+
+          <dt>Powerful abstraction</dt>
+          <dd>Nó cung cấp sự trừu tượng mạnh mẽ cho các thông số kĩ thuật của JMS, JDBC, JPA, JTA</dd>
+
+          <dt>Declarative support</dt>
+          <dd>Nó cung cấp hỗ trợ khai báo cho catching, validation, transaction và formating.</dd>
+        </dl>
       </div>
     </div>
   </div>
-
-
 </div>

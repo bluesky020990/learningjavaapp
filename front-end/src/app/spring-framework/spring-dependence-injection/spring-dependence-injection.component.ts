@@ -15,7 +15,7 @@ export class SpringDependenceInjectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const currentLesson = MAP_LESSON_DATA[2];
+    const currentLesson = MAP_LESSON_DATA[3];
     this.lessonService.setCurrentLesson(new LessonMapping(currentLesson.path, currentLesson.name, currentLesson.displayOrder));
   }
 

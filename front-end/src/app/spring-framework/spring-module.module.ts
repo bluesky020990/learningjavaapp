@@ -14,7 +14,6 @@ import { SpringMVCApplicationComponent } from './spring-mvcapplication/spring-mv
 import { SpringMVCValidatorComponent } from './spring-mvcvalidator/spring-mvcvalidator.component';
 import { SpringRemotingComponent } from './spring-remoting/spring-remoting.component';
 import { SpringJavaMailComponent } from './spring-java-mail/spring-java-mail.component';
-import { SpringWebComponent } from './spring-web/spring-web.component';
 import { SpringSecurityComponent } from './spring-security/spring-security.component';
 import { SpringBootComponent } from './spring-boot/spring-boot.component';
 import { SpringNAngularComponent } from './spring-nangular/spring-nangular.component';
@@ -33,14 +32,14 @@ const routing: Routes = [{
 
 
     {path: 'module', component: SpringContainerComponent},
-    {path: 'dependence-injection', component: SpringDependenceInjectionComponent},
-    {path: 'aop', component: SpringAOPComponent},
+    {path: 'core-module', component: SpringDependenceInjectionComponent},
+    {path: 'aop-module', component: SpringAOPComponent},
 
-    {path: 'jdpb', component: SpringJDBCComponent},
+    {path: 'jpa', component: SpringJDBCComponent},
+    {path: 'hibernate', component: SpringJDBCComponent},
     {path: 'orm', component: SpringORMComponent},
 
 
-    {path: 'web', component: SpringWebComponent},
     {path: 'mvc', component: SpringMVCComponent},
     {path: 'mvc-form', component: SpringMVCFormComponent},
     {path: 'mcv-application', component: SpringMVCApplicationComponent},
@@ -49,9 +48,10 @@ const routing: Routes = [{
     {path: 'security', component: SpringSecurityComponent},
     {path: 'remoting', component: SpringRemotingComponent},
     {path: 'java-mail', component: SpringJavaMailComponent},
+    {path: 'angular', component: SpringNAngularComponent},
 
-    {path: 'springboot', component: SpringBootComponent},
-    {path: 'angular', component: SpringNAngularComponent}
+
+    {path: 'springboot', component: SpringBootComponent}
   ]
 }];
 
@@ -62,21 +62,25 @@ const Routing: ModuleWithProviders = RouterModule.forChild(routing);
   declarations: [
     SpringFrameworkComponent,
     SpringOverviewComponent,
+
     SpringContainerComponent,
     SpringDependenceInjectionComponent,
     SpringAOPComponent,
+
     SpringJDBCComponent,
     SpringORMComponent,
+
     SpringMVCComponent,
     SpringMVCFormComponent,
     SpringMVCApplicationComponent,
     SpringMVCValidatorComponent,
+
     SpringRemotingComponent,
     SpringJavaMailComponent,
-    SpringWebComponent,
     SpringSecurityComponent,
-    SpringBootComponent,
-    SpringNAngularComponent
+    SpringNAngularComponent,
+
+    SpringBootComponent
   ],
   imports: [
     CommonModule,

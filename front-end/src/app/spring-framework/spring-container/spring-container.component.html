@@ -80,7 +80,7 @@
     </div>
   </div>
 </div>
-
+Repository’s
 
 <div class="row mb-3">
   <div class="col-12">
@@ -90,10 +90,22 @@
       </div>
 
       <div class="card-body">
-        <p>Spring Boot annotation </p>
+        <p>Trong Spring, có 3 annotation thường được sử dụng nhất cho bean, đó là @Component, @Repository, và @Service.</p>
 
+        <p>Đối với Spring thì 3 cái này đều là bean, nó đều được scan theo class path nhưng tốt hơn hết, ta cần phân loại chúng
+        theo đúng mục đích sử dụng.</p>
 
+        <p>Dưới đây ta sẽ đi chi tiết vào từng loại.</p>
 
+        <h5>Component</h5>
+
+        <p>ta có thể sử dụng @Component trên application để đánh dấu các bean là Spring's manager components.</p>
+
+        <p>Spring chỉ nhận và register bean với @Component mà ko tìm kiếm @Service hay @Repository nói chung.</p>
+
+        <p>Các bean này sẽ được register trong @Repository.</p>
+
+        <p>@Service và @Repository cũng là bean, nhưng chúng được dùng cho các mục đích khác, vì vậy chúng cần phải </p>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ import {LessonMenuService} from "../common/lesson-menu.service";
 
 const MAP_LESSON_DATA = [
   new LessonMapping('overview', "Overview",  1, null),
-  new LessonCategory('Factory Pattern', "Factory Pattern",  1,  'Creational Patterns', null),
+  new LessonCategory('Creational Pattern', "Creational Pattern",  1,  'Creational Patterns', null),
   new LessonMapping('factory', "Factory Method Pattern",  2, null),
   new LessonMapping('abstract-factory', "Abstract Factory",  3, null),
   new LessonMapping('singleton', "Singleton",  4, [new LessonMapping('singleton', "Singleton",  4, null)]),
@@ -24,7 +24,7 @@ const MAP_LESSON_DATA = [
   new LessonMapping('prototype', "Prototype",  6, null),
   new LessonMapping('object-pool', "Object Pools",  7, null),
 
-  new LessonCategory('', "Factory Pattern",  1, 'Structural Patterns', null),
+  new LessonCategory('', "Structural Pattern",  1, 'Structural Patterns', null),
   new LessonMapping('adapter', "Adapter",  8, null),
   new LessonMapping('bridge', "Bridge",  9, null),
   new LessonMapping('composite', "Composite",  10, null),
@@ -34,7 +34,7 @@ const MAP_LESSON_DATA = [
   new LessonMapping('flyweight', "Flyweight",  14, null),
   new LessonMapping('proxy', "Proxy",  15, null),
 
-  new LessonCategory('', "Structural Patterns",  1, 'Structural Patterns', null),
+  new LessonCategory('', "Behavioral Patterns",  1, 'Behavioral Patterns', null),
   new LessonMapping('chain-of-responsibility', "Chain Of Responsibility",  16, null),
   new LessonMapping('command', "Command",  17, null),
   new LessonMapping('interpreter', "Interpreter",  18, null),
